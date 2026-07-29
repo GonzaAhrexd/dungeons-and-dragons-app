@@ -1,0 +1,134 @@
+/* ==========================================================================
+   D&D App — global.css
+   Dirección: pergamino/vitela envejecida + oro viejo + lacre + verde bosque.
+   Signature: esquinas iluminadas (illuminated manuscript corners) en paneles.
+   ========================================================================== */
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--pal-ink);
+  font-family: var(--pal-font-body);
+  font-size: var(--pal-fs-base);
+  line-height: var(--pal-lh-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: var(--pal-seal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--pal-seal-bright);
+}
+
+ul,
+ol {
+  padding-left: var(--pal-space-6);
+}
+
+/* ==========================================================================
+   Tipografía
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--pal-font-display);
+  font-weight: 600;
+  line-height: var(--pal-lh-tight);
+  color: var(--pal-ink);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--pal-space-4);
+}
+
+h1 {
+  font-size: var(--pal-fs-3xl);
+}
+h2 {
+  font-size: var(--pal-fs-2xl);
+}
+h3 {
+  font-size: var(--pal-fs-xl);
+}
+h4 {
+  font-size: var(--pal-fs-lg);
+}
+
+p {
+  margin: 0 0 var(--pal-space-4);
+}
+
+.pal-eyebrow {
+  font-family: var(--pal-font-mono);
+  font-size: var(--pal-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pal-ink-soft);
+}
+
+.pal-stat {
+  font-family: var(--pal-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Scrollbar / selección temáticas
+   ========================================================================== */
+
+::selection {
+  background: var(--pal-gold-bright);
+  color: var(--pal-ink);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pal-parchment-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pal-gold);
+  border-radius: var(--pal-radius-sm);
+  border: 2px solid var(--pal-parchment-dark);
+}

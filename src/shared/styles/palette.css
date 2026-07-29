@@ -1,0 +1,67 @@
+/* ==========================================================================
+   D&D App — palette.css
+   Sistema de tokens: color, tipografía, espaciado, bordes.
+   Dirección: pergamino/vitela envejecida + oro viejo + lacre + verde bosque.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap");
+
+:root {
+  /* ---- Paleta ---- */
+  --pal-parchment: #e4d3a0;
+  --pal-parchment-dark: #c9b378;
+  --pal-parchment-darker: #ad9560;
+  --pal-ink: #2a1b12;
+  --pal-ink-soft: #4a3626;
+  --pal-gold: #9c7a2e;
+  --pal-gold-bright: #c99a3e;
+  --pal-seal: #6b1e23;
+  --pal-seal-bright: #8a2a31;
+  --pal-forest: #2e4a3a;
+  --pal-forest-bright: #3e6350;
+
+  /* ---- Superficies ---- */
+  --pal-bg: #b89b5e;
+  --pal-surface: var(--pal-parchment);
+  --pal-surface-raised: #ede0b8;
+  --pal-border: var(--pal-gold);
+  --pal-shadow: rgba(42, 27, 18, 0.45);
+  --pal-shadow-soft: rgba(42, 27, 18, 0.2);
+
+  /* ---- Estados ---- */
+  --pal-danger: var(--pal-seal);
+  --pal-success: var(--pal-forest);
+  --pal-focus-ring: var(--pal-gold-bright);
+
+  /* ---- Tipografía ---- */
+  --pal-font-display: "Cinzel", serif;
+  --pal-font-body: "Crimson Text", Georgia, serif;
+  --pal-font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --pal-fs-xs: 0.75rem;
+  --pal-fs-sm: 0.9rem;
+  --pal-fs-base: 1.0625rem;
+  --pal-fs-lg: 1.25rem;
+  --pal-fs-xl: 1.75rem;
+  --pal-fs-2xl: 2.25rem;
+  --pal-fs-3xl: 3rem;
+
+  --pal-lh-tight: 1.2;
+  --pal-lh-base: 1.6;
+
+  /* ---- Espaciado ---- */
+  --pal-space-1: 0.25rem;
+  --pal-space-2: 0.5rem;
+  --pal-space-3: 0.75rem;
+  --pal-space-4: 1rem;
+  --pal-space-6: 1.5rem;
+  --pal-space-8: 2rem;
+  --pal-space-12: 3rem;
+
+  /* ---- Bordes / radios ---- */
+  --pal-radius-sm: 4px;
+  --pal-radius-md: 8px;
+  --pal-border-width: 2px;
+
+  color-scheme: light;
+}

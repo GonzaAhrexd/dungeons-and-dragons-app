@@ -1,0 +1,4 @@
+@layer palette, global;
+
+@import "palette.css" layer(palette);
+@import "global.css" layer(global);
