@@ -18,6 +18,7 @@
     border: 2px solid var(--pal-gold-500);
     padding: var(--pal-size-xl);
     height: 60%;
+    min-width: 25rem;
 
     background:
       radial-gradient(ellipse at top, rgba(80, 60, 30, 0.15), transparent 60%),

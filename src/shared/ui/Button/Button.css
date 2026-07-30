@@ -4,7 +4,6 @@
   --pal-btn-color-disabled: var(--pal-red-400);
 }
 .cmp-button {
-  /* border-width: var(--pal-border-width); */
   font-size: var(--pal-fs-xl);
   background-color: var(--pal-btn-color);
 

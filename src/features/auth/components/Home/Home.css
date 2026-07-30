@@ -57,6 +57,11 @@
       flex-direction: column;
     }
   }
+
+@media (width > 120rem ) {
+    padding-inline: 25rem;
+  }
+
 }
 
 @keyframes rotate {
