@@ -1,0 +1,9 @@
+.cmp-main-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (width < 64rem) {
+    flex-direction: column-reverse;
+  }
+}

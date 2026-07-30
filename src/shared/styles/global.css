@@ -115,16 +115,4 @@ p {
    ========================================================================== */
 
 
-::-webkit-scrollbar {
-  width: 12px;
-}
 
-::-webkit-scrollbar-track {
-  background: var(--pal-parchment-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--pal-gold);
-  border-radius: var(--pal-radius-sm);
-  border: 2px solid var(--pal-parchment-dark);
-}

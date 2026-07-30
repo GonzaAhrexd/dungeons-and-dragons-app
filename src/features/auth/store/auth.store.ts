@@ -17,7 +17,7 @@ export const useAuthStore = create<AuthState>()(
       setToken: token => set({ token }),
     }),
     {
-      name: 'auth-storage',
+      name: 'auth-dyd-storage',
     },
   ),
 )

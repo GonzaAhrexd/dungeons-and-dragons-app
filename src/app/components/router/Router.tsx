@@ -1,10 +1,42 @@
 import { Route, Switch } from 'wouter'
 
 import { Home } from '@/features/auth/components/Home/Home'
+import { Dashboard } from '@/features/dashboard/components/Dashboard/Dashboard'
+import { IsAuthenticated } from '../guards/IsAuthenticated/IsAuthenticated'
+import { MainLayout } from '@/shared/ui/MainLayout/MainLayout'
 export const Router = () => (
   <Switch>
     <Route path="/">
       <Home />
+    </Route>
+    <Route path="/dashboard">
+      <IsAuthenticated>
+        <MainLayout>
+          <Dashboard />
+        </MainLayout>
+      </IsAuthenticated>
+    </Route>
+    <Route path="/campaigns">
+      <IsAuthenticated>
+        <MainLayout>
+          <Dashboard />
+        </MainLayout>
+      </IsAuthenticated>
+    </Route>
+
+    <Route path="/characters">
+      <IsAuthenticated>
+        <MainLayout>
+          <Dashboard />
+        </MainLayout>
+      </IsAuthenticated>
+    </Route>
+    <Route path="/profile">
+      <IsAuthenticated>
+        <MainLayout>
+          <Dashboard />
+        </MainLayout>
+      </IsAuthenticated>
     </Route>
   </Switch>
 )

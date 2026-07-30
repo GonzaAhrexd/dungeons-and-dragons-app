@@ -6,12 +6,14 @@ import { AuthLayout } from '../AuthLayout/AuthLayout'
 import { parseFormData } from '@/shared/utils'
 import { useLogin, useRegister } from '../../hooks'
 import { Icon } from '@/shared/ui/Icon/Icon'
+import { useAuthStore } from '../../store/auth.store'
+import { Redirect } from 'wouter'
 
 export const Home = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false)
   const { mutateAsync: registerUser } = useRegister()
   const { mutateAsync: loginUser } = useLogin()
-
+  const user = useAuthStore(state => state.user)
   const title = isRegisterMode ? 'Sign up' : 'Log in'
 
   const handleLogin: SubmitEventHandler<HTMLFormElement> = e => {
@@ -35,6 +37,10 @@ export const Home = () => {
       password: 'string',
     })
     registerUser(data)
+  }
+
+  if (user) {
+    return <Redirect to={'/dashboard'} />
   }
 
   return (
