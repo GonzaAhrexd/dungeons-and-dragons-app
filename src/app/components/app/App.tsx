@@ -1,9 +1,15 @@
-import "./App.css";
-import { Router } from "../router/Router";
+import './App.css'
+import { Router } from '../router/Router'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 export const App = () => {
   return (
-    <div className="cmp-app">
-      <Router />
-    </div>
-  );
-};
+    <QueryClientProvider client={queryClient}>
+      <div className="cmp-app">
+        <Router />
+      </div>
+    </QueryClientProvider>
+  )
+}
