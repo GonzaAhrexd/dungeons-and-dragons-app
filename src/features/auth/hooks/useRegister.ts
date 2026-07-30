@@ -1,25 +1,23 @@
-import { AuthService } from '../services/auth.service'
-
-import type { LoginRequest, LoginResponse } from '../interfaces'
-
+import { AuthService } from '@/features/auth/services/auth.service'
 import { useMutation } from '@tanstack/react-query'
+
+import type { RegisterRequest, RegisterResponse } from '../interfaces'
 import { useAuthStore } from '../store/auth.store'
 
-export const useLogin = () => {
+export const useRegister = () => {
   const setToken = useAuthStore(state => state.setToken)
   const setUser = useAuthStore(state => state.setUser)
-
-  const mutation = useMutation<LoginResponse, Error, LoginRequest>({
-    mutationFn: AuthService.loginUser,
+  const mutation = useMutation<RegisterResponse, Error, RegisterRequest>({
+    mutationFn: AuthService.registerUser,
     onSuccess: data => {
-      console.log('Login successful:', data)
+      console.log('Registration successful:', data)
       const { access_token, username, id } = data
 
       setToken(access_token)
       setUser({ id, username })
     },
     onError: error => {
-      console.error('Login failed:', error.message)
+      console.error('Registration failed:', error.message)
     },
   })
   return mutation

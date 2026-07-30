@@ -1,16 +1,18 @@
 import './Home.css'
 import { useState, type SubmitEventHandler } from 'react'
 import { Login } from '../Login/Login'
+import { Register } from '../Register/Register'
 import { AuthLayout } from '../AuthLayout/AuthLayout'
 import { parseFormData } from '@/shared/utils'
-import { useLogin } from '../../hooks'
+import { useLogin, useRegister } from '../../hooks'
 import { Icon } from '@/shared/ui/Icon/Icon'
 
 export const Home = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false)
+  const { mutateAsync: registerUser } = useRegister()
   const { mutateAsync: loginUser } = useLogin()
 
-  const title = isRegisterMode ? 'Register' : 'Log in'
+  const title = isRegisterMode ? 'Sign up' : 'Log in'
 
   const handleLogin: SubmitEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
@@ -22,6 +24,17 @@ export const Home = () => {
     })
 
     loginUser(data)
+  }
+
+  const handleRegister: SubmitEventHandler<HTMLFormElement> = e => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    const data = parseFormData(formData, {
+      username: 'string',
+      password: 'string',
+    })
+    registerUser(data)
   }
 
   return (
@@ -41,9 +54,9 @@ export const Home = () => {
         </div>
         <AuthLayout
           {...{ title, isRegisterMode, setIsRegisterMode }}
-          handleSubmit={!isRegisterMode ? handleLogin : undefined}
+          handleSubmit={!isRegisterMode ? handleLogin : handleRegister}
         >
-          {!isRegisterMode && <Login />}
+          {!isRegisterMode ? <Login /> : <Register />}
         </AuthLayout>
       </div>
     </div>

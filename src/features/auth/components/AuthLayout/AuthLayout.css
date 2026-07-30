@@ -85,6 +85,11 @@
       align-self: center;
       font-size: 0.85rem;
       color: #d9c9a6;
+
+      > a {
+        cursor: pointer;
+        color: var(--pal-gold-500);
+      }
     }
   }
 

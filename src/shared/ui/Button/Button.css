@@ -10,6 +10,9 @@
   border-radius: var(--pal-size-xs);
   &:disabled {
     background-color: var(--pal-btn-color-disabled);
+    &:hover {
+      outline: none;
+    }
   }
   &:hover {
     outline: var(--pal-border-width) solid var(--pal-btn-color-hover);

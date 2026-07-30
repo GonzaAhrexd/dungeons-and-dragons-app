@@ -114,10 +114,6 @@ p {
    Scrollbar / selección temáticas
    ========================================================================== */
 
-::selection {
-  background: var(--pal-gold-bright);
-  color: var(--pal-ink);
-}
 
 ::-webkit-scrollbar {
   width: 12px;
