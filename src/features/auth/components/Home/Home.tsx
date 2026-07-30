@@ -4,6 +4,7 @@ import { Login } from '../Login/Login'
 import { AuthLayout } from '../AuthLayout/AuthLayout'
 import { parseFormData } from '@/shared/utils'
 import { useLogin } from '../../hooks'
+import { Icon } from '@/shared/ui/Icon/Icon'
 
 export const Home = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false)
@@ -25,6 +26,9 @@ export const Home = () => {
 
   return (
     <div className="cmp-home">
+      <header className="header">
+        <Icon icon="fa-solid fa-gear" />
+      </header>
       <div className="content">
         <div className="info-section">
           <h1>Dungeons and Dragons App</h1>
