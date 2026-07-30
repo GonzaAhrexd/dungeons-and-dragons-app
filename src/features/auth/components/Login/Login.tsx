@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 export const Login = () => {
   const [form, setForm] = useState({ username: '', password: '' })
-
   const handleChange =
     (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
       setForm(prev => ({ ...prev, [field]: e.target.value }))
@@ -26,6 +25,7 @@ export const Login = () => {
       />
       <Button
         title="Login"
+        loader
         htmlAttrs={{ disabled: !allValuesFilled, type: 'submit' }}
       />
     </>

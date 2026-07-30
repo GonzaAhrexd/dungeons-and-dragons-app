@@ -34,6 +34,7 @@ export const Register = () => {
 
       <Button
         title="Sign up"
+        loader
         htmlAttrs={{
           disabled: passwordsMismatch || !allValuesFilled,
           type: 'submit',
