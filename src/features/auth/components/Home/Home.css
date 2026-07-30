@@ -1,0 +1,44 @@
+.cmp-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  > .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    > .info-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: var(--pal-size-xl);
+      background-color: color-mix(
+        in srgb,
+        80% var(--pal-black-800),
+        transparent
+      );
+
+      > h1 {
+        font-size: var(--pal-fs-xl);
+        color: var(--pal-gold-500);
+      }
+
+      > p {
+        font-size: var(--pal-fs-l);
+        color: var(--pal-black-0);
+      }
+    }
+  }
+
+  @media (width < 64rem) {
+    flex-direction: column-reverse;
+  }
+}

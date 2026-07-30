@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&display=swap');
 
-.cmp-login {
+.cmp-auth-layout {
   display: flex;
   flex-direction: column;
   align-items: flex-end;

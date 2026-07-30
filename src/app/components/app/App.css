@@ -1,10 +1,9 @@
 .cmp-app {
   display: flex;
   height: 100vh;
-  background-color: var(--pal-bg);
   padding: var(--pal-size-s);
   color: var(--pal-gold-500);
-  background-image: url("https://images.squarespace-cdn.com/content/v1/670447eeba89c103beabb9a5/8ff41bde-5d4e-498a-9562-c06f6b34a770/Armory.gif");
+  background-image: url('https://images.squarespace-cdn.com/content/v1/670447eeba89c103beabb9a5/8ff41bde-5d4e-498a-9562-c06f6b34a770/Armory.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
