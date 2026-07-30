@@ -1,0 +1,14 @@
+.cmp-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  > input {
+    border: var(--pal-gold-500) 1px solid;
+    padding: var(--pal-size-s);
+    height: var(--pal-size-xl);
+    border-radius: var(--pal-size-2xs);
+    background-color: var(--pal-black-900);
+    outline: none;
+  }
+}

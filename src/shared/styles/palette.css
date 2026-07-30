@@ -13,15 +13,40 @@
   --pal-parchment-darker: #ad9560;
   --pal-ink: #2a1b12;
   --pal-ink-soft: #4a3626;
-  --pal-gold: #9c7a2e;
-  --pal-gold-bright: #c99a3e;
   --pal-seal: #6b1e23;
   --pal-seal-bright: #8a2a31;
   --pal-forest: #2e4a3a;
   --pal-forest-bright: #3e6350;
 
+  /* Gold */
+
+  --pal-gold-0: #f9f5eb;
+  --pal-gold-100: #efe2c7;
+  --pal-gold-200: #e5cfa4;
+  --pal-gold-300: #dbbd80;
+  --pal-gold-400: #d1aa5c;
+  --pal-gold-500: #c99a3e;
+  --pal-gold-600: #a37c2e;
+  --pal-gold-700: #7f6124;
+  --pal-gold-800: #5b461a;
+  --pal-gold-900: #382a10;
+  --pal-gold-1000: #140f06;
+
+  /* Black */
+  --pal-black-0: #f2f2f2;
+  --pal-black-100: #e6e6e6;
+  --pal-black-200: #cccccc;
+  --pal-black-300: #b3b3b3;
+  --pal-black-400: #999999;
+  --pal-black-500: #808080;
+  --pal-black-600: #666666;
+  --pal-black-700: #4d4d4d;
+  --pal-black-800: #333333;
+  --pal-black-900: #1a1a1a;
+  --pal-black-1000: #000000;
+
   /* ---- Superficies ---- */
-  --pal-bg: #b89b5e;
+  --pal-bg: #160f01;
   --pal-surface: var(--pal-parchment);
   --pal-surface-raised: #ede0b8;
   --pal-border: var(--pal-gold);
@@ -49,14 +74,14 @@
   --pal-lh-tight: 1.2;
   --pal-lh-base: 1.6;
 
-  /* ---- Espaciado ---- */
-  --pal-space-1: 0.25rem;
-  --pal-space-2: 0.5rem;
-  --pal-space-3: 0.75rem;
-  --pal-space-4: 1rem;
-  --pal-space-6: 1.5rem;
-  --pal-space-8: 2rem;
-  --pal-space-12: 3rem;
+  /* ---- Tamaños ----- */
+  --pal-size-2xs: 0.25rem;
+  --pal-size-xs: 0.5rem;
+  --pal-size-s: 0.75rem;
+  --pal-size-m: 1rem;
+  --pal-size-l: 1.5rem;
+  --pal-size-xl: 2rem;
+  --pal-size-2xl: 3rem;
 
   /* ---- Bordes / radios ---- */
   --pal-radius-sm: 4px;
