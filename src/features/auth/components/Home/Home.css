@@ -39,7 +39,7 @@
 
       background-color: color-mix(
         in srgb,
-        80% var(--pal-black-800),
+        80% var(--pal-grayscale-800),
         transparent
       );
 
@@ -50,7 +50,7 @@
 
       > p {
         font-size: var(--pal-fs-l);
-        color: var(--pal-black-0);
+        color: var(--pal-grayscale-0);
       }
     }
     @media (width < 64rem) {

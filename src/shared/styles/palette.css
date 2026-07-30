@@ -4,7 +4,7 @@
    Dirección: pergamino/vitela envejecida + oro viejo + lacre + verde bosque.
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
   /* ---- Paleta ---- */
@@ -32,18 +32,31 @@
   --pal-gold-900: #382a10;
   --pal-gold-1000: #140f06;
 
-  /* Black */
-  --pal-black-0: #f2f2f2;
-  --pal-black-100: #e6e6e6;
-  --pal-black-200: #cccccc;
-  --pal-black-300: #b3b3b3;
-  --pal-black-400: #999999;
-  --pal-black-500: #808080;
-  --pal-black-600: #666666;
-  --pal-black-700: #4d4d4d;
-  --pal-black-800: #333333;
-  --pal-black-900: #1a1a1a;
-  --pal-black-1000: #000000;
+  /* Black and white */
+  --pal-grayscale-0: #f2f2f2;
+  --pal-grayscale-100: #e6e6e6;
+  --pal-grayscale-200: #cccccc;
+  --pal-grayscale-300: #b3b3b3;
+  --pal-grayscale-400: #999999;
+  --pal-grayscale-500: #808080;
+  --pal-grayscale-600: #666666;
+  --pal-grayscale-700: #4d4d4d;
+  --pal-grayscale-800: #333333;
+  --pal-grayscale-900: #1a1a1a;
+  --pal-grayscale-1000: #000000;
+
+  /* Red */
+  --pal-red-0: #f9ebec;
+  --pal-red-100: #eec8cb;
+  --pal-red-200: #e3a5a9;
+  --pal-red-300: #d98288;
+  --pal-red-400: #ce5f66;
+  --pal-red-500: #c33c45;
+  --pal-red-600: #a03139;
+  --pal-red-700: #8a2a31;
+  --pal-red-800: #5a1c20;
+  --pal-red-900: #371113;
+  --pal-red-1000: #140607;
 
   /* ---- Superficies ---- */
   --pal-bg: #160f01;
@@ -59,9 +72,9 @@
   --pal-focus-ring: var(--pal-gold-bright);
 
   /* ---- Tipografía ---- */
-  --pal-font-display: "Cinzel", serif;
-  --pal-font-body: "Crimson Text", Georgia, serif;
-  --pal-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --pal-font-display: 'Cinzel', serif;
+  --pal-font-body: 'Crimson Text', Georgia, serif;
+  --pal-font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --pal-fs-xs: 0.75rem;
   --pal-fs-sm: 0.9rem;
@@ -84,8 +97,9 @@
   --pal-size-2xl: 3rem;
 
   /* ---- Bordes / radios ---- */
-  --pal-radius-sm: 4px;
-  --pal-radius-md: 8px;
+  --pal-radius-xs: 0.125rem;
+  --pal-radius-s: 0.25rem;
+  --pal-radius-m: 0.5rem;
   --pal-border-width: 2px;
 
   color-scheme: light;

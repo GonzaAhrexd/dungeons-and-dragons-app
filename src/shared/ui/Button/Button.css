@@ -1,0 +1,19 @@
+:root {
+  --pal-btn-color: var(--pal-red-600);
+  --pal-btn-color-hover: var(--pal-gold-500);
+  --pal-btn-color-disabled: var(--pal-red-400);
+}
+.cmp-button {
+  /* border-width: var(--pal-border-width); */
+  font-size: var(--pal-fs-xl);
+  background-color: var(--pal-btn-color);
+
+  border-radius: var(--pal-size-xs);
+  &:disabled {
+    background-color: var(--pal-btn-color-disabled);
+  }
+  &:hover {
+    outline: var(--pal-border-width) solid var(--pal-btn-color-hover);
+    outline-offset: calc(var(--pal-border-width) * -1);
+  }
+}

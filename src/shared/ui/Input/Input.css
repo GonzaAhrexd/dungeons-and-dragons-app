@@ -8,7 +8,7 @@
     padding: var(--pal-size-s);
     height: var(--pal-size-xl);
     border-radius: var(--pal-size-2xs);
-    background-color: var(--pal-black-900);
+    background-color: var(--pal-grayscale-900);
     outline: none;
   }
 }
