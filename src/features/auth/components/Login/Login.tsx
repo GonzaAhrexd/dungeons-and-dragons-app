@@ -6,7 +6,7 @@ export const Login = () => {
   return (
     <div className="cmp-login">
       <form>
-        <h1>Join the guild</h1>
+        <h1>Log in</h1>
         <div className="divider"></div>
         <Input label="Username" name="username" />
         <Input label="Password" name="password" type="password" />
