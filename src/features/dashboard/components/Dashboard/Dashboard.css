@@ -1,3 +1,7 @@
 .cmp-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--pal-size-l);
+  padding-block: var(--pal-size-xl);
   width: 100%;
 }

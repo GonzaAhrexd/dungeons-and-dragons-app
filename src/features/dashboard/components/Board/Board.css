@@ -1,0 +1,10 @@
+.cmp-board {
+  display: flex;
+  flex-direction: column;
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--pal-gold-500);
+  padding: var(--pal-size-l);
+  background-color: var(--pal-grayscale-900);
+}
