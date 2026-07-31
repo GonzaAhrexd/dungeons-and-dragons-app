@@ -9,6 +9,7 @@
   height: 100%;
   font-family: 'Cinzel', serif;
 
+
   > form {
     position: relative;
     display: flex;
@@ -17,8 +18,8 @@
 
     border: 2px solid var(--pal-gold-500);
     padding: var(--pal-size-xl);
-    height: 60%;
     min-width: 25rem;
+    height: 60%;
 
     background:
       radial-gradient(ellipse at top, rgba(80, 60, 30, 0.15), transparent 60%),
@@ -87,8 +88,8 @@
       color: #d9c9a6;
 
       > a {
-        cursor: pointer;
         color: var(--pal-gold-500);
+        cursor: pointer;
       }
     }
   }
