@@ -16,7 +16,6 @@
 
     > .cmp-icon:hover {
       cursor: pointer;
-      /* Make a rotation as an animation */
       animation: rotate 0.5s linear normal;
     }
   }
@@ -58,10 +57,9 @@
     }
   }
 
-@media (width > 120rem ) {
+  @media (width > 120rem) {
     padding-inline: 25rem;
   }
-
 }
 
 @keyframes rotate {
