@@ -1,16 +1,20 @@
 import { useAuthStore } from '@/features/auth/store/auth.store'
 import './Navbar.css'
 import { Link, useLocation } from 'wouter'
-
-const NAV_LINKS = [
-  { label: 'Dashboard', href: '/dashboard' },
-  { label: 'Campaigns', href: '/campaigns' },
-  { label: 'Characters', href: '/characters' },
-]
+import { homeText } from './Navbar.langs'
+import { useText } from '@/features/langs/hooks/useText'
 
 export const Navbar = () => {
+  const text = useText(homeText)
+
   const user = useAuthStore(state => state.user)
   const [location] = useLocation()
+
+  const NAV_LINKS = [
+    { label: text.dashboard(), href: '/dashboard' },
+    { label: text.campaigns(), href: '/campaigns' },
+    { label: text.mycharacters(), href: '/characters' },
+  ]
 
   const navLinks = NAV_LINKS.map(({ label, href }) => (
     <Link
@@ -31,8 +35,8 @@ export const Navbar = () => {
       <div className="nav-links">
         {navLinks}
         <Link
-          key='/profile'
-          to='/profile'
+          key="/profile"
+          to="/profile"
           className={`profile link ${location === '/profile' ? 'is-active' : ''}`}
         >
           {user?.username}

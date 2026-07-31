@@ -1,8 +1,12 @@
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
 import { useState } from 'react'
+import { useText } from '@/features/langs/hooks/useText'
+import { loginText } from './Login.langs'
 
 export const Login = () => {
+  const text = useText(loginText)
+
   const [form, setForm] = useState({ username: '', password: '' })
   const handleChange =
     (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -13,18 +17,18 @@ export const Login = () => {
   return (
     <>
       <Input
-        label="Username"
+        label={text.username()}
         name="username"
         htmlAttrs={{ onChange: handleChange('username') }}
       />
       <Input
-        label="Password"
+        label={text.password()}
         name="password"
         type="password"
         htmlAttrs={{ minLength: 8, onChange: handleChange('password') }}
       />
       <Button
-        title="Login"
+        title={text.login()}
         loader
         htmlAttrs={{ disabled: !allValuesFilled, type: 'submit' }}
       />

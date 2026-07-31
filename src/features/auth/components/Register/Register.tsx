@@ -1,8 +1,11 @@
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
 import { useState } from 'react'
-
+import { useText } from '@/features/langs/hooks/useText'
+import { registerText } from './Register.langs'
 export const Register = () => {
+  const text = useText(registerText)
+
   const [form, setForm] = useState({ username: '', pass1: '', pass2: '' })
 
   const handleChange =
@@ -15,25 +18,25 @@ export const Register = () => {
   return (
     <>
       <Input
-        label="Username"
+        label={text.username()}
         name="username"
         htmlAttrs={{ onChange: handleChange('username') }}
       />
       <Input
-        label="Password"
+        label={text.password()}
         name="password"
         type="password"
         htmlAttrs={{ minLength: 8, onChange: handleChange('pass1') }}
       />
       <Input
-        label="Repeat your Password"
+        label={text.repeatPassword()}
         name="password2"
         type="password"
         htmlAttrs={{ minLength: 8, onChange: handleChange('pass2') }}
       />
 
       <Button
-        title="Sign up"
+        title={text.signup()}
         loader
         htmlAttrs={{
           disabled: passwordsMismatch || !allValuesFilled,

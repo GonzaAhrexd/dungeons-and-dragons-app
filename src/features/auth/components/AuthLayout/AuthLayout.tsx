@@ -1,5 +1,8 @@
-import type { ReactNode, SubmitEventHandler } from 'react'
 import './AuthLayout.css'
+import type { ReactNode, SubmitEventHandler } from 'react'
+import { useText } from '@/features/langs/hooks/useText'
+import { authLayoutText } from './AuthLayout.langs'
+
 interface AuthLayoutProps {
   title?: string
   isRegisterMode?: boolean
@@ -7,6 +10,7 @@ interface AuthLayoutProps {
   handleSubmit?: SubmitEventHandler<HTMLFormElement>
   setIsRegisterMode: (isRegisterMode: boolean) => void
 }
+
 export const AuthLayout = ({
   title,
   isRegisterMode,
@@ -14,6 +18,8 @@ export const AuthLayout = ({
   handleSubmit,
   setIsRegisterMode,
 }: AuthLayoutProps) => {
+  const text = useText(authLayoutText)
+
   const handleChangeMode = () => {
     setIsRegisterMode(!isRegisterMode)
   }
@@ -29,11 +35,13 @@ export const AuthLayout = ({
         <p>
           {isRegisterMode ? (
             <>
-              Already have an account? <a onClick={handleChangeMode}>Log in</a>
+              {text.alreadyHaveAccount()}{' '}
+              <a onClick={handleChangeMode}>{text.login()}</a>
             </>
           ) : (
             <>
-              Don't have an account? <a onClick={handleChangeMode}>Sign up</a>
+              {text.dontHaveAccount()}{' '}
+              <a onClick={handleChangeMode}>{text.signup()}</a>
             </>
           )}
         </p>

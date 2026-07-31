@@ -9,12 +9,18 @@ import { Icon } from '@/shared/ui/Icon/Icon'
 import { useAuthStore } from '../../store/auth.store'
 import { Redirect } from 'wouter'
 
+import { useText } from '@/features/langs/hooks/useText'
+import { homeText } from './Home.langs'
+import { useLanguageStore } from '@/features/langs/store/langs.store'
+
 export const Home = () => {
+  const text = useText(homeText)
+  const setLanguage = useLanguageStore(state => state.setLanguage)
   const [isRegisterMode, setIsRegisterMode] = useState(false)
   const { mutateAsync: registerUser } = useRegister()
   const { mutateAsync: loginUser } = useLogin()
   const user = useAuthStore(state => state.user)
-  const title = isRegisterMode ? 'Sign up' : 'Log in'
+  const title = isRegisterMode ? text.signup() : text.login()
 
   const handleLogin: SubmitEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
@@ -50,13 +56,13 @@ export const Home = () => {
       </header>
       <div className="content">
         <div className="info-section">
-          <h1>Dungeons and Dragons App</h1>
-          <p>
-            The ultimate tool for managing your Dungeons and Dragons campaigns
-            where you can create and manage your characters, track your
-            adventures, and connect with other players. Join us and embark on an
-            epic journey!
-          </p>
+          <h1>{text.title()}</h1>
+          <p>{text.description()}</p>
+          <div className="language-selector">
+            <button onClick={() => setLanguage('en')}>EN</button>
+            <button onClick={() => setLanguage('es')}>ES</button>
+          </div>
+          <div className="divider" />
         </div>
         <AuthLayout
           {...{ title, isRegisterMode, setIsRegisterMode }}
