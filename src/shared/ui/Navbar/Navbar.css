@@ -89,11 +89,6 @@
       }
     }
 
-    > .divider {
-      width: 1px;
-      height: var(--pal-size-l);
-      background-color: var(--pal-grayscale-700);
-    }
 
     > .user-info {
       display: flex;

@@ -1,0 +1,112 @@
+.cmp-campaign-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 25rem;
+  background-color: var(--pal-grayscale-900);
+  border: 1px solid var(--pal-gold-700);
+  overflow: hidden;
+  position: relative;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
+  }
+
+  /* anillo dorado animado */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      var(--pal-gold-400) 8%,
+      transparent 25%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    animation: border-rotate 2.5s linear infinite;
+  }
+
+  > .cmp-campaign-image {
+    min-height: 15rem;
+    background-size: cover;
+    background-position: center;
+  }
+
+  > .campaign-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-xs);
+    padding: var(--pal-size-m) var(--pal-size-m) 0;
+
+    > h1 {
+      color: var(--pal-gold-500);
+      font-size: var(--pal-fs-xl);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    > p {
+      color: var(--pal-grayscale-400);
+      font-size: var(--pal-fs-base);
+      font-style: italic;
+      margin: 0;
+    }
+  }
+
+  > .divider {
+    height: 1px;
+    background-color: var(--pal-grayscale-700);
+    margin: var(--pal-size-m);
+  }
+
+  > .gm-info {
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-s);
+    padding: 0 var(--pal-size-m) var(--pal-size-m);
+
+    > .gm-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--pal-radius-full, 50%);
+      object-fit: cover;
+    }
+
+    > p {
+      color: var(--pal-grayscale-100);
+      font-size: var(--pal-fs-base);
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
+  }
+}

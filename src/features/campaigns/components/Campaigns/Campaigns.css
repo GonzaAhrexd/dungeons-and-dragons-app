@@ -1,0 +1,16 @@
+.cmp-campaigns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-m);
+  padding: var(--pal-size-m);
+  > h1 {
+    color: var(--pal-gold-400);
+    font-weight: 700;
+  }
+
+  > .campaigns-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: var(--pal-size-m);
+  }
+}
