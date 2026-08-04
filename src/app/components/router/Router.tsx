@@ -1,4 +1,4 @@
-import { Route, Switch } from 'wouter'
+import { Redirect, Route, Switch } from 'wouter'
 
 import { Home } from '@/features/auth/components/Home/Home'
 import { Dashboard } from '@/features/dashboard/components/Dashboard/Dashboard'
@@ -39,6 +39,9 @@ export const Router = () => (
           <Dashboard />
         </MainLayout>
       </IsAuthenticated>
+    </Route>
+    <Route>
+      <Redirect to="/" />
     </Route>
   </Switch>
 )
