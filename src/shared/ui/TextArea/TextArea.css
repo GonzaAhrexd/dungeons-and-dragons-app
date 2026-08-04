@@ -1,14 +1,15 @@
-.cmp-input {
+.cmp-textarea {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
 
-  > input {
+  > textarea {
+    resize: none;
+
     border: var(--pal-gold-500) 1px solid;
     padding: var(--pal-size-s);
     width: 100%;
-    height: var(--pal-size-xl);
     border-radius: var(--pal-size-2xs);
     background-color: var(--pal-grayscale-900);
     outline: none;

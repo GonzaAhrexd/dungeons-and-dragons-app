@@ -9,10 +9,7 @@ export const Campaigns = () => {
     <div className="cmp-campaigns">
       <h1>{text.activeCampaigns()}</h1>
       <div className="campaigns-list">
-        <CampaignAdd 
-          onCreateCampaign={() => console.log('Create Campaign')}
-          onJoinCampaign={() => console.log('Join Campaign')}
-        />
+        <CampaignAdd />
         <CampaignCard
           title="La plaga carmesí"
           description="Una plaga que se propaga rápidamente por el reino."
