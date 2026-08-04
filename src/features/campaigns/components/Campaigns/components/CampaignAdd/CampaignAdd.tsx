@@ -3,7 +3,7 @@ import './CampaignAdd.css'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignsText } from './CampaignAdd.langs'
-import { CampaignAddForm } from './components/CampaignAddForm/CampaignAddForm'
+import { CampaignAddForm } from './components'
 import { useState } from 'react'
 
 type Modes = 'create' | 'join' | null
