@@ -1,6 +1,6 @@
 .cmp-app {
   display: flex;
-  height: 100vh;
+  min-height: 100dvh;
   padding: var(--pal-size-s);
   color: var(--pal-gold-500);
   background-image:

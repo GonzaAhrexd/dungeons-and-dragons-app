@@ -11,6 +11,6 @@
   }
 
   @media (width < 64rem) {
-    flex-direction: column-reverse;
+    margin-bottom: var(--pal-size-2xl);
   }
 }

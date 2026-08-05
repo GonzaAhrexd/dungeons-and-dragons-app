@@ -3,6 +3,7 @@ import './Navbar.css'
 import { Link, useLocation } from 'wouter'
 import { homeText } from './Navbar.langs'
 import { useText } from '@/features/langs/hooks/useText'
+import { Icon } from '../Icon/Icon'
 
 export const Navbar = () => {
   const text = useText(homeText)
@@ -11,18 +12,31 @@ export const Navbar = () => {
   const [location] = useLocation()
 
   const NAV_LINKS = [
-    { label: text.dashboard(), href: '/dashboard' },
-    { label: text.campaigns(), href: '/campaigns' },
-    { label: text.mycharacters(), href: '/characters' },
+    {
+      label: text.dashboard(),
+      href: '/dashboard',
+      icon: 'fa-solid fa-table-cells-large',
+    },
+    {
+      label: text.campaigns(),
+      href: '/campaigns',
+      icon: 'fa-solid fa-chess-rook',
+    },
+    {
+      label: text.mycharacters(),
+      href: '/characters',
+      icon: 'fa-solid fa-book-open',
+    },
   ]
 
-  const navLinks = NAV_LINKS.map(({ label, href }) => (
+  const navLinks = NAV_LINKS.map(({ label, href, icon }) => (
     <Link
       key={href}
       to={href}
       className={`link ${location === href ? 'is-active' : ''}`}
     >
-      {label}
+      <Icon icon={icon} />
+      <span>{label}</span>
     </Link>
   ))
 
