@@ -9,7 +9,6 @@
   height: 100%;
   font-family: 'Cinzel', serif;
 
-
   > form {
     position: relative;
     display: flex;
@@ -49,8 +48,6 @@
       right: 6px;
       bottom: 6px;
     }
-
-    
 
     > h1 {
       align-self: center;

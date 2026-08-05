@@ -101,6 +101,7 @@
   --pal-radius-s: 0.25rem;
   --pal-radius-m: 0.5rem;
   --pal-border-width: 2px;
+  --pal-radius-pill: 6.1875rem;
 
   color-scheme: light;
 }

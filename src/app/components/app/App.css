@@ -1,7 +1,7 @@
 .cmp-app {
   display: flex;
   min-height: 100dvh;
-  /* padding: var(--pal-size-s);*/ 
+  /* padding: var(--pal-size-s);*/
   color: var(--pal-gold-500);
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),

@@ -10,48 +10,53 @@
     text-align: left;
 
     > .campaigns-title {
-      color: var(--pal-gold-400);
       font-size: var(--pal-fs-2xl);
       font-family: var(--pal-font-display);
       font-weight: 700;
-      margin: 0;
-      letter-spacing: 0.02em;
+
+      color: var(--pal-gold-400);
     }
 
     > .campaigns-subtitle {
-      color: var(--pal-grayscale-400);
+      margin-top: var(--pal-size-xs);
+
       font-size: var(--pal-fs-lg);
       font-family: var(--pal-font-body);
       font-style: italic;
-      margin: var(--pal-size-xs) 0 0;
+
+      color: var(--pal-grayscale-400);
     }
   }
 
   > .campaigns-filters {
     display: flex;
     margin-bottom: var(--pal-size-m);
-
     > .filters-capsule {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--pal-size-s);
       border: 1px solid rgba(163, 124, 46, 0.25);
-      background-color: rgba(22, 15, 1, 0.5);
       padding: 0.25rem;
-      border-radius: 9999px;
       width: fit-content;
 
+      border-radius: var(--pal-radius-pill);
+      background-color: rgba(22, 15, 1, 0.5);
+
       > .filter-tab {
-        background: transparent;
         border: none;
-        color: var(--pal-gold-400);
-        font-family: var(--pal-font-display);
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
         padding: 0.5rem 1.2rem;
-        border-radius: 9999px;
+        font-size: var(--pal-fs-xs);
+        font-family: var(--pal-font-display);
+        font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 0.08em;
+        
+        border-radius: var(--pal-radius-pill);
+        color: var(--pal-gold-400);
+        background: transparent;
+
         cursor: pointer;
         transition: all 0.25s ease;
 
@@ -61,16 +66,16 @@
         }
 
         &.active {
-          background-color: var(--pal-gold-400);
           color: var(--pal-grayscale-1000);
+          background-color: var(--pal-gold-400);
         }
       }
 
       > .filter-separator {
+        margin-inline: 0.5rem;
         width: 1px;
         height: 1.2rem;
         background-color: rgba(163, 124, 46, 0.25);
-        margin-inline: 0.5rem;
       }
     }
   }
