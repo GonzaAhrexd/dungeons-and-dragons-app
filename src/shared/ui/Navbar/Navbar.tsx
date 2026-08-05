@@ -11,16 +11,21 @@ export const Navbar = () => {
   const user = useAuthStore(state => state.user)
   const [location] = useLocation()
 
+  const HARDCODED_USER = {
+    username: 'Sir Valerius',
+    avatar: `https://api.dicebear.com/7.x/adventurer/svg?seed=${user?.username || 'SirValerius'}`,
+  }
+
   const NAV_LINKS = [
-    {
-      label: text.dashboard(),
-      href: '/dashboard',
-      icon: 'fa-solid fa-table-cells-large',
-    },
     {
       label: text.campaigns(),
       href: '/campaigns',
       icon: 'fa-solid fa-chess-rook',
+    },
+    {
+      label: text.dashboard(),
+      href: '/dashboard',
+      icon: 'fa-solid fa-table-cells-large',
     },
     {
       label: text.mycharacters(),
@@ -46,26 +51,22 @@ export const Navbar = () => {
         Dungeons and Dragons
       </Link>
 
-      <div className="nav-links">
-        {navLinks}
-        <Link
-          key="/profile"
-          to="/profile"
-          className={`profile link ${location === '/profile' ? 'is-active' : ''}`}
-        >
-          {user?.username}
-        </Link>
-      </div>
+      <div className="nav-links">{navLinks}</div>
 
       <div className="actions">
-        <div className="divider" />
+        <Link to="/profile" className="user-info">
+          <span className="username">{user?.username || HARDCODED_USER.username}</span>
+        </Link>
 
-        <div className="user-info">
-          <span className="username">{user?.username}</span>
-        </div>
-
-        <div className="avatar">{user?.username?.[0]?.toUpperCase()}</div>
+        <Link className="avatar" to="/profile">
+          <img
+            src={HARDCODED_USER.avatar}
+            alt={HARDCODED_USER.username}
+            className="avatar-img"
+          />
+        </Link>
       </div>
     </nav>
   )
 }
+

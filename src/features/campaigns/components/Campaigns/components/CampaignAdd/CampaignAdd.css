@@ -93,13 +93,13 @@
         color: var(--pal-grayscale-900);
 
         &:hover {
-          opacity: 0.9;
+          --pal-btn-color: var(--pal-gold-400);
+          color: var(--pal-grayscale-1000);
         }
       }
 
       > .btn-join {
         --pal-btn-color: transparent;
-        --pal-btn-color-hover: var(--pal-gold-700);
         border: 1px solid var(--pal-gold-700);
         color: var(--pal-gold-500);
       }

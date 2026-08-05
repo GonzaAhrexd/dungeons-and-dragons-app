@@ -29,7 +29,7 @@ export const CampaignCard = ({
 
       <div className="gm-info">
         <img className="gm-avatar" src={avatarUrl} alt={character} />
-        <p>{character}</p>
+        <span className="gm-name">{character}</span>
       </div>
     </div>
   )

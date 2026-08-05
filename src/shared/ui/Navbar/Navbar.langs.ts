@@ -1,20 +1,21 @@
 import type { LanguagesText } from '@/features/langs/interfaces'
 
 interface NavbarTexts {
-  dashboard: string
   campaigns: string
+  dashboard: string
   mycharacters: string
 }
 
 export const homeText: LanguagesText<NavbarTexts> = {
   en: {
-    dashboard: 'Dashboard',
     campaigns: 'Campaigns',
+    dashboard: 'Dashboard',
     mycharacters: 'My Characters',
   },
   es: {
-    dashboard: 'Panel de control',
     campaigns: 'Campañas',
+    dashboard: 'Panel de control',
     mycharacters: 'Mis Personajes',
   },
 }
+

@@ -54,49 +54,55 @@
   > .campaign-info {
     display: flex;
     flex-direction: column;
-
     gap: var(--pal-size-xs);
-    padding: var(--pal-size-m) var(--pal-size-m) 0;
+    padding: var(--pal-size-m);
+    flex-grow: 1;
 
     > h1 {
-      color: var(--pal-gold-500);
-      font-size: var(--pal-fs-xl);
+      color: var(--pal-gold-400);
+      font-size: var(--pal-fs-lg);
+      font-family: var(--pal-font-display);
       font-weight: 700;
       margin: 0;
     }
 
     > p {
-      color: var(--pal-grayscale-400);
+      color: var(--pal-grayscale-300);
       font-size: var(--pal-fs-base);
+      font-family: var(--pal-font-body);
       font-style: italic;
+      line-height: 1.4;
       margin: 0;
     }
   }
 
   > .divider {
     height: 1px;
-    background-color: var(--pal-grayscale-700);
-    margin: var(--pal-size-m);
+    background-color: var(--pal-grayscale-800);
+    margin-inline: var(--pal-size-m);
+    margin-block: 0;
   }
 
   > .gm-info {
     display: flex;
     align-items: center;
     gap: var(--pal-size-s);
-    padding: 0 var(--pal-size-m) var(--pal-size-m);
+    padding: var(--pal-size-m);
 
     > .gm-avatar {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: var(--pal-radius-full, 50%);
+      width: 2.25rem;
+      height: 2.25rem;
+      border: 1px solid var(--pal-gold-700);
+      border-radius: 50%;
       object-fit: cover;
     }
 
-    > p {
+    > .gm-name {
       color: var(--pal-grayscale-100);
-      font-size: var(--pal-fs-base);
-      font-weight: 500;
-      margin: 0;
+      font-size: var(--pal-fs-sm);
+      font-family: var(--pal-font-display);
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
   }
 }
