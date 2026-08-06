@@ -31,8 +31,10 @@ export const CampaignAddForm = () => {
 
   return (
     <div className="cmp-campaign-add-form">
-      <h1>{text.addCampaign()}</h1>
-      <p>{text.addCampaignDescription()}</p>
+      <div className="header-group">
+        <h1>{text.addCampaign()}</h1>
+        <p>{text.addCampaignDescription()}</p>
+      </div>
       <form onSubmit={handleCreateCampaign}>
         <Input label={text.nameLabel()} name="name" />
         <TextArea label={text.descriptionLabel()} name="description" />

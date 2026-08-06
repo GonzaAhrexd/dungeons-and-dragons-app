@@ -28,9 +28,10 @@ export const CampaignAdd = () => {
           <Icon icon="fa-solid fa-plus"></Icon>
         </div>
 
-        <h1>{text.title()}</h1>
-
-        <p className="add-description">{text.description()}</p>
+        <div className="header-group">
+          <h1>{text.title()}</h1>
+          <p className="add-description">{text.description()}</p>
+        </div>
         <div className="add-actions">
           <Button
             title={text.addCampaign()}

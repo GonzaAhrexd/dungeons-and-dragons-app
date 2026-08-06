@@ -27,6 +27,8 @@ export const CampaignCard = ({
         <p>{description}</p>
       </div>
 
+      <div className='dividerr'></div>
+
       <div className="gm-info">
         <img className="gm-avatar" src={avatarUrl} alt={character} />
         <span className="gm-name">{character}</span>

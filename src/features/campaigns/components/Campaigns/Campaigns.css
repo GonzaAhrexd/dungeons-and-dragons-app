@@ -30,12 +30,18 @@
 
   > .campaigns-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
     gap: var(--pal-size-l);
 
     > * {
       animation: campaign-pop-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
+  }
+}
+
+@media (max-width: 48rem) {
+  .cmp-campaigns {
+    padding: var(--pal-size-l) var(--pal-size-m) var(--pal-size-2xl);
   }
 }
 

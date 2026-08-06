@@ -23,8 +23,10 @@ export const CampaignJoin = () => {
 
   return (
     <div className="cmp-campaign-join">
-      <h1>{text.joinCampaign()}</h1>
-      <p>{text.joinCampaignDescription()}</p>
+      <div className="header-group">
+        <h1>{text.joinCampaign()}</h1>
+        <p>{text.joinCampaignDescription()}</p>
+      </div>
       <form onSubmit={handleJoinCampaign}>
         <Input label={text.codeLabel()} name="code" />
 

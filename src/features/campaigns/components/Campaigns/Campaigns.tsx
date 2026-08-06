@@ -56,7 +56,7 @@ export const Campaigns = () => {
             title={campaign.name}
             description={campaign.description}
             character={campaign.isGameMaster ? 'Game Master' : 'Player'}
-            imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3xS4junhykLR37kcvFPxEcT__FSdtsoYwQ6rv5KS00F-xesC8u4093g&s=10"
+            imageUrl="/placeholder_campaign.jpg"
             avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3xS4junhykLR37kcvFPxEcT__FSdtsoYwQ6rv5KS00F-xesC8u4093g&s=10"
           />
         ))}

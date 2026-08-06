@@ -4,14 +4,22 @@
   justify-content: space-between;
   height: 100%;
 
-  > h1 {
-    font-size: var(--pal-size-xl);
-    color: var(--pal-gold-500);
-  }
+  > .header-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
 
-  > p {
-    font-size: var(--pal-size-m);
-    color: var(--pal-grayscale-400);
+    > h1 {
+      font-size: var(--pal-size-xl);
+      color: var(--pal-gold-500);
+      margin: 0;
+    }
+
+    > p {
+      font-size: var(--pal-size-m);
+      color: var(--pal-grayscale-400);
+    }
   }
 
   > form {

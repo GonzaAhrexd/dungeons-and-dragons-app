@@ -46,9 +46,25 @@
   }
 
   > .cmp-campaign-image {
+    position: relative;
+    overflow: hidden;
     min-height: 15rem;
     background-size: cover;
     background-position: center;
+    margin: 5px;
+    border-radius: 3px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 65%,
+        var(--pal-grayscale-900) 100%
+      );
+      pointer-events: none;
+    }
   }
 
   > .campaign-info {
@@ -76,11 +92,10 @@
     }
   }
 
-  > .divider {
+  > .dividerr { /* es .dividerr aproposito, "divider" esta bug*/
     height: 1px;
-    background-color: var(--pal-grayscale-800);
-    margin-inline: var(--pal-size-m);
-    margin-block: 0;
+    background-color: var(--pal-gold-700);
+    opacity: 0.5;
   }
 
   > .gm-info {
