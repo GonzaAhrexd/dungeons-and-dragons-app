@@ -1,0 +1,62 @@
+.campaigns-filters {
+  display: flex;
+  margin-bottom: var(--pal-size-m);
+
+  > .filters-capsule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--pal-size-s);
+    border: 1px solid rgba(163, 124, 46, 0.25);
+    padding: 0.25rem;
+    width: fit-content;
+
+    border-radius: var(--pal-radius-pill);
+    background-color: rgba(22, 15, 1, 0.5);
+
+    > .filter-divider {
+      width: 1px;
+      height: 1.25rem;
+      background-color: rgba(163, 124, 46, 0.25);
+    }
+
+    > .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--pal-size-xs, 0.5rem);
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-size: var(--pal-fs-xs);
+      font-family: var(--pal-font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      
+      border-radius: var(--pal-radius-pill);
+      color: var(--pal-gold-400);
+      background: transparent;
+
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      &:hover:not(.active) {
+        color: var(--pal-grayscale-100);
+        background-color: rgba(218, 189, 128, 0.05);
+      }
+
+      &.active {
+        color: var(--pal-grayscale-1000);
+        background-color: var(--pal-gold-400);
+
+        > .cmp-icon {
+          color: inherit;
+        }
+      }
+
+      > .cmp-icon {
+        font-size: 15px;
+      }
+    }
+  }
+}

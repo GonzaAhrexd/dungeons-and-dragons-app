@@ -1,14 +1,25 @@
+import { useState } from 'react'
 import './Campaigns.css'
 import { campaignsText } from './Campaigns.langs'
 import { useText } from '@/features/langs/hooks/useText'
-import { CampaignAdd, CampaignCard } from './components'
+import { CampaignAdd, CampaignCard, CampaignFilters } from './components'
 import { useGetMyCampaigns } from '../../hooks/useGetMyCampaigns'
 
+type FilterType = 'active' | 'recent' | 'favorites'
+type SortType = 'alphabetical' | 'creation'
 
 export const Campaigns = () => {
   const text = useText(campaignsText)
+  const [activeFilter, setActiveFilter] = useState<FilterType | null>(null)
+  const [sortBy, setSortBy] = useState<SortType>('creation')
+  const [isAlphabeticalAsc, setIsAlphabeticalAsc] = useState(true)
+  const [isCreationAsc, setIsCreationAsc] = useState(true)
 
   const { data: myCampaigns, isLoading, isError } = useGetMyCampaigns()
+
+  const handleFilterClick = (filter: FilterType) => {
+    setActiveFilter(prev => (prev === filter ? null : filter))
+  }
 
   if (isLoading) {
     return <div className="loading-state">Loading...</div>
@@ -25,15 +36,16 @@ export const Campaigns = () => {
         <p className="campaigns-subtitle">{text.subtitle()}</p>
       </div>
 
-      <div className="campaigns-filters">
-        <div className="filters-capsule">
-          <button className="filter-tab active">{text.filterActive()}</button>
-          <button className="filter-tab">{text.filterRecent()}</button>
-          <button className="filter-tab">{text.filterFavorites()}</button>
-          <button className="filter-tab">{text.filterAlphabetical()} &uarr;</button>
-          <button className="filter-tab">{text.filterCreation()} &uarr;</button>
-        </div>
-      </div>
+      <CampaignFilters
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterClick}
+        sortBy={sortBy}
+        onSortChange={setSortBy}
+        isAlphabeticalAsc={isAlphabeticalAsc}
+        onToggleAlphabeticalAsc={() => setIsAlphabeticalAsc(prev => !prev)}
+        isCreationAsc={isCreationAsc}
+        onToggleCreationAsc={() => setIsCreationAsc(prev => !prev)}
+      />
 
 
       <div className="campaigns-list">
