@@ -4,6 +4,7 @@ interface NavbarTexts {
   campaigns: string
   dashboard: string
   mycharacters: string
+  logout: string
 }
 
 export const homeText: LanguagesText<NavbarTexts> = {
@@ -11,11 +12,13 @@ export const homeText: LanguagesText<NavbarTexts> = {
     campaigns: 'Campaigns',
     dashboard: 'Dashboard',
     mycharacters: 'My Characters',
+    logout: 'Log Out',
   },
   es: {
     campaigns: 'Campañas',
     dashboard: 'Panel de control',
     mycharacters: 'Mis Personajes',
+    logout: 'Cerrar sesión',
   },
 }
 

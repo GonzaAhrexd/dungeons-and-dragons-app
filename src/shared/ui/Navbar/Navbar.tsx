@@ -45,6 +45,11 @@ export const Navbar = () => {
     </Link>
   ))
 
+  const handleLogout = () => {
+    localStorage.removeItem('auth-dyd-storage')
+    useAuthStore.setState({ token: null, user: null })
+  }
+
   return (
     <nav className="cmp-navbar">
       <Link to="/dashboard" className="brand">
@@ -65,6 +70,10 @@ export const Navbar = () => {
             className="avatar-img"
           />
         </Link>
+
+        <button className="btn-logout" onClick={handleLogout} title={text.logout()}>
+          <Icon icon="fa-solid fa-right-from-bracket" />
+        </button>
       </div>
     </nav>
   )
