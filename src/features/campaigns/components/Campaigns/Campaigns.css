@@ -70,13 +70,6 @@
           background-color: var(--pal-gold-400);
         }
       }
-
-      > .filter-separator {
-        margin-inline: 0.5rem;
-        width: 1px;
-        height: 1.2rem;
-        background-color: rgba(163, 124, 46, 0.25);
-      }
     }
   }
 

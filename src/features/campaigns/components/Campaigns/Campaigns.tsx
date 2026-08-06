@@ -30,7 +30,6 @@ export const Campaigns = () => {
           <button className="filter-tab active">{text.filterActive()}</button>
           <button className="filter-tab">{text.filterRecent()}</button>
           <button className="filter-tab">{text.filterFavorites()}</button>
-          <div className="filter-separator" />
           <button className="filter-tab">{text.filterAlphabetical()} &uarr;</button>
           <button className="filter-tab">{text.filterCreation()} &uarr;</button>
         </div>

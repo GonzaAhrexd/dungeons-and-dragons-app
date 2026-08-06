@@ -17,7 +17,7 @@ export const campaignAddFormText: LanguagesText<CampaignsAddFormTexts> = {
     confirm: 'Confirm',
   },
   es: {
-    addCampaign: 'Agregar Campaña',
+    addCampaign: 'Crear Campaña',
     addCampaignDescription: 'Crea una nueva campaña para tus jugadores.',
     nameLabel: 'Nombre',
     descriptionLabel: 'Descripción',

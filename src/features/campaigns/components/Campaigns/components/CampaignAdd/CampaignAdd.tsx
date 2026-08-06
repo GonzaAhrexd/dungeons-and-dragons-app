@@ -3,7 +3,7 @@ import './CampaignAdd.css'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignsText } from './CampaignAdd.langs'
-import { CampaignAddForm } from './components'
+import { CampaignAddForm, CampaignJoin } from './components'
 import { useState } from 'react'
 
 type Modes = 'create' | 'join' | null
@@ -49,7 +49,24 @@ export const CampaignAdd = () => {
         </div>
       </div>
       <div className={`create ${isMode === 'create' ? 'active' : ''}`}>
+        <button
+          type="button"
+          className="btn-back"
+          onClick={() => setIsMode(null)}
+        >
+          <Icon icon="fa-solid fa-xmark" />
+        </button>
         <CampaignAddForm />
+      </div>
+      <div className={`join ${isMode === 'join' ? 'active' : ''}`}>
+        <button
+          type="button"
+          className="btn-back"
+          onClick={() => setIsMode(null)}
+        >
+          <Icon icon="fa-solid fa-xmark" />
+        </button>
+        <CampaignJoin />
       </div>
     </div>
   )
