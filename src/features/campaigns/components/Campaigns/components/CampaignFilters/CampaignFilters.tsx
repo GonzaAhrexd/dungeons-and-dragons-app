@@ -48,39 +48,43 @@ export const CampaignFilters = ({
   return (
     <div className="campaigns-filters">
       <div className="filters-capsule">
-        <button
-          className={`filter-tab ${activeFilter === 'active' ? 'active' : ''}`}
-          onClick={() => onFilterChange('active')}
-        >
-          {text.filterActive()}
-        </button>
-        <button
-          className={`filter-tab ${activeFilter === 'recent' ? 'active' : ''}`}
-          onClick={() => onFilterChange('recent')}
-        >
-          {text.filterRecent()}
-        </button>
-        <button
-          className={`filter-tab ${activeFilter === 'favorites' ? 'active' : ''}`}
-          onClick={() => onFilterChange('favorites')}
-        >
-          {text.filterFavorites()}
-        </button>
+        <div className="filter-group">
+          <button
+            className={`filter-tab ${activeFilter === 'active' ? 'active' : ''}`}
+            onClick={() => onFilterChange('active')}
+          >
+            {text.filterActive()}
+          </button>
+          <button
+            className={`filter-tab ${activeFilter === 'recent' ? 'active' : ''}`}
+            onClick={() => onFilterChange('recent')}
+          >
+            {text.filterRecent()}
+          </button>
+          <button
+            className={`filter-tab ${activeFilter === 'favorites' ? 'active' : ''}`}
+            onClick={() => onFilterChange('favorites')}
+          >
+            {text.filterFavorites()}
+          </button>
+        </div>
         <div className="filter-divider" />
-        <button
-          className={`filter-tab sort-tab ${sortBy === 'creation' ? 'active' : ''}`}
-          onClick={() => handleSortClick('creation')}
-        >
-          {text.filterCreation()}{' '}
-          <Icon icon={isCreationAsc ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'} />
-        </button>
-        <button
-          className={`filter-tab sort-tab ${sortBy === 'alphabetical' ? 'active' : ''}`}
-          onClick={() => handleSortClick('alphabetical')}
-        >
-          {text.filterAlphabetical()}{' '}
-          <Icon icon={isAlphabeticalAsc ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'} />
-        </button>
+        <div className="sort-group">
+          <button
+            className={`filter-tab sort-tab ${sortBy === 'creation' ? 'active' : ''}`}
+            onClick={() => handleSortClick('creation')}
+          >
+            {text.filterCreation()}{' '}
+            <Icon icon={isCreationAsc ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'} />
+          </button>
+          <button
+            className={`filter-tab sort-tab ${sortBy === 'alphabetical' ? 'active' : ''}`}
+            onClick={() => handleSortClick('alphabetical')}
+          >
+            {text.filterAlphabetical()}{' '}
+            <Icon icon={isAlphabeticalAsc ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'} />
+          </button>
+        </div>
       </div>
     </div>
   )
