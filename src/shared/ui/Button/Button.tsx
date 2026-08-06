@@ -4,7 +4,7 @@ import type { ButtonHTMLAttributes, MouseEvent } from 'react'
 
 interface ButtonProps {
   title: string
-  type?: 'primary' | 'secondary'
+  type?: 'primary' | 'secondary' | 'gold' | 'gold-outline'
   loader?: boolean
   htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
   handlingClass?: string
