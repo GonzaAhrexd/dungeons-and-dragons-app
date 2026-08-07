@@ -23,7 +23,9 @@
     width: 27rem;
     min-height: auto;
 
-    background: linear-gradient(rgba(242, 232, 211, 0.7), rgba(242, 232, 211, 0.7)), url('/paper.jpg') center/cover no-repeat #f2e8d3;
+    background:
+      linear-gradient(rgba(242, 232, 211, 0.7), rgba(242, 232, 211, 0.7)),
+      url('/paper.jpg') center/cover no-repeat #f2e8d3;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
     clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
 
@@ -33,35 +35,32 @@
     > .corner-tr,
     > .corner-bl {
       position: absolute;
-      content: '';
       width: 14px;
       height: 14px;
+      content: '';
       pointer-events: none;
     }
-    
-    /* Top-Left */
+
     &::before {
       top: 8px;
       left: 8px;
       border-top: 1px solid var(--pal-gold-700);
       border-left: 1px solid var(--pal-gold-700);
     }
-    
-    /* Bottom-Right */
+
     &::after {
       right: 8px;
       bottom: 8px;
-      border-bottom: 1px solid var(--pal-gold-700);
       border-right: 1px solid var(--pal-gold-700);
+      border-bottom: 1px solid var(--pal-gold-700);
     }
 
-    /* Top-Right (Diagonal cut line) */
     > .corner-tr {
       top: 11px;
       right: 11px;
+      border: none;
       width: 22px;
       height: 1px;
-      border: none;
       background: var(--pal-gold-700);
       transform: rotate(45deg);
       transform-origin: center;
@@ -77,13 +76,13 @@
 
     > h1 {
       align-self: center;
+      margin: 0;
+      margin: 5px 0 15px 0;
       font-size: var(--pal-fs-xl);
       font-family: 'Cinzel Decorative', serif;
+      text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--auth-ink);
-      margin: 0;
-      text-transform: uppercase;
-      margin: 5px 0 15px 0
     }
 
     > .title-decoration {
@@ -91,22 +90,30 @@
       align-items: center;
       justify-content: center;
       gap: var(--pal-size-m);
-      color: var(--pal-gold-700);
       margin-top: -0.25rem;
       margin-bottom: 0.75rem;
+      color: var(--pal-gold-700);
 
       &::before,
       &::after {
-        content: '';
         flex: 1;
         height: 1px;
+        content: '';
       }
 
       &::before {
-        background: linear-gradient(to left, var(--pal-gold-600) 70%, transparent);
+        background: linear-gradient(
+          to left,
+          var(--pal-gold-600) 70%,
+          transparent
+        );
       }
       &::after {
-        background: linear-gradient(to right, var(--pal-gold-600) 70%, transparent);
+        background: linear-gradient(
+          to right,
+          var(--pal-gold-600) 70%,
+          transparent
+        );
       }
 
       > .cmp-icon {
@@ -116,29 +123,29 @@
     }
 
     > button {
-      margin-top: 20px
+      margin-top: 20px;
     }
 
     > .divider {
       align-self: center;
+      margin-block: 0.25rem;
       width: 100%;
       height: 1px;
       background: color-mix(in srgb, var(--auth-ink) 12%, transparent);
-      margin-block: 0.25rem;
     }
 
     > p {
       align-self: center;
+      margin: 0;
       font-size: var(--pal-fs-sm);
       color: color-mix(in srgb, var(--auth-ink) 80%, transparent);
-      margin: 0;
 
       > a {
-        color: var(--auth-red);
         font-weight: 600;
-        cursor: pointer;
         text-decoration: underline;
         text-underline-offset: 3px;
+        color: var(--auth-red);
+        cursor: pointer;
 
         &:hover {
           color: color-mix(in srgb, var(--auth-red) 85%, #000);
@@ -146,7 +153,7 @@
       }
     }
 
-    .language-selector {
+    > .language-selector {
       display: flex;
       justify-content: center;
       gap: var(--pal-size-s);
@@ -156,17 +163,21 @@
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
-        padding: 0.25rem 0.65rem;
         border: 1px solid var(--pal-gold-300);
-        border-radius: 4px;
-        background: var(--pal-gold-0);
-        color: var(--auth-ink);
-        font-family: var(--pal-font-display);
-        font-size: var(--pal-fs-xs);
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
+        padding: 0.25rem 0.65rem;
         width: 54px;
+     
+        font-size: var(--pal-fs-xs);
+        font-family: var(--pal-font-display);
+        font-weight: 700;
+     
+        border-radius: 4px;
+        color: var(--auth-ink);
+        background: var(--pal-gold-0);
+     
+        cursor: pointer;
+     
+        transition: all 0.2s;
 
         &.active {
           border-color: var(--pal-gold-600);
@@ -180,6 +191,7 @@
 
         > .cmp-icon {
           font-size: 0.75rem;
+          
           color: var(--auth-ink);
         }
       }
@@ -188,11 +200,11 @@
 
   @media (max-width: 64rem) {
     align-items: center;
-    
+
     > form {
       width: 100%;
-      max-width: 27rem;
       min-width: unset;
+      max-width: 27rem;
     }
   }
 }

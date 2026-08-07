@@ -7,19 +7,15 @@
   overflow: auto;
 
   > .header {
-    position: absolute;
-    top: 0;
-    right: 0;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     padding: var(--pal-size-m);
-    z-index: 10;
 
     > .cmp-icon {
-      font-size: 1.2rem;
       opacity: 0.6;
-      transition: opacity 0.2s ease;
       cursor: pointer;
+      transition: opacity 0.2s ease;
 
       &:hover {
         opacity: 1;
@@ -30,72 +26,75 @@
 
   > .content {
     display: flex;
-    flex-direction: row;
     align-items: center;
+    margin: auto;
+    padding: var(--pal-size-2xl);
     width: 100%;
-    height: 100%;
     max-width: 90rem;
-    margin: 0 auto;
-    padding: var(--pal-size-2xl) var(--pal-size-xl) var(--pal-size-3xl);
+    height: 100%;
 
     > .info-section {
       flex: 1.1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: flex-start;
+      justify-content: center;
       gap: var(--pal-size-s);
-      padding-right: var(--pal-size-2xl);
       max-width: min(44rem, 100%);
 
       > .eyebrow {
         display: flex;
         align-items: center;
         gap: var(--pal-size-s);
+        font-size: 1.2rem;
         font-family: var(--pal-font-display);
         font-weight: 700;
-        letter-spacing: 3px;
         text-transform: uppercase;
+        letter-spacing: 3px;
         color: #bb1414;
-        font-size: 1.2rem;
 
         &::before {
-          content: '';
           width: 24px;
           height: 2px;
+          content: '';
           background: #bb1414;
         }
       }
 
       > h1 {
         margin: var(--pal-size-xs) 0;
+
         font-size: clamp(3rem, 5.2vw, 4.6rem);
+        line-height: 1.05;
         font-family: 'Cinzel', serif;
         font-weight: 700;
-        color: var(--pal-gold-500);
-        line-height: 1.05;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
         text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+
+        color: var(--pal-gold-500);
       }
 
       > p {
         margin: 0;
+
         width: 85%;
-        font-family: 'Crimson Text', serif;
+
         font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-        font-style: italic;
-        color: #d9c9a6;
         line-height: 1.6;
+        font-family: 'Crimson Text', serif;
+        font-style: italic;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+
+        color: #d9c9a6;
       }
     }
 
     > .cmp-auth-layout {
       flex: 0.9;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
 
     @media (max-width: 64rem) {
@@ -107,24 +106,24 @@
       > .info-section {
         flex: unset;
         align-items: center;
+        padding-top: 2.5rem;
         text-align: center;
-        padding-right: 0;
-        padding-top: 40px;
 
         > h1 {
           font-size: clamp(2.5rem, 8vw, 3.5rem);
         }
 
         > p {
-          font-size: var(--pal-fs-base);
           width: 90%;
+          font-size: var(--pal-fs-base);
         }
       }
 
       > .cmp-auth-layout {
         flex: unset;
-        width: 100%;
+
         padding: 0 var(--pal-size-m);
+        width: 100%;
       }
     }
   }

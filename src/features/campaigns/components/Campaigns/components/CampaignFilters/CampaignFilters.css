@@ -73,15 +73,15 @@
     > .filters-capsule {
       flex-direction: column;
       align-items: stretch;
+      gap: var(--pal-size-xs);
+      padding: var(--pal-size-s);
       width: 100%;
       border-radius: 1.25rem;
-      padding: var(--pal-size-s);
-      gap: var(--pal-size-xs);
 
       > .filter-group,
       > .sort-group {
-        justify-content: center;
         flex-wrap: wrap;
+        justify-content: center;
         gap: var(--pal-size-xs);
       
 

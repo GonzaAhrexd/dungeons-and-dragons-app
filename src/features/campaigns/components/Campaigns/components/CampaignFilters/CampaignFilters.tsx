@@ -8,7 +8,7 @@ export type SortType = 'alphabetical' | 'creation'
 
 interface CampaignFiltersProps {
   activeFilter: FilterType | null
-  onFilterChange: (filter: FilterType | null) => void
+  onFilterChange: (filter: FilterType) => void
   sortBy: SortType
   onSortChange: (sort: SortType) => void
   isAlphabeticalAsc: boolean
@@ -75,14 +75,26 @@ export const CampaignFilters = ({
             onClick={() => handleSortClick('creation')}
           >
             {text.filterCreation()}{' '}
-            <Icon icon={isCreationAsc ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'} />
+            <Icon
+              icon={
+                isCreationAsc
+                  ? 'fa-solid fa-arrow-up'
+                  : 'fa-solid fa-arrow-down'
+              }
+            />
           </button>
           <button
             className={`filter-tab sort-tab ${sortBy === 'alphabetical' ? 'active' : ''}`}
             onClick={() => handleSortClick('alphabetical')}
           >
             {text.filterAlphabetical()}{' '}
-            <Icon icon={isAlphabeticalAsc ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'} />
+            <Icon
+              icon={
+                isAlphabeticalAsc
+                  ? 'fa-solid fa-arrow-up'
+                  : 'fa-solid fa-arrow-down'
+              }
+            />
           </button>
         </div>
       </div>
