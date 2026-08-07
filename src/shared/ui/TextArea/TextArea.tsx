@@ -1,9 +1,10 @@
 import './TextArea.css'
-interface InputProps {
+interface TextAreaProps {
   name: string
   label?: string
   placeholder?: string
   defaultValue?: string
+  variant?: 'gold' | 'paper'
   htmlAttrs?: React.InputHTMLAttributes<HTMLTextAreaElement>
 }
 
@@ -12,10 +13,11 @@ export const TextArea = ({
   label,
   placeholder,
   defaultValue,
+  variant = 'gold',
   htmlAttrs,
-}: InputProps) => {
+}: TextAreaProps) => {
   return (
-    <div className="cmp-textarea">
+    <div className={`cmp-textarea ${variant}`}>
       {label && <p>{label}</p>}
       <textarea {...{ name, placeholder, defaultValue, ...htmlAttrs }} />
     </div>

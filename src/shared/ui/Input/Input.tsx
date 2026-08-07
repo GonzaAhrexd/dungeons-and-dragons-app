@@ -5,6 +5,7 @@ interface InputProps {
   placeholder?: string;
   type?: "text" | "password" | "email";
   defaultValue?: string;
+  variant?: "gold" | "paper";
   htmlAttrs?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
@@ -14,10 +15,11 @@ export const Input = ({
   placeholder,
   type = "text",
   defaultValue,
+  variant = "gold",
   htmlAttrs,
 }: InputProps) => {
   return (
-    <div className="cmp-input">
+    <div className={`cmp-input ${variant}`}>
       {label && <p>{label}</p>}
       <input {...{ name, placeholder, type, defaultValue, ...htmlAttrs }} />
     </div>
