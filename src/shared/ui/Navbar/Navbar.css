@@ -138,7 +138,7 @@
     }
   }
 
-  @media (width < 64rem) {
+  @media (max-width: 64rem) {
     position: fixed;
     top: auto;
     bottom: 0;

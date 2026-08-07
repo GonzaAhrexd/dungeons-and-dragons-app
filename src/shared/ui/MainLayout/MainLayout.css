@@ -10,7 +10,7 @@
     height: 100%;
   }
 
-  @media (width < 64rem) {
+  @media (max-width: 64rem) {
     margin-bottom: var(--pal-size-2xl);
   }
 }

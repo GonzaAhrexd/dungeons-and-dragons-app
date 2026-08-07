@@ -186,7 +186,7 @@
     }
   }
 
-  @media (width < 64rem) {
+  @media (max-width: 64rem) {
     align-items: center;
     
     > form {
