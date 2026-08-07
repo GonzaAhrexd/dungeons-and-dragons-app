@@ -7,8 +7,9 @@ import { Icon } from '../Icon/Icon'
 
 export const Navbar = () => {
   const text = useText(homeText)
-
   const user = useAuthStore(state => state.user)
+  const logout = useAuthStore(state => state.logout)
+
   const [location] = useLocation()
 
   const HARDCODED_USER = {
@@ -46,8 +47,7 @@ export const Navbar = () => {
   ))
 
   const handleLogout = () => {
-    localStorage.removeItem('auth-dyd-storage')
-    useAuthStore.setState({ token: null, user: null })
+    logout()
   }
 
   return (
@@ -60,7 +60,9 @@ export const Navbar = () => {
 
       <div className="actions">
         <Link to="/profile" className="user-info">
-          <span className="username">{user?.username || HARDCODED_USER.username}</span>
+          <span className="username">
+            {user?.username || HARDCODED_USER.username}
+          </span>
         </Link>
 
         <Link className="avatar" to="/profile">
@@ -71,11 +73,14 @@ export const Navbar = () => {
           />
         </Link>
 
-        <button className="btn-logout" onClick={handleLogout} title={text.logout()}>
+        <button
+          className="btn-logout"
+          onClick={handleLogout}
+          title={text.logout()}
+        >
           <Icon icon="fa-solid fa-right-from-bracket" />
         </button>
       </div>
     </nav>
   )
 }
-
