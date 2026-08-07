@@ -11,11 +11,9 @@ import { Redirect } from 'wouter'
 
 import { useText } from '@/features/langs/hooks/useText'
 import { homeText } from './Home.langs'
-import { useLanguageStore } from '@/features/langs/store/langs.store'
 
 export const Home = () => {
   const text = useText(homeText)
-  const setLanguage = useLanguageStore(state => state.setLanguage)
   const [isRegisterMode, setIsRegisterMode] = useState(false)
   const { mutateAsync: registerUser } = useRegister()
   const { mutateAsync: loginUser } = useLogin()
@@ -56,13 +54,9 @@ export const Home = () => {
       </header>
       <div className="content">
         <div className="info-section">
+          <span className="eyebrow">Dungeons and Dragons</span>
           <h1>{text.title()}</h1>
           <p>{text.description()}</p>
-          <div className="language-selector">
-            <button onClick={() => setLanguage('en')}>EN</button>
-            <button onClick={() => setLanguage('es')}>ES</button>
-          </div>
-          <div className="divider" />
         </div>
         <AuthLayout
           {...{ title, isRegisterMode, setIsRegisterMode }}

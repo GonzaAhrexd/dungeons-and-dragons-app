@@ -19,12 +19,16 @@ export const Login = () => {
       <Input
         label={text.username()}
         name="username"
+        variant="paper"
+        placeholder={text.ph_username()}
         htmlAttrs={{ onChange: handleChange('username') }}
       />
       <Input
         label={text.password()}
         name="password"
         type="password"
+        variant="paper"
+        placeholder={text.ph_password()}
         htmlAttrs={{ minLength: 8, onChange: handleChange('password') }}
       />
       <Button

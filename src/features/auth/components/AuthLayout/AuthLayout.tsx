@@ -2,6 +2,8 @@ import './AuthLayout.css'
 import type { ReactNode, SubmitEventHandler } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { authLayoutText } from './AuthLayout.langs'
+import { useLanguageStore } from '@/features/langs/store/langs.store'
+import { Icon } from '@/shared/ui/Icon/Icon'
 
 interface AuthLayoutProps {
   title?: string
@@ -19,6 +21,8 @@ export const AuthLayout = ({
   setIsRegisterMode,
 }: AuthLayoutProps) => {
   const text = useText(authLayoutText)
+  const language = useLanguageStore(state => state.language)
+  const setLanguage = useLanguageStore(state => state.setLanguage)
 
   const handleChangeMode = () => {
     setIsRegisterMode(!isRegisterMode)
@@ -27,8 +31,12 @@ export const AuthLayout = ({
   return (
     <div className="cmp-auth-layout">
       <form onSubmit={handleSubmit}>
+        <div className="corner-tr"></div>
+        <div className="corner-bl"></div>
         <h1>{title}</h1>
-        <div className="divider"></div>
+        <div className="title-decoration">
+          <Icon icon="fa-solid fa-khanda" />
+        </div>
         {children}
         <div className="divider"></div>
 
@@ -45,6 +53,23 @@ export const AuthLayout = ({
             </>
           )}
         </p>
+
+        <div className="language-selector">
+          <button
+            type="button"
+            className={language === 'en' ? 'active' : ''}
+            onClick={() => setLanguage('en')}
+          >
+            EN {language === 'en' && <Icon icon="fa-solid fa-check" />} 
+          </button>
+          <button
+            type="button"
+            className={language === 'es' ? 'active' : ''}
+            onClick={() => setLanguage('es')}
+          >
+            ES {language === 'es' && <Icon icon="fa-solid fa-check" />} 
+          </button>
+        </div>
       </form>
     </div>
   )
