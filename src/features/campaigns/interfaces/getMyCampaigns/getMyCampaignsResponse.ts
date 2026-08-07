@@ -1,4 +1,4 @@
-interface CampaignResponse {
+export interface CampaignResponse {
   name: string
   description: string
   campaignId: string

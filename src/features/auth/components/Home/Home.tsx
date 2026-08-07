@@ -44,7 +44,7 @@ export const Home = () => {
   }
 
   if (user) {
-    return <Redirect to={'/dashboard'} />
+    return <Redirect to={'/campaigns'} />
   }
 
   return (

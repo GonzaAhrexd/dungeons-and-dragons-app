@@ -47,15 +47,12 @@ export const Campaigns = () => {
         onToggleCreationAsc={() => setIsCreationAsc(prev => !prev)}
       />
 
-
       <div className="campaigns-list">
         <CampaignAdd />
         {myCampaigns?.map(campaign => (
           <CampaignCard
             key={campaign.campaignId}
-            title={campaign.name}
-            description={campaign.description}
-            character={campaign.isGameMaster ? 'Game Master' : 'Player'}
+            campaign={campaign}
             imageUrl="/placeholder_campaign.jpg"
             avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3xS4junhykLR37kcvFPxEcT__FSdtsoYwQ6rv5KS00F-xesC8u4093g&s=10"
           />
@@ -64,4 +61,3 @@ export const Campaigns = () => {
     </div>
   )
 }
-

@@ -4,11 +4,15 @@ import { Link, useLocation } from 'wouter'
 import { homeText } from './Navbar.langs'
 import { useText } from '@/features/langs/hooks/useText'
 import { Icon } from '../Icon/Icon'
+import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 
 export const Navbar = () => {
   const text = useText(homeText)
+
   const user = useAuthStore(state => state.user)
+  const campaignId = useCampaignStore(state => state.currentCampaignId)
   const logout = useAuthStore(state => state.logout)
+  const resetCampaignId = useCampaignStore(state => state.reset)
 
   const [location] = useLocation()
 
@@ -35,7 +39,9 @@ export const Navbar = () => {
     },
   ]
 
-  const navLinks = NAV_LINKS.map(({ label, href, icon }) => (
+  const navLinks = NAV_LINKS.filter(
+    ({ href }) => href !== '/dashboard' || campaignId,
+  ).map(({ label, href, icon }) => (
     <Link
       key={href}
       to={href}
@@ -48,6 +54,7 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     logout()
+    resetCampaignId()
   }
 
   return (
