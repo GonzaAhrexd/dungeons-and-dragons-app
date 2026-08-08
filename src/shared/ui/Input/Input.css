@@ -16,68 +16,69 @@
     padding: var(--pal-size-s) var(--pal-size-m);
     width: 100%;
     height: var(--pal-size-xl);
-    border-radius: 4px;
+
+    border-radius: 0.25rem;
+
     font-size: var(--pal-fs-base);
     font-family: var(--pal-font-body);
+
     outline: none;
     transition: all 0.2s ease;
   }
-}
 
-/* GOLD */
-.cmp-input.gold {
-  > p {
-    color: var(--pal-gold-400);
+  &.gold {
+    > p {
+      color: var(--pal-gold-400);
+    }
+
+    > input {
+      border: 1px solid var(--pal-gold-800);
+      background-color: rgba(10, 8, 4, 0.15);
+      color: var(--pal-grayscale-100);
+
+      &::placeholder {
+        color: var(--pal-grayscale-600);
+      }
+
+      &:focus {
+        border-color: var(--pal-gold-500);
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-text-fill-color: var(--pal-grayscale-100) !important;
+        -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+      }
+    }
   }
 
-  > input {
-    border: 1px solid var(--pal-gold-800);
-    background-color: rgba(10, 8, 4, 0.15);
-    color: var(--pal-grayscale-100);
-
-    &::placeholder {
-      color: var(--pal-grayscale-600);
+  &.paper {
+    > p {
+      color: var(--pal-ink);
     }
 
-    &:focus {
-      border-color: var(--pal-gold-500);
-    }
+    > input {
+      border: 1px solid var(--pal-gold-400);
+      background-color: var(--pal-gold-0);
+      color: var(--pal-ink);
 
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-      -webkit-text-fill-color: var(--pal-grayscale-100) !important;
-      -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
-    }
-  }
-}
+      &::placeholder {
+        color: var(--pal-ink-placeholder);
+      }
 
-/* Papel */
-.cmp-input.paper {
-  > p {
-    color: var(--pal-ink); 
-  }
+      &:focus {
+        border-color: var(--pal-ink-soft);
+      }
 
-  > input {
-    border: 1px solid var(--pal-gold-400);
-    background-color: var(--pal-gold-0);
-    color: var(--pal-ink);
-
-    &::placeholder {
-      color: var(--pal-ink-placeholder);
-    }
-
-    &:focus {
-      border-color: var(--pal-ink-soft);
-    }
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-      -webkit-text-fill-color: #2b1c14 !important;
-      -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-text-fill-color: #2b1c14 !important;
+        -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+      }
     }
   }
 }

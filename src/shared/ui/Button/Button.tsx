@@ -4,7 +4,8 @@ import type { ButtonHTMLAttributes, MouseEvent } from 'react'
 
 interface ButtonProps {
   title: string
-  type?: 'primary' | 'secondary' | 'gold' | 'gold-outline'
+  type?: 'primary' | 'secondary'
+  variant?: 'gold' | 'gold-outline'
   loader?: boolean
   htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
   handlingClass?: string
@@ -13,6 +14,7 @@ interface ButtonProps {
 export const Button = ({
   title,
   type = 'primary',
+  variant,
   loader = false,
   handlingClass,
   htmlAttrs,
@@ -37,7 +39,7 @@ export const Button = ({
 
   return (
     <button
-      className={`cmp-button ${handlingClass} ${type}`}
+      className={`cmp-button ${handlingClass} ${type} ${variant}`}
       {...htmlAttrs}
       onClick={handleClick}
       disabled={isLoading || htmlAttrs?.disabled}

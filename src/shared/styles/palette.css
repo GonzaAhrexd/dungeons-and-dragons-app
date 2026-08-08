@@ -59,6 +59,10 @@
   --pal-red-900: #371113;
   --pal-red-1000: #140607;
 
+  --pal-paper-gradient:
+    linear-gradient(rgba(242, 232, 211, 0.7), rgba(242, 232, 211, 0.7)),
+    url('/paper.jpg') center/cover no-repeat #f2e8d3;
+
   /* ---- Superficies ---- */
   --pal-bg: #160f01;
   --pal-surface: var(--pal-parchment);

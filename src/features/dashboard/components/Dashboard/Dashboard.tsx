@@ -1,8 +1,9 @@
 import { Redirect } from 'wouter'
 import './Dashboard.css'
-import { ActiveCampaigns } from './components/ActiveCampaigns/ActiveCampaigns'
-import { MyCharacters } from './components/MyCharacters/MyCharacters'
+// import { ActiveCampaigns } from './components/ActiveCampaigns/ActiveCampaigns'
+// import { MyCharacters } from './components/MyCharacters/MyCharacters'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
+import { GameMasterDashboard } from './components'
 
 export const Dashboard = () => {
   const campaignId = useCampaignStore(state => state.currentCampaignId)
@@ -13,8 +14,9 @@ export const Dashboard = () => {
 
   return (
     <div className="cmp-dashboard">
-      <MyCharacters />
-      <ActiveCampaigns />
+      <GameMasterDashboard />
+      {/* <MyCharacters />
+      <ActiveCampaigns /> */}
     </div>
   )
 }
