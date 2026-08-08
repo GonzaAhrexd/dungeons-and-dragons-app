@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  gap: var(--pal-size-m);
   padding: var(--pal-size-l);
   width: 100%;
   max-width: 40rem;
   background: var(--pal-paper-gradient);
-  gap: var(--pal-size-m);
 
   > h1 {
     font-size: var(--pal-fs-2xl);
@@ -18,10 +18,9 @@
 
   > .add-players-form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-
-    gap: var(--pal-size-m);
+    gap: var(--pal-size-s);
     width: 100%;
 
     > .add-players {
