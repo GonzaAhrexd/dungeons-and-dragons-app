@@ -3,7 +3,10 @@ import { Button } from '@/shared/ui/Button/Button'
 import { Input } from '@/shared/ui/Input/Input'
 import { parseFormData } from '@/shared/utils/formData.util'
 import type { SubmitEventHandler } from 'react'
+import { gameMasterDashboardText } from './AddPlayer.langs'
+import { useText } from '@/features/langs/hooks/useText'
 export const AddPlayers = () => {
+  const text = useText(gameMasterDashboardText)
   const handleAddPlayer: SubmitEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
@@ -17,18 +20,18 @@ export const AddPlayers = () => {
 
   return (
     <div className="cmp-add-players">
-      <h1>Add new player</h1>
-      <p>Extend an invitation to a worthy soul to join your campaign.</p>
+      <h1>{text.addPlayer()}</h1>
+      <p>{text.description()}</p>
       <form className="add-players-form" onSubmit={handleAddPlayer}>
         <Input
           name="username"
-          placeholder="Enter player name"
+          placeholder={text.addPlayersForm.usernamePlaceholder()}
           variant="paper"
         />
         <Button
           handlingClass="add-players"
           type="secondary"
-          title="Send Invitation"
+          title={text.addPlayersForm.buttonTitle()}
         />
       </form>
     </div>
