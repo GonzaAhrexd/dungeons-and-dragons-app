@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   const HARDCODED_USER = {
     username: 'Sir Valerius',
-    avatar: user?.avatar || `https://api.dicebear.com/7.x/adventurer/svg?seed=${user?.username || 'SirValerius'}`,
+    avatar: user?.avatar || '/avatar.png',
   }
 
   const NAV_LINKS = [
@@ -66,18 +66,21 @@ export const Navbar = () => {
       <div className="nav-links">{navLinks}</div>
 
       <div className="actions">
-        <Link to="/profile" className="user-info">
-          <span className="username">
-            {user?.username || HARDCODED_USER.username}
-          </span>
-        </Link>
+        <Link to="/profile" className="profile-link">
+          <div className="user-info">
+            <span className="username">
+              {user?.username || HARDCODED_USER.username}
+            </span>
+            <span className="subtitle">3 campañas</span>
+          </div>
 
-        <Link className="avatar" to="/profile">
-          <img
-            src={HARDCODED_USER.avatar}
-            alt={HARDCODED_USER.username}
-            className="avatar-img"
-          />
+          <div className="avatar">
+            <img
+              src={HARDCODED_USER.avatar}
+              alt={HARDCODED_USER.username}
+              className="avatar-img"
+            />
+          </div>
         </Link>
 
         <button
