@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   const HARDCODED_USER = {
     username: 'Sir Valerius',
-    avatar: `https://api.dicebear.com/7.x/adventurer/svg?seed=${user?.username || 'SirValerius'}`,
+    avatar: user?.avatar || `https://api.dicebear.com/7.x/adventurer/svg?seed=${user?.username || 'SirValerius'}`,
   }
 
   const NAV_LINKS = [
