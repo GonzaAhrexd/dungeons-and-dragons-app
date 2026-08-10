@@ -2,7 +2,7 @@ import './Button.css'
 import { useState } from 'react'
 import type { ButtonHTMLAttributes, MouseEvent } from 'react'
 
-interface ButtonProps {
+export interface ButtonProps {
   title: string
   type?: 'primary' | 'secondary'
   variant?: 'gold' | 'gold-outline'
@@ -16,7 +16,7 @@ export const Button = ({
   type = 'primary',
   variant,
   loader = false,
-  handlingClass,
+  handlingClass = '',
   htmlAttrs,
 }: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -37,9 +37,11 @@ export const Button = ({
     htmlAttrs?.onClick?.(e)
   }
 
+  const activeVariant = variant ?? type
+
   return (
     <button
-      className={`cmp-button ${handlingClass} ${type} ${variant}`}
+      className={`cmp-button ${handlingClass} ${activeVariant}`.trim()}
       {...htmlAttrs}
       onClick={handleClick}
       disabled={isLoading || htmlAttrs?.disabled}
