@@ -1,7 +1,7 @@
 import './Button.css'
 import { useState } from 'react'
 import type { ButtonHTMLAttributes, MouseEvent } from 'react'
-
+import { Icon } from '../Icon/Icon'
 export interface ButtonProps {
   title: string
   type?: 'primary' | 'secondary'
@@ -9,6 +9,7 @@ export interface ButtonProps {
   loader?: boolean
   htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
   handlingClass?: string
+  icon?: string
 }
 
 export const Button = ({
@@ -18,6 +19,7 @@ export const Button = ({
   loader = false,
   handlingClass = '',
   htmlAttrs,
+  icon,
 }: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -46,7 +48,13 @@ export const Button = ({
       onClick={handleClick}
       disabled={isLoading || htmlAttrs?.disabled}
     >
-      {isLoading ? <span className="spinner" /> : title}
+      {isLoading ? (
+        <span className="spinner" />
+      ) : icon ? (
+        <Icon icon={icon} />
+      ) : (
+        title
+      )}
     </button>
   )
 }

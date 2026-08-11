@@ -82,9 +82,9 @@
   --pal-font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --pal-fs-xs: 0.75rem;
-  --pal-fs-sm: 0.9rem;
-  --pal-fs-base: 1.0625rem;
-  --pal-fs-lg: 1.25rem;
+  --pal-fs-s: 0.9rem;
+  --pal-fs-m: 1.0625rem;
+  --pal-fs-l: 1.25rem;
   --pal-fs-xl: 1.75rem;
   --pal-fs-2xl: 2.25rem;
   --pal-fs-3xl: 3rem;

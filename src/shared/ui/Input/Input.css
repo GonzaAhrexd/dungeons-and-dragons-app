@@ -8,66 +8,47 @@
   > p {
     font-size: var(--pal-fs-xs);
     font-family: var(--pal-font-display);
-    letter-spacing: 0.08em;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
-
-  > input {
-    padding: var(--pal-size-s) var(--pal-size-m);
-    width: 100%;
-    height: var(--pal-size-xl);
-
-    border-radius: 0.25rem;
-
-    font-size: var(--pal-fs-base);
-    font-family: var(--pal-font-body);
-
-    outline: none;
-    transition: all 0.2s ease;
-  }
-
-  .input-wrapper {
+  > .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
 
     > input {
+      position: relative;
       padding: var(--pal-size-s) var(--pal-size-m);
-      padding-right: 2.3rem;
       width: 100%;
       height: var(--pal-size-xl);
 
-      border-radius: 0.25rem;
-
       font-size: var(--pal-fs-base);
       font-family: var(--pal-font-body);
+
+      border-radius: 0.25rem;
 
       outline: none;
       transition: all 0.2s ease;
     }
 
-    > .toggle-password-btn {
+    > .cmp-button {
       position: absolute;
-      right: 0.5rem;
+      right: var(--pal-size-s);
+      align-self: center;
+      justify-self: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: none;
-      background: transparent;
-      color: var(--pal-gold-400);
-      cursor: pointer;
-      padding: 0.25rem;
-      opacity: 0.7;
-      transition: opacity 0.2s ease, color 0.2s ease;
+      width: var(--pal-size-l);
+      height: var(--pal-size-l);
 
-      &:hover {
-        opacity: 1;
-        color: var(--pal-gold-300);
+      &.secondary {
+        border: none;
       }
 
       > .cmp-icon {
-        font-size: 0.95rem;
+        font-size: var(--pal-fs-m);
       }
     }
   }
@@ -80,8 +61,8 @@
     .input-wrapper > input,
     > input {
       border: 1px solid var(--pal-gold-800);
-      background-color: rgba(10, 8, 4, 0.15);
       color: var(--pal-grayscale-100);
+      background-color: rgba(10, 8, 4, 0.15);
 
       &::placeholder {
         color: var(--pal-grayscale-600);
@@ -95,8 +76,8 @@
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus,
       &:-webkit-autofill:active {
-        -webkit-text-fill-color: var(--pal-grayscale-100) !important;
         -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+        -webkit-text-fill-color: var(--pal-grayscale-100) !important;
       }
     }
   }
@@ -109,8 +90,8 @@
     .input-wrapper > input,
     > input {
       border: 1px solid var(--pal-gold-400);
-      background-color: var(--pal-gold-0);
       color: var(--pal-ink);
+      background-color: var(--pal-gold-0);
 
       &::placeholder {
         color: var(--pal-ink-placeholder);
@@ -124,8 +105,8 @@
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus,
       &:-webkit-autofill:active {
-        -webkit-text-fill-color: #2b1c14 !important;
         -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+        -webkit-text-fill-color: #2b1c14 !important;
       }
     }
 
