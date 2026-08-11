@@ -3,6 +3,7 @@ import { instance } from '@/infrastructure/axios.config'
 import type {
   CreateCampaignRequest,
   CreateCampaignResponse,
+  GetCampaignByIdResponse,
   GetMyCampaignsResponse,
   SendInvitationRequest,
   SendInvitationResponse,
@@ -27,6 +28,18 @@ export class CampaignService {
   static getMyCampaigns = async (): Promise<GetMyCampaignsResponse> => {
     try {
       const response = await instance.get(`${CONTROLLER}/me`)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  static getCampaignById = async (
+    campaignId: string,
+  ): Promise<GetCampaignByIdResponse> => {
+    try {
+      const response = await instance.get(`${CONTROLLER}/${campaignId}`)
       return response.data
     } catch (error) {
       console.log(error)

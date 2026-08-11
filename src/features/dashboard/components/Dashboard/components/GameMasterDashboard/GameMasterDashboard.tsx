@@ -6,8 +6,14 @@ import { CampaignInfo } from './components'
 import { useState } from 'react'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
+import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
+import { useGetCampaignById } from '@/features/campaigns/hooks/useGetCampaignById'
 
 export const GameMasterDashboard = () => {
+  const campaignId = useCampaignStore(state => state.currentCampaignId)
+
+  const { data: campaign, isLoading, error } = useGetCampaignById(campaignId)
+
   const text = useText(gameMasterDashboardText)
 
   const [currentSection, setCurrentSection] = useState('home')
@@ -35,6 +41,13 @@ export const GameMasterDashboard = () => {
     },
   ]
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
+
   return (
     <div className="cmp-game-master-dashboard">
       <h1>{text.title()}</h1>
@@ -43,8 +56,8 @@ export const GameMasterDashboard = () => {
       {currentSection}
 
       <CampaignInfo
-        title="Mockup"
-        description="Lorep isum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        title={campaign?.name || ''}
+        description={campaign?.description || ''}
       />
 
       <div className="dashboard-actions">
