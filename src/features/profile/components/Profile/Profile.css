@@ -38,7 +38,7 @@
     padding: 0 var(--pal-size-m) var(--pal-size-2xl) var(--pal-size-m);
     width: 100%;
 
-    .profile-card {
+    > .profile-card {
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
@@ -164,10 +164,17 @@
           margin-top: 1rem;
           grid-column: 1 / -1;
 
-          > button {
+          > .cmp-button {
+            --cmp-button-bg-color: var(--pal-gold-500);
+            --cmp-button-hover-color: var(--pal-gold-400);
+
             padding: 0.75rem 2.25rem;
             width: auto;
             min-width: 13rem;
+
+            color: var(--pal-grayscale-1000);
+
+            
           }
         }
       }

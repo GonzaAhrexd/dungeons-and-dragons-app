@@ -40,6 +40,10 @@
     cursor: default;
   }
 
+  &:hover {
+    filter: brightness(1.25);
+  }
+
   > .spinner {
     display: inline-block;
     border: 2px solid currentColor;

@@ -172,7 +172,7 @@ export const Profile = () => {
             <div className="btn-container">
               <Button
                 title={text.updateDecree()}
-                theme="gold"
+                theme="primary"
                 loader={isPending}
                 submit
               />
