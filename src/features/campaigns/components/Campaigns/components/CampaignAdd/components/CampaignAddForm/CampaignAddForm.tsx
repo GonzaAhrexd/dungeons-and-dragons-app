@@ -42,7 +42,7 @@ export const CampaignAddForm = () => {
         <Button
           title={text.confirm()}
           handlingClass="btn-create"
-          htmlAttrs={{ type: 'submit' }}
+          submit
         />
       </form>
     </div>

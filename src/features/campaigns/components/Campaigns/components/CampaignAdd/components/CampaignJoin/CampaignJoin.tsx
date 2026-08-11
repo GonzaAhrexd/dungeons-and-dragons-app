@@ -30,11 +30,7 @@ export const CampaignJoin = () => {
       <form onSubmit={handleJoinCampaign}>
         <Input label={text.codeLabel()} name="code" />
 
-        <Button
-          title={text.confirm()}
-          handlingClass="btn-create"
-          htmlAttrs={{ type: 'submit' }}
-        />
+        <Button title={text.confirm()} handlingClass="btn-create" submit />
       </form>
     </div>
   )

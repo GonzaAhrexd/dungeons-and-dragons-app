@@ -4,8 +4,8 @@ import type { ButtonHTMLAttributes, MouseEvent } from 'react'
 import { Icon } from '../Icon/Icon'
 export interface ButtonProps {
   title: string
-  type?: 'primary' | 'secondary'
-  variant?: 'gold' | 'gold-outline'
+  submit?: boolean
+  theme?: 'primary' | 'secondary' | 'gold' | 'gold-outline'
   loader?: boolean
   htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
   handlingClass?: string
@@ -14,8 +14,8 @@ export interface ButtonProps {
 
 export const Button = ({
   title,
-  type = 'primary',
-  variant,
+  submit = false,
+  theme = 'primary',
   loader = false,
   handlingClass = '',
   htmlAttrs,
@@ -39,14 +39,13 @@ export const Button = ({
     htmlAttrs?.onClick?.(e)
   }
 
-  const activeVariant = variant ?? type
-
   return (
     <button
-      className={`cmp-button ${handlingClass} ${activeVariant}`.trim()}
-      {...htmlAttrs}
+      className={`cmp-button ${handlingClass} ${theme}`}
       onClick={handleClick}
       disabled={isLoading || htmlAttrs?.disabled}
+      type={submit ? 'submit' : 'button'}
+      {...htmlAttrs}
     >
       {isLoading ? (
         <span className="spinner" />

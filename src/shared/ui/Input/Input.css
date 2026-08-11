@@ -30,6 +30,10 @@
 
       outline: none;
       transition: all 0.2s ease;
+
+      &::-ms-reveal {
+        display: none;
+      }
     }
 
     > .cmp-button {

@@ -19,7 +19,7 @@ export const Login = () => {
       <Input
         label={text.username()}
         name="username"
-        variant="paper"
+        theme="paper"
         placeholder={text.ph_username()}
         htmlAttrs={{ onChange: handleChange('username') }}
       />
@@ -27,14 +27,15 @@ export const Login = () => {
         label={text.password()}
         name="password"
         type="password"
-        variant="paper"
+        theme="paper"
         placeholder={text.ph_password()}
         htmlAttrs={{ minLength: 8, onChange: handleChange('password') }}
       />
       <Button
         title={text.login()}
         loader
-        htmlAttrs={{ disabled: !allValuesFilled, type: 'submit' }}
+        submit
+        htmlAttrs={{ disabled: !allValuesFilled }}
       />
     </>
   )

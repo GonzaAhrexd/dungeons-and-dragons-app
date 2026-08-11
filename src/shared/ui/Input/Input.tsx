@@ -9,7 +9,7 @@ interface InputProps {
   placeholder?: string
   type?: Types
   defaultValue?: string
-  variant?: 'gold' | 'paper'
+  theme?: 'gold' | 'paper'
   handlingClass?: string
   htmlAttrs?: React.InputHTMLAttributes<HTMLInputElement>
 }
@@ -20,7 +20,7 @@ export const Input = ({
   placeholder,
   type = 'text',
   defaultValue,
-  variant = 'gold',
+  theme = 'gold',
   handlingClass,
   htmlAttrs,
 }: InputProps) => {
@@ -36,7 +36,7 @@ export const Input = ({
   }
 
   return (
-    <div className={`cmp-input ${variant} ${handlingClass}`}>
+    <div className={`cmp-input ${theme} ${handlingClass}`}>
       {label && <p>{label}</p>}
       <div className="input-wrapper">
         <input
@@ -51,14 +51,13 @@ export const Input = ({
         {type === 'password' && (
           <Button
             icon={`fa-solid ${isShowPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-            type="secondary"
-
+            theme="secondary"
             title="Show Password"
             htmlAttrs={{
               type: 'button',
-              onClick: handlePasswordVisibility }}
+              onClick: handlePasswordVisibility,
+            }}
           />
-
         )}
       </div>
     </div>

@@ -36,11 +36,11 @@ export const AddPlayers = () => {
         <Input
           name="username"
           placeholder={text.addPlayersForm.usernamePlaceholder()}
-          variant="paper"
+          theme="paper"
         />
         <Button
           handlingClass="add-players"
-          type="secondary"
+          theme="secondary"
           title={text.addPlayersForm.buttonTitle()}
         />
       </form>

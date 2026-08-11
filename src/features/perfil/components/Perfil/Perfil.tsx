@@ -98,7 +98,7 @@ export const Perfil = () => {
               name="username"
               label={text.username()}
               defaultValue={username}
-              variant="gold"
+              theme="gold"
               htmlAttrs={{
                 value: username,
                 onChange: e => setUsername(e.target.value),
@@ -137,7 +137,7 @@ export const Perfil = () => {
               label={text.currentSecretWord()}
               type="password"
               placeholder={text.currentPasswordPlaceholder()}
-              variant="gold"
+              theme="gold"
               handlingClass="full-width"
               htmlAttrs={{
                 value: currentPassword,
@@ -150,7 +150,7 @@ export const Perfil = () => {
               label={text.newDecree()}
               type="password"
               placeholder={text.newPasswordPlaceholder()}
-              variant="gold"
+              theme="gold"
               htmlAttrs={{
                 value: newPassword,
                 onChange: e => setNewPassword(e.target.value),
@@ -162,7 +162,7 @@ export const Perfil = () => {
               label={text.confirmSeal()}
               type="password"
               placeholder={text.confirmPasswordPlaceholder()}
-              variant="gold"
+              theme="gold"
               htmlAttrs={{
                 value: confirmPassword,
                 onChange: e => setConfirmPassword(e.target.value),
@@ -172,8 +172,8 @@ export const Perfil = () => {
             <div className="btn-container">
               <Button
                 title={text.updateDecree()}
-                type="primary"
-                variant="gold"
+                theme="primary"
+                theme="gold"
                 loader={isPending}
                 htmlAttrs={{
                   type: 'submit',

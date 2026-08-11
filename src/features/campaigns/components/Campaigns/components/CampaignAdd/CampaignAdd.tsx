@@ -35,7 +35,7 @@ export const CampaignAdd = () => {
         <div className="add-actions">
           <Button
             title={text.addCampaign()}
-            variant="gold"
+            theme="gold"
             handlingClass="btn btn-create"
             htmlAttrs={{
               onClick: onCreateCampaign,
@@ -43,7 +43,7 @@ export const CampaignAdd = () => {
           />
           <Button
             title={text.joinCampaign()}
-            variant="gold-outline"
+            theme="gold-outline"
             handlingClass="btn btn-join"
             htmlAttrs={{
               onClick: onJoinCampaign,
