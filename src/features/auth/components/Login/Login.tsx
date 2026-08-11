@@ -33,6 +33,7 @@ export const Login = () => {
       />
       <Button
         title={text.login()}
+        theme="red-button"
         loader
         submit
         htmlAttrs={{ disabled: !allValuesFilled }}

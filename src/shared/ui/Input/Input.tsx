@@ -52,7 +52,6 @@ export const Input = ({
           <Button
             icon={`fa-solid ${isShowPassword ? 'fa-eye' : 'fa-eye-slash'}`}
             theme="secondary"
-            title="Show Password"
             htmlAttrs={{
               type: 'button',
               onClick: handlePasswordVisibility,

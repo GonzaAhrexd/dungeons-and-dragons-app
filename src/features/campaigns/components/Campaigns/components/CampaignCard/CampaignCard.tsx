@@ -35,16 +35,16 @@ export const CampaignCard = ({
         <p>{description}</p>
       </div>
 
-      <div className="dividerr"></div>
+      <div className="campaign-divider"></div>
 
-      <div className="gm-info">
+        <div className="user-info">
         {/* TODO: Cambiar por el nombre del jugador cuando esté disponible en el Backend */}
         <img
-          className="gm-avatar"
+          className="user-avatar"
           src={avatarUrl}
           alt={isGameMaster ? 'Game Master' : 'Player'}
         />
-        <span className="gm-name">
+        <span className="user-name">
           {isGameMaster ? 'Game Master' : 'Player'}
         </span>
       </div>

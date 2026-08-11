@@ -3,28 +3,32 @@ import { useState } from 'react'
 import type { ButtonHTMLAttributes, MouseEvent } from 'react'
 import { Icon } from '../Icon/Icon'
 export interface ButtonProps {
-  title: string
+  title?: string
   submit?: boolean
-  theme?: 'primary' | 'secondary' | 'gold' | 'gold-outline'
+  theme?: 'primary' | 'secondary' | 'gold' | 'gold-outline' | 'red-button'
   loader?: boolean
-  htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
   handlingClass?: string
   icon?: string
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
+  htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 export const Button = ({
   title,
+  icon,
+  hideTitle = false,
+  column = false,
   submit = false,
   theme = 'primary',
   loader = false,
   handlingClass = '',
   htmlAttrs,
-  icon,
+  onClick,
 }: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if (htmlAttrs?.type === 'submit' && loader) {
+    if ((htmlAttrs?.type === 'submit' || submit) && loader) {
       e.preventDefault()
 
       const form = e.currentTarget.form
@@ -42,7 +46,7 @@ export const Button = ({
   return (
     <button
       className={`cmp-button ${handlingClass} ${theme}`}
-      onClick={handleClick}
+      onClick={onClick ? onClick : handleClick}
       disabled={isLoading || htmlAttrs?.disabled}
       type={submit ? 'submit' : 'button'}
       {...htmlAttrs}
@@ -50,7 +54,9 @@ export const Button = ({
       {isLoading ? (
         <span className="spinner" />
       ) : icon ? (
-        <Icon icon={icon} />
+        <>
+          <Icon icon={icon} /> {hideTitle ? null : <p>{title}</p>}
+        </>
       ) : (
         title
       )}

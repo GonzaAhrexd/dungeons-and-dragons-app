@@ -1,3 +1,9 @@
+:root {
+  --cmp-button-bg-color: var(--pal-color-white);
+  --cmp-button-border-color: var(--pal-color-a-300);
+  --cmp-button-hover-color: var(--pal-color-a-500);
+}
+
 .cmp-button {
   display: inline-flex;
   align-items: center;
@@ -23,10 +29,10 @@
   }
 
   &:disabled {
-    text-shadow: none !important;
-    box-shadow: none !important;
+    text-shadow: none;
+    box-shadow: none;
     opacity: 0.6;
-    transform: none !important;
+    transform: none;
     cursor: default;
   }
 
@@ -40,60 +46,21 @@
     animation: spin 0.6s linear infinite;
   }
 
-  /* Variant: Primary (Red Gradient) */
   &.primary {
-    border: 1px solid #3a0000;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    color: #f4e8d2;
-    background: linear-gradient(to bottom, #880000 0%, #5e0000 100%);
-    box-shadow:
-      0 2px 6px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-
-    &:hover:not(:disabled) {
-      border-color: var(--pal-red-900);
-      background: linear-gradient(to bottom, #a00000 0%, #700000 100%);
-    }
-
-    &:active:not(:disabled) {
-      border: 1px solid #3a0000;
-      background: linear-gradient(to bottom, #5e0000 0%, #440000 100%);
-      box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.4),
-        inset 0 1px 3px rgba(0, 0, 0, 0.5);
-      transform: translateY(1px);
-    }
-
-    &:disabled {
-      border-color: #3a3333;
-      color: rgba(244, 232, 210, 0.4);
-      background: #4a3e3e;
-    }
+    background-color: var(--cmp-button-bg-color);
   }
 
-  /* Variant: Secondary */
   &.secondary {
-    border: 1px solid var(--pal-gold-500);
-    color: var(--pal-gold-400);
-    background: transparent;
-
-    &:hover:not(:disabled) {
-      border-color: var(--pal-gold-400);
-      background: rgba(201, 154, 62, 0.1);
-    }
-
-    &:active:not(:disabled) {
-      background: rgba(201, 154, 62, 0.18);
-      transform: translateY(1px);
-    }
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--cmp-button-border-color);
   }
 
-  /* Variant: Gold Solid */
   &.gold {
-    border: 1px solid var(--pal-gold-500);
+    --cmp-button-bg-color: var(--pal-gold-500);
+    --cmp-button-hover-color: var(--pal-gold-400);
+
     color: var(--pal-grayscale-1000);
-    background: var(--pal-gold-500);
-    text-shadow: none;
 
     &:hover:not(:disabled) {
       filter: brightness(1.25);
@@ -111,27 +78,24 @@
     }
   }
 
-  /* Variant: Gold Outline */
   &.gold-outline {
-    border: 1px solid var(--pal-gold-700);
-    text-shadow: none;
+    --cmp-button-border-color: var(--pal-gold-700);
+    --cmp-button-hover-color: var(--pal-gold-500);
     color: var(--pal-gold-500);
-    background: transparent;
+  }
 
-    &:hover:not(:disabled) {
-      border-color: var(--pal-gold-500);
-      color: var(--pal-gold-400);
-      background: rgba(201, 154, 62, 0.08);
+  &.red-button {
+    background: linear-gradient(to bottom, #880000 0%, #5e0000 100%);
+    border: 1px solid #3a0000;
+    color: #f4e8d2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+
+    &:hover {
+      background: linear-gradient(to bottom, #a00000 0%, #700000 100%);
     }
 
-    &:active:not(:disabled) {
-      background: rgba(201, 154, 62, 0.15);
-      transform: translateY(1px);
-    }
-
-    &:disabled {
-      border-color: var(--pal-gold-900);
-      color: var(--pal-gold-800);
+    &:active {
+      background: linear-gradient(to bottom, #5e0000 0%, #440000 100%);
     }
   }
 }

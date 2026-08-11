@@ -1,17 +1,77 @@
 .cmp-game-master-dashboard {
   display: flex;
   flex-direction: column;
-  gap: var(--pal-size-m);
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: var(--pal-size-m);
   padding: var(--pal-size-xl);
 
-  > .dashboard-content {
-    width: 100%;
+  > h1 {
+    color: var(--pal-gold-400);
+  }
+
+  > p {
+    font-size: var(--pal-size-m);
+    text-align: center;
+    color: var(--pal-gold-200);
+  }
+
+  > .dashboard-actions {
     display: flex;
     flex-direction: column;
-    gap: var(--pal-size-m);
-    justify-content: center;
+    align-items: flex-start;
+    gap: var(--pal-size-s);
+    padding: var(--pal-size-m);
+    width: 100%;
+    max-width: 40rem;
+
+    > .actions-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--pal-size-s);
+      > h1 {
+        font-size: var(--pal-size-m);
+        text-align: center;
+        color: var(--pal-gold-400);
+      }
+    }
+    > .actions-list {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--pal-size-s);
+      width: 100%;
+
+      > .action-button {
+        --cmp-button-bg-color: var(--pal-grayscale-900);
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--pal-size-s);
+        padding: var(--pal-size-s);
+        width: 100%;
+        color: var(--pal-gold-100);
+
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: var(--pal-gold-400);
+          background-color: var(--pal-gray-700);
+        }
+      }
+    }
+  }
+
+  > .dashboard-content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: var(--pal-size-m);
+    width: 100%;
   }
 }
