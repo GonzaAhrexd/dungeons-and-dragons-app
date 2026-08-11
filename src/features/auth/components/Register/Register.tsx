@@ -45,6 +45,8 @@ export const Register = () => {
         title={text.signup()}
         loader
         submit
+        theme="primary"
+        handlingClass="red-button"
         htmlAttrs={{
           disabled: passwordsMismatch || !allValuesFilled,
         }}

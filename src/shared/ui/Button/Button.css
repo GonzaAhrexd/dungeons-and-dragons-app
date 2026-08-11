@@ -23,6 +23,10 @@
 
   transition: all 0.2s ease;
 
+  &.col {
+    flex-direction: column;
+  }
+
   &:focus-visible {
     outline: 2px solid var(--pal-red-500);
     outline-offset: 3px;
@@ -54,49 +58,6 @@
     border-width: var(--line-thickness);
     border-style: solid;
     border-color: var(--cmp-button-border-color);
-  }
-
-  &.gold {
-    --cmp-button-bg-color: var(--pal-gold-500);
-    --cmp-button-hover-color: var(--pal-gold-400);
-
-    color: var(--pal-grayscale-1000);
-
-    &:hover:not(:disabled) {
-      filter: brightness(1.25);
-    }
-
-    &:active:not(:disabled) {
-      transform: translateY(1px);
-      filter: brightness(0.8);
-    }
-
-    &:disabled {
-      border-color: var(--pal-gold-800);
-      color: rgba(0, 0, 0, 0.4);
-      background: var(--pal-gold-800);
-    }
-  }
-
-  &.gold-outline {
-    --cmp-button-border-color: var(--pal-gold-700);
-    --cmp-button-hover-color: var(--pal-gold-500);
-    color: var(--pal-gold-500);
-  }
-
-  &.red-button {
-    background: linear-gradient(to bottom, #880000 0%, #5e0000 100%);
-    border: 1px solid #3a0000;
-    color: #f4e8d2;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-
-    &:hover {
-      background: linear-gradient(to bottom, #a00000 0%, #700000 100%);
-    }
-
-    &:active {
-      background: linear-gradient(to bottom, #5e0000 0%, #440000 100%);
-    }
   }
 }
 

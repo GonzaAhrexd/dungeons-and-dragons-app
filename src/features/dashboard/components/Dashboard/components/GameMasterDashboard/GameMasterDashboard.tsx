@@ -14,22 +14,22 @@ export const GameMasterDashboard = () => {
 
   const actions = [
     {
-      title: 'Users',
+      title: text.campaignActions.users(),
       icon: 'fa-solid fa-users',
       onClick: () => setCurrentSection('users'),
     },
     {
-      title: 'Logs',
+      title: text.campaignActions.logs(),
       icon: 'fa-solid fa-list',
       onClick: () => setCurrentSection('logs'),
     },
     {
-      title: 'Settings',
+      title: text.campaignActions.settings(),
       icon: 'fa-solid fa-gear',
       onClick: () => setCurrentSection('settings'),
     },
     {
-      title: 'Spells',
+      title: text.campaignActions.spells(),
       icon: 'fa-solid fa-book',
       onClick: () => setCurrentSection('spells'),
     },
@@ -40,6 +40,8 @@ export const GameMasterDashboard = () => {
       <h1>{text.title()}</h1>
       <p>{text.description()}</p>
 
+      {currentSection}
+
       <CampaignInfo
         title="Mockup"
         description="Lorep isum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -48,7 +50,7 @@ export const GameMasterDashboard = () => {
       <div className="dashboard-actions">
         <div className="actions-header">
           <Icon icon="fa-solid fa-compass" />
-          <h1>Campaign Actions</h1>
+          <h1>{text.actions()}</h1>
         </div>
         <div className="actions-list">
           {actions.map(action => (
@@ -56,6 +58,7 @@ export const GameMasterDashboard = () => {
               handlingClass="action-button"
               title={action.title}
               icon={action.icon}
+              column
               theme={'primary'}
               onClick={action.onClick}
             />

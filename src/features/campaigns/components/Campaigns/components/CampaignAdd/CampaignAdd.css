@@ -42,7 +42,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 3px solid var(--pal-gold-600);;
+      border: 3px solid var(--pal-gold-600);
       width: 3.5rem;
       height: 3.5rem;
       font-size: var(--pal-fs-l);
@@ -88,7 +88,22 @@
       gap: var(--pal-size-s);
       width: 70%;
 
+      > .btn-create {
+        --cmp-button-bg-color: var(--pal-gold-500);
+        --cmp-button-hover-color: var(--pal-gold-400);
 
+        color: var(--pal-grayscale-1000);
+
+        &:hover {
+          filter: brightness(1.25);
+        }
+      }
+
+      > .btn-join {
+        --cmp-button-border-color: var(--pal-gold-700);
+        --cmp-button-hover-color: var(--pal-gold-500);
+        color: var(--pal-gold-500);
+      }
     }
   }
 

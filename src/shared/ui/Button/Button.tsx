@@ -4,11 +4,13 @@ import type { ButtonHTMLAttributes, MouseEvent } from 'react'
 import { Icon } from '../Icon/Icon'
 export interface ButtonProps {
   title?: string
+  icon?: string
+  hideTitle?: boolean
+  column?: boolean
   submit?: boolean
-  theme?: 'primary' | 'secondary' | 'gold' | 'gold-outline' | 'red-button'
+  theme?: 'primary' | 'secondary'
   loader?: boolean
   handlingClass?: string
-  icon?: string
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   htmlAttrs?: ButtonHTMLAttributes<HTMLButtonElement>
 }
@@ -45,7 +47,7 @@ export const Button = ({
 
   return (
     <button
-      className={`cmp-button ${handlingClass} ${theme}`}
+      className={`cmp-button ${handlingClass} ${theme} ${column && 'col'}`}
       onClick={onClick ? onClick : handleClick}
       disabled={isLoading || htmlAttrs?.disabled}
       type={submit ? 'submit' : 'button'}

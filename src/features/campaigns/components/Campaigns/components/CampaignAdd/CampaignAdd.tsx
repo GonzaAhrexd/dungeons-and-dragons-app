@@ -35,16 +35,16 @@ export const CampaignAdd = () => {
         <div className="add-actions">
           <Button
             title={text.addCampaign()}
-            theme="gold"
-            handlingClass="btn btn-create"
+            theme="primary"
+            handlingClass="btn-create"
             htmlAttrs={{
               onClick: onCreateCampaign,
             }}
           />
           <Button
             title={text.joinCampaign()}
-            theme="gold-outline"
-            handlingClass="btn btn-join"
+            theme="secondary"
+            handlingClass="btn-join"
             htmlAttrs={{
               onClick: onJoinCampaign,
             }}
