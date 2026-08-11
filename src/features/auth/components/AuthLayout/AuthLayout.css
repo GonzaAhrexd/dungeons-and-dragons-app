@@ -7,7 +7,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  font-family: 'Cinzel', serif;
+  font-family: var(--pal-font-display);
 
   > form {
     --auth-ink: #2b1c14;
@@ -166,17 +166,17 @@
         border: 1px solid var(--pal-gold-300);
         padding: 0.25rem 0.65rem;
         width: 54px;
-     
+
         font-size: var(--pal-fs-xs);
         font-family: var(--pal-font-display);
         font-weight: 700;
-     
+
         border-radius: 4px;
         color: var(--auth-ink);
         background: var(--pal-gold-0);
-     
+
         cursor: pointer;
-     
+
         transition: all 0.2s;
 
         &.active {
@@ -191,7 +191,7 @@
 
         > .cmp-icon {
           font-size: 0.75rem;
-          
+
           color: var(--auth-ink);
         }
       }

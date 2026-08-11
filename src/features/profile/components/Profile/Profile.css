@@ -1,23 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap');
-
-.cmp-perfil {
+.cmp-profile {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 72px);
+  font-family: var(--pal-font-display);
   background-color: #121212;
-  font-family: 'Cinzel', serif;
 
-  > .perfil-banner {
+  > .profile-banner {
     position: relative;
     width: 100%;
     height: 22rem;
     background-image: url('/perfil_banner.jpg');
-    background-size: cover;
     background-position: center 30%;
     background-repeat: no-repeat;
+    background-size: cover;
 
     > .banner-fade {
       position: absolute;
@@ -31,7 +29,7 @@
     }
   }
 
-  > .perfil-content {
+  > .profile-content {
     position: relative;
     z-index: 2;
     display: flex;
@@ -40,23 +38,23 @@
     padding: 0 var(--pal-size-m) var(--pal-size-2xl) var(--pal-size-m);
     width: 100%;
 
-    .perfil-card {
+    .profile-card {
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
+      border: 1px solid rgba(201, 154, 62, 0.2);
       padding: 2.25rem 2.5rem;
       width: 100%;
       max-width: 42rem;
+      border-radius: 8px;
 
       background: rgba(22, 20, 18, 0.94);
-      border: 1px solid rgba(201, 154, 62, 0.2);
-      border-radius: 8px;
       box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.85),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(12px);
 
-      > .perfil-header {
+      > .profile-header {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -70,7 +68,7 @@
         > h2 {
           margin: 0;
           font-size: 1.25rem;
-          font-family: 'Cinzel', serif;
+          font-family: var(--pal-font-display);
           font-weight: 700;
           letter-spacing: 0.04em;
           color: #e5dac2;
@@ -78,6 +76,8 @@
       }
 
       > .header-divider {
+        margin-top: 0.25rem;
+        margin-bottom: 0.75rem;
         width: 100%;
         height: 1px;
         background: linear-gradient(
@@ -87,11 +87,9 @@
           rgba(201, 154, 62, 0.25) 75%,
           rgba(201, 154, 62, 0.05) 100%
         );
-        margin-top: 0.25rem;
-        margin-bottom: 0.75rem;
       }
 
-      > .perfil-form {
+      > .profile-form {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem 1.5rem;
@@ -107,29 +105,29 @@
           width: 100%;
 
           > .avatar-preview-thumbnail {
+            flex-shrink: 0;
+            border: 1px solid var(--pal-gold-700);
             width: 2.3rem;
             height: 2.3rem;
             border-radius: 4px;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 1px solid var(--pal-gold-700);
             background-color: rgba(10, 8, 4, 0.4);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
             transition: border-color 0.2s ease;
           }
 
           > input {
+            border: 1px solid var(--pal-gold-800);
             padding: var(--pal-size-s) var(--pal-size-m);
             width: 100%;
             height: var(--pal-size-xl);
 
-            border-radius: 0.25rem;
-            border: 1px solid var(--pal-gold-800);
-            background-color: rgba(10, 8, 4, 0.15);
-            color: var(--pal-grayscale-100);
-
             font-size: var(--pal-fs-base);
             font-family: var(--pal-font-body);
+
+            border-radius: 0.25rem;
+            color: var(--pal-grayscale-100);
+            background-color: rgba(10, 8, 4, 0.15);
 
             outline: none;
             transition: all 0.2s ease;
@@ -146,8 +144,8 @@
             &:-webkit-autofill:hover,
             &:-webkit-autofill:focus,
             &:-webkit-autofill:active {
-              -webkit-text-fill-color: var(--pal-grayscale-100) !important;
               -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+              -webkit-text-fill-color: var(--pal-grayscale-100) !important;
             }
           }
         }
@@ -159,21 +157,21 @@
           grid-column: 1 / -1;
 
           > button {
+            padding: 0.75rem 2.25rem;
             width: auto;
             min-width: 13rem;
-            padding: 0.75rem 2.25rem;
           }
         }
       }
 
-      > .perfil-alert {
+      > .profile-alert {
         display: flex;
         align-items: center;
         gap: 0.75rem;
         padding: 0.85rem 1.2rem;
-        border-radius: 4px;
         font-size: var(--pal-fs-sm);
         font-family: var(--pal-font-body);
+        border-radius: 4px;
 
         &.success {
           border: 1px solid var(--pal-gold-600);
@@ -191,18 +189,18 @@
   }
 
   @media (max-width: 48rem) {
-    > .perfil-banner {
+    > .profile-banner {
       height: 16rem;
     }
 
-    > .perfil-content {
+    > .profile-content {
       margin-top: -8rem;
       padding-inline: var(--pal-size-m);
 
-      .perfil-card {
+      .profile-card {
         padding: 1.5rem;
 
-        > .perfil-form {
+        > .profile-form {
           grid-template-columns: 1fr;
         }
       }

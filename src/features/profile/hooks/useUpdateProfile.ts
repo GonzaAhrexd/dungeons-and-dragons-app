@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import { PerfilService } from '../services/perfil.service'
+import { ProfileService } from '../services/profile.service'
 import type { UpdateProfileRequest, UpdateProfileResponse } from '../interfaces'
 import { useAuthStore } from '@/features/auth/store/auth.store'
 
@@ -8,10 +8,11 @@ export const useUpdateProfile = () => {
   const currentUser = useAuthStore(state => state.user)
 
   return useMutation<UpdateProfileResponse, Error, UpdateProfileRequest>({
-    mutationFn: PerfilService.updateProfile,
+    mutationFn: ProfileService.updateProfile,
     onSuccess: (data, variables) => {
       console.log('Profile update response:', data)
-      const updatedUsername = variables.username || currentUser?.username || 'Generic_User'
+      const updatedUsername =
+        variables.username || currentUser?.username || 'Generic_User'
       const updatedAvatar = variables.avatar ?? currentUser?.avatar
 
       setUser({

@@ -1,7 +1,7 @@
+import './Profile.css'
 import { useState } from 'react'
 import type { SubmitEventHandler } from 'react'
-import './Perfil.css'
-import { perfilText } from './Perfil.langs'
+import { profileText } from './Profile.langs'
 import { useText } from '@/features/langs/hooks/useText'
 import { useAuthStore } from '@/features/auth/store/auth.store'
 import { useUpdateProfile } from '../../hooks'
@@ -9,8 +9,8 @@ import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
 
-export const Perfil = () => {
-  const text = useText(perfilText)
+export const Profile = () => {
+  const text = useText(profileText)
   const user = useAuthStore(state => state.user)
 
   const [username, setUsername] = useState(user?.username || 'Generic_User')
@@ -66,14 +66,14 @@ export const Perfil = () => {
   }
 
   return (
-    <div className="cmp-perfil">
-      <div className="perfil-banner">
+    <div className="cmp-profile">
+      <div className="profile-banner">
         <div className="banner-fade" />
       </div>
 
-      <div className="perfil-content">
-        <div className="perfil-card">
-          <div className="perfil-header">
+      <div className="profile-content">
+        <div className="profile-card">
+          <div className="profile-header">
             <Icon icon="fa-solid fa-user-gear" />
             <h2>{text.accountManagement()}</h2>
           </div>
@@ -81,7 +81,7 @@ export const Perfil = () => {
           <div className="header-divider" />
 
           {statusMessage && (
-            <div className={`perfil-alert ${statusMessage.type}`}>
+            <div className={`profile-alert ${statusMessage.type}`}>
               <Icon
                 icon={
                   statusMessage.type === 'success'
@@ -93,7 +93,7 @@ export const Perfil = () => {
             </div>
           )}
 
-          <form className="perfil-form" onSubmit={handleSubmit}>
+          <form className="profile-form" onSubmit={handleSubmit}>
             <Input
               name="username"
               label={text.username()}
@@ -172,12 +172,9 @@ export const Perfil = () => {
             <div className="btn-container">
               <Button
                 title={text.updateDecree()}
-                theme="primary"
                 theme="gold"
                 loader={isPending}
-                htmlAttrs={{
-                  type: 'submit',
-                }}
+                submit
               />
             </div>
           </form>

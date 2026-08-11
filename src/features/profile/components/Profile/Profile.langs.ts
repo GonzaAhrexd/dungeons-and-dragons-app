@@ -1,6 +1,6 @@
 import type { LanguagesText } from '@/features/langs/interfaces'
 
-interface PerfilTexts {
+interface ProfileTexts {
   accountManagement: string
   username: string
   avatarScroll: string
@@ -16,7 +16,7 @@ interface PerfilTexts {
   passwordMismatch: string
 }
 
-export const perfilText: LanguagesText<PerfilTexts> = {
+export const profileText: LanguagesText<ProfileTexts> = {
   en: {
     accountManagement: 'Account Management',
     username: 'USERNAME',
@@ -45,6 +45,7 @@ export const perfilText: LanguagesText<PerfilTexts> = {
     confirmPasswordPlaceholder: 'Repite tu nueva contraseña...',
     updateDecree: 'ACTUALIZAR DECRETO',
     successMsg: 'Tu decreto ha sido registrado en los archivos del gremio.',
-    passwordMismatch: 'El nuevo decreto y la confirmación del sello deben coincidir.',
+    passwordMismatch:
+      'El nuevo decreto y la confirmación del sello deben coincidir.',
   },
 }

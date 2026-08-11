@@ -3,18 +3,21 @@ import type { UpdateProfileRequest, UpdateProfileResponse } from '../interfaces'
 
 const CONTROLLER = 'users'
 
-export class PerfilService {
+export class ProfileService {
   static updateProfile = async (
     data: UpdateProfileRequest,
   ): Promise<UpdateProfileResponse> => {
     try {
-      const response = await instance.put<UpdateProfileResponse>(
-        `${CONTROLLER}/profile`,
+      const response = await instance.patch<UpdateProfileResponse>(
+        `${CONTROLLER}/edit-profile`,
         data,
       )
       return response.data
     } catch (error) {
-      console.warn('Backend API updateProfile error, returning optimistic update response:', error)
+      console.warn(
+        'Backend API updateProfile error, returning optimistic update response:',
+        error,
+      )
       // Fallback optimistic response if backend profile endpoint is not available yet
       return {
         message: 'Profile updated successfully',

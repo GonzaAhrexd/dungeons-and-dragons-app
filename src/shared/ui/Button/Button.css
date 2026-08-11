@@ -6,7 +6,7 @@
   width: 100%;
 
   font-size: var(--pal-fs-base);
-  font-family: 'Cinzel', serif;
+  font-family: var(--pal-font-display);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
