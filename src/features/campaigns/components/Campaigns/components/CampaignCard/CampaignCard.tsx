@@ -1,6 +1,6 @@
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import './CampaignCard.css'
-import type { CampaignResponse } from '@/features/campaigns/interfaces/getMyCampaigns/getMyCampaignsResponse'
+import type { CampaignResponse } from '@/features/campaigns/interfaces'
 import { useLocation } from 'wouter'
 interface CampaignCardProps {
   campaign: CampaignResponse
@@ -37,7 +37,7 @@ export const CampaignCard = ({
 
       <div className="campaign-divider"></div>
 
-        <div className="user-info">
+      <div className="user-info">
         {/* TODO: Cambiar por el nombre del jugador cuando esté disponible en el Backend */}
         <img
           className="user-avatar"
