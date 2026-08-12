@@ -1,7 +1,7 @@
 :root {
-  --cmp-button-bg-color: var(--pal-color-white);
-  --cmp-button-border-color: var(--pal-color-a-300);
-  --cmp-button-hover-color: var(--pal-color-a-500);
+  --cmp-button-bg-color: var(--pal-gold-500);
+  --cmp-button-border-color: var(--pal-gold-300);
+  --cmp-button-hover-color: var(--pal-gold-500);
 }
 
 .cmp-button {
@@ -56,6 +56,7 @@
 
   &.primary {
     background-color: var(--cmp-button-bg-color);
+    color: var(--pal-grayscale-1000);
   }
 
   &.secondary {
