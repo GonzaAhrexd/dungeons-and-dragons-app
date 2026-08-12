@@ -1,6 +1,11 @@
 export interface GetCampaignByIdResponse {
-  name: string
-  description: string
-  campaignId: string
-  isGameMaster: boolean
+  campaignId: string;
+  name: string;
+  description: string;
+  isGameMaster: boolean;
+  invitations: Array<{
+    invitationId: string;
+    username: string;
+    state: 'pending' | 'accepted' | 'declined';
+  }>;
 }
