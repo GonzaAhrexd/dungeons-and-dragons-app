@@ -37,8 +37,8 @@
       }
     }
     > .actions-list {
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
       gap: var(--pal-size-s);
       width: 100%;
 
@@ -53,9 +53,12 @@
         cursor: pointer;
         transition: all 0.2s ease-in-out;
 
+        > p {
+          font-size: var(--pal-fs-xs);
+        }
+
         &:hover {
           color: var(--pal-gold-400);
-          background-color: var(--pal-gray-700);
         }
       }
     }
