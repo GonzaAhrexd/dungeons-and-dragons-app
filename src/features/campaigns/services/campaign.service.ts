@@ -7,6 +7,9 @@ import type {
   GetMyCampaignsResponse,
   SendInvitationRequest,
   SendInvitationResponse,
+  EditCampaignRequest,
+  EditCampaignResponse,
+  EditCampaignParams,
 } from '../interfaces'
 
 const CONTROLLER = 'campaigns'
@@ -55,6 +58,19 @@ export class CampaignService {
         `${INVITATIONS_CONTROLLER}/send-invitation`,
         data,
       )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  static editCampaign = async (
+    params: EditCampaignParams,
+    data: EditCampaignRequest,
+  ): Promise<EditCampaignResponse> => {
+    try {
+      const response = await instance.patch(`${CONTROLLER}/${params.id}`, data)
       return response.data
     } catch (error) {
       console.log(error)
