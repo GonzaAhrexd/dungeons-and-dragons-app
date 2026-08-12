@@ -93,10 +93,6 @@
         --cmp-button-hover-color: var(--pal-gold-400);
 
         color: var(--pal-grayscale-1000);
-
-        &:hover {
-          filter: brightness(1.25);
-        }
       }
 
       > .btn-join {

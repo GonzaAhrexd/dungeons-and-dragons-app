@@ -38,12 +38,14 @@
 
     > .cmp-button {
       position: absolute;
-      right: var(--pal-size-s);
+      right: var(--pal-size-2xs);
+      
       align-self: center;
       justify-self: center;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: var(--pal-size-m);
       width: var(--pal-size-l);
       height: var(--pal-size-l);
 

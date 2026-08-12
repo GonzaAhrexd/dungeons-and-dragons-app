@@ -48,10 +48,12 @@
       max-width: 42rem;
       border-radius: var(--pal-radius-m);
 
-      background: color-mix(in srgb, var(--pal-bg) 94%, transparent);
-      box-shadow:
-        0 20px 50px var(--pal-shadow),
-        inset 0 1px 0 color-mix(in srgb, var(--pal-gold-0) 5%, transparent);
+      background: color-mix(
+        color-mix(in srgb, var(--pal-bg) 96%, var(--pal-grayscale-0)) 70%,
+        transparent
+      );
+      box-shadow: var(--pal-box-shadow-0);
+
       backdrop-filter: blur(12px);
 
       > .profile-header {
@@ -173,8 +175,6 @@
             min-width: 13rem;
 
             color: var(--pal-grayscale-1000);
-
-            
           }
         }
       }
