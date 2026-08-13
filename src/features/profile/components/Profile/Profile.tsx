@@ -113,13 +113,12 @@ export const Profile = () => {
                   src={
                     avatar.trim() !== ''
                       ? avatar
-                      : user?.avatar ||
-                        `https://api.dicebear.com/7.x/adventurer/svg?seed=${username || 'Generic_User'}`
+                      : user?.avatar || '/avatar.png'
                   }
                   alt="Avatar Preview"
                   className="avatar-preview-thumbnail"
                   onError={e => {
-                    e.currentTarget.src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${username || 'Generic_User'}`
+                    e.currentTarget.src = '/avatar.png'
                   }}
                 />
                 <input
