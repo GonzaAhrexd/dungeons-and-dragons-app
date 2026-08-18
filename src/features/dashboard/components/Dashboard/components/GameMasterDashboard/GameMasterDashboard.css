@@ -5,16 +5,9 @@
   justify-content: center;
   gap: var(--pal-size-m);
   padding: var(--pal-size-xl);
+  width: 100%;
 
-  > h1 {
-    color: var(--pal-gold-400);
-  }
 
-  > p {
-    font-size: var(--pal-size-m);
-    text-align: center;
-    color: var(--pal-gold-200);
-  }
 
   > .dashboard-actions {
     display: flex;
@@ -23,7 +16,7 @@
     gap: var(--pal-size-s);
     padding: var(--pal-size-m);
     width: 100%;
-    max-width: 40rem;
+    max-width: 60rem;
 
     > .actions-header {
       display: flex;
@@ -59,6 +52,10 @@
 
         &:hover {
           color: var(--pal-gold-400);
+        }
+
+        &.active {
+          --cmp-button-bg-color: var(--pal-grayscale-800);
         }
       }
     }

@@ -1,0 +1,18 @@
+.cmp-home-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-m);
+  width: 100%;
+  max-width: 60rem;
+
+  > .quick-view {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto;
+    gap: var(--pal-size-m);
+
+    grid-template-areas:
+      'logs add-players'
+      'logs active-players';
+  }
+}

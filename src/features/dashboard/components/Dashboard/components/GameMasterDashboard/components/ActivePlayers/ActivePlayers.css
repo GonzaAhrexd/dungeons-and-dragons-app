@@ -1,0 +1,57 @@
+.cmp-active-players {
+  grid-area: active-players;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-s);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--pal-gold-500);
+  padding: var(--pal-size-m);
+  width: 100%;
+  max-width: 60rem;
+
+  background-color: var(--pal-grayscale-900);
+
+  > h1 {
+    font-size: var(--pal-size-l);
+  }
+
+  > .label {
+    display: flex;
+    gap: var(--pal-size-s);
+
+    > h1 {
+      font-size: var(--pal-size-l);
+    }
+  }
+
+  > .players-list,
+  > .pending-invitations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: var(--pal-size-s);
+    width: 100%;
+    > .player {
+      display: flex;
+      gap: var(--pal-size-s);
+      align-items: center;
+      border-width: 1px;
+      border-style: solid;
+      border-color: var(--pal-gold-800);
+      padding: var(--pal-size-m);
+      width: 100%;
+      max-width: 20rem;
+      background-color: var(--pal-grayscale-900);
+      > .player-info {
+        > h2 {
+          font-size: var(--pal-size-l);
+          color: var(--pal-gold-200);
+        }
+        > h3 {
+          font-size: var(--pal-size-m);
+          color: var(--pal-gold-500);
+        }
+      }
+    }
+  }
+}

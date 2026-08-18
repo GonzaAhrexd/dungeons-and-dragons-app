@@ -1,4 +1,5 @@
 .cmp-add-players {
+  grid-area: add-players;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -6,7 +7,7 @@
   gap: var(--pal-size-m);
   padding: var(--pal-size-l);
   width: 100%;
-  max-width: 40rem;
+  max-width: 60rem;
   background: var(--pal-paper-gradient);
 
   > h1 {

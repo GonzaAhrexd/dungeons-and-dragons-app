@@ -1,10 +1,9 @@
 import type { LanguagesText } from '@/features/langs/interfaces'
 
 interface GameMasterDashboardText {
-  title: string
-  description: string
   actions: string
   campaignActions: {
+    home: string
     users: string
     logs: string
     settings: string
@@ -14,11 +13,9 @@ interface GameMasterDashboardText {
 
 export const gameMasterDashboardText: LanguagesText<GameMasterDashboardText> = {
   en: {
-    title: 'Game Master Dashboard',
-    description:
-      'Welcome to the Game Master Dashboard! Here you can manage your campaigns, characters, and more.',
     actions: 'Actions',
     campaignActions: {
+      home: 'Home',
       users: 'Users',
       logs: 'Logs',
       settings: 'Settings',
@@ -26,11 +23,9 @@ export const gameMasterDashboardText: LanguagesText<GameMasterDashboardText> = {
     },
   },
   es: {
-    title: 'Panel del Game Master',
-    description:
-      '¡Bienvenido al Panel del Game Master! Aquí podés gestionar tus campañas, personajes y más.',
     actions: 'Acciones',
     campaignActions: {
+      home: 'Inicio',
       users: 'Usuarios',
       logs: 'Registros',
       settings: 'Ajustes',
