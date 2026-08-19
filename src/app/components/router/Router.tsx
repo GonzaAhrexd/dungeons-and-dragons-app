@@ -6,6 +6,7 @@ import { IsAuthenticated } from '../guards/IsAuthenticated/IsAuthenticated'
 import { MainLayout } from '@/shared/ui/MainLayout/MainLayout'
 import { Campaigns } from '@/features/campaigns/components/Campaigns/Campaigns'
 import { Profile } from '@/features/profile/components'
+import { DashboardPlayer } from '@/features/dashboard/components/DashboardPlayer/components/DashboardPlayer'
 
 export const Router = () => (
   <Switch>
@@ -34,6 +35,14 @@ export const Router = () => (
         </MainLayout>
       </IsAuthenticated>
     </Route>
+    <Route path="/dashboardplayer">
+      <IsAuthenticated>
+        <MainLayout>
+          <DashboardPlayer />
+        </MainLayout>
+      </IsAuthenticated>
+    </Route>
+
     <Route path="/profile">
       <IsAuthenticated>
         <MainLayout>

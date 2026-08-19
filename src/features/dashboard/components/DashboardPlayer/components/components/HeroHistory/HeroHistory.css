@@ -1,0 +1,93 @@
+.dp-card.dp-paper.hero-history-card {
+  padding: 1.1rem 1.4rem;
+  border: 1px solid var(--pal-gold-700);
+  flex-shrink: 0;
+  background: var(--pal-paper-gradient);
+  color: var(--pal-ink);
+
+  h3 {
+    font-family: var(--pal-font-display);
+    font-size: var(--pal-fs-l);
+    color: var(--pal-ink);
+    letter-spacing: 0.5px;
+    margin: 0 0 0.9rem 0;
+  }
+
+  .dp-history-text {
+    font-family: var(--pal-font-body);
+    font-size: var(--pal-fs-m);
+    line-height: var(--pal-lh-base);
+    color: var(--pal-ink-soft);
+    text-align: justify;
+    margin: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.dp-dropcap::first-letter {
+      font-family: var(--pal-font-display);
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 0.78;
+      float: left;
+      margin-right: 0.15rem;
+      color: var(--pal-seal);
+      padding-top: 0.05rem;
+    }
+  }
+
+  .dp-card-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--pal-parchment-dark);
+    padding-top: var(--pal-size-s);
+    margin-top: var(--pal-size-s);
+
+    .cmp-icon {
+      color: var(--pal-seal-bright);
+
+      &:hover {
+        color: var(--pal-seal);
+      }
+    }
+  }
+
+  .dp-edit-history-link {
+    font-family: var(--pal-font-display);
+    color: var(--pal-seal-bright);
+    font-size: var(--pal-fs-xs);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    &:hover {
+      color: var(--pal-seal);
+    }
+  }
+
+  .dp-log-link {
+    font-family: var(--pal-font-display);
+    font-size: var(--pal-fs-xs);
+    color: var(--pal-seal-bright);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    .cmp-icon {
+      margin-left: var(--pal-size-xs);
+    }
+
+    &:hover {
+      color: var(--pal-seal);
+    }
+  }
+}
+
+@media (max-width: 64rem) {
+  .dp-card.dp-paper.hero-history-card {
+    padding: 1.4rem 1.25rem;
+  }
+}

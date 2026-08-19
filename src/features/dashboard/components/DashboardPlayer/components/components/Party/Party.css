@@ -1,0 +1,108 @@
+.dp-party {
+  background: var(--pal-grayscale-900);
+  border: 1px solid var(--pal-gold-700);
+  padding: var(--pal-size-s) var(--pal-size-m);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex-shrink: 0;
+
+  .dp-party-header {
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-xs);
+    font-family: var(--pal-font-display);
+    font-size: var(--pal-fs-xs);
+    color: var(--pal-gold-400);
+    letter-spacing: 0.5px;
+    padding-bottom: var(--pal-size-xs);
+    border-bottom: 1px solid var(--pal-gold-900);
+  }
+
+  .dp-party-scroll {
+    display: flex;
+    gap: 1.1rem;
+    overflow-x: auto;
+    padding-top: var(--pal-size-2xs);
+    padding-bottom: var(--pal-size-xs);
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--pal-grayscale-1000);
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--pal-gold-700);
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--pal-gold-500);
+      }
+    }
+
+    .dp-party-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+
+        .dp-party-avatar {
+          border-color: var(--pal-gold-400);
+          box-shadow: 0 4px 8px rgba(195, 154, 62, 0.3);
+        }
+
+        .dp-party-member-name {
+          color: var(--pal-gold-300);
+        }
+      }
+
+      .dp-party-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: var(--pal-border-width) solid var(--pal-gold-700);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex-shrink: 0;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+        .dp-party-avatar-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+
+      .dp-party-member-name {
+        font-family: var(--pal-font-display);
+        font-size: var(--pal-fs-xs);
+        color: var(--pal-grayscale-300);
+        text-align: center;
+        max-width: 44px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.25s ease;
+      }
+    }
+  }
+}
+
+@media (max-width: 64rem) {
+  .dp-party {
+    padding: var(--pal-size-m) 1.1rem;
+    gap: var(--pal-size-m);
+  }
+}

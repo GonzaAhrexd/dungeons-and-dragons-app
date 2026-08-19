@@ -33,6 +33,11 @@ export const Navbar = () => {
       icon: 'fa-solid fa-table-cells-large',
     },
     {
+      label: 'DashBoard 2',
+      href: '/dashboardplayer',
+      icon: 'fa-solid fa-chess-knight',
+    },
+    {
       label: text.mycharacters(),
       href: '/characters',
       icon: 'fa-solid fa-book-open',
@@ -60,7 +65,7 @@ export const Navbar = () => {
   return (
     <nav className="cmp-navbar">
       <Link to="/dashboard" className="brand">
-        Dungeons and Dragons
+        DnD para los panas
       </Link>
 
       <div className="nav-links">{navLinks}</div>
