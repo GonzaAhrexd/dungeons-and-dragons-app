@@ -58,7 +58,6 @@
     font-size: var(--pal-fs-xs);
 
     &:hover:not(.dp-expanded) {
-      transform: translateY(-1px);
       box-shadow: 0 4px 10px rgba(195, 154, 62, 0.4);
     }
 
