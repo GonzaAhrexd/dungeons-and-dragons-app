@@ -1,39 +1,99 @@
+import { useState, useRef, useEffect } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { vitalsText } from './Vitals.langs'
+import { Icon } from '@/shared/ui/Icon/Icon'
+import { type VitalBar } from '../../../interfaces'
+import { VitalsEdit } from './components/VitalsEdit'
+import { VitalsDetails } from './components/VitalsDetails'
 import './Vitals.css'
 
 interface VitalsProps {
-  hp: { current: number; max: number }
-  shield: { current: number; max: number }
+  bars: VitalBar[]
+  onSave: (updatedBars: VitalBar[]) => void
 }
 
-export const Vitals = ({ hp, shield }: VitalsProps) => {
+export const Vitals = ({ bars, onSave }: VitalsProps) => {
   const text = useText(vitalsText)
-  const hpPct = hp.max > 0 ? (hp.current / hp.max) * 100 : 0
-  const shieldPct = shield.max > 0 ? (shield.current / shield.max) * 100 : 0
+
+  const [isEditing, setIsEditing] = useState(false)
+  const [viewportHeight, setViewportHeight] = useState<number | undefined>(
+    undefined,
+  )
+
+  const detailsPaneRef = useRef<HTMLDivElement>(null)
+  const editPaneRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const activeRef = isEditing ? editPaneRef : detailsPaneRef
+    const el = activeRef.current
+    if (!el) return
+
+    setViewportHeight(el.scrollHeight)
+
+    const observer = new ResizeObserver(() => {
+      setViewportHeight(el.scrollHeight)
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [isEditing, bars])
+
+  const handleStartEdit = () => {
+    setIsEditing(true)
+  }
+
+  const handleSave = (updatedBars: VitalBar[]) => {
+    onSave(updatedBars)
+    setIsEditing(false)
+  }
+
+  const handleCancel = () => {
+    setIsEditing(false)
+  }
 
   return (
-    <div className="dp-vitals">
-      <div className="dp-bar-row">
-        <span className="dp-bar-label">{text.health()}</span>
-        <span className="dp-bar-value">
-          {hp.current} / {hp.max}
+    <div className={`dp-vitals ${isEditing ? 'dp-vitals--editing' : ''}`}>
+      <div
+        className="dp-vitals-header"
+        onClick={!isEditing ? handleStartEdit : undefined}
+      >
+        <span>
+          <Icon icon="fa-solid fa-heart" /> {text.vitals()}
+        </span>
+        <span
+          className="dp-vitals-edit-hint"
+          onClick={isEditing ? handleCancel : undefined}
+        >
+          <Icon
+            icon={isEditing ? 'fa-solid fa-arrow-left' : 'fa-solid fa-pen'}
+          />{' '}
+          <span>{isEditing ? text.back() : text.edit()}</span>
         </span>
       </div>
-      <div className="dp-bar">
-        <div className="dp-bar-fill hp" style={{ width: `${hpPct}%` }} />
-      </div>
-      <div className="dp-bar-row dp-bar-row--mt">
-        <span className="dp-bar-label">{text.shield()}</span>
-        <span className="dp-bar-value">
-          {shield.current} / {shield.max}
-        </span>
-      </div>
-      <div className="dp-bar">
+      <div
+        className="dp-vitals-slider-viewport"
+        style={{
+          height:
+            viewportHeight !== undefined ? `${viewportHeight}px` : undefined,
+        }}
+      >
         <div
-          className="dp-bar-fill shield"
-          style={{ width: `${shieldPct}%` }}
-        />
+          className={`dp-vitals-slider-track ${isEditing ? 'slide-edit' : 'slide-details'}`}
+        >
+          <div
+            ref={detailsPaneRef}
+            className="dp-vitals-slide-pane pane-details"
+            onClick={!isEditing ? handleStartEdit : undefined}
+          >
+            <VitalsDetails bars={bars} />
+          </div>
+          <div ref={editPaneRef} className="dp-vitals-slide-pane pane-edit">
+            <VitalsEdit
+              initialBars={bars}
+              onSave={handleSave}
+              onCancel={handleCancel}
+            />
+          </div>
+        </div>
       </div>
     </div>
   )
