@@ -15,11 +15,14 @@
   .dp-inventory-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: var(--pal-font-display);
     font-size: var(--pal-fs-xs);
     color: var(--pal-gold-400);
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.5rem;
     letter-spacing: 0.5px;
+    padding-bottom: var(--pal-size-xs);
+    border-bottom: 1px solid var(--pal-gold-900);
 
     > span {
       display: flex;
@@ -32,6 +35,7 @@
     display: flex;
     justify-content: space-between;
     padding-right: 0.7rem;
+    margin-top: 0.45rem;
 
     .dp-inv-item {
       display: flex;
