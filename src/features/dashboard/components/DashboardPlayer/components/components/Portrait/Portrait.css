@@ -10,8 +10,8 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 28px;
-    height: 28px;
+    width: var(--pal-size-xl);
+    height: var(--pal-size-xl);
     background: var(--pal-gold-1000);
     border: 1px solid var(--pal-gold-600);
     border-radius: 50%;
@@ -110,11 +110,11 @@
       width: 100%;
 
       .dp-level-action-btn {
-        width: 2.2em ;
-        height: 2.2em ;
+        width: var(--pal-size-l) ;
+        height: var(--pal-size-l) ;
         padding: 0 ;
         border-radius: 50% ;
-        font-size: 0.85em ;
+        font-size: var(--pal-fs-s) ;
         min-width: unset ;
         display: inline-flex ;
         align-items: center ;
@@ -211,7 +211,7 @@
 @media (max-width: 64rem) {
   .dp-portrait {
     aspect-ratio: unset;
-    max-height: 260px;
+    max-height: 16rem;
     overflow: hidden;
 
     img {
