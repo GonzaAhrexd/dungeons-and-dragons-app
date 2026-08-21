@@ -102,6 +102,7 @@ const CHRONICLE = {
 export const DashboardPlayer = () => {
   const text = useText(dashboardPlayerText)
   const [vitals, setVitals] = useState<VitalBar[]>(INITIAL_VITALS)
+  const [stats, setStats] = useState(CHARACTER.stats)
 
   return (
     <div className="cmp-dashboardplayer">
@@ -121,7 +122,7 @@ export const DashboardPlayer = () => {
 
           <Vitals bars={vitals} onSave={setVitals} />
 
-          <Stats stats={CHARACTER.stats} />
+          <Stats stats={stats} onSave={setStats} />
 
           <Inventory inventory={CHARACTER.inventory} />
         </aside>

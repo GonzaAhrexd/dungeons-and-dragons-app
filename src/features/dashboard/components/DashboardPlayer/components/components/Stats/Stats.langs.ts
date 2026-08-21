@@ -7,6 +7,11 @@ interface StatsTexts {
   int: string
   wis: string
   cha: string
+  cancel: string
+  save: string
+  stats: string
+  edit: string
+  back: string
 }
 
 export const statsText: LanguagesText<StatsTexts> = {
@@ -17,6 +22,11 @@ export const statsText: LanguagesText<StatsTexts> = {
     int: 'INT',
     wis: 'WIS',
     cha: 'CHA',
+    cancel: 'Cancel',
+    save: 'Save',
+    stats: 'Attributes',
+    edit: 'Edit',
+    back: 'Back',
   },
   es: {
     str: 'FUE',
@@ -25,5 +35,11 @@ export const statsText: LanguagesText<StatsTexts> = {
     int: 'INT',
     wis: 'SAB',
     cha: 'CAR',
+    cancel: 'Cancelar',
+    save: 'Guardar',
+    stats: 'Atributos',
+    edit: 'Editar',
+    back: 'Volver',
   },
 }
+
