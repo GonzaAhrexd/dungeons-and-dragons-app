@@ -22,7 +22,7 @@
     font-size: 0.85rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    z-index: 10;
+    z-index: 2;
     text-decoration: none;
 
     &:hover {
@@ -54,7 +54,7 @@
     flex-direction: column;
     align-items: center;
     transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease;
-    z-index: 10;
+    z-index: 2;
     font-size: var(--pal-fs-xs);
 
     &:hover:not(.dp-expanded) {
