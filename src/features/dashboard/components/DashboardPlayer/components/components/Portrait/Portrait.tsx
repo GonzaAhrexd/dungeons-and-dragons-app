@@ -1,8 +1,8 @@
+import './Portrait.css'
 import { useState } from 'react'
 import { Link } from 'wouter'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
-import './Portrait.css'
 
 interface PortraitProps {
   name: string
@@ -35,7 +35,7 @@ export const Portrait = ({
   const hasChanges = tempLevel !== currentLevel
 
   return (
-    <div className="dp-portrait">
+    <div className="cmp-portrait">
       <Link to="/characters" className="dp-edit-btn" title="Editar Personaje">
         <Icon icon="fa-solid fa-pen" />
       </Link>
