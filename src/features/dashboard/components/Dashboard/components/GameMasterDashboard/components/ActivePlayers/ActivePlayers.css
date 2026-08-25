@@ -28,27 +28,36 @@
   > .players-list,
   > .pending-invitations {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+
     gap: var(--pal-size-s);
     width: 100%;
+
     > .player {
       display: flex;
-      gap: var(--pal-size-s);
       align-items: center;
+      gap: var(--pal-size-s);
       border-width: 1px;
       border-style: solid;
       border-color: var(--pal-gold-800);
       padding: var(--pal-size-m);
       width: 100%;
       max-width: 20rem;
+      
       background-color: var(--pal-grayscale-900);
+
       > .player-info {
+        min-width: 0;
+
         > h2 {
-          font-size: var(--pal-size-l);
+          font-size: var(--pal-fs-l);
+          white-space: nowrap;
+          text-overflow: ellipsis;
           color: var(--pal-gold-200);
+          overflow: hidden;
         }
         > h3 {
-          font-size: var(--pal-size-m);
+          font-size: var(--pal-fs-m);
           color: var(--pal-gold-500);
         }
       }
