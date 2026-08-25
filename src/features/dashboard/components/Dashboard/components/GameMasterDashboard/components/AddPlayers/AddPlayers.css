@@ -7,7 +7,7 @@
   gap: var(--pal-size-s);
   padding: var(--pal-size-l);
   width: 100%;
-  max-width: 60rem;
+  max-width: 90rem;
   background: var(--pal-paper-gradient);
 
   > h1 {

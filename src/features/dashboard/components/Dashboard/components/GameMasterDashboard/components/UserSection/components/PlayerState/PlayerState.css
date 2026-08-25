@@ -1,0 +1,18 @@
+.cmp-player-state {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+  border-color: var(--pal-gold-500);
+  padding: var(--pal-size-m);
+  background-color: var(--pal-grayscale-900);
+
+  > h1 {
+    font-size: var(--pal-fs-l);
+    color: var(--pal-gold-200);
+  }
+
+  > h2 {
+    font-size: var(--pal-fs-s);
+    color: var(--pal-gold-500);
+  }
+}
