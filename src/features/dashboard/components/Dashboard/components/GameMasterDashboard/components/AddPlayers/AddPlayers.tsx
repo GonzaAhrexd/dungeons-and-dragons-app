@@ -41,6 +41,8 @@ export const AddPlayers = () => {
         <Button
           handlingClass="add-players"
           theme="secondary"
+          submit
+          loader
           title={text.addPlayersForm.buttonTitle()}
         />
       </form>

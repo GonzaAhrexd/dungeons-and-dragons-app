@@ -1,6 +1,6 @@
 import { CampaignService } from '../services/campaign.service'
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import type {
   SendInvitationRequest,
@@ -8,6 +8,8 @@ import type {
 } from '../interfaces'
 
 export const useSendInvitation = () => {
+  const queryClient = useQueryClient()
+
   const mutation = useMutation<
     SendInvitationResponse,
     Error,
@@ -16,6 +18,7 @@ export const useSendInvitation = () => {
     mutationFn: CampaignService.sendInvitation,
     onSuccess: data => {
       console.log('Invitation sent successfully:', data)
+      queryClient.invalidateQueries({ queryKey: ['campaign', data.campaignId] })
     },
     onError: error => {
       console.error('Failed to send invitation:', error.message)
