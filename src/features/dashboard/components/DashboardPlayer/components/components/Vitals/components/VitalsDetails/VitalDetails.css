@@ -1,0 +1,112 @@
+.cmp-vitals-details {
+  margin-top: 0.45rem;
+  padding-bottom: 0.625rem;
+
+  > .bar-item {
+    margin-bottom: 0.8rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    > .bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--pal-size-2xs);
+
+      > .dp-bar-label {
+        font-size: var(--pal-fs-xs);
+        font-family: var(--pal-font-display);
+        letter-spacing: 0.5px;
+        color: var(--pal-gold-400);
+      }
+
+      > .dp-bar-value {
+        font-size: var(--pal-fs-xs);
+        font-family: var(--pal-font-mono);
+        color: var(--pal-grayscale-300);
+      }
+    }
+
+    > .dp-bar {
+      height: 0.375rem;
+      border-radius: var(--pal-radius-xs);
+      background: var(--pal-grayscale-1000);
+      overflow: hidden;
+
+      &:has(.red) {
+        background: var(--local-track-red);
+      }
+      &:has(.gold) {
+        background: var(--local-track-gold);
+      }
+      &:has(.green) {
+        background: var(--local-track-green);
+      }
+      &:has(.blue) {
+        background: var(--local-track-blue);
+      }
+      &:has(.purple) {
+        background: var(--local-track-purple);
+      }
+      &:has(.orange) {
+        background: var(--local-track-orange);
+      }
+
+      > .dp-bar-fill {
+        height: 100%;
+        border-radius: var(--pal-radius-xs);
+        transition: width 0.3s ease;
+
+        &.red {
+          background: linear-gradient(
+            to right,
+            var(--pal-red-800),
+            var(--pal-red-500)
+          );
+        }
+
+        &.gold {
+          background: linear-gradient(
+            to right,
+            var(--pal-gold-800),
+            var(--pal-gold-500)
+          );
+        }
+
+        &.green {
+          background: linear-gradient(
+            to right,
+            var(--pal-forest),
+            var(--pal-forest-bright)
+          );
+        }
+
+        &.blue {
+          background: linear-gradient(
+            to right,
+            var(--local-color-blue-dark),
+            var(--local-color-blue-light)
+          );
+        }
+
+        &.purple {
+          background: linear-gradient(
+            to right,
+            var(--local-color-purple-dark),
+            var(--local-color-purple-light)
+          );
+        }
+
+        &.orange {
+          background: linear-gradient(
+            to right,
+            var(--local-color-orange-dark),
+            var(--local-color-orange-light)
+          );
+        }
+      }
+    }
+  }
+}

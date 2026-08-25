@@ -1,11 +1,10 @@
+import './Vitals.css'
 import { useState, useRef, useEffect } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { vitalsText } from './Vitals.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { type VitalBar } from '../../../interfaces'
-import { VitalsEdit } from './components/VitalsEdit'
-import { VitalsDetails } from './components/VitalsDetails'
-import './Vitals.css'
+import { VitalsEdit, VitalsDetails } from './components'
 
 interface VitalsProps {
   bars: VitalBar[]
@@ -51,16 +50,16 @@ export const Vitals = ({ bars, onSave }: VitalsProps) => {
   }
 
   return (
-    <div className={`dp-vitals ${isEditing ? 'dp-vitals--editing' : ''}`}>
+    <div className={`cmp-vitals ${isEditing ? 'editing' : ''}`}>
       <div
-        className="dp-vitals-header"
+        className="header"
         onClick={!isEditing ? handleStartEdit : undefined}
       >
         <span>
           <Icon icon="fa-solid fa-heart" /> {text.vitals()}
         </span>
         <span
-          className="dp-vitals-edit-hint"
+          className="edit-hint"
           onClick={isEditing ? handleCancel : undefined}
         >
           <Icon

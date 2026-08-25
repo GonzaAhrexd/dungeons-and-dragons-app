@@ -1,9 +1,10 @@
+import './VitalsEdit.css'
 import { useState } from 'react'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Input } from '@/shared/ui/Input/Input'
-import { type VitalBar } from '../../../../interfaces'
-import { vitalsText } from '../Vitals.langs'
+import { type VitalBar } from '../../../../../interfaces'
+import { vitalsText } from '../../Vitals.langs'
 import { useText } from '@/features/langs/hooks/useText'
 
 const COLOR_OPTIONS: {
@@ -79,14 +80,13 @@ export const VitalsEdit = ({
   }
 
   return (
-    <div className="dp-vitals--editing" onClick={e => e.stopPropagation()}>
+    <div className="cmp-vitals-edit" onClick={e => e.stopPropagation()}>
       <div className="dp-vitals-edit-list">
         {tempBars.map(bar => (
-          <div key={bar.id} className="dp-vitals-edit-row">
+          <div key={bar.id} className="edit-row">
             <Input
               name="label"
               theme="gold"
-              handlingClass="dp-vitals-input-label-container"
               htmlAttrs={{
                 value: bar.label,
                 onChange: e => handleBarChange(bar.id, 'label', e.target.value),
