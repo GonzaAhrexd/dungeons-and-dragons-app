@@ -1,7 +1,12 @@
 import { Input } from '@/shared/ui/Input/Input'
 import './PlayersList.css'
 import { Button } from '@/shared/ui/Button/Button'
+import { useText } from '@/features/langs/hooks/useText'
+import { playerListText } from './PlayerList.langs'
+
 export const PlayersList = () => {
+  const text = useText(playerListText)
+
   const users = [
     {
       id: 1,
@@ -18,8 +23,8 @@ export const PlayersList = () => {
   return (
     <div className="cmp-players-list">
       <div className="header">
-        <h2>Players</h2>
-        <Input name="search" placeholder="Search players..." />
+        <h2>{text.title()}</h2>
+        <Input name="search" placeholder={text.searchPlaceholder()} />
       </div>
 
       <div className="player-divider"></div>
