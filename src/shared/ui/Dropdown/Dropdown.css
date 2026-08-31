@@ -1,0 +1,9 @@
+.cmp-dropdown {
+  position-area: bottom;
+  position-try-fallbacks: flip-block;
+
+  flex-direction: column;
+  margin: var(--pal-size-xs);
+  width: 100%;
+  max-width: 40rem;
+}
