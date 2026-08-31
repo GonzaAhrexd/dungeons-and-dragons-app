@@ -1,4 +1,6 @@
 export * from './useCreateCampaign';
+export * from './useEditCampaign';
 export * from './useGetCampaignById';
+export * from './useGetInvitations';
 export * from './useGetMyCampaigns';
 export * from './useSendInvitation';

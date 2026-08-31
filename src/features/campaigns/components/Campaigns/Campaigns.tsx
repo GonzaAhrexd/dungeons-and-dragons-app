@@ -2,7 +2,12 @@ import { useState } from 'react'
 import './Campaigns.css'
 import { campaignsText } from './Campaigns.langs'
 import { useText } from '@/features/langs/hooks/useText'
-import { CampaignAdd, CampaignCard, CampaignFilters } from './components'
+import {
+  CampaignAdd,
+  CampaignCard,
+  CampaignFilters,
+  CampaignInvitations,
+} from './components'
 import { useGetMyCampaigns } from '../../hooks/useGetMyCampaigns'
 import { Button } from '@/shared/ui/Button/Button'
 import { Dropdown } from '@/shared/ui/Dropdown/Dropdown'
@@ -109,7 +114,7 @@ export const Campaigns = () => {
             />
           )}
         >
-          <h1>hola</h1>
+          <CampaignInvitations />
         </Dropdown>
       </div>
 

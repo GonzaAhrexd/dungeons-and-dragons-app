@@ -1,0 +1,82 @@
+.cmp-campaign-invitations {
+  background-color: var(--pal-grayscale-800);
+  padding: var(--pal-size-m);
+  display: flex;
+  flex-direction: column;
+
+  > h1 {
+    font-size: var(--pal-fs-xl);
+    font-weight: var(--pal-font-weight-bold);
+    color: var(--pal-gold-500);
+  }
+
+  > p {
+    font-size: var(--pal-fs-m);
+    color: var(--pal-grayscale-200);
+  }
+
+  > .invitations-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-s);
+
+    > .invitation {
+      display: flex;
+      gap: var(--pal-size-xs);
+      padding: var(--pal-size-m);
+      background-color: var(--pal-grayscale-700);
+      border-radius: var(--pal-size-xs);
+      width: 100%;
+      justify-content: space-between;
+
+      > .invitation-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        > h2 {
+          font-size: var(--pal-fs-l);
+          font-weight: var(--pal-font-weight-bold);
+          color: var(--pal-gold-500);
+        }
+        > p {
+          font-size: var(--pal-fs-m);
+          color: var(--pal-grayscale-200);
+        }
+      }
+
+      > .invitation-actions {
+        display: flex;
+        gap: var(--pal-size-xs);
+
+        > button {
+          padding: var(--pal-size-xs) var(--pal-size-s);
+          border-radius: var(--pal-size-xs);
+          font-size: var(--pal-fs-s);
+          font-weight: var(--pal-font-weight-bold);
+          cursor: pointer;
+
+          &.accept {
+            background-color: var(--pal-gold-500);
+            color: var(--pal-grayscale-900);
+
+            > .cmp-icon {
+              color: var(--pal-grayscale-900);
+            }
+          }
+
+          &.decline {
+            background-color: var(--pal-red-500);
+            color: var(--pal-grayscale-900);
+          }
+        }
+      }
+
+      > p {
+        font-size: var(--pal-fs-m);
+        color: var(--pal-grayscale-200);
+      }
+    }
+  }
+}
