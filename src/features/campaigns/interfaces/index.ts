@@ -1,3 +1,5 @@
+export * from './acceptInvitation/acceptInvitationParams';
+export * from './acceptInvitation/acceptInvitationResponse';
 export * from './createCampaign/createCampaignRequest';
 export * from './createCampaign/createCampaignResponse';
 export * from './editCampaign/editCampaignParams';

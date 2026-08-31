@@ -1,5 +1,8 @@
 import './CampaignInvitations.css'
-import { useGetInvitations } from '@/features/campaigns/hooks'
+import {
+  useAcceptInvitation,
+  useGetInvitations,
+} from '@/features/campaigns/hooks'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignsInvitationsText } from './CampaignInvitations.langs'
 import { Button } from '@/shared/ui/Button/Button'
@@ -8,11 +11,10 @@ export const CampaignInvitations = () => {
 
   const { data: invitations, isLoading, isError } = useGetInvitations()
 
-  const handleAcceptInvitation = (invitationId: string) => {
-    return () => {
-      console.log(`Accept invitation with ID: ${invitationId}`)
-      // Implement the logic to accept the invitation here
-    }
+  const { mutateAsync: acceptInvitation } = useAcceptInvitation()
+
+  const handleAcceptInvitation = async (invitationId: string) => {
+    await acceptInvitation({ id: invitationId })
   }
 
   const handleDeclineInvitation = (invitationId: string) => {
@@ -46,7 +48,7 @@ export const CampaignInvitations = () => {
               <Button
                 icon="fa-solid fa-check"
                 handlingClass="accept"
-                onClick={handleAcceptInvitation(invitation.id)}
+                onClick={() => handleAcceptInvitation(invitation.id)}
               />
               <Button
                 icon="fa-solid fa-times"
