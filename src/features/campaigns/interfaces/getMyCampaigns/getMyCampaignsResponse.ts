@@ -3,6 +3,7 @@ export interface CampaignResponse {
   description: string
   campaignId: string
   isGameMaster: boolean
+  createdAt: Date
 }
 
 export type GetMyCampaignsResponse = CampaignResponse[]

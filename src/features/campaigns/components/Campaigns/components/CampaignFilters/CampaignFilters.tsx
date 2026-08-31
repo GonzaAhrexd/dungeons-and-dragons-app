@@ -3,46 +3,36 @@ import { useText } from '@/features/langs/hooks/useText'
 import { campaignsText } from '../../Campaigns.langs'
 import './CampaignFilters.css'
 
-export type FilterType = 'active' | 'recent' | 'favorites'
+export type FilterType = 'active' | 'owned' | 'favorites'
 export type SortType = 'alphabetical' | 'creation'
+type AlphabeticalSortDirection = 'inactive' | 'asc' | 'desc'
+type CreationSortDirection = 'asc' | 'desc'
 
 interface CampaignFiltersProps {
-  activeFilter: FilterType | null
-  onFilterChange: (filter: FilterType) => void
-  sortBy: SortType
-  onSortChange: (sort: SortType) => void
-  isAlphabeticalAsc: boolean
-  onToggleAlphabeticalAsc: () => void
-  isCreationAsc: boolean
-  onToggleCreationAsc: () => void
+  filters: {
+    active: boolean
+    owned: boolean
+    favorites: boolean
+  }
+  sort: {
+    alphabetical: AlphabeticalSortDirection
+    creation: CreationSortDirection
+  }
+  handleChangeFilter: (filter: FilterType) => void
+  handleChangeSort: (sort: SortType) => void
 }
 
 export const CampaignFilters = ({
-  activeFilter,
-  onFilterChange,
-  sortBy,
-  onSortChange,
-  isAlphabeticalAsc,
-  onToggleAlphabeticalAsc,
-  isCreationAsc,
-  onToggleCreationAsc,
+  filters,
+  sort,
+  handleChangeFilter,
+  handleChangeSort,
 }: CampaignFiltersProps) => {
   const text = useText(campaignsText)
 
-  const handleSortClick = (sort: SortType) => {
-    if (sort === 'alphabetical') {
-      if (sortBy === 'alphabetical') {
-        onToggleAlphabeticalAsc()
-      } else {
-        onSortChange('alphabetical')
-      }
-    } else if (sort === 'creation') {
-      if (sortBy === 'creation') {
-        onToggleCreationAsc()
-      } else {
-        onSortChange('creation')
-      }
-    }
+  const getSortIcon = (direction: AlphabeticalSortDirection | CreationSortDirection) => {
+    if (direction === 'asc') return 'fa-solid fa-arrow-up'
+    return 'fa-solid fa-arrow-down'
   }
 
   return (
@@ -50,20 +40,20 @@ export const CampaignFilters = ({
       <div className="filters-capsule">
         <div className="filter-group">
           <button
-            className={`filter-tab ${activeFilter === 'active' ? 'active' : ''}`}
-            onClick={() => onFilterChange('active')}
+            className={`filter-tab ${filters.active ? 'active' : ''}`}
+            onClick={() => handleChangeFilter('active')}
           >
             {text.filterActive()}
           </button>
           <button
-            className={`filter-tab ${activeFilter === 'recent' ? 'active' : ''}`}
-            onClick={() => onFilterChange('recent')}
+            className={`filter-tab ${filters.owned ? 'active' : ''}`}
+            onClick={() => handleChangeFilter('owned')}
           >
-            {text.filterRecent()}
+            {text.filterOwned()}
           </button>
           <button
-            className={`filter-tab ${activeFilter === 'favorites' ? 'active' : ''}`}
-            onClick={() => onFilterChange('favorites')}
+            className={`filter-tab ${filters.favorites ? 'active' : ''}`}
+            onClick={() => handleChangeFilter('favorites')}
           >
             {text.filterFavorites()}
           </button>
@@ -71,30 +61,17 @@ export const CampaignFilters = ({
         <div className="filter-divider" />
         <div className="sort-group">
           <button
-            className={`filter-tab sort-tab ${sortBy === 'creation' ? 'active' : ''}`}
-            onClick={() => handleSortClick('creation')}
+            className={`filter-tab sort-tab ${sort.creation ? 'active' : ''}`}
+            onClick={() => handleChangeSort('creation')}
           >
-            {text.filterCreation()}{' '}
-            <Icon
-              icon={
-                isCreationAsc
-                  ? 'fa-solid fa-arrow-up'
-                  : 'fa-solid fa-arrow-down'
-              }
-            />
+            {text.filterCreation()} <Icon icon={getSortIcon(sort.creation)} />
           </button>
           <button
-            className={`filter-tab sort-tab ${sortBy === 'alphabetical' ? 'active' : ''}`}
-            onClick={() => handleSortClick('alphabetical')}
+            className={`filter-tab sort-tab ${sort.alphabetical !== 'inactive' ? 'active' : ''}`}
+            onClick={() => handleChangeSort('alphabetical')}
           >
             {text.filterAlphabetical()}{' '}
-            <Icon
-              icon={
-                isAlphabeticalAsc
-                  ? 'fa-solid fa-arrow-up'
-                  : 'fa-solid fa-arrow-down'
-              }
-            />
+            <Icon icon={getSortIcon(sort.alphabetical)} />
           </button>
         </div>
       </div>
