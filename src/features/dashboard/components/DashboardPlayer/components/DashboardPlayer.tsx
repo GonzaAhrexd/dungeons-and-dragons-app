@@ -123,11 +123,11 @@ export const DashboardPlayer = () => {
           <Vitals bars={vitals} onSave={setVitals} />
 
           <Stats stats={stats} onSave={setStats} />
-
-          <Inventory inventory={CHARACTER.inventory} />
         </aside>
 
         <main className="dp-center">
+          <Inventory />
+
           <HeroHistory historyText={CHARACTER.history} />
 
           <Campaign
