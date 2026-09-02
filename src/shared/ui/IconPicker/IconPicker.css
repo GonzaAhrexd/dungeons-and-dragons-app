@@ -1,0 +1,87 @@
+.cmp-icon-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  > .icon-picker-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--pal-gold-700);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    color: var(--pal-gold-400);
+    background: rgba(212, 175, 55, 0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--pal-gold-400);
+      color: var(--pal-gold-200);
+      background: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+    }
+  }
+
+  > .icon-picker-popover {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 100;
+    padding: 0.5rem;
+    border: 1px solid var(--pal-gold-800);
+    border-radius: var(--pal-radius-m, 8px);
+    background: var(--pal-grayscale-900);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    animation: fadeInScale 0.15s ease-out;
+
+    > .icon-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 28px);
+      gap: 4px;
+
+      > .icon-picker-option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        color: var(--pal-grayscale-300);
+        background: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.15s ease;
+
+        &:hover {
+          border-color: var(--pal-gold-600);
+          color: var(--pal-gold-300);
+          background: rgba(212, 175, 55, 0.15);
+        }
+
+        &.selected {
+          border-color: var(--pal-gold-400);
+          color: var(--pal-gold-100);
+          background: rgba(212, 175, 55, 0.3);
+          box-shadow: inset 0 0 4px rgba(212, 175, 55, 0.4);
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
