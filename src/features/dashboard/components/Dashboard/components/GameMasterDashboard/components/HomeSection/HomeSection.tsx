@@ -4,16 +4,6 @@ import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { useGetCampaignById } from '@/features/campaigns/hooks/useGetCampaignById'
 export const HomeSection = () => {
   const campaignId = useCampaignStore(state => state.currentCampaignId)
-  const players = [
-    'Pepe',
-    'Papa',
-    'Popo',
-    'Popo',
-    'Popo',
-    'Popo',
-    'Popo',
-    'Popo',
-  ]
   const { data: campaign, isLoading, error } = useGetCampaignById(campaignId)
   if (isLoading) {
     return <div>Loading...</div>
@@ -32,7 +22,7 @@ export const HomeSection = () => {
         <CampaignLogs />
         <AddPlayers />
         <ActivePlayers
-          players={players}
+          players={campaign?.players || []}
           invitations={campaign?.invitations || []}
         />
       </div>

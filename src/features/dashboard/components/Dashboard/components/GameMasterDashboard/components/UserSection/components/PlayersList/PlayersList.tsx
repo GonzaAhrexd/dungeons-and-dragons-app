@@ -3,22 +3,13 @@ import './PlayersList.css'
 import { Button } from '@/shared/ui/Button/Button'
 import { useText } from '@/features/langs/hooks/useText'
 import { playerListText } from './PlayerList.langs'
+import type { Players } from '@/features/campaigns/interfaces'
 
-export const PlayersList = () => {
+interface PlayersListProps {
+  players: Players[]
+}
+export const PlayersList = ({ players }: PlayersListProps) => {
   const text = useText(playerListText)
-
-  const users = [
-    {
-      id: 1,
-      name: 'Player 1',
-      username: 'player1',
-    },
-    {
-      id: 2,
-      name: 'Player 2',
-      username: 'player2',
-    },
-  ]
 
   return (
     <div className="cmp-players-list">
@@ -30,11 +21,11 @@ export const PlayersList = () => {
       <div className="player-divider"></div>
 
       <div className="players">
-        {users.map(user => (
-          <div key={user.id} className="player">
+        {players.map(player => (
+          <div key={player.playerId} className="player">
             <div className="player-info">
-              <h2>{user.name}</h2>
-              <h3>{user.username}</h3>
+              <h2>{player.username}</h2>
+              <h3>{player.username}</h3>
             </div>
             <div className="character-info"></div>
             <div className="player-actions">

@@ -1,11 +1,11 @@
 import './ActivePlayers.css'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import type { Invitations } from '@/features/campaigns/interfaces/'
+import type { Invitations, Players } from '@/features/campaigns/interfaces/'
 import { useText } from '@/features/langs/hooks/useText'
 import { activePlayersText } from './ActivePlayers.langs'
 interface ActivePlayersProps {
   invitations: Invitations[]
-  players: string[]
+  players: Players[]
 }
 
 export const ActivePlayers = ({ invitations, players }: ActivePlayersProps) => {
@@ -22,11 +22,11 @@ export const ActivePlayers = ({ invitations, players }: ActivePlayersProps) => {
       </div>
       <div className="players-list">
         {players.slice(0, visible).map(player => (
-          <div className="player" key={player}>
+          <div className="player" key={player.playerId}>
             <Icon icon="fa-solid fa-user" />
             <div className="player-info">
               {/* TODO: Reemplazar por nombre de pj y clase cuando esté disponible en el backend */}
-              <h2>{player}</h2>
+              <h2>{player.username}</h2>
               <h3>Class</h3>
             </div>
           </div>
