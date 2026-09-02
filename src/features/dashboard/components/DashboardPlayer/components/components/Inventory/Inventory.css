@@ -256,6 +256,16 @@
   @media (max-width: 64rem) {
     padding: var(--pal-size-m);
 
+    > .top-bar {
+      > .add-btn {
+        padding: 0.4rem 0.65rem;
+
+        p {
+          display: none;
+        }
+      }
+    }
+
     &:hover {
       transform: none;
     }

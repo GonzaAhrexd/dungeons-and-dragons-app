@@ -13,7 +13,7 @@
     font-size: var(--pal-fs-xs);
   }
 
-  > .dp-back {
+  > .back {
     font-family: var(--pal-font-display);
     font-size: var(--pal-fs-xs);
     color: var(--pal-gold-500);
@@ -33,7 +33,7 @@
     }
   }
 
-  > .dp-grid {
+  > .grid {
     display: grid;
     grid-template-columns: 280px 1fr 265px;
     gap: var(--pal-size-m);
@@ -41,21 +41,32 @@
     overflow: hidden;
     min-height: 0;
 
-    > .dp-left {
+    > .left {
       display: flex;
       flex-direction: column;
       gap: var(--pal-size-s);
       overflow-y: auto;
     }
 
-    > .dp-center {
+    > .center {
       display: flex;
       flex-direction: column;
       gap: var(--pal-size-s);
       overflow-y: auto;
+
+      > .history-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--pal-size-s);
+        align-items: start;
+
+        > * {
+          min-width: 0;
+        }
+      }
     }
 
-    > .dp-right {
+    > .right {
       display: flex;
       flex-direction: column;
       gap: var(--pal-size-s);
@@ -70,30 +81,30 @@
     padding: var(--pal-size-m) var(--pal-size-m) 3.5rem;
     gap: var(--pal-fs-l);
 
-    > .dp-grid {
+    > .grid {
       grid-template-columns: 1fr;
       height: auto;
       overflow: visible;
       gap: var(--pal-fs-l);
 
-      > .dp-left,
-      > .dp-right,
-      > .dp-center {
+      > .left,
+      > .right,
+      > .center {
         min-width: 0;
         width: 100%;
         overflow: visible;
         gap: var(--pal-size-m);
       }
 
-      > .dp-left  {
+      > .left  {
         order: 1;
       }
 
-      > .dp-right {
+      > .center {
         order: 2;
       }
 
-      > .dp-center {
+      > .right {
         order: 3;
       }
     }

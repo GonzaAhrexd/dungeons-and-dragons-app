@@ -106,12 +106,12 @@ export const DashboardPlayer = () => {
 
   return (
     <div className="cmp-dashboardplayer">
-      <Link to="/campaigns" className="dp-back">
+      <Link to="/campaigns" className="back">
         <Icon icon="fa-solid fa-arrow-left" /> {text.backToCampaigns()}
       </Link>
 
-      <div className="dp-grid">
-        <aside className="dp-left">
+      <div className="grid">
+        <aside className="left">
           <Portrait
             name={CHARACTER.name}
             level={CHARACTER.level}
@@ -125,19 +125,21 @@ export const DashboardPlayer = () => {
           <Stats stats={stats} onSave={setStats} />
         </aside>
 
-        <main className="dp-center">
+        <main className="center">
           <Inventory />
 
-          <HeroHistory historyText={CHARACTER.history} />
+          <div className="history-container">
+            <HeroHistory historyText={CHARACTER.history} />
 
-          <Campaign
-            title={CHRONICLE.title}
-            quote={CHRONICLE.quote}
-            description={CHRONICLE.description}
-          />
+            <Campaign
+              title={CHRONICLE.title}
+              quote={CHRONICLE.quote}
+              description={CHRONICLE.description}
+            />
+          </div>
         </main>
 
-        <aside className="dp-right">
+        <aside className="right">
           <Timeline timelineItems={TIMELINE} />
 
           <NPCs npcs={NPCS} />
