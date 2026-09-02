@@ -1,5 +1,5 @@
 import './Portrait.css'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'wouter'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
@@ -25,6 +25,7 @@ export const Portrait = ({
   const [currentLevel, setCurrentLevel] = useState(level)
   const [tempLevel, setTempLevel] = useState(level)
   const [prevLevel, setPrevLevel] = useState(level)
+  const levelRef = useRef<HTMLDivElement>(null)
 
   if (level !== prevLevel) {
     setPrevLevel(level)
@@ -32,19 +33,41 @@ export const Portrait = ({
     setTempLevel(level)
   }
 
+  useEffect(() => {
+    if (!isEditing) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        levelRef.current &&
+        !levelRef.current.contains(event.target as Node)
+      ) {
+        setIsEditing(false)
+        setTempLevel(currentLevel)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isEditing, currentLevel])
+
   const hasChanges = tempLevel !== currentLevel
 
   return (
     <div className="cmp-portrait">
-      <Link to="/characters" className="dp-edit-btn" title="Editar Personaje">
+      <Link to="/characters" className="edit-btn" title="Editar Personaje">
         <Icon icon="fa-solid fa-pen" />
       </Link>
 
       <img src={imageUrl} alt={name} />
 
-      <div className={`dp-level-container ${isEditing ? 'dp-expanded' : ''}`}>
+      <div
+        ref={levelRef}
+        className={`level-container ${isEditing ? 'expanded' : ''}`}
+      >
         <div
-          className="dp-level-display"
+          className="level-display"
           onClick={() => {
             setIsEditing(!isEditing)
             if (!isEditing) {
@@ -55,12 +78,12 @@ export const Portrait = ({
           LVL {isEditing ? tempLevel : currentLevel}
         </div>
 
-        <div className="dp-level-actions">
+        <div className="level-actions">
           <Button
             theme="secondary"
             icon="fa-solid fa-arrow-down"
             hideTitle={true}
-            handlingClass="dp-level-action-btn"
+            handlingClass="level-action-btn"
             onClick={() => setTempLevel(prev => Math.max(1, prev - 1))}
             htmlAttrs={{ title: 'Bajar Nivel' }}
           />
@@ -68,7 +91,7 @@ export const Portrait = ({
             theme="secondary"
             icon="fa-solid fa-arrow-up"
             hideTitle={true}
-            handlingClass="dp-level-action-btn"
+            handlingClass="level-action-btn"
             onClick={() => setTempLevel(prev => prev + 1)}
             htmlAttrs={{ title: 'Subir Nivel' }}
           />
@@ -76,7 +99,7 @@ export const Portrait = ({
             theme="primary"
             icon="fa-solid fa-check"
             hideTitle={true}
-            handlingClass={`dp-level-action-btn ${hasChanges ? 'dp-active' : ''}`}
+            handlingClass={`level-action-btn ${hasChanges ? 'active' : ''}`}
             onClick={() => {
               setCurrentLevel(tempLevel)
               setIsEditing(false)
@@ -89,9 +112,9 @@ export const Portrait = ({
         </div>
       </div>
 
-      <div className="dp-name-overlay">
+      <div className="name-overlay">
         <h2>{name}</h2>
-        <div className="dp-tags">
+        <div className="tags">
           <span>{characterClass}</span>
           <span>{race}</span>
           <span>{alignment}</span>

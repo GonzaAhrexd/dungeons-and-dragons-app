@@ -2,11 +2,11 @@
   position: relative;
   flex-shrink: 0;
   border: 1px solid var(--pal-gold-700);
-  aspect-ratio: 4 / 5;
+  height: 18rem;
   background: var(--pal-bg);
   overflow: hidden;
 
-  > .dp-edit-btn {
+  > .edit-btn {
     position: absolute;
     z-index: 1;
     top: 10px;
@@ -47,7 +47,7 @@
     filter: brightness(0.65) contrast(1.1);
   }
 
-  > .dp-level-container {
+  > .level-container {
     position: absolute;
     z-index: 1;
     top: 10px;
@@ -72,29 +72,29 @@
       border-color 0.3s ease,
       box-shadow 0.2s ease;
 
-    &:hover:not(.dp-expanded) {
+    &:hover:not(.expanded) {
       box-shadow: 0 4px 10px rgba(195, 154, 62, 0.4);
     }
 
-    &.dp-expanded {
+    &.expanded {
       border-color: var(--pal-gold-600);
       width: 9.2em;
       height: 4.6em;
       border-radius: var(--pal-radius-pill);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 
-      > .dp-level-display {
+      > .level-display {
         border-bottom: 1px solid var(--pal-gold-800);
       }
 
-      > .dp-level-actions {
+      > .level-actions {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
       }
     }
 
-    > .dp-level-display {
+    > .level-display {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,7 +121,7 @@
         color 0.3s;
     }
 
-    > .dp-level-actions {
+    > .level-actions {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -137,7 +137,7 @@
         opacity 0.25s ease,
         transform 0.25s ease;
 
-      > .dp-level-action-btn {
+      > .level-action-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -176,7 +176,6 @@
           }
         }
 
-        /* 1 de aceptar (primary) en fondo oscuro */
         &.primary {
           border: 1px solid var(--pal-gold-700);
           color: var(--pal-ink);
@@ -191,7 +190,7 @@
             color: var(--pal-ink);
           }
 
-          &.dp-active {
+          &.active {
             opacity: 1;
             cursor: pointer;
             pointer-events: auto;
@@ -206,7 +205,7 @@
     }
   }
 
-  > .dp-name-overlay {
+  > .name-overlay {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -228,7 +227,7 @@
       color: var(--pal-gold-300);
     }
 
-    > .dp-tags {
+    > .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
@@ -257,7 +256,7 @@
       object-position: center 15%;
     }
 
-    > .dp-level-container {
+    > .level-container {
       font-size: var(--pal-fs-s);
     }
   }
