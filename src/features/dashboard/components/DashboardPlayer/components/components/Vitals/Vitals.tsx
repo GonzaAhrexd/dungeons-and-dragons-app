@@ -69,23 +69,23 @@ export const Vitals = ({ bars, onSave }: VitalsProps) => {
         </span>
       </div>
       <div
-        className="dp-vitals-slider-viewport"
+        className="slider-viewport"
         style={{
           height:
             viewportHeight !== undefined ? `${viewportHeight}px` : undefined,
         }}
       >
         <div
-          className={`dp-vitals-slider-track ${isEditing ? 'slide-edit' : 'slide-details'}`}
+          className={`slider-track ${isEditing ? 'slide-edit' : 'slide-details'}`}
         >
           <div
             ref={detailsPaneRef}
-            className="dp-vitals-slide-pane pane-details"
+            className="slide-pane pane-details"
             onClick={!isEditing ? handleStartEdit : undefined}
           >
             <VitalsDetails bars={bars} />
           </div>
-          <div ref={editPaneRef} className="dp-vitals-slide-pane pane-edit">
+          <div ref={editPaneRef} className="slide-pane pane-edit">
             <VitalsEdit
               initialBars={bars}
               onSave={handleSave}

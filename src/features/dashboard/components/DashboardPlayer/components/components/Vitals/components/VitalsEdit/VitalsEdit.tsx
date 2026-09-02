@@ -71,17 +71,20 @@ export const VitalsEdit = ({
 
   const handleSaveClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    onSave(tempBars)
+    const validBars = tempBars.filter(bar => bar.label.trim() !== '')
+    setTempBars(validBars)
+    onSave(validBars)
   }
 
   const handleCancelClick = (e: React.MouseEvent) => {
     e.stopPropagation()
+    setTempBars(initialBars.map(bar => ({ ...bar })))
     onCancel()
   }
 
   return (
     <div className="cmp-vitals-edit" onClick={e => e.stopPropagation()}>
-      <div className="dp-vitals-edit-list">
+      <div className="edit-list">
         {tempBars.map(bar => (
           <div key={bar.id} className="edit-row">
             <Input
@@ -93,11 +96,11 @@ export const VitalsEdit = ({
                 placeholder: text.placeholder(),
               }}
             />
-            <div className="dp-vitals-input-numbers">
+            <div className="input-numbers">
               <input
                 type="number"
                 min="0"
-                className="dp-vitals-input-val"
+                className="input-val"
                 value={bar.current}
                 onChange={e =>
                   handleBarChange(
@@ -111,7 +114,7 @@ export const VitalsEdit = ({
               <input
                 type="number"
                 min="1"
-                className="dp-vitals-input-val"
+                className="input-val"
                 value={bar.max}
                 onChange={e =>
                   handleBarChange(
@@ -122,12 +125,12 @@ export const VitalsEdit = ({
                 }
               />
             </div>
-            <div className="dp-vitals-color-picker">
+            <div className="color-picker">
               {COLOR_OPTIONS.map(opt => (
                 <button
                   key={opt.value}
                   type="button"
-                  className={`dp-vitals-color-dot ${bar.color === opt.value ? 'active' : ''}`}
+                  className={`color-dot ${bar.color === opt.value ? 'active' : ''}`}
                   style={{ backgroundColor: opt.hex }}
                   onClick={() => handleBarChange(bar.id, 'color', opt.value)}
                 />
@@ -135,7 +138,7 @@ export const VitalsEdit = ({
             </div>
             <button
               type="button"
-              className="dp-vitals-delete-btn"
+              className="delete-btn"
               onClick={e => handleDeleteBar(bar.id, e)}
               title={text.delete()}
               disabled={tempBars.length <= 1}
@@ -148,27 +151,27 @@ export const VitalsEdit = ({
 
       <button
         type="button"
-        className="dp-vitals-add-divider"
+        className="add-divider"
         onClick={handleAddBar}
         title={text.newBar()}
       >
-        <span className="dp-vitals-add-divider-line" />
+        <span className="add-divider-line" />
         <Icon icon="fa-solid fa-plus" />
         {text.newBar()}
-        <span className="dp-vitals-add-divider-line" />
+        <span className="add-divider-line" />
       </button>
 
-      <div className="dp-vitals-footer-buttons">
+      <div className="footer-buttons">
         <Button
           theme="secondary"
           title={text.cancel()}
-          handlingClass="dp-vitals-action-btn"
+          handlingClass="action-btn"
           onClick={handleCancelClick}
         />
         <Button
           theme="primary"
           title={text.save()}
-          handlingClass="dp-vitals-action-btn"
+          handlingClass="action-btn"
           onClick={handleSaveClick}
         />
       </div>

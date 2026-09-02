@@ -1,5 +1,5 @@
 .cmp-vitals-edit {
-  > .dp-vitals-edit-list {
+  > .edit-list {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
@@ -35,7 +35,7 @@
         }
       }
 
-      > .dp-vitals-input-numbers {
+      > .input-numbers {
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -44,7 +44,7 @@
         font-family: var(--pal-font-mono);
         color: var(--pal-gold-500);
 
-        .dp-vitals-input-val {
+        .input-val {
           box-sizing: border-box;
           border: 1px solid var(--pal-gold-900);
           padding: 0 0.1rem;
@@ -76,7 +76,7 @@
         }
       }
 
-      > .dp-vitals-color-picker {
+      > .color-picker {
         flex-shrink: 0;
         display: grid;
         grid-template-columns: repeat(3, 0.75rem);
@@ -88,7 +88,7 @@
         background: rgba(0, 0, 0, 0.4);
         justify-items: center;
 
-        .dp-vitals-color-dot {
+        .color-dot {
           border: 1px solid rgba(255, 255, 255, 0.2);
           padding: 0;
           width: 0.625rem;
@@ -111,7 +111,7 @@
         }
       }
 
-      > .dp-vitals-delete-btn {
+      > .delete-btn {
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -149,7 +149,7 @@
     }
   }
 
-  > .dp-vitals-add-divider {
+  > .add-divider {
     display: flex;
     align-items: center;
     gap: var(--pal-size-xs);
@@ -162,7 +162,7 @@
     cursor: pointer;
     transition: color 0.2s ease;
 
-    .dp-vitals-add-divider-line {
+    .add-divider-line {
       flex: 1;
       height: 1px;
       background: var(--pal-gold-900);
@@ -178,7 +178,7 @@
     &:hover {
       color: var(--pal-gold-500);
 
-      .dp-vitals-add-divider-line {
+      .add-divider-line {
         background: var(--pal-gold-600);
       }
 
@@ -188,13 +188,13 @@
     }
   }
 
-  > .dp-vitals-footer-buttons {
+  > .footer-buttons {
     display: flex;
     gap: 0.4rem;
     margin-top: 0.4rem;
     width: 100%;
 
-    .dp-vitals-action-btn {
+    .action-btn {
       flex: 1;
       gap: var(--pal-size-2xs);
       padding: 0.3rem 0.5rem;

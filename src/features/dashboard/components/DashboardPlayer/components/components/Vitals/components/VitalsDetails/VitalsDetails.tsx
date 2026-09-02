@@ -12,14 +12,14 @@ export const VitalsDetails = ({ bars }: VitalsDetailsProps) => {
         return (
           <div key={bar.id} className="bar-item">
             <div className="bar-row">
-              <span className="dp-bar-label">{bar.label}</span>
-              <span className="dp-bar-value">
+              <span className="bar-label">{bar.label}</span>
+              <span className="bar-value">
                 {bar.current} / {bar.max}
               </span>
             </div>
-            <div className="dp-bar">
+            <div className="bar">
               <div
-                className={`dp-bar-fill ${bar.color}`}
+                className={`bar-fill ${bar.color}`}
                 style={{ width: `${pct}%` }}
               />
             </div>

@@ -15,21 +15,21 @@
       justify-content: space-between;
       margin-bottom: var(--pal-size-2xs);
 
-      > .dp-bar-label {
+      > .bar-label {
         font-size: var(--pal-fs-xs);
         font-family: var(--pal-font-display);
         letter-spacing: 0.5px;
         color: var(--pal-gold-400);
       }
 
-      > .dp-bar-value {
+      > .bar-value {
         font-size: var(--pal-fs-xs);
         font-family: var(--pal-font-mono);
         color: var(--pal-grayscale-300);
       }
     }
 
-    > .dp-bar {
+    > .bar {
       height: 0.375rem;
       border-radius: var(--pal-radius-xs);
       background: var(--pal-grayscale-1000);
@@ -54,7 +54,7 @@
         background: var(--local-track-orange);
       }
 
-      > .dp-bar-fill {
+      > .bar-fill {
         height: 100%;
         border-radius: var(--pal-radius-xs);
         transition: width 0.3s ease;

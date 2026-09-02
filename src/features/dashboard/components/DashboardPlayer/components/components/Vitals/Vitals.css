@@ -83,7 +83,7 @@
     > .edit-hint {
       display: flex;
       align-items: center;
-      gap: 3px;
+      gap: var(--pal-size-xs);
       font-size: var(--pal-fs-xs);
       color: var(--pal-gold-600);
       opacity: 0;
@@ -103,13 +103,13 @@
   }
 
   /* ---- Slider Animation ---- */
-  > .dp-vitals-slider-viewport {
+  > .slider-viewport {
     position: relative;
     width: 100%;
     overflow: hidden;
     transition: height 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 
-    > .dp-vitals-slider-track {
+    > .slider-track {
       display: flex;
       width: 200%;
       transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
@@ -134,7 +134,7 @@
         }
       }
 
-      > .dp-vitals-slide-pane {
+      > .slide-pane {
         flex-shrink: 0;
         box-sizing: border-box;
         width: 50%;
@@ -154,14 +154,14 @@
       pointer-events: default;
     }
 
-    .dp-vitals-add-divider {
+    .add-divider {
       padding: var(--pal-size-xs);
     }
 
-    .dp-vitals-color-picker {
+    .color-picker {
       gap: 0.3rem 0.5rem;
 
-      .dp-vitals-color-dot {
+      .color-dot {
         width: 0.8125rem;
         height: 0.8125rem;
       }
