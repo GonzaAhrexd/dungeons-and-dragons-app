@@ -8,7 +8,7 @@ import {
   Vitals,
   Stats,
   Inventory,
-  HeroHistory,
+  HeroStory,
   Campaign,
   Timeline,
   NPCs,
@@ -128,8 +128,8 @@ export const DashboardPlayer = () => {
         <main className="center">
           <Inventory />
 
-          <div className="history-container">
-            <HeroHistory historyText={CHARACTER.history} />
+          <div className="story-container">
+            <HeroStory historyText={CHARACTER.history} />
 
             <Campaign
               title={CHRONICLE.title}

@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'wouter'
 import { useText } from '@/features/langs/hooks/useText'
-import { heroHistoryText } from './HeroHistory.langs'
+import { heroStoryText } from './HeroStory.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import './HeroHistory.css'
+import './HeroStory.css'
 
-interface HeroHistoryProps {
+interface HeroStoryProps {
   historyText: string
 }
 
-export const HeroHistory = ({ historyText }: HeroHistoryProps) => {
-  const text = useText(heroHistoryText)
+export const HeroStory = ({ historyText }: HeroStoryProps) => {
+  const text = useText(heroStoryText)
   const [expanded, setExpanded] = useState(false)
   const contentRef = useRef<HTMLParagraphElement>(null)
   const [scrollHeight, setScrollHeight] = useState(0)
@@ -25,25 +25,27 @@ export const HeroHistory = ({ historyText }: HeroHistoryProps) => {
     return () => observer.disconnect()
   }, [])
 
-  const height = expanded ? `${scrollHeight}px` : '4.8em'
+  const height = expanded ? `${scrollHeight}px` : '6.85rem'
 
   return (
-    <div className="dp-card dp-paper hero-history-card">
-      <h3>{text.heroHistory()}</h3>
+    <div className="card paper cmp-hero-story">
+      <h3>{text.heroStory()}</h3>
       <p
         ref={contentRef}
-        className="dp-history-text dp-dropcap"
+        className="story-text dropcap"
         style={{ maxHeight: height }}
       >
         {historyText}
       </p>
-      <div className="dp-card-footer">
-        <Link to="/characters" className="dp-edit-history-link">
-          <Icon icon="fa-solid fa-pen-to-square" /> {text.editHistory()}
+      <div className="card-footer">
+        <Link to="/characters" className="edit-story-link">
+          <Icon icon="fa-solid fa-pen-to-square" /> {text.editStory()}
         </Link>
-        <a className="dp-log-link" onClick={() => setExpanded(e => !e)}>
+        <a className="log-link" onClick={() => setExpanded(e => !e)}>
           {expanded ? text.showLess() : text.readMore()}{' '}
-          <Icon icon={expanded ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-right'} />
+          <Icon
+            icon={expanded ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-right'}
+          />
         </a>
       </div>
     </div>

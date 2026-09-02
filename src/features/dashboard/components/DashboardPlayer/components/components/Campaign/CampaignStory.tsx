@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
-import { campaignText } from './Campaign.langs'
+import { campaignText } from './CampaignStory.langs'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import './Campaign.css'
+import './CampaignStory.css'
 
 interface CampaignProps {
   title: string
@@ -27,30 +27,32 @@ export const Campaign = ({ title, quote, description }: CampaignProps) => {
     return () => observer.disconnect()
   }, [])
 
-  const collapsedHeight = quote ? '3.2em' : '4.8em'
+  const collapsedHeight = quote ? '4rem' : '4.5rem'
   const height = expanded ? `${scrollHeight}px` : collapsedHeight
 
   return (
-    <div className="dp-card dp-paper campaign-card">
+    <div className="card paper cmp-campaign-story">
       <h3>{title}</h3>
-      {quote && <p className="dp-quote">{quote}</p>}
+      {quote && <p className="quote">{quote}</p>}
       <div
         ref={contentRef}
-        className="dp-history-text"
+        className="story-text"
         style={{ maxHeight: height }}
       >
         <p>{description}</p>
       </div>
-      <div className="dp-chronicle-footer">
+      <div className="card-footer">
         <Button
           title={text.realmMap()}
           icon="fa-solid fa-map"
           theme="primary"
-          handlingClass="dp-map-btn-gold"
+          handlingClass="map-btn-gold"
         />
-        <a className="dp-log-link" onClick={() => setExpanded(e => !e)}>
+        <a className="log-link" onClick={() => setExpanded(e => !e)}>
           {expanded ? text.showLess() : text.readMore()}{' '}
-          <Icon icon={expanded ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-right'} />
+          <Icon
+            icon={expanded ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-right'}
+          />
         </a>
       </div>
     </div>

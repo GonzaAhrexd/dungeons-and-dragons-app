@@ -1,31 +1,37 @@
-.dp-card.dp-paper.hero-history-card {
-  padding: 1.1rem 1.4rem;
+.card.paper.cmp-hero-story {
+  padding: 1rem 1.15rem;
   border: 1px solid var(--pal-gold-700);
-  flex-shrink: 0;
   background: var(--pal-paper-gradient);
   color: var(--pal-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
 
   h3 {
     font-family: var(--pal-font-display);
-    font-size: var(--pal-fs-l);
+    font-size: var(--pal-fs-s);
     color: var(--pal-ink);
     letter-spacing: 0.5px;
-    margin: 0 0 0.9rem 0;
+    margin: 0 0 0.4rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .dp-history-text {
+  .story-text {
     font-family: var(--pal-font-body);
-    font-size: var(--pal-fs-m);
+    font-size: var(--pal-fs-s);
     line-height: var(--pal-lh-base);
     color: var(--pal-ink-soft);
-    text-align: justify;
+    text-align: left;
     margin: 0;
     overflow: hidden;
     transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
-    &.dp-dropcap::first-letter {
+    &.dropcap::first-letter {
       font-family: var(--pal-font-display);
-      font-size: 3.2rem;
+      font-size: 2.2rem;
       font-weight: 700;
       line-height: 0.78;
       float: left;
@@ -35,12 +41,15 @@
     }
   }
 
-  .dp-card-footer {
+  .card-footer {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     border-top: 1px solid var(--pal-parchment-dark);
-    padding-top: var(--pal-size-s);
-    margin-top: var(--pal-size-s);
+    padding-top: 0.4rem;
+    margin-top: 0.4rem;
 
     .cmp-icon {
       color: var(--pal-seal-bright);
@@ -51,7 +60,7 @@
     }
   }
 
-  .dp-edit-history-link {
+  .edit-story-link {
     font-family: var(--pal-font-display);
     color: var(--pal-seal-bright);
     font-size: var(--pal-fs-xs);
@@ -68,7 +77,7 @@
     }
   }
 
-  .dp-log-link {
+  .log-link {
     font-family: var(--pal-font-display);
     font-size: var(--pal-fs-xs);
     color: var(--pal-seal-bright);
@@ -87,7 +96,7 @@
 }
 
 @media (max-width: 64rem) {
-  .dp-card.dp-paper.hero-history-card {
+  .card.paper.cmp-hero-story {
     padding: 1.4rem 1.25rem;
   }
 }

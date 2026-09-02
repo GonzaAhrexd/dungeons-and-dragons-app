@@ -54,7 +54,7 @@
       gap: var(--pal-size-s);
       overflow-y: auto;
 
-      > .history-container {
+      > .story-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: var(--pal-size-s);
