@@ -8,5 +8,7 @@ export * from './editCampaign/editCampaignResponse';
 export * from './getCampaignById/getCampaignByIdResponse';
 export * from './getInvitations/getInvitationsResponse';
 export * from './getMyCampaigns/getMyCampaignsResponse';
+export * from './rejectInvitation/rejectInvitationParams';
+export * from './rejectInvitation/rejectInvitationResponse';
 export * from './sendInvitation/sendInvitationRequest';
 export * from './sendInvitation/sendInvitationResponse';

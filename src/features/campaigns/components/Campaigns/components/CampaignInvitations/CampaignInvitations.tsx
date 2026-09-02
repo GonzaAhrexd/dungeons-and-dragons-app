@@ -7,22 +7,21 @@ import { useText } from '@/features/langs/hooks/useText'
 import { campaignsInvitationsText } from './CampaignInvitations.langs'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
+import { useRejectInvitation } from '@/features/campaigns/hooks/useRejectInvitation'
 export const CampaignInvitations = () => {
   const text = useText(campaignsInvitationsText)
 
   const { data: invitations, isLoading, isError } = useGetInvitations()
 
   const { mutateAsync: acceptInvitation } = useAcceptInvitation()
+  const { mutateAsync: rejectInvitation } = useRejectInvitation()
 
   const handleAcceptInvitation = async (invitationId: string) => {
     await acceptInvitation({ id: invitationId })
   }
 
-  const handleDeclineInvitation = (invitationId: string) => {
-    return () => {
-      console.log(`Decline invitation with ID: ${invitationId}`)
-      // Implement the logic to decline the invitation here
-    }
+  const handleDeclineInvitation = async (invitationId: string) => {
+    await rejectInvitation({ id: invitationId })
   }
 
   if (isLoading) {
@@ -62,7 +61,7 @@ export const CampaignInvitations = () => {
                 icon="fa-solid fa-times"
                 handlingClass="decline"
                 loader
-                onClick={handleDeclineInvitation(invitation.id)}
+                onClick={() => handleDeclineInvitation(invitation.id)}
               />
             </div>
           </div>
