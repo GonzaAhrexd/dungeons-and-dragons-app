@@ -1,4 +1,4 @@
-.dp-stats {
+.cmp-stats {
   position: relative;
   background: var(--pal-grayscale-900);
   border: 1px solid var(--pal-gold-800);
@@ -7,12 +7,12 @@
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 
-  &:hover:not(.dp-stats--editing) {
+  &:hover:not(.editing) {
     border-color: var(--pal-gold-600);
     box-shadow: 0 var(--pal-size-2xs) var(--pal-size-s) var(--pal-shadow);
   }
 
-  &.dp-stats--editing {
+  &.editing {
     cursor: default;
     border-color: var(--pal-gold-600);
 
@@ -21,7 +21,7 @@
       box-shadow: none;
     }
 
-    .dp-stats-edit-hint {
+    .edit-hint {
       opacity: 1;
       pointer-events: auto;
       cursor: pointer;
@@ -32,7 +32,7 @@
     }
   }
 
-  .dp-stats-header {
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,7 +51,7 @@
     }
   }
 
-  .dp-stats-edit-hint {
+  .edit-hint {
     font-size: var(--pal-fs-xs);
     color: var(--pal-gold-600);
     opacity: 0;
@@ -60,6 +60,7 @@
     align-items: center;
     gap: var(--pal-size-2xs);
     pointer-events: none;
+    margin: -5px 0 0px;
 
     span {
       font-family: var(--pal-font-display);
@@ -68,17 +69,17 @@
     }
   }
 
-  &:hover .dp-stats-edit-hint {
+  &:hover .edit-hint {
     opacity: 1;
   }
 
-  .dp-stats-grid {
+  .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--pal-gold-800);
 
-    > .dp-stat {
+    > .stat {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -89,7 +90,7 @@
       background: var(--pal-grayscale-900);
       transition: filter 0.3s ease, padding 0.3s ease, min-height 0.3s ease;
 
-      .dp-stat-label {
+      .stat-label {
         font-family: var(--pal-font-display);
         font-size: var(--pal-fs-xs);
         color: var(--pal-gold-700);
@@ -98,7 +99,7 @@
         transition: color 0.15s ease;
       }
 
-      .dp-stat-value {
+      .stat-value {
         font-family: var(--pal-font-display);
         font-size: var(--pal-fs-l);
         color: var(--pal-gold-100);
@@ -107,7 +108,7 @@
         transition: color 0.15s ease;
       }
 
-      .dp-stat-btn {
+      .stat-btn {
         position: absolute;
         left: 0;
         width: 100%;
@@ -134,7 +135,7 @@
           pointer-events: none;
         }
 
-        &.dp-stat-btn--up {
+        &.stat-btn--up {
           top: 0;
 
           &::before {
@@ -142,7 +143,7 @@
           }
         }
 
-        &.dp-stat-btn--down {
+        &.stat-btn--down {
           bottom: 0;
 
           &::before {
@@ -159,18 +160,18 @@
         }
       }
 
-      &.dp-stat--hovered {
+      &.hovered {
         filter: brightness(1.2);
 
-        .dp-stat-label {
+        .stat-label {
           color: var(--pal-gold-500);
         }
 
-        .dp-stat-value {
+        .stat-value {
           color: var(--pal-gold-200);
         }
 
-        .dp-stat-btn {
+        .stat-btn {
           opacity: 1;
           pointer-events: auto;
         }
@@ -178,7 +179,7 @@
     }
   }
 
-  .dp-stats-footer-wrapper {
+  .footer-wrapper {
     display: grid;
     grid-template-rows: 0fr;
     overflow: hidden;
@@ -187,7 +188,7 @@
     pointer-events: none;
     transition: grid-template-rows 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 
-    &.dp-stats-footer-wrapper--open {
+    &.open {
       grid-template-rows: 1fr;
       opacity: 1;
       visibility: visible;
@@ -195,14 +196,14 @@
     }
   }
 
-  .dp-stats-footer {
+  .footer {
     overflow: hidden;
     min-height: 0;
     display: flex;
     gap: var(--pal-size-xs);
     padding: var(--pal-size-xs) 0 0;
 
-    .dp-stats-footer-btn {
+    .footer-btn {
       flex: 1;
       font-size: var(--pal-fs-xs);
       padding: var(--pal-size-2xs) var(--pal-size-xs);
@@ -216,30 +217,30 @@
 }
 
 @media (max-width: 64rem) {
-  .dp-stats {
+  .cmp-stats {
     padding: var(--pal-size-m);
 
-    .dp-stats-edit-hint {
+    .edit-hint {
       opacity: 1;
       pointer-events: auto;
     }
 
-    .dp-stats-grid {
+    .grid {
       width: 100%;
       gap: 2px;
 
-      > .dp-stat {
+      > .stat {
         min-width: 0;
         padding: var(--pal-size-m) var(--pal-size-2xs);
 
-        .dp-stat-btn {
+        .stat-btn {
           opacity: 1;
           pointer-events: auto;
         }
       }
     }
 
-    &.dp-stats--editing .dp-stats-grid > .dp-stat {
+    &.editing .grid > .stat {
       padding-top: 1.3rem;
       padding-bottom: 1.3rem;
       min-height: 3rem;

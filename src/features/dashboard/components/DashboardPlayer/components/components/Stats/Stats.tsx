@@ -62,15 +62,15 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
 
   return (
     <div
-      className={`dp-stats${editing ? ' dp-stats--editing' : ''}`}
+      className={`cmp-stats${editing ? ' editing' : ''}`}
       onClick={!editing ? handleStartEdit : undefined}
     >
-      <div className="dp-stats-header">
+      <div className="header">
         <span>
           <Icon icon="fa-solid fa-shield-halved" /> {text.stats()}
         </span>
         <span
-          className="dp-stats-edit-hint"
+          className="edit-hint"
           onClick={editing ? handleCancel : undefined}
         >
           <Icon icon={editing ? 'fa-solid fa-arrow-left' : 'fa-solid fa-pen'} />{' '}
@@ -78,7 +78,7 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
         </span>
       </div>
 
-      <div className="dp-stats-grid">
+      <div className="grid">
         {displayStats.map((s, index) => {
           const key = s.label.toLowerCase()
           const labelText = statLabels[key] || s.label
@@ -86,24 +86,24 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
           return (
             <div
               key={s.label}
-              className={`dp-stat${isHovered && editing ? ' dp-stat--hovered' : ''}`}
+              className={`stat${isHovered && editing ? ' hovered' : ''}`}
               onMouseEnter={() => editing && setHoveredIndex(index)}
               onMouseLeave={() => editing && setHoveredIndex(null)}
             >
               {editing && (
                 <button
-                  className="dp-stat-btn dp-stat-btn--up"
+                  className="stat-btn stat-btn--up"
                   onClick={e => adjust(index, 1, e)}
                   aria-label={`Increase ${labelText}`}
                 >
                   <Icon icon="fa-solid fa-chevron-up" />
                 </button>
               )}
-              <span className="dp-stat-label">{labelText}</span>
-              <span className="dp-stat-value">{s.value}</span>
+              <span className="stat-label">{labelText}</span>
+              <span className="stat-value">{s.value}</span>
               {editing && (
                 <button
-                  className="dp-stat-btn dp-stat-btn--down"
+                  className="stat-btn stat-btn--down"
                   onClick={e => adjust(index, -1, e)}
                   aria-label={`Decrease ${labelText}`}
                 >
@@ -115,20 +115,18 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
         })}
       </div>
 
-      <div
-        className={`dp-stats-footer-wrapper${editing ? ' dp-stats-footer-wrapper--open' : ''}`}
-      >
-        <div className="dp-stats-footer">
+      <div className={`footer-wrapper${editing ? ' open' : ''}`}>
+        <div className="footer">
           <Button
             title={text.cancel()}
             theme="secondary"
-            handlingClass="dp-stats-footer-btn"
+            handlingClass="footer-btn"
             onClick={handleCancel}
           />
           <Button
             title={text.save()}
             theme="primary"
-            handlingClass="dp-stats-footer-btn"
+            handlingClass="footer-btn"
             onClick={handleSave}
           />
         </div>
