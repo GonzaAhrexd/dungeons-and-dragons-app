@@ -1,24 +1,18 @@
 .cmp-dropdown {
-  --gap: var(--pal-size-3xs);
-
   position-area: bottom;
-  position-try-fallbacks: flip-block;
+  position-try-fallbacks:
+    flip-block,
+    flip-inline,
+    flip-block flip-inline;
 
   flex-direction: column;
   margin: var(--pal-size-m);
-  border-width: var(--line-thickness);
-  border-color: var(--pal-color-a-100);
-  padding: var(--gap);
-  max-width: 40rem;
-  width: 100%;
+  padding: var(--pal-size-3xs);
+  width: min(40rem, 100% - 2 * var(--pal-size-m));
 
-  border-radius: calc(var(--pal-size-xs) + var(--gap));
-  box-shadow: var(--pal-shadow-1);
   scale: 0.9;
   opacity: 0;
   transform-origin: top left;
-
-
 
   &:popover-open {
     display: flex;
@@ -26,15 +20,9 @@
     scale: initial;
     opacity: initial;
 
-    &.gallery {
-      display: grid;
-    }
-
     @starting-style {
       scale: 0.9;
       opacity: 0;
     }
   }
-
-
 }

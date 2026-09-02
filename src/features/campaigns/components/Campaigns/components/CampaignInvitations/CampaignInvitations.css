@@ -1,13 +1,22 @@
 .cmp-campaign-invitations {
-  background-color: var(--pal-grayscale-800);
-  padding: var(--pal-size-m);
   display: flex;
   flex-direction: column;
+  gap: var(--pal-size-xs);
+  border-width: 2px;
+  border-style: solid;
 
-  > h1 {
-    font-size: var(--pal-fs-xl);
-    font-weight: var(--pal-font-weight-bold);
-    color: var(--pal-gold-500);
+  border-color: var(--pal-gold-500);
+  padding: var(--pal-size-m);
+  background-color: var(--pal-grayscale-900);
+
+  > .header {
+    display: flex;
+    gap: var(--pal-size-s);
+    > h1 {
+      font-size: var(--pal-fs-xl);
+      font-weight: var(--pal-font-weight-bold);
+      color: var(--pal-gold-500);
+    }
   }
 
   > p {
@@ -22,27 +31,34 @@
 
     > .invitation {
       display: flex;
-      gap: var(--pal-size-xs);
-      padding: var(--pal-size-m);
-      background-color: var(--pal-grayscale-700);
-      border-radius: var(--pal-size-xs);
-      width: 100%;
       justify-content: space-between;
+      gap: var(--pal-size-xs);
+      border-width: 1px;
+      border-style: solid;
+      border-color: var(--pal-gold-500);
+      padding: var(--pal-size-m);
+      width: 100%;
+      border-radius: var(--pal-size-2xs);
+      background-color: var(--pal-grayscale-800);
 
       > .invitation-header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        align-items: center;
 
         > h2 {
           font-size: var(--pal-fs-l);
-          font-weight: var(--pal-font-weight-bold);
+          font-weight: 800;
           color: var(--pal-gold-500);
         }
+
         > p {
           font-size: var(--pal-fs-m);
           color: var(--pal-grayscale-200);
+          > span {
+            font-weight: var(--pal-font-weight-bold);
+            color: var(--pal-gold-500);
+          }
         }
       }
 
@@ -52,14 +68,14 @@
 
         > button {
           padding: var(--pal-size-xs) var(--pal-size-s);
-          border-radius: var(--pal-size-xs);
           font-size: var(--pal-fs-s);
           font-weight: var(--pal-font-weight-bold);
+          border-radius: var(--pal-size-xs);
           cursor: pointer;
 
           &.accept {
-            background-color: var(--pal-gold-500);
             color: var(--pal-grayscale-900);
+            background-color: var(--pal-gold-500);
 
             > .cmp-icon {
               color: var(--pal-grayscale-900);
@@ -67,8 +83,8 @@
           }
 
           &.decline {
-            background-color: var(--pal-red-500);
             color: var(--pal-grayscale-900);
+            background-color: var(--pal-red-500);
           }
         }
       }
