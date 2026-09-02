@@ -1,118 +1,90 @@
-import { useState } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { inventoryText } from './Inventory.langs'
-import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
+import { Icon } from '@/shared/ui/Icon/Icon'
+import { ResourceDetails, ResourceEdit } from './components'
+import {
+  useInventory,
+  DEFAULT_EQUIPMENT,
+  DEFAULT_INVENTORY,
+  DEFAULT_RESOURCES,
+  RESOURCE_ICON_PACKAGE,
+} from './hooks/useInventory'
+import type {
+  EquipmentItem,
+  InventoryItem,
+  Resource,
+  InventoryProps,
+} from './interfaces'
 import './Inventory.css'
 
-export interface EquipmentItem {
-  id: string
-  icon: string
-  title: string
-  description: string
-}
-
-export interface InventoryItem {
-  id: string
-  title: string
-  description: string
-  quantity: number
-}
-
-interface Resource {
-  icon: string
-  label: string
-  value: number
-}
-
-interface InventoryProps {
-  equipmentItems?: EquipmentItem[]
-  inventoryItems?: InventoryItem[]
-  resources?: Resource[]
-  maxSlots?: number
-  onAddItem?: () => void
-}
-
-const DEFAULT_EQUIPMENT: EquipmentItem[] = [
-  {
-    id: 'eq-1',
-    icon: 'fa-solid fa-helmet-safety',
-    title: 'Yelmo de Hierro',
-    description: '+1 CA',
-  },
-  {
-    id: 'eq-2',
-    icon: 'fa-solid fa-vest',
-    title: 'Pechera de Cuero',
-    description: 'Ligera y flexible',
-  },
-  {
-    id: 'eq-3',
-    icon: 'fa-solid fa-shoe-prints',
-    title: 'Botas de Viaje',
-    description: 'Resistentes al lodo',
-  },
-]
-
-const DEFAULT_INVENTORY: InventoryItem[] = [
-  {
-    id: 'inv-1',
-    title: 'Poción de Curación',
-    description: 'Restaura 2d4+2 HP',
-    quantity: 3,
-  },
-  {
-    id: 'inv-2',
-    title: 'Cuerda de Cáñamo',
-    description: '50 pies de largo',
-    quantity: 1,
-  },
-]
-
-const DEFAULT_RESOURCES = [
-  { icon: 'fa-solid fa-coins', label: 'Oro', value: 50 },
-  { icon: 'fa-solid fa-water', label: 'Mana', value: 1300 },
-]
+export type { EquipmentItem, InventoryItem, Resource, InventoryProps }
 
 export const Inventory = ({
   equipmentItems = DEFAULT_EQUIPMENT,
   inventoryItems = DEFAULT_INVENTORY,
   resources = DEFAULT_RESOURCES,
-  maxSlots = 5,
+  maxSlots = 10,
   onAddItem,
 }: InventoryProps) => {
   const text = useText(inventoryText)
-  const [activeTab, setActiveTab] = useState<'equipment' | 'inventory'>(
-    'equipment',
-  )
-
-  const emptyEquipmentSlots = Math.max(0, maxSlots - equipmentItems.length)
-  const emptyInventorySlots = Math.max(0, maxSlots - inventoryItems.length)
+  const {
+    activeTab,
+    setActiveTab,
+    resourcesList,
+    editingResourceIndex,
+    emptyEquipmentSlots,
+    emptyInventorySlots,
+    handleStartEditResource,
+    handleSaveResource,
+    handleDeleteResource,
+    handleAddNewResource,
+  } = useInventory({ equipmentItems, inventoryItems, resources, maxSlots })
 
   return (
     <div className="cmp-inventory">
       <div className="top-bar">
-        <div className="resources">
-          {resources.map(resource => (
-            <div key={resource.label} className="resource-item">
-              <div className="resource-icon">
-                <Icon icon={resource.icon} />
-              </div>
-              <div className="resource-info">
-                <span className="resource-label">{resource.label}</span>
-                <span className="resource-value">{resource.value}</span>
-              </div>
-            </div>
-          ))}
+        <div className="top-bar-header">
+          <div className="resources-title-wrapper">
+            <Icon icon="fa-solid fa-box-open" />
+            <span className="resources-title">{text.resources()}</span>
+          </div>
+          <Button
+            theme="primary"
+            title={text.add()}
+            icon="fa-solid fa-plus"
+            handlingClass="add-btn"
+            onClick={onAddItem ? onAddItem : handleAddNewResource}
+          />
         </div>
 
-        <Button
-          theme="primary"
-          title={text.add()}
-          icon="fa-solid fa-plus"
-          handlingClass="add-btn"
-          onClick={onAddItem}
-        />
+        <div className="resources">
+          {resourcesList.map((resource, index) => {
+            if (editingResourceIndex === index) {
+              return (
+                <ResourceEdit
+                  key={`edit-${index}`}
+                  initialIcon={resource.icon}
+                  initialLabel={resource.label}
+                  initialValue={resource.value}
+                  iconPackage={RESOURCE_ICON_PACKAGE}
+                  onSave={updated => handleSaveResource(index, updated)}
+                  onDelete={() => handleDeleteResource(index)}
+                />
+              )
+            }
+
+            return (
+              <ResourceDetails
+                key={resource.label || index}
+                icon={resource.icon}
+                label={resource.label}
+                value={resource.value}
+                onClick={() => handleStartEditResource(index)}
+              />
+            )
+          })}
+        </div>
       </div>
 
       <div className="tabs-header">

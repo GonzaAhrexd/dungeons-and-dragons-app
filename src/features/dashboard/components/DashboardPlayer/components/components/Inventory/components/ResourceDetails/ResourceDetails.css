@@ -1,0 +1,56 @@
+.cmp-resource-details {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--pal-radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.25);
+
+    > .resource-icon {
+      border-color: var(--pal-gold-500);
+      color: var(--pal-gold-200);
+      background: rgba(212, 175, 55, 0.2);
+    }
+  }
+
+  > .resource-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--pal-gold-700);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    color: var(--pal-gold-400);
+    background: rgba(212, 175, 55, 0.1);
+    transition: all 0.2s ease;
+  }
+
+  > .resource-info {
+    display: flex;
+    flex-direction: column;
+
+    > .resource-label {
+      font-family: var(--pal-font-display);
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--pal-grayscale-400);
+    }
+
+    > .resource-value {
+      font-family: var(--pal-font-mono);
+      font-size: var(--pal-fs-m);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--pal-gold-300);
+    }
+  }
+}

@@ -6,6 +6,11 @@ interface InventoryTexts {
   add: string
   emptySlot: string
   slots: string
+  editResource: string
+  resourceNamePlaceholder: string
+  delete: string
+  accept: string
+  resources: string
 }
 
 export const inventoryText: LanguagesText<InventoryTexts> = {
@@ -15,6 +20,11 @@ export const inventoryText: LanguagesText<InventoryTexts> = {
     add: 'ADD',
     emptySlot: 'Empty Slot',
     slots: 'Slots',
+    editResource: 'Edit resource',
+    resourceNamePlaceholder: 'Name',
+    delete: 'Delete',
+    accept: 'Accept',
+    resources: 'Resources',
   },
   es: {
     equipment: 'Equipamiento',
@@ -22,5 +32,11 @@ export const inventoryText: LanguagesText<InventoryTexts> = {
     add: 'AÑADIR',
     emptySlot: 'Ranura Vacía',
     slots: 'Espacios',
+    editResource: 'Editar recurso',
+    resourceNamePlaceholder: 'Nombre',
+    delete: 'Borrar',
+    accept: 'Aceptar',
+    resources: 'Recursos',
   },
 }
+

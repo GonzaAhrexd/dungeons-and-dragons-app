@@ -20,66 +20,51 @@
 
   > .top-bar {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: var(--pal-size-s);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    flex-direction: column;
+    gap: var(--pal-size-xs);
 
-    > .resources {
+    > .top-bar-header {
       display: flex;
       align-items: center;
-      gap: var(--pal-size-l);
+      justify-content: space-between;
+      width: 100%;
+      gap: var(--pal-size-m);
 
-      > .resource-item {
+      > .resources-title-wrapper {
         display: flex;
         align-items: center;
-        gap: 0.6rem;
+        gap: var(--pal-size-xs);
+        color: var(--pal-gold-400);
+        padding-bottom: var(--pal-size-xs);
+        border-bottom: 1px solid var(--pal-gold-900);
+        flex: 1;
 
-        > .resource-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 32px;
-          height: 32px;
-          border: 1px solid var(--pal-gold-700);
-          border-radius: 50%;
-          font-size: 0.9rem;
-          color: var(--pal-gold-400);
-          background: rgba(212, 175, 55, 0.1);
+        > .resources-title {
+          font-family: var(--pal-font-display);
+          font-size: var(--pal-fs-xs);
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
         }
+      }
 
-        > .resource-info {
-          display: flex;
-          flex-direction: column;
+      > .add-btn {
+        width: auto;
+        padding: 0.35rem 0.85rem;
+        font-size: var(--pal-fs-xs);
+        gap: 0.2rem;
 
-          > .resource-label {
-            font-family: var(--pal-font-display);
-            font-size: 0.65rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--pal-grayscale-400);
-          }
-
-          > .resource-value {
-            font-family: var(--pal-font-mono);
-            font-size: var(--pal-fs-m);
-            font-weight: 700;
-            line-height: 1.1;
-            color: var(--pal-gold-300);
-          }
+        > .cmp-icon {
+          color: var(--pal-grayscale-1000);
         }
       }
     }
 
-    > .add-btn {
-      width: auto;
-      padding: 0.35rem 0.85rem;
-      font-size: var(--pal-fs-xs);
-      gap: 0.2rem;
-
-      > .cmp-icon {
-        color: var(--pal-grayscale-1000);
-      }
+    > .resources {
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-m);
+      flex-wrap: wrap;
     }
   }
 
@@ -257,11 +242,13 @@
     padding: var(--pal-size-m);
 
     > .top-bar {
-      > .add-btn {
-        padding: 0.4rem 0.65rem;
+      > .top-bar-header {
+        > .add-btn {
+          padding: 0.4rem 0.65rem;
 
-        p {
-          display: none;
+          p {
+            display: none;
+          }
         }
       }
     }
