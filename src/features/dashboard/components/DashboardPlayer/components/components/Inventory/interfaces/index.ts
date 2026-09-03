@@ -15,7 +15,7 @@ export interface InventoryItem {
   id: string
   title: string
   description: string
-  quantity: number
+  quantity?: number
 }
 
 export interface Resource {
@@ -47,6 +47,17 @@ export interface EquipmentEditProps {
     title: string
     description: string
     modifiers: EquipmentModifier[]
+  }) => void
+  onDelete: () => void
+  onCancel?: () => void
+}
+
+export interface InventoryEditProps {
+  initialItem?: Partial<InventoryItem>
+  onSave: (updated: {
+    title: string
+    description: string
+    quantity?: number
   }) => void
   onDelete: () => void
   onCancel?: () => void
@@ -85,6 +96,19 @@ export interface EquipmentListProps {
 export interface InventoryListProps {
   items: InventoryItem[]
   emptySlots: number
+  editingIndex?: number | null
+  onItemClick?: (index: number) => void
+  onEmptySlotClick?: () => void
+  onSaveItem?: (
+    index: number,
+    updated: {
+      title: string
+      description: string
+      quantity?: number
+    },
+  ) => void
+  onDeleteItem?: (index: number) => void
+  onCancelItem?: (index: number) => void
 }
 
 export interface ResourceDetailsProps {

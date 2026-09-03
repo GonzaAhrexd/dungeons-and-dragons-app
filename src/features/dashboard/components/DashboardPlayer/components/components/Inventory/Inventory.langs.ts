@@ -18,6 +18,12 @@ interface InventoryTexts {
   removeModifier: string
   editEquipment: string
   addEquipment: string
+  inventoryTitlePlaceholder: string
+  inventoryDescPlaceholder: string
+  inventoryQtyPlaceholder: string
+  editInventory: string
+  addInventory: string
+  quantity: string
   confirmDelete: string
   cancel: string
 }
@@ -41,6 +47,12 @@ export const inventoryText: LanguagesText<InventoryTexts> = {
     removeModifier: 'Remove modifier',
     editEquipment: 'Edit equipment',
     addEquipment: 'Add new equipment',
+    inventoryTitlePlaceholder: 'Item Title',
+    inventoryDescPlaceholder: 'Description',
+    inventoryQtyPlaceholder: 'Qty',
+    editInventory: 'Edit item',
+    addInventory: 'Add new item',
+    quantity: 'QUANTITY',
     confirmDelete: 'Confirm delete',
     cancel: 'Cancel',
   },
@@ -62,6 +74,12 @@ export const inventoryText: LanguagesText<InventoryTexts> = {
     removeModifier: 'Eliminar bonificador',
     editEquipment: 'Editar equipamiento',
     addEquipment: 'Añadir nuevo equipamiento',
+    inventoryTitlePlaceholder: 'Título del objeto',
+    inventoryDescPlaceholder: 'Descripción',
+    inventoryQtyPlaceholder: 'Cant.',
+    editInventory: 'Editar objeto',
+    addInventory: 'Añadir nuevo objeto',
+    quantity: 'CANTIDAD',
     confirmDelete: 'Confirmar eliminación',
     cancel: 'Cancelar',
   },

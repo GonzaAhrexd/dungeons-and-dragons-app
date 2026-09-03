@@ -124,8 +124,14 @@ export const useInventory = ({
     number | null
   >(null)
 
+  const [inventoryList, setInventoryList] =
+    useState<InventoryItem[]>(inventoryItems)
+  const [editingInventoryIndex, setEditingInventoryIndex] = useState<
+    number | null
+  >(null)
+
   const emptyEquipmentSlots = Math.max(0, maxSlots - equipmentList.length)
-  const emptyInventorySlots = Math.max(0, maxSlots - inventoryItems.length)
+  const emptyInventorySlots = Math.max(0, maxSlots - inventoryList.length)
 
   const handleStartEditResource = (index: number) => {
     const itemToEdit = resourcesList[index]
@@ -238,6 +244,61 @@ export const useInventory = ({
     setEditingEquipmentIndex(null)
   }
 
+  const handleStartEditInventory = (index: number) => {
+    const cleaned = inventoryList.filter(item => item.title.trim() !== '')
+    setInventoryList(cleaned)
+    const targetIndex = cleaned.indexOf(inventoryList[index])
+    setEditingInventoryIndex(targetIndex >= 0 ? targetIndex : index)
+  }
+
+  const handleEmptyInventorySlotClick = () => {
+    if (inventoryList.length >= maxSlots) return
+    const cleaned = inventoryList.filter(item => item.title.trim() !== '')
+    const newItem: InventoryItem = {
+      id: `inv-${Date.now()}`,
+      title: '',
+      description: '',
+      quantity: 1,
+    }
+    setInventoryList([...cleaned, newItem])
+    setEditingInventoryIndex(cleaned.length)
+  }
+
+  const handleSaveInventory = (
+    index: number,
+    updated: {
+      title: string
+      description: string
+      quantity?: number
+    },
+  ) => {
+    const trimmedTitle = updated.title.trim()
+    if (!trimmedTitle) {
+      handleDeleteInventory(index)
+      return
+    }
+
+    setInventoryList(prev => {
+      const updatedList = prev.map((item, i) =>
+        i === index ? { ...item, ...updated, title: trimmedTitle } : item,
+      )
+      return updatedList.filter(item => item.title.trim() !== '')
+    })
+    setEditingInventoryIndex(null)
+  }
+
+  const handleDeleteInventory = (index: number) => {
+    setInventoryList(prev =>
+      prev.filter((item, i) => i !== index && item.title.trim() !== ''),
+    )
+    setEditingInventoryIndex(null)
+  }
+
+  const handleCancelInventory = () => {
+    setInventoryList(prev => prev.filter(item => item.title.trim() !== ''))
+    setEditingInventoryIndex(null)
+  }
+
   return {
     activeTab,
     setActiveTab,
@@ -245,6 +306,8 @@ export const useInventory = ({
     editingResourceIndex,
     equipmentList,
     editingEquipmentIndex,
+    inventoryList,
+    editingInventoryIndex,
     emptyEquipmentSlots,
     emptyInventorySlots,
     handleStartEditResource,
@@ -257,5 +320,10 @@ export const useInventory = ({
     handleSaveEquipment,
     handleDeleteEquipment,
     handleCancelEquipment,
+    handleStartEditInventory,
+    handleEmptyInventorySlotClick,
+    handleSaveInventory,
+    handleDeleteInventory,
+    handleCancelInventory,
   }
 }

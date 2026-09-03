@@ -39,6 +39,10 @@
       border-color 0.2s ease,
       background 0.2s ease;
 
+    &.clickable {
+      cursor: pointer;
+    }
+
     &:hover {
       border-color: var(--pal-gold-800);
       background: rgba(30, 30, 30, 0.85);
@@ -83,6 +87,22 @@
     border: 1px dashed rgba(255, 255, 255, 0.08);
     border-radius: 6px;
     background: rgba(0, 0, 0, 0.15);
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+
+    &.clickable {
+      cursor: pointer;
+
+      &:hover {
+        border-color: var(--pal-gold-800);
+        background: rgba(212, 175, 55, 0.05);
+
+        > span {
+          color: var(--pal-gold-400);
+        }
+      }
+    }
 
     > span {
       font-family: var(--pal-font-display);

@@ -35,6 +35,8 @@ export const Inventory = ({
     editingResourceIndex,
     equipmentList,
     editingEquipmentIndex,
+    inventoryList,
+    editingInventoryIndex,
     emptyEquipmentSlots,
     emptyInventorySlots,
     handleStartEditResource,
@@ -47,6 +49,11 @@ export const Inventory = ({
     handleSaveEquipment,
     handleDeleteEquipment,
     handleCancelEquipment,
+    handleStartEditInventory,
+    handleEmptyInventorySlotClick,
+    handleSaveInventory,
+    handleDeleteInventory,
+    handleCancelInventory,
   } = useInventory({ equipmentItems, inventoryItems, resources, maxSlots })
 
   return (
@@ -134,8 +141,14 @@ export const Inventory = ({
             onCancelItem={handleCancelEquipment}
           />
           <InventoryList
-            items={inventoryItems}
+            items={inventoryList}
             emptySlots={emptyInventorySlots}
+            editingIndex={editingInventoryIndex}
+            onItemClick={handleStartEditInventory}
+            onEmptySlotClick={handleEmptyInventorySlotClick}
+            onSaveItem={handleSaveInventory}
+            onDeleteItem={handleDeleteInventory}
+            onCancelItem={handleCancelInventory}
           />
         </div>
       </div>
