@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
-import { Icon } from '../Icon/Icon'
 import './Select.css'
 
 export interface SelectOption {
@@ -24,73 +22,25 @@ export const Select = ({
   className = '',
   disabled = false,
 }: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const selectRef = useRef<HTMLDivElement>(null)
-
-  const selectedOption = options.find(opt => opt.value === value)
-
-  useEffect(() => {
-    if (!isOpen) return
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        selectRef.current &&
-        !selectRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [isOpen])
-
-  const handleSelect = (val: string, e: React.MouseEvent) => {
-    e.stopPropagation()
-    onChange(val)
-    setIsOpen(false)
-  }
-
   return (
-    <div
-      ref={selectRef}
-      className={`cmp-select ${className} ${isOpen ? 'open' : ''} ${disabled ? 'disabled' : ''}`}
-    >
-      <button
-        type="button"
-        className="select-trigger"
+    <div className={`cmp-select ${className} ${disabled ? 'disabled' : ''}`}>
+      <select
+        className="select-native"
+        value={value}
         disabled={disabled}
-        onClick={e => {
-          e.stopPropagation()
-          setIsOpen(prev => !prev)
-        }}
+        onChange={e => onChange(e.target.value)}
       >
-        <span className="select-value">
-          {selectedOption ? selectedOption.label : placeholder}
-        </span>
-        <span className="select-arrow">
-          <Icon icon="fa-solid fa-chevron-down" />
-        </span>
-      </button>
-
-      {isOpen && (
-        <div className="select-dropdown" onClick={e => e.stopPropagation()}>
-          <div className="select-options-list">
-            {options.map(option => (
-              <button
-                key={option.value}
-                type="button"
-                className={`select-option ${value === option.value ? 'selected' : ''}`}
-                onClick={e => handleSelect(option.value, e)}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+        {!options.find(o => o.value === value) && (
+          <option value="" disabled>
+            {placeholder}
+          </option>
+        )}
+        {options.map(option => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   )
 }
