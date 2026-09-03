@@ -20,7 +20,7 @@ export const Select = ({
   value,
   options,
   onChange,
-  placeholder = 'Seleccionar...',
+  placeholder = 'Seleccionar',
   className = '',
   disabled = false,
 }: SelectProps) => {
