@@ -98,6 +98,8 @@ export const VitalsEdit = ({
             />
             <div className="input-numbers">
               <input
+                id={`vital-current-${bar.id}`}
+                name={`vital-current-${bar.id}`}
                 type="number"
                 min="0"
                 className="input-val"
@@ -112,6 +114,8 @@ export const VitalsEdit = ({
               />
               <span>/</span>
               <input
+                id={`vital-max-${bar.id}`}
+                name={`vital-max-${bar.id}`}
                 type="number"
                 min="1"
                 className="input-val"
