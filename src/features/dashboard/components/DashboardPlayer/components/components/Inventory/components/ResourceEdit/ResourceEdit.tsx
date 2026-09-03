@@ -44,6 +44,8 @@ export const ResourceEdit = ({
         onSelectIcon={setIcon}
       />
       <input
+        id="resource-input-label"
+        name="resource-label"
         type="text"
         className="resource-input-label"
         value={label}
@@ -52,6 +54,8 @@ export const ResourceEdit = ({
         autoFocus
       />
       <input
+        id="resource-input-value"
+        name="resource-value"
         type="number"
         className="resource-input-value"
         value={value}
