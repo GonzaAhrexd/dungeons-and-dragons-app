@@ -2,7 +2,12 @@ import { useText } from '@/features/langs/hooks/useText'
 import { inventoryText } from './Inventory.langs'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { ResourceDetails, ResourceEdit } from './components'
+import {
+  ResourceDetails,
+  ResourceEdit,
+  EquipmentList,
+  InventoryList,
+} from './components'
 import {
   useInventory,
   DEFAULT_EQUIPMENT,
@@ -10,15 +15,10 @@ import {
   DEFAULT_RESOURCES,
   RESOURCE_ICON_PACKAGE,
 } from './hooks/useInventory'
-import type {
-  EquipmentItem,
-  InventoryItem,
-  Resource,
-  InventoryProps,
-} from './interfaces'
+import type { InventoryProps } from './interfaces'
 import './Inventory.css'
 
-export type { EquipmentItem, InventoryItem, Resource, InventoryProps }
+export type * from './interfaces'
 
 export const Inventory = ({
   equipmentItems = DEFAULT_EQUIPMENT,
@@ -33,12 +33,20 @@ export const Inventory = ({
     setActiveTab,
     resourcesList,
     editingResourceIndex,
+    equipmentList,
+    editingEquipmentIndex,
     emptyEquipmentSlots,
     emptyInventorySlots,
     handleStartEditResource,
     handleSaveResource,
     handleDeleteResource,
+    handleCancelResource,
     handleAddNewResource,
+    handleStartEditEquipment,
+    handleEmptySlotClick,
+    handleSaveEquipment,
+    handleDeleteEquipment,
+    handleCancelEquipment,
   } = useInventory({ equipmentItems, inventoryItems, resources, maxSlots })
 
   return (
@@ -70,6 +78,7 @@ export const Inventory = ({
                   iconPackage={RESOURCE_ICON_PACKAGE}
                   onSave={updated => handleSaveResource(index, updated)}
                   onDelete={() => handleDeleteResource(index)}
+                  onCancel={handleCancelResource}
                 />
               )
             }
@@ -114,43 +123,20 @@ export const Inventory = ({
               activeTab === 'equipment' ? 'translateX(0%)' : 'translateX(-50%)',
           }}
         >
-          <div className="slide">
-            {equipmentItems.map(item => (
-              <div key={item.id} className="item-card">
-                <div className="item-icon">
-                  <Icon icon={item.icon} />
-                </div>
-                <div className="item-details">
-                  <span className="item-title">{item.title}</span>
-                  <span className="item-desc">{item.description}</span>
-                </div>
-              </div>
-            ))}
-
-            {Array.from({ length: emptyEquipmentSlots }).map((_, index) => (
-              <div key={`empty-eq-${index}`} className="empty-slot">
-                <span>{text.emptySlot()}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="slide">
-            {inventoryItems.map(item => (
-              <div key={item.id} className="item-card item-card-row">
-                <div className="item-details">
-                  <span className="item-title">{item.title}</span>
-                  <span className="item-desc">{item.description}</span>
-                </div>
-                <div className="qty-badge">x{item.quantity}</div>
-              </div>
-            ))}
-
-            {Array.from({ length: emptyInventorySlots }).map((_, index) => (
-              <div key={`empty-inv-${index}`} className="empty-slot">
-                <span>{text.emptySlot()}</span>
-              </div>
-            ))}
-          </div>
+          <EquipmentList
+            items={equipmentList}
+            emptySlots={emptyEquipmentSlots}
+            editingIndex={editingEquipmentIndex}
+            onItemClick={handleStartEditEquipment}
+            onEmptySlotClick={handleEmptySlotClick}
+            onSaveItem={handleSaveEquipment}
+            onDeleteItem={handleDeleteEquipment}
+            onCancelItem={handleCancelEquipment}
+          />
+          <InventoryList
+            items={inventoryItems}
+            emptySlots={emptyInventorySlots}
+          />
         </div>
       </div>
     </div>
