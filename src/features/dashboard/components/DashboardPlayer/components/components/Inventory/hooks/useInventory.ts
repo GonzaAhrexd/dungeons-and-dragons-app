@@ -14,22 +14,22 @@ export const DEFAULT_EQUIPMENT: EquipmentItem[] = [
     id: 'eq-1',
     icon: 'fa-solid fa-helmet-safety',
     title: 'Yelmo de Hierro',
-    description: '+1 CA',
-    modifiers: [{ value: 1, attribute: 'CA' }],
+    description: '+1 Constitución',
+    modifiers: [{ value: 1, attribute: 'con' }],
   },
   {
     id: 'eq-2',
     icon: 'fa-solid fa-vest',
     title: 'Pechera de Cuero',
     description: 'Ligera y flexible',
-    modifiers: [{ value: 1, attribute: 'DES' }],
+    modifiers: [{ value: 1, attribute: 'dex' }],
   },
   {
     id: 'eq-3',
     icon: 'fa-solid fa-shoe-prints',
     title: 'Botas de Viaje',
     description: 'Resistentes al lodo',
-    modifiers: [{ value: 1, attribute: 'VEL' }],
+    modifiers: [{ value: 1, attribute: 'str' }],
   },
 ]
 
@@ -90,15 +90,6 @@ export const EQUIPMENT_ICON_PACKAGE = [
   'fa-solid fa-flask',
 ]
 
-export const ATTRIBUTE_OPTIONS = [
-  { value: 'FUE', label: 'FUE' },
-  { value: 'DES', label: 'DES' },
-  { value: 'CON', label: 'CON' },
-  { value: 'INT', label: 'INT' },
-  { value: 'SAB', label: 'SAB' },
-  { value: 'CAR', label: 'CAR' },
-]
-
 export const DEFAULT_RESOURCES: Resource[] = [
   { icon: 'fa-solid fa-coins', label: 'Oro', value: 50 },
   { icon: 'fa-solid fa-water', label: 'Mana', value: 1300 },
@@ -108,8 +99,13 @@ export const useInventory = ({
   equipmentItems = DEFAULT_EQUIPMENT,
   inventoryItems = DEFAULT_INVENTORY,
   resources = DEFAULT_RESOURCES,
+  maxEquipSlots,
+  maxInvSlots,
   maxSlots = 10,
 }: UseInventoryProps = {}) => {
+  const equipCap = maxEquipSlots ?? maxSlots ?? 8
+  const invCap = maxInvSlots ?? maxSlots ?? 10
+
   const [activeTab, setActiveTab] = useState<'equipment' | 'inventory'>(
     'equipment',
   )
@@ -130,8 +126,8 @@ export const useInventory = ({
     number | null
   >(null)
 
-  const emptyEquipmentSlots = Math.max(0, maxSlots - equipmentList.length)
-  const emptyInventorySlots = Math.max(0, maxSlots - inventoryList.length)
+  const emptyEquipmentSlots = Math.max(0, equipCap - equipmentList.length)
+  const emptyInventorySlots = Math.max(0, invCap - inventoryList.length)
 
   const handleStartEditResource = (index: number) => {
     const itemToEdit = resourcesList[index]

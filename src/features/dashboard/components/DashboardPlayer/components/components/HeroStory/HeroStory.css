@@ -1,3 +1,17 @@
+.story-card-wrapper {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 64.01rem) {
+    height: 11.5rem;
+  }
+
+  &.expanded {
+    z-index: 50;
+  }
+}
+
 .card.paper.cmp-hero-story {
   padding: 1rem 1.15rem;
   border: 1px solid var(--pal-gold-700);
@@ -7,6 +21,25 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
+  box-sizing: border-box;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+
+  @media (min-width: 64.01rem) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    min-height: 100%;
+  }
+
+  &.expanded {
+    @media (min-width: 64.01rem) {
+      z-index: 50;
+      box-shadow: 0 12px 32px var(--pal-shadow), 0 0 12px var(--pal-gold-800);
+    }
+  }
 
   h3 {
     font-family: var(--pal-font-display);
@@ -31,13 +64,15 @@
 
     &.dropcap::first-letter {
       font-family: var(--pal-font-display);
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      line-height: 0.78;
+      line-height: 1;
       float: left;
-      margin-right: 0.15rem;
+      margin-right: 0.3rem;
+      margin-top: 0.15rem;
       color: var(--pal-seal);
-      padding-top: 0.05rem;
+      initial-letter: 2;
+      -webkit-initial-letter: 2;
     }
   }
 

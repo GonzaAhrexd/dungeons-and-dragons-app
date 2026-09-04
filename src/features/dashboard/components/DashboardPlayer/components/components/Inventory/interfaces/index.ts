@@ -28,6 +28,8 @@ export interface InventoryProps {
   equipmentItems?: EquipmentItem[]
   inventoryItems?: InventoryItem[]
   resources?: Resource[]
+  maxEquipSlots?: number
+  maxInvSlots?: number
   maxSlots?: number
   onAddItem?: () => void
 }
@@ -36,6 +38,8 @@ export interface UseInventoryProps {
   equipmentItems?: EquipmentItem[]
   inventoryItems?: InventoryItem[]
   resources?: Resource[]
+  maxEquipSlots?: number
+  maxInvSlots?: number
   maxSlots?: number
 }
 

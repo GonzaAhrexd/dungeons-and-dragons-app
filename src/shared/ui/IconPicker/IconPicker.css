@@ -10,19 +10,18 @@
     width: 32px;
     height: 32px;
     padding: 0;
-    border: 1px solid var(--pal-gold-700);
+    border: 1px solid var(--pal-border-muted);
     border-radius: 50%;
     font-size: 0.9rem;
-    color: var(--pal-gold-400);
-    background: rgba(212, 175, 55, 0.15);
+    color: var(--pal-text-secondary);
+    background: var(--pal-surface-3);
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      border-color: var(--pal-gold-400);
-      color: var(--pal-gold-200);
-      background: rgba(212, 175, 55, 0.25);
-      box-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+      border-color: var(--pal-border-strong);
+      color: var(--pal-text-primary);
+      background: var(--pal-surface-4);
     }
   }
 
@@ -32,10 +31,11 @@
     left: 0;
     z-index: 100;
     padding: 0.5rem;
-    border: 1px solid var(--pal-gold-800);
+    border: 1px solid var(--pal-border-muted);
     border-radius: var(--pal-radius-m, 8px);
-    background: var(--pal-grayscale-900);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    background: var(--pal-surface-2);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 18px var(--pal-shadow);
     animation: fadeInScale 0.15s ease-out;
 
     > .icon-picker-grid {
@@ -53,22 +53,21 @@
         border: 1px solid transparent;
         border-radius: 4px;
         font-size: 0.85rem;
-        color: var(--pal-grayscale-300);
-        background: rgba(0, 0, 0, 0.2);
+        color: var(--pal-text-muted);
+        background: var(--pal-surface-3);
         cursor: pointer;
         transition: all 0.15s ease;
 
         &:hover {
-          border-color: var(--pal-gold-600);
-          color: var(--pal-gold-300);
-          background: rgba(212, 175, 55, 0.15);
+          border-color: var(--pal-border-default);
+          color: var(--pal-text-secondary);
+          background: var(--pal-surface-4);
         }
 
         &.selected {
-          border-color: var(--pal-gold-400);
-          color: var(--pal-gold-100);
-          background: rgba(212, 175, 55, 0.3);
-          box-shadow: inset 0 0 4px rgba(212, 175, 55, 0.4);
+          border-color: var(--pal-border-strong);
+          color: var(--pal-text-primary);
+          background: var(--pal-surface-5);
         }
       }
     }

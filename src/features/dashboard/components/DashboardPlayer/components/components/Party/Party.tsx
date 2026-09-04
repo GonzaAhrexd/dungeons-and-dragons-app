@@ -16,22 +16,22 @@ export const Party = ({ partyMembers }: PartyProps) => {
   const text = useText(partyText)
 
   return (
-    <div className="dp-party">
-      <div className="dp-party-header">
+    <div className="cmp-party">
+      <div className="party-header">
         <Icon icon="fa-solid fa-users" />
         <span>{text.party()}</span>
       </div>
-      <div className="dp-party-scroll">
+      <div className="party-scroll">
         {partyMembers.map(m => (
-          <div key={m.name} className="dp-party-member">
-            <div className="dp-party-avatar" title={m.name}>
+          <div key={m.name} className="party-member">
+            <div className="party-avatar" title={m.name}>
               <img
                 src={m.avatarUrl || '/avatar.png'}
                 alt={m.name}
-                className="dp-party-avatar-img"
+                className="party-avatar-img"
               />
             </div>
-            <span className="dp-party-member-name">{m.name}</span>
+            <span className="party-member-name">{m.name}</span>
           </div>
         ))}
       </div>

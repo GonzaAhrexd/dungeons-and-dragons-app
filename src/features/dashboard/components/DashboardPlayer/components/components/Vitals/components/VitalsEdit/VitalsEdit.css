@@ -17,19 +17,19 @@
 
         > .input-wrapper > input {
           box-sizing: border-box;
-          border: 1px solid var(--pal-gold-900);
+          border: 1px solid var(--pal-input-border);
           padding: 0 0 0 0.45rem;
           width: 100%;
           height: 1.5rem;
           font-size: var(--pal-fs-s);
           font-family: var(--pal-font-body);
           white-space: nowrap;
-          border-radius: var(--pal-radius-xs);
-          color: var(--pal-gold-100);
-          background: var(--pal-gold-1000);
+          border-radius: var(--pal-radius-s);
+          color: var(--pal-text-primary);
+          background: var(--pal-input-bg);
 
           &:focus {
-            border-color: var(--pal-gold-500);
+            border-color: var(--pal-input-border-focus);
             outline: none;
           }
         }
@@ -46,19 +46,19 @@
 
         .input-val {
           box-sizing: border-box;
-          border: 1px solid var(--pal-gold-900);
+          border: 1px solid var(--pal-input-border);
           padding: 0 0.1rem;
           width: 2.4rem;
           height: 1.5rem;
           font-size: var(--pal-fs-xs);
           font-family: var(--pal-font-mono);
           text-align: center;
-          border-radius: var(--pal-radius-xs);
-          color: var(--pal-grayscale-100);
-          background: var(--pal-gold-1000);
+          border-radius: var(--pal-radius-s);
+          color: var(--pal-text-primary);
+          background: var(--pal-input-bg);
 
           &:focus {
-            border-color: var(--pal-gold-500);
+            border-color: var(--pal-input-border-focus);
             outline: none;
           }
 
@@ -82,14 +82,14 @@
         grid-template-columns: repeat(3, 0.75rem);
         align-items: center;
         gap: 0.2rem 0;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--pal-border-subtle);
         padding: 0.25rem 0.3rem;
         border-radius: var(--pal-radius-s);
-        background: rgba(0, 0, 0, 0.4);
+        background: var(--pal-surface-3);
         justify-items: center;
 
         .color-dot {
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid var(--pal-grayscale-700);
           padding: 0;
           width: 0.625rem;
           height: 0.625rem;
@@ -104,7 +104,7 @@
           }
 
           &.active {
-            border-color: #ffffff;
+            border-color: var(--pal-grayscale-0);
             box-shadow: 0 0 4px currentColor;
             transform: scale(1.2);
           }
@@ -116,34 +116,39 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
-        border: var(--local-btn-danger-border);
+        width: 26px;
+        height: 26px;
         padding: 0;
-        width: 1.5rem;
-        min-width: 1.5rem;
-        height: 1.5rem;
-        font-size: 0.72rem;
+        border: 1px solid var(--pal-red-800);
         border-radius: var(--pal-radius-s);
-        background: var(--local-btn-danger-bg);
-        opacity: 0.8;
+        font-size: 0.75rem;
+        color: var(--pal-red-400);
+        background: var(--pal-red-900);
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease;
+
+        .cmp-icon {
+          color: var(--pal-red-400);
+          transition: color 0.2s ease;
+        }
 
         &:hover:not(:disabled) {
           border-color: var(--pal-red-500);
-          background: var(--local-btn-danger-bg-hover);
-          opacity: 1;
+          background: var(--pal-red-800);
+
+          .cmp-icon {
+            color: var(--pal-red-300);
+          }
         }
 
         &:disabled {
-          border-color: transparent;
-          background: transparent;
-          opacity: 0.3;
+          opacity: 0.4;
           cursor: not-allowed;
-        }
+          border-color: var(--pal-red-900);
 
-        > .cmp-icon {
-          color: var(--pal-red-500);
+          .cmp-icon {
+            color: var(--pal-red-700);
+          }
         }
       }
     }
@@ -156,7 +161,8 @@
     margin-bottom: 0.3rem;
     border: none;
     width: 100%;
-    font-size: var(--pal-font-body);
+    font-family: var(--pal-font-body);
+    font-size: var(--pal-fs-s);
     color: var(--pal-gold-600);
     background: transparent;
     cursor: pointer;

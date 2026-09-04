@@ -1,64 +1,28 @@
-import { useState } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { statsText } from './Stats.langs'
+import { useStats } from './hooks/useStats'
+import type { Attribute } from '../../../interfaces'
 import './Stats.css'
 
-interface StatItem {
-  label: string
-  value: number
-}
-
 interface StatsProps {
-  stats: StatItem[]
-  onSave?: (stats: StatItem[]) => void
+  stats: Attribute[]
+  onSave?: (stats: Attribute[]) => void
 }
 
 export const Stats = ({ stats, onSave }: StatsProps) => {
   const text = useText(statsText)
-  const [editing, setEditing] = useState(false)
-  const [draft, setDraft] = useState<StatItem[]>(stats)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
-  const displayStats = editing ? draft : stats
-
-  const statLabels: Record<string, string> = {
-    str: text.str(),
-    dex: text.dex(),
-    con: text.con(),
-    int: text.int(),
-    wis: text.wis(),
-    cha: text.cha(),
-  }
-
-  const handleStartEdit = () => {
-    setDraft(stats.map(s => ({ ...s })))
-    setEditing(true)
-  }
-
-  const handleCancel = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setDraft(stats.map(s => ({ ...s })))
-    setEditing(false)
-    setHoveredIndex(null)
-  }
-
-  const handleSave = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    onSave?.(draft)
-    setEditing(false)
-    setHoveredIndex(null)
-  }
-
-  const adjust = (index: number, delta: number, e: React.MouseEvent) => {
-    e.stopPropagation()
-    setDraft(prev =>
-      prev.map((s, i) =>
-        i === index ? { ...s, value: Math.max(1, s.value + delta) } : s,
-      ),
-    )
-  }
+  const {
+    editing,
+    displayStats,
+    hoveredIndex,
+    setHoveredIndex,
+    handleStartEdit,
+    handleCancel,
+    handleSave,
+    adjust,
+  } = useStats({ stats, onSave })
 
   return (
     <div
@@ -80,12 +44,10 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
 
       <div className="grid">
         {displayStats.map((s, index) => {
-          const key = s.label.toLowerCase()
-          const labelText = statLabels[key] || s.label
           const isHovered = hoveredIndex === index
           return (
             <div
-              key={s.label}
+              key={s.id}
               className={`stat${isHovered && editing ? ' hovered' : ''}`}
               onMouseEnter={() => editing && setHoveredIndex(index)}
               onMouseLeave={() => editing && setHoveredIndex(null)}
@@ -94,18 +56,18 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
                 <button
                   className="stat-btn stat-btn--up"
                   onClick={e => adjust(index, 1, e)}
-                  aria-label={`Increase ${labelText}`}
+                  aria-label={`Increase ${s.name}`}
                 >
                   <Icon icon="fa-solid fa-chevron-up" />
                 </button>
               )}
-              <span className="stat-label">{labelText}</span>
+              <span className="stat-label">{s.abbreviation}</span>
               <span className="stat-value">{s.value}</span>
               {editing && (
                 <button
                   className="stat-btn stat-btn--down"
                   onClick={e => adjust(index, -1, e)}
-                  aria-label={`Decrease ${labelText}`}
+                  aria-label={`Decrease ${s.name}`}
                 >
                   <Icon icon="fa-solid fa-chevron-down" />
                 </button>

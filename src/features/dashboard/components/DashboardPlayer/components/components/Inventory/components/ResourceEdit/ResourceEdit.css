@@ -3,9 +3,9 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.25rem 0.4rem;
-  border: 1px solid var(--pal-gold-700);
-  border-radius: var(--pal-radius-m);
-  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-s);
+  background: var(--pal-surface-2);
   box-shadow: 0 2px 8px var(--pal-shadow);
 
   .resource-input-label {
@@ -16,12 +16,12 @@
       width: 100%;
       height: 1.6rem;
       padding: 0 0.45rem;
-      border: 1px solid var(--pal-gold-900);
-      font-size: var(--pal-fs-xs);
+      border: 1px solid var(--pal-input-border);
+      font-size: var(--pal-fs-s);
       font-family: var(--pal-font-body);
       border-radius: var(--pal-radius-xs);
-      color: var(--pal-gold-100);
-      background: var(--pal-gold-1000);
+      color: var(--pal-text-primary);
+      background: var(--pal-input-bg);
       outline: none;
 
       &:focus {
@@ -33,16 +33,16 @@
 
   > .resource-input-value {
     box-sizing: border-box;
-    border: 1px solid var(--pal-gold-900);
+    border: 1px solid var(--pal-input-border);
     padding: 0 0.3rem;
     width: 3rem;
     height: 1.6rem;
-    font-size: var(--pal-fs-xs);
+    font-size: var(--pal-fs-s);
     font-family: var(--pal-font-mono);
     text-align: center;
     border-radius: var(--pal-radius-xs);
-    color: var(--pal-gold-300);
-    background: var(--pal-gold-1000);
+    color: var(--pal-text-primary);
+    background: var(--pal-input-bg);
 
     &:focus {
       border-color: var(--pal-gold-500);
@@ -116,51 +116,51 @@
       }
 
       &.cancel {
-        border: 1px solid var(--pal-gold-700);
-        color: var(--pal-gold-300);
-        background: var(--pal-gold-900);
+        border: 1px solid var(--pal-border-default);
+        color: var(--pal-text-secondary);
+        background: var(--pal-surface-3);
 
         .cmp-icon {
-          color: var(--pal-gold-300);
+          color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
 
         &:hover {
-          border-color: var(--pal-gold-400);
-          background: var(--pal-gold-800);
+          border-color: var(--pal-border-strong);
+          background: var(--pal-surface-4);
 
           .cmp-icon {
-            color: var(--pal-gold-200);
+            color: var(--pal-text-primary);
           }
         }
       }
 
       &.save {
-        border: 1px solid var(--pal-gold-700);
-        color: var(--pal-gold-300);
-        background: var(--pal-gold-900);
+        border: 1px solid var(--pal-border-default);
+        color: var(--pal-text-secondary);
+        background: var(--pal-surface-3);
 
         .cmp-icon {
-          color: var(--pal-gold-300);
+          color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
 
         &:hover:not(:disabled) {
-          border-color: var(--pal-gold-400);
-          background: var(--pal-gold-800);
+          border-color: var(--pal-border-strong);
+          background: var(--pal-surface-4);
 
           .cmp-icon {
-            color: var(--pal-gold-200);
+            color: var(--pal-text-primary);
           }
         }
 
         &:disabled {
           opacity: 0.4;
           cursor: not-allowed;
-          border-color: var(--pal-gold-900);
+          border-color: var(--pal-border-subtle);
 
           .cmp-icon {
-            color: var(--pal-gold-700);
+            color: var(--pal-text-muted);
           }
         }
       }

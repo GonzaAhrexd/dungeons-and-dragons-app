@@ -14,7 +14,7 @@
 
   &::-webkit-scrollbar-track {
     border-radius: 3px;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--pal-surface-2);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -31,9 +31,9 @@
     align-items: center;
     gap: 0.85rem;
     padding: 0.7rem 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 6px;
-    background: rgba(20, 20, 20, 0.7);
+    border: 1px solid var(--pal-border-subtle);
+    border-radius: var(--pal-radius-s);
+    background: var(--pal-surface-3);
     transition:
       border-color 0.2s ease,
       background 0.2s ease;
@@ -43,8 +43,8 @@
     }
 
     &:hover {
-      border-color: var(--pal-gold-800);
-      background: rgba(30, 30, 30, 0.85);
+      border-color: var(--pal-border-default);
+      background: var(--pal-surface-4);
     }
 
     > .item-icon {
@@ -54,27 +54,26 @@
       justify-content: center;
       width: 36px;
       height: 36px;
-      border-radius: 4px;
-      font-size: 1.1rem;
+      border-radius: var(--pal-radius-s);
+      font-size: var(--pal-fs-s);
       color: var(--pal-gold-400);
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--pal-surface-1);
     }
 
     > .item-details {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
 
       > .item-title {
         font-family: var(--pal-font-display);
-        font-size: 0.9rem;
+        font-size: var(--pal-fs-s);
         font-weight: 600;
         letter-spacing: 0.3px;
         color: var(--pal-gold-300);
       }
 
       > .item-desc {
-        font-size: 0.75rem;
+        font-size: var(--pal-fs-s);
         color: var(--pal-grayscale-400);
       }
     }
@@ -85,9 +84,9 @@
     align-items: center;
     justify-content: center;
     padding: 0.75rem 0.9rem;
-    border: 1px dashed rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.15);
+    border: 1px dashed var(--pal-border-subtle);
+    border-radius: var(--pal-radius-s);
+    background: var(--pal-surface-2);
     transition:
       border-color 0.2s ease,
       background 0.2s ease;
@@ -97,8 +96,8 @@
     }
 
     &:hover {
-      border-color: var(--pal-gold-700);
-      background: rgba(212, 175, 55, 0.05);
+      border-color: var(--pal-border-default);
+      background: var(--pal-surface-3);
 
       > span {
         color: var(--pal-gold-400);
@@ -107,7 +106,7 @@
 
     > span {
       font-family: var(--pal-font-display);
-      font-size: 0.8rem;
+      font-size: var(--pal-fs-xs);
       font-style: italic;
       letter-spacing: 0.5px;
       color: var(--pal-grayscale-500);

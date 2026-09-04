@@ -1,13 +1,21 @@
-.dp-party {
-  background: var(--pal-grayscale-900);
-  border: 1px solid var(--pal-gold-700);
+.cmp-party {
+  background: var(--pal-surface-1);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-m);
   padding: var(--pal-size-s) var(--pal-size-m);
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
   flex-shrink: 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
-  .dp-party-header {
+  &:hover {
+        border-color: var(--pal-gold-600);
+        box-shadow: 0 4px 10px var(--pal-shadow);
+    }
+
+  .party-header {
     display: flex;
     align-items: center;
     gap: var(--pal-size-xs);
@@ -19,7 +27,7 @@
     border-bottom: 1px solid var(--pal-gold-900);
   }
 
-  .dp-party-scroll {
+  .party-scroll {
     display: flex;
     gap: 1.1rem;
     overflow-x: auto;
@@ -43,7 +51,7 @@
       }
     }
 
-    .dp-party-member {
+    .party-member {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -55,17 +63,17 @@
       &:hover {
         transform: translateY(-2px);
 
-        .dp-party-avatar {
+        .party-avatar {
           border-color: var(--pal-gold-400);
-          box-shadow: 0 4px 8px rgba(195, 154, 62, 0.3);
+          box-shadow: 0 4px 8px var(--pal-shadow);
         }
 
-        .dp-party-member-name {
+        .party-member-name {
           color: var(--pal-gold-300);
         }
       }
 
-      .dp-party-avatar {
+      .party-avatar {
         width: 34px;
         height: 34px;
         border-radius: 50%;
@@ -77,7 +85,7 @@
         flex-shrink: 0;
         transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
-        .dp-party-avatar-img {
+        .party-avatar-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -85,7 +93,7 @@
         }
       }
 
-      .dp-party-member-name {
+      .party-member-name {
         font-family: var(--pal-font-display);
         font-size: var(--pal-fs-xs);
         color: var(--pal-grayscale-300);
@@ -101,7 +109,7 @@
 }
 
 @media (max-width: 64rem) {
-  .dp-party {
+  .cmp-party {
     padding: var(--pal-size-m) 1.1rem;
     gap: var(--pal-size-m);
   }

@@ -1,7 +1,9 @@
 .cmp-stats {
   position: relative;
-  background: var(--pal-grayscale-900);
-  border: 1px solid var(--pal-gold-800);
+  background: var(--pal-surface-1);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-m);
   padding: var(--pal-size-s);
   flex-shrink: 0;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -76,8 +78,7 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--pal-gold-800);
+    gap: 2px;
 
     > .stat {
       position: relative;
@@ -87,7 +88,8 @@
       justify-content: center;
       gap: var(--pal-size-2xs);
       padding: var(--pal-size-m) var(--pal-size-2xs);
-      background: var(--pal-grayscale-900);
+      background: var(--pal-surface-2);
+      border-radius: var(--pal-radius-xs);
       transition: filter 0.3s ease, padding 0.3s ease, min-height 0.3s ease;
 
       .stat-label {

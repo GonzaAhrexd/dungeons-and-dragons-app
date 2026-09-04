@@ -5,9 +5,10 @@
   flex-direction: column;
   gap: var(--pal-size-s);
   padding: var(--pal-size-m);
-  border: 1px solid var(--pal-gold-800);
+  border: 1px solid var(--pal-border-muted);
   border-radius: var(--pal-radius-m, 8px);
-  background: var(--pal-grayscale-900);
+  background: var(--pal-surface-1);
+  backdrop-filter: blur(4px);
   overflow: hidden;
   transition:
     border-color 0.25s ease,
@@ -74,7 +75,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--pal-border-subtle);
 
     > .tabs {
       display: flex;

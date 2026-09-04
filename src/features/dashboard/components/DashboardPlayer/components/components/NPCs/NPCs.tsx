@@ -16,19 +16,19 @@ export const NPCs = ({ npcs }: NPCsProps) => {
   const text = useText(npcsText)
 
   return (
-    <div className="dp-npcs-container">
-      <div className="dp-npcs-header">
+    <div className="cmp-npcs">
+      <div className="npcs-header">
         <Icon icon="fa-solid fa-user-shield" />
         <span>{text.campaignNPCs()}</span>
       </div>
-      <div className="dp-npcs">
+      <div className="npcs-scroll">
         {npcs.map(npc => (
-          <div key={npc.name} className="dp-npc">
-            <div className="dp-npc-avatar">
+          <div key={npc.name} className="npc-item">
+            <div className="npc-avatar">
               <img
                 src={npc.avatarUrl || '/avatar.png'}
                 alt={npc.name}
-                className="dp-npc-avatar-img"
+                className="npc-avatar-img"
               />
             </div>
             <span>{npc.name}</span>

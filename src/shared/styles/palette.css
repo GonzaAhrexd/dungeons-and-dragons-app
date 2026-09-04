@@ -73,6 +73,31 @@
   --pal-box-shadow-0:
     0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
+  /* ---- Superficies semánticas (sobre el GIF de fondo) ---- */
+  --pal-surface-1:  rgba(12, 12, 12, 0.85); 
+  --pal-surface-2:  rgba(20, 20, 20, 0.90);  
+  --pal-surface-3:  rgba(25, 25, 25, 0.90);
+  --pal-surface-4:  rgba(30, 30, 30, 0.85);
+  --pal-surface-5:  rgba(45, 45, 45, 0.95); 
+
+  /* ---- Bordes semánticos ---- */
+  --pal-border-subtle:  rgba(80, 58, 20, 0.35);  
+  --pal-border-muted:   rgba(100, 72, 24, 0.45); 
+  --pal-border-default: var(--pal-gold-800);
+  --pal-border-strong:  var(--pal-gold-700);
+
+  /* ---- Inputs ---- */
+  --pal-input-bg:              rgb(12, 12, 12);
+  --pal-input-border:          rgba(255, 255, 255, 0.12);
+  --pal-input-border-focus:    var(--pal-gold-500);
+  --pal-input-placeholder:     var(--pal-grayscale-700);
+  
+
+  /* ---- Texto semántico ---- */
+  --pal-text-primary:   var(--pal-gold-100);
+  --pal-text-secondary: var(--pal-gold-400);
+  --pal-text-muted:     var(--pal-grayscale-500);
+
   /* ---- Estados ---- */
   --pal-danger: var(--pal-seal);
   --pal-success: var(--pal-forest);

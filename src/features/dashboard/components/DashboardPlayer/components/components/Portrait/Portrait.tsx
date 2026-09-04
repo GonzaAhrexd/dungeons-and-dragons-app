@@ -1,8 +1,8 @@
 import './Portrait.css'
-import { useEffect, useRef, useState } from 'react'
 import { Link } from 'wouter'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
+import { usePortrait } from './hooks/usePortrait'
 
 interface PortraitProps {
   name: string
@@ -21,38 +21,17 @@ export const Portrait = ({
   alignment,
   imageUrl = '/tiefling_monk_portrait.jpg',
 }: PortraitProps) => {
-  const [isEditing, setIsEditing] = useState(false)
-  const [currentLevel, setCurrentLevel] = useState(level)
-  const [tempLevel, setTempLevel] = useState(level)
-  const [prevLevel, setPrevLevel] = useState(level)
-  const levelRef = useRef<HTMLDivElement>(null)
-
-  if (level !== prevLevel) {
-    setPrevLevel(level)
-    setCurrentLevel(level)
-    setTempLevel(level)
-  }
-
-  useEffect(() => {
-    if (!isEditing) return
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        levelRef.current &&
-        !levelRef.current.contains(event.target as Node)
-      ) {
-        setIsEditing(false)
-        setTempLevel(currentLevel)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [isEditing, currentLevel])
-
-  const hasChanges = tempLevel !== currentLevel
+  const {
+    isEditing,
+    currentLevel,
+    tempLevel,
+    levelRef,
+    hasChanges,
+    toggleEditing,
+    handleDecrease,
+    handleIncrease,
+    handleSave,
+  } = usePortrait(level)
 
   return (
     <div className="cmp-portrait">
@@ -66,15 +45,7 @@ export const Portrait = ({
         ref={levelRef}
         className={`level-container ${isEditing ? 'expanded' : ''}`}
       >
-        <div
-          className="level-display"
-          onClick={() => {
-            setIsEditing(!isEditing)
-            if (!isEditing) {
-              setTempLevel(currentLevel)
-            }
-          }}
-        >
+        <div className="level-display" onClick={toggleEditing}>
           LVL {isEditing ? tempLevel : currentLevel}
         </div>
 
@@ -84,7 +55,7 @@ export const Portrait = ({
             icon="fa-solid fa-arrow-down"
             hideTitle={true}
             handlingClass="level-action-btn"
-            onClick={() => setTempLevel(prev => Math.max(1, prev - 1))}
+            onClick={handleDecrease}
             htmlAttrs={{ title: 'Bajar Nivel' }}
           />
           <Button
@@ -92,7 +63,7 @@ export const Portrait = ({
             icon="fa-solid fa-arrow-up"
             hideTitle={true}
             handlingClass="level-action-btn"
-            onClick={() => setTempLevel(prev => prev + 1)}
+            onClick={handleIncrease}
             htmlAttrs={{ title: 'Subir Nivel' }}
           />
           <Button
@@ -100,10 +71,7 @@ export const Portrait = ({
             icon="fa-solid fa-check"
             hideTitle={true}
             handlingClass={`level-action-btn ${hasChanges ? 'active' : ''}`}
-            onClick={() => {
-              setCurrentLevel(tempLevel)
-              setIsEditing(false)
-            }}
+            onClick={handleSave}
             htmlAttrs={{
               disabled: !hasChanges,
               title: 'Guardar Cambios',
@@ -123,3 +91,4 @@ export const Portrait = ({
     </div>
   )
 }
+

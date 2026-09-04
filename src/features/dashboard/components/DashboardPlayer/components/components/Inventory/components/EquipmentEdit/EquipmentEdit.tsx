@@ -4,10 +4,15 @@ import { Icon } from '@/shared/ui/Icon/Icon'
 import { IconPicker } from '@/shared/ui/IconPicker/IconPicker'
 import { Input } from '@/shared/ui/Input/Input'
 import { Select } from '@/shared/ui/Select/Select'
-import { ATTRIBUTE_OPTIONS } from '../../hooks/useInventory'
+import { ATTRIBUTES } from '@/features/dashboard/store/player.store'
 import { useEquipmentEdit } from './hooks/useEquipmentEdit'
 import type { EquipmentEditProps } from '../../interfaces'
 import './EquipmentEdit.css'
+
+const ATTRIBUTE_OPTIONS = ATTRIBUTES.map(attr => ({
+  value: attr.id,
+  label: attr.name,
+}))
 
 export const EquipmentEdit = ({
   initialItem,
@@ -85,38 +90,47 @@ export const EquipmentEdit = ({
         </div>
 
         <div className="modifiers-list">
-          {modifiers.map((mod, index) => (
-            <div key={index} className="modifier-row">
-              <input
-                id={`modifier-value-${index}`}
-                name={`modifier-value-${index}`}
-                type="number"
-                className="modifier-input-value"
-                value={mod.value}
-                onChange={e =>
-                  handleModifierChange(index, 'value', parseInt(e.target.value) || 0)
-                }
-              />
-              <Select
-                value={mod.attribute}
-                options={ATTRIBUTE_OPTIONS}
-                onChange={val =>
-                  handleModifierChange(index, 'attribute', val)
-                }
-                className="modifier-select-attr"
-              />
-              {modifiers.length > 1 && (
-                <button
-                  type="button"
-                  className="remove-modifier-btn"
-                  onClick={() => handleRemoveModifier(index)}
-                  title={text.removeModifier()}
-                >
-                  <Icon icon="fa-solid fa-xmark" />
-                </button>
-              )}
-            </div>
-          ))}
+          {modifiers.map((mod, index) => {
+            const currentAttrValue =
+              ATTRIBUTE_OPTIONS.find(
+                (o: { value: string; label: string }) =>
+                  o.value.toLowerCase() === mod.attribute.toLowerCase() ||
+                  o.label.toLowerCase() === mod.attribute.toLowerCase(),
+              )?.value || mod.attribute
+
+            return (
+              <div key={index} className="modifier-row">
+                <input
+                  id={`modifier-value-${index}`}
+                  name={`modifier-value-${index}`}
+                  type="number"
+                  className="modifier-input-value"
+                  value={mod.value}
+                  onChange={e =>
+                    handleModifierChange(index, 'value', parseInt(e.target.value) || 0)
+                  }
+                />
+                <Select
+                  value={currentAttrValue}
+                  options={ATTRIBUTE_OPTIONS}
+                  onChange={val =>
+                    handleModifierChange(index, 'attribute', val)
+                  }
+                  className="modifier-select-attr"
+                />
+                {modifiers.length > 1 && (
+                  <button
+                    type="button"
+                    className="remove-modifier-btn"
+                    onClick={() => handleRemoveModifier(index)}
+                    title={text.removeModifier()}
+                  >
+                    <Icon icon="fa-solid fa-xmark" />
+                  </button>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
 

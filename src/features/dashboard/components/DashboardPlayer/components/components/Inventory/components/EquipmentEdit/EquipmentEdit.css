@@ -7,9 +7,9 @@
     'right actions';
   gap: 0.5rem 0.6rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid var(--pal-gold-700);
-  border-radius: var(--pal-radius-m);
-  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-s);
+  background: var(--pal-surface-3);
   box-shadow: 0 4px 12px var(--pal-shadow);
   box-sizing: border-box;
   width: 100%;
@@ -30,16 +30,16 @@
         justify-content: center;
         width: 36px;
         height: 36px;
-        border: 1px solid var(--pal-gold-800);
+        border: 1px solid var(--pal-border-muted);
         border-radius: var(--pal-radius-s);
-        background: var(--pal-gold-1000);
-        color: var(--pal-gold-400);
+        background: var(--pal-surface-1);
+        color: var(--pal-text-secondary);
         cursor: pointer;
         transition: all 0.2s ease;
 
         &:hover {
-          border-color: var(--pal-gold-400);
-          background: var(--pal-gold-900);
+          border-color: var(--pal-border-default);
+          background: var(--pal-surface-2);
         }
       }
     }
@@ -59,13 +59,12 @@
           box-sizing: border-box;
           height: 1.6rem;
           padding: 0.2rem 0.45rem;
-          border: 1px solid var(--pal-gold-800);
+          border: 1px solid var(--pal-input-border);
           border-radius: var(--pal-radius-s);
           font-family: var(--pal-font-display);
-          font-size: var(--pal-fs-xs);
+          font-size: var(--pal-fs-s);
           font-weight: 600;
-          color: var(--pal-gold-300);
-          background: var(--pal-gold-1000);
+          background: var(--pal-input-bg);
           outline: none;
           transition: border-color 0.2s ease;
 
@@ -88,11 +87,10 @@
           box-sizing: border-box;
           height: 1.5rem;
           padding: 0.15rem 0.45rem;
-          border: 1px solid var(--pal-gold-900);
+          border: 1px solid var(--pal-input-border);
           border-radius: var(--pal-radius-s);
-          font-size: var(--pal-fs-xs);
-          color: var(--pal-grayscale-200);
-          background: var(--pal-gold-1000);
+          font-size: var(--pal-fs-s);
+          background: var(--pal-input-bg);
           outline: none;
           transition: border-color 0.2s ease;
 
@@ -120,7 +118,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.3rem;
-      border-bottom: 1px solid var(--pal-gold-900);
+      border-bottom: 1px solid var(--pal-border-subtle);
       padding-bottom: 0.15rem;
 
       > .modifier-header-label {
@@ -141,13 +139,13 @@
         border: none;
         border-radius: var(--pal-radius-xs);
         font-size: 0.65rem;
-        color: var(--pal-gold-300);
-        background: var(--pal-gold-900);
+        color: var(--pal-text-secondary);
+        background: var(--pal-surface-4);
         cursor: pointer;
         transition: background 0.2s ease;
 
         &:hover {
-          background: var(--pal-gold-800);
+          background: var(--pal-surface-5);
         }
       }
     }
@@ -168,14 +166,14 @@
           height: 1.5rem;
           flex-shrink: 0;
           padding: 0.15rem 0.3rem;
-          border: 1px solid var(--pal-gold-800);
+          border: 1px solid var(--pal-input-border);
           border-radius: var(--pal-radius-s);
           font-family: var(--pal-font-mono);
           font-size: var(--pal-fs-xs);
           font-weight: bold;
           text-align: center;
-          color: var(--pal-gold-300);
-          background: var(--pal-gold-1000);
+          color: var(--pal-text-primary);
+          background: var(--pal-input-bg);
           outline: none;
           -moz-appearance: textfield;
           appearance: textfield;
@@ -279,51 +277,51 @@
       }
 
       &.cancel {
-        border: 1px solid var(--pal-gold-700);
-        color: var(--pal-gold-300);
-        background: var(--pal-gold-900);
+        border: 1px solid var(--pal-border-default);
+        color: var(--pal-text-secondary);
+        background: var(--pal-surface-3);
 
         .cmp-icon {
-          color: var(--pal-gold-300);
+          color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
 
         &:hover {
-          border-color: var(--pal-gold-400);
-          background: var(--pal-gold-800);
+          border-color: var(--pal-border-strong);
+          background: var(--pal-surface-4);
 
           .cmp-icon {
-            color: var(--pal-gold-200);
+            color: var(--pal-text-primary);
           }
         }
       }
 
       &.save {
-        border: 1px solid var(--pal-gold-700);
-        color: var(--pal-gold-300);
-        background: var(--pal-gold-900);
+        border: 1px solid var(--pal-border-default);
+        color: var(--pal-text-secondary);
+        background: var(--pal-surface-3);
 
         .cmp-icon {
-          color: var(--pal-gold-300);
+          color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
 
         &:hover:not(:disabled) {
-          border-color: var(--pal-gold-400);
-          background: var(--pal-gold-800);
+          border-color: var(--pal-border-strong);
+          background: var(--pal-surface-4);
 
           .cmp-icon {
-            color: var(--pal-gold-200);
+            color: var(--pal-text-primary);
           }
         }
 
         &:disabled {
           opacity: 0.4;
           cursor: not-allowed;
-          border-color: var(--pal-gold-900);
+          border-color: var(--pal-border-subtle);
 
           .cmp-icon {
-            color: var(--pal-gold-700);
+            color: var(--pal-text-muted);
           }
         }
       }

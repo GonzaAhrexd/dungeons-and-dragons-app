@@ -16,20 +16,19 @@ export const Timeline = ({ timelineItems }: TimelineProps) => {
   const text = useText(timelineText)
 
   return (
-    <div className="dp-chronology">
-      <div className="dp-chronology-header">
+    <div className="cmp-timeline">
+      <div className="chronology-header">
         <Icon icon="fa-solid fa-clock-rotate-left" />
-        <span className="dp-chronology-title">{text.campaignTimeline()}</span>
+        <span className="chronology-title">{text.campaignTimeline()}</span>
       </div>
-      <div className="dp-timeline">
+      <div className="timeline-list">
         {timelineItems.map((item, i) => (
-          <div key={i} className="dp-timeline-item">
-            <span className="dp-tl-season">{item.season}</span>
-            <span className="dp-tl-event">{item.event}</span>
+          <div key={i} className="timeline-item">
+            <span className="tl-season">{item.season}</span>
+            <span className="tl-event">{item.event}</span>
           </div>
         ))}
       </div>
-      <a className="dp-expand-link">{text.expandHistory()}</a>
     </div>
   )
 }

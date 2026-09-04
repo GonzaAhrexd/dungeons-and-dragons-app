@@ -1,10 +1,10 @@
 import './Vitals.css'
-import { useState, useRef, useEffect } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { vitalsText } from './Vitals.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { type VitalBar } from '../../../interfaces'
 import { VitalsEdit, VitalsDetails } from './components'
+import { useVitals } from './hooks/useVitals'
 
 interface VitalsProps {
   bars: VitalBar[]
@@ -13,41 +13,15 @@ interface VitalsProps {
 
 export const Vitals = ({ bars, onSave }: VitalsProps) => {
   const text = useText(vitalsText)
-
-  const [isEditing, setIsEditing] = useState(false)
-  const [viewportHeight, setViewportHeight] = useState<number | undefined>(
-    undefined,
-  )
-
-  const detailsPaneRef = useRef<HTMLDivElement>(null)
-  const editPaneRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const activeRef = isEditing ? editPaneRef : detailsPaneRef
-    const el = activeRef.current
-    if (!el) return
-
-    setViewportHeight(el.scrollHeight)
-
-    const observer = new ResizeObserver(() => {
-      setViewportHeight(el.scrollHeight)
-    })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [isEditing, bars])
-
-  const handleStartEdit = () => {
-    setIsEditing(true)
-  }
-
-  const handleSave = (updatedBars: VitalBar[]) => {
-    onSave(updatedBars)
-    setIsEditing(false)
-  }
-
-  const handleCancel = () => {
-    setIsEditing(false)
-  }
+  const {
+    isEditing,
+    viewportHeight,
+    detailsPaneRef,
+    editPaneRef,
+    handleStartEdit,
+    handleSave,
+    handleCancel,
+  } = useVitals({ bars, onSave })
 
   return (
     <div className={`cmp-vitals ${isEditing ? 'editing' : ''}`}>
@@ -97,3 +71,4 @@ export const Vitals = ({ bars, onSave }: VitalsProps) => {
     </div>
   )
 }
+

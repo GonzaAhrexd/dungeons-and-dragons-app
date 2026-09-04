@@ -1,9 +1,10 @@
 .cmp-portrait {
   position: relative;
   flex-shrink: 0;
-  border: 1px solid var(--pal-gold-700);
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-s);
   height: 18rem;
-  background: var(--pal-bg);
+  background: var(--pal-surface-1);
   overflow: hidden;
 
   > .edit-btn {
@@ -23,7 +24,7 @@
     text-decoration: none;
 
     border-radius: 50%;
-    background: var(--pal-gold-1000);
+    background: var(--pal-surface-3);
     box-shadow: 0 3px 6px var(--pal-shadow);
 
     cursor: pointer;
@@ -32,7 +33,7 @@
       box-shadow 0.2s ease;
 
     &:hover {
-      box-shadow: 0 4px 10px rgba(195, 154, 62, 0.4);
+      box-shadow: 0 4px 10px var(--pal-shadow);
 
       transform: translateY(-1px);
     }
@@ -62,7 +63,7 @@
 
     font-size: var(--pal-fs-xs);
     border-radius: var(--pal-radius-pill);
-    background: var(--pal-gold-1000);
+    background: var(--pal-surface-2);
     box-shadow: 0 3px 6px var(--pal-shadow);
     overflow: hidden;
     transition:
@@ -73,7 +74,7 @@
       box-shadow 0.2s ease;
 
     &:hover:not(.expanded) {
-      box-shadow: 0 4px 10px rgba(195, 154, 62, 0.4);
+      box-shadow: 0 4px 10px var(--pal-shadow);
     }
 
     &.expanded {
@@ -81,7 +82,7 @@
       width: 9.2em;
       height: 4.6em;
       border-radius: var(--pal-radius-pill);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 15px var(--pal-shadow);
 
       > .level-display {
         border-bottom: 1px solid var(--pal-gold-800);
@@ -153,20 +154,20 @@
         transition: all 0.2s ease;
 
         &.secondary {
-          border: 1px solid var(--pal-gold-800);
-          color: var(--pal-gold-300);
-          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--pal-border-default);
+          color: var(--pal-text-secondary);
+          background: var(--pal-surface-3);
 
           > .cmp-icon,
           i,
           svg {
-            color: var(--pal-gold-300);
+            color: var(--pal-text-secondary);
           }
 
           &:hover {
-            border-color: var(--pal-gold-500);
-            color: var(--pal-gold-200);
-            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--pal-border-strong);
+            color: var(--pal-text-primary);
+            background: var(--pal-surface-4);
 
             > .cmp-icon,
             i,
@@ -233,7 +234,7 @@
       gap: 0.35rem;
 
       > span {
-        border: 1px solid var(--pal-gold-600);
+        border: 1px solid var(--pal-border-muted);
         padding: 2px 7px;
 
         font-size: var(--pal-fs-xs);
@@ -241,9 +242,10 @@
         letter-spacing: 0.8px;
         border-radius: var(--pal-radius-pill);
 
-        color: var(--pal-gold-100);
-        background: var(--pal-gold-1000);
+        color: var(--pal-text-secondary);
+        background: var(--pal-surface-3);
         box-shadow: inset 0 1px 3px var(--pal-shadow);
+        backdrop-filter: blur(4px);
       }
     }
   }

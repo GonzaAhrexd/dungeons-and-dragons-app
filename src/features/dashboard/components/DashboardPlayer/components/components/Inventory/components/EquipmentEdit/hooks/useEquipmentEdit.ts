@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { EquipmentItem, EquipmentModifier } from '../../../interfaces'
+import { ATTRIBUTES } from '@/features/dashboard/store/player.store'
 
 interface UseEquipmentEditOptions {
   initialItem?: Partial<EquipmentItem>
@@ -17,6 +18,8 @@ export const useEquipmentEdit = ({
   onSave,
   onDelete,
 }: UseEquipmentEditOptions) => {
+  const defaultAttrId = ATTRIBUTES[0].id
+
   const [icon, setIcon] = useState(
     initialItem?.icon || 'fa-solid fa-shield-halved',
   )
@@ -25,12 +28,12 @@ export const useEquipmentEdit = ({
   const [modifiers, setModifiers] = useState<EquipmentModifier[]>(
     initialItem?.modifiers && initialItem.modifiers.length > 0
       ? initialItem.modifiers
-      : [{ value: 1, attribute: 'CA' }],
+      : [{ value: 1, attribute: defaultAttrId }],
   )
   const [confirmingDelete, setConfirmingDelete] = useState(false)
 
   const handleAddModifier = () => {
-    setModifiers(prev => [...prev, { value: 1, attribute: 'CA' }])
+    setModifiers(prev => [...prev, { value: 1, attribute: defaultAttrId }])
   }
 
   const handleRemoveModifier = (index: number) => {
@@ -57,7 +60,16 @@ export const useEquipmentEdit = ({
     let finalDesc = description.trim()
     if (!finalDesc && modifiers.length > 0) {
       finalDesc = modifiers
-        .map(m => `${m.value >= 0 ? '+' : ''}${m.value} ${m.attribute}`)
+        .map(m => {
+          const found = ATTRIBUTES.find(
+            a =>
+              a.id.toLowerCase() === m.attribute.toLowerCase() ||
+              a.name.toLowerCase() === m.attribute.toLowerCase() ||
+              a.abbreviation.toLowerCase() === m.attribute.toLowerCase(),
+          )
+          const attrLabel = found ? found.name : m.attribute
+          return `${m.value >= 0 ? '+' : ''}${m.value} ${attrLabel}`
+        })
         .join(', ')
     }
 

@@ -15,6 +15,7 @@ import {
   DEFAULT_RESOURCES,
   RESOURCE_ICON_PACKAGE,
 } from './hooks/useInventory'
+import { usePlayerStore } from '@/features/dashboard/store/player.store'
 import type { InventoryProps } from './interfaces'
 import './Inventory.css'
 
@@ -24,10 +25,17 @@ export const Inventory = ({
   equipmentItems = DEFAULT_EQUIPMENT,
   inventoryItems = DEFAULT_INVENTORY,
   resources = DEFAULT_RESOURCES,
-  maxSlots = 10,
+  maxEquipSlots,
+  maxInvSlots,
+  maxSlots,
   onAddItem,
 }: InventoryProps) => {
   const text = useText(inventoryText)
+  const { character } = usePlayerStore()
+
+  const equipCap = maxEquipSlots ?? character.inventory.maxEquip ?? 8
+  const invCap = maxInvSlots ?? character.inventory.maxInv ?? 10
+
   const {
     activeTab,
     setActiveTab,
@@ -54,7 +62,14 @@ export const Inventory = ({
     handleSaveInventory,
     handleDeleteInventory,
     handleCancelInventory,
-  } = useInventory({ equipmentItems, inventoryItems, resources, maxSlots })
+  } = useInventory({
+    equipmentItems,
+    inventoryItems,
+    resources,
+    maxEquipSlots: equipCap,
+    maxInvSlots: invCap,
+    maxSlots,
+  })
 
   return (
     <div className="cmp-inventory">

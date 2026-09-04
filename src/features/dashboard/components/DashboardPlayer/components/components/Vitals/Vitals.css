@@ -1,9 +1,4 @@
 .cmp-vitals {
-  /* ---- Local Variables ---- */
-  --local-btn-danger-bg: rgba(195, 60, 69, 0.1);
-  --local-btn-danger-bg-hover: rgba(195, 60, 69, 0.2);
-  --local-btn-danger-border: 1px solid rgba(195, 60, 69, 0.25);
-
   /* Color theme track backgrounds (10% opacity) */
   --local-track-red: rgba(195, 60, 69, 0.1);
   --local-track-gold: rgba(201, 154, 62, 0.1);
@@ -22,10 +17,12 @@
 
   position: relative;
   flex-shrink: 0;
-  border: 1px solid var(--pal-gold-800);
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-m);
   padding: 0.65rem var(--pal-size-s);
 
-  background: var(--pal-grayscale-900);
+  background: var(--pal-surface-1);
+  backdrop-filter: blur(4px);
 
   cursor: pointer;
 
