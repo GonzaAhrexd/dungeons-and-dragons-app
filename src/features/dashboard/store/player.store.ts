@@ -6,7 +6,44 @@ import type {
 
 export interface PartyMember {
   name: string
+  avatarUrl?: string
+  description?: string
 }
+
+const INITIAL_PARTY: PartyMember[] = [
+  {
+    name: 'Bartok',
+    avatarUrl:
+      'https://www.reddit.com/r/DnD/comments/1o9rr2r/oc_comm_dnd_character_that_i_drew/',
+    description:
+      'Bárbaro de las colinas del norte. Especialista en combate cuerpo a cuerpo y tácticas defensivas de primera línea.',
+  },
+  {
+    name: 'Pierce',
+    description:
+      'Pícaro sombras de la red clandestina. Experto en sigilo, infiltración y desactivación de mecanismos.',
+  },
+  {
+    name: 'Faurin',
+    description:
+      'Clérigo devoto del Dominio Solar. Protector espiritual de la compañía y maestro en artes curativas.',
+  },
+  {
+    name: 'Jogun',
+    description:
+      'Guerrero veterano militar. Experto estratega y dominador de armas de asta y escudos.',
+  },
+  {
+    name: 'Kaelen',
+    description:
+      'Mago erudito de la academia arcana. Dominador de hechizos de evocación y manipulación elemental.',
+  },
+  {
+    name: 'Garrick',
+    description:
+      'Bardo viajero y diplomático. Inspirador del grupo mediante cantos ancestrales e historias del reino.',
+  },
+]
 
 export interface TimelineItem {
   season: string
@@ -77,15 +114,6 @@ const INITIAL_VITALS: VitalBar[] = [
     color: 'blue',
     label: 'Escudo',
   },
-]
-
-const INITIAL_PARTY: PartyMember[] = [
-  { name: 'Bartok' },
-  { name: 'Pierce' },
-  { name: 'Faurin' },
-  { name: 'Jogun' },
-  { name: 'Kaelen' },
-  { name: 'Garrick' },
 ]
 
 const INITIAL_TIMELINE: TimelineItem[] = [
