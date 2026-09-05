@@ -1,9 +1,14 @@
+.npc-modal-backdrop {
+  display: none;
+}
+
 .npc-modal-container {
   position: absolute;
   right: calc(100% + var(--pal-size-s));
   top: 0;
   z-index: 100;
   width: 310px;
+  max-height: calc(100vh - 4rem);
   background: var(--pal-bg);
   border: 1px solid var(--pal-border-strong);
   border-radius: var(--pal-radius-m);
@@ -13,6 +18,11 @@
   flex-direction: column;
   overflow: hidden;
   animation: npcModalSlideLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.npc-modal-container.align-bottom {
+  top: auto;
+  bottom: 0;
 }
 
 .npc-modal-close {
@@ -117,15 +127,47 @@
   }
 }
 
+.npc-modal-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: var(--pal-size-2xs);
+
+  .cmp-button {
+    width: 100%;
+    font-size: var(--pal-fs-xs);
+    padding: var(--pal-size-xs) var(--pal-size-s);
+  }
+}
+
 @media (max-width: 64rem) {
+  .npc-modal-backdrop {
+    display: none;
+  }
+
   .npc-modal-container {
     position: absolute;
-    top: calc(-100% - var(--pal-size-s));
+    right: 0;
     left: 0;
-    right: auto;
+    top: auto;
+    bottom: calc(100% + var(--pal-size-s));
     width: 100%;
-    max-width: 100%;
-    animation: npcModalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 70vh;
+    animation: npcModalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .npc-modal-container.align-bottom {
+    bottom: calc(100% + var(--pal-size-s));
+    top: auto;
+  }
+}
+
+@keyframes npcModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -140,10 +182,10 @@
   }
 }
 
-@keyframes npcModalScaleUp {
+@keyframes npcModalSlideUp {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -151,6 +193,14 @@
   }
 }
 
-
-
+@keyframes npcModalScaleUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
 

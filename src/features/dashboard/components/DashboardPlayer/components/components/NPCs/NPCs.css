@@ -1,7 +1,6 @@
 .cmp-npcs {
   position: relative;
   background: var(--pal-surface-1);
-  backdrop-filter: blur(4px);
   border: 1px solid var(--pal-border-muted);
   border-radius: var(--pal-radius-m);
   padding: var(--pal-size-s) var(--pal-size-m);
@@ -58,7 +57,7 @@
       align-items: center;
       gap: 0.3rem;
       flex-shrink: 0;
-      width: 44px;
+      width: 50px;
       transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
       cursor: pointer;
 
