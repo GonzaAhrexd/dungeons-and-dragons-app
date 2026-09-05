@@ -2,13 +2,12 @@ import { create } from 'zustand'
 import type {
   VitalBar,
   Attribute,
+  PartyMember,
+  NPCItem,
+  Inventory,
 } from '../components/DashboardPlayer/interfaces'
 
-export interface PartyMember {
-  name: string
-  avatarUrl?: string
-  description?: string
-}
+export type { PartyMember, NPCItem, Inventory }
 
 const INITIAL_PARTY: PartyMember[] = [
   {
@@ -50,22 +49,9 @@ export interface TimelineItem {
   event: string
 }
 
-export interface NPCItem {
-  name: string
-  avatarUrl?: string
-  description?: string
-}
-
 export interface Chronicle {
   title: string
   description: string
-}
-
-export interface Inventory {
-  current: number
-  maxInv: number
-  maxEquip: number
-  gold: number
 }
 
 export interface PlayerCharacter {

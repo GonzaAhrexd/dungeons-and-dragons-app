@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { INITIAL_NPCS } from '@/features/dashboard/store/player.store'
-import type { NPCItem } from '../NPCs'
+import type { NPCItem } from '../interfaces'
 
 export const useNPCs = () => {
   const [selectedNpc, setSelectedNpc] = useState<NPCItem | null>(null)

@@ -3,7 +3,7 @@ import { partyText } from './Party.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { NPCModal } from '../NPCs/components/NPCModal'
 import { useParty } from './hooks/useParty'
-import type { PartyMember } from '@/features/dashboard/store/player.store'
+import type { PartyMember } from './interfaces'
 import './Party.css'
 
 interface PartyProps {

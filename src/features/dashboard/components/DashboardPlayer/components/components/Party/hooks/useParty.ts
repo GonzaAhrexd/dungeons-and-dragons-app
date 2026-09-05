@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { PartyMember } from '@/features/dashboard/store/player.store'
+import type { PartyMember } from '../interfaces'
 
 export const useParty = () => {
   const [selectedMember, setSelectedMember] = useState<PartyMember | null>(

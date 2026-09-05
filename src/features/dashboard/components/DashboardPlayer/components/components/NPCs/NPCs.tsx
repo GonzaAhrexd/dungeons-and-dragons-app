@@ -3,13 +3,8 @@ import { npcsText } from './NPCs.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { NPCModal } from './components/NPCModal'
 import { useNPCs } from './hooks/useNPCs'
+import type { NPCItem } from './interfaces'
 import './NPCs.css'
-
-export interface NPCItem {
-  name: string
-  avatarUrl?: string
-  description?: string
-}
 
 interface NPCsProps {
   npcs: NPCItem[]

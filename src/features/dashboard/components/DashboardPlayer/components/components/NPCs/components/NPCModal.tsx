@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
-import type { NPCItem } from '../NPCs'
+import type { NPCItem } from '../interfaces'
 import './NPCModal.css'
 
 interface NPCModalProps {

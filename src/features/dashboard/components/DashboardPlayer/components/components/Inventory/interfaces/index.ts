@@ -1,28 +1,19 @@
-export interface EquipmentModifier {
-  value: number
-  attribute: string
+import type {
+  EquipmentItem,
+  InventoryItem,
+  Resource,
+  EquipmentModifier,
+  Inventory,
+} from '@/features/dashboard/components/DashboardPlayer/interfaces/inventory.interface'
+
+export type {
+  EquipmentItem,
+  InventoryItem,
+  Resource,
+  EquipmentModifier,
+  Inventory,
 }
 
-export interface EquipmentItem {
-  id: string
-  icon: string
-  title: string
-  description: string
-  modifiers?: EquipmentModifier[]
-}
-
-export interface InventoryItem {
-  id: string
-  title: string
-  description: string
-  quantity?: number
-}
-
-export interface Resource {
-  icon: string
-  label: string
-  value: number
-}
 
 export interface InventoryProps {
   equipmentItems?: EquipmentItem[]
