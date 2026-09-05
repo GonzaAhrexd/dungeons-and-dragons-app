@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 import type {
   VitalBar,
   Attribute,
@@ -16,6 +15,8 @@ export interface TimelineItem {
 
 export interface NPCItem {
   name: string
+  avatarUrl?: string
+  description?: string
 }
 
 export interface Chronicle {
@@ -112,15 +113,56 @@ const INITIAL_TIMELINE: TimelineItem[] = [
   },
 ]
 
-const INITIAL_NPCS: NPCItem[] = [
-  { name: 'Silas' },
-  { name: 'Chancellor' },
-  { name: 'Mayor' },
-  { name: 'Farmer' },
-  { name: 'Miner' },
-  { name: 'Blacksmith' },
-  { name: 'Innkeeper' },
-  { name: 'Merchant' },
+export const INITIAL_NPCS: NPCItem[] = [
+  {
+    name: 'Silas',
+    avatarUrl: 'https://www.artstation.com/artwork/4Nkomq',
+    description:
+      'Archimago de la Torre del Sol poniente y consejero real. Silas desapareció misteriosamente tras investigar antiguas ruinas bajo la ciudad de Valoria. Posee profundos conocimientos sobre la magia arcana y las reliquias de la Primera Era. Se rumorea que sus investigaciones sobre el Pacto Cenizo lo llevaron a adentrarse en los dominios oscuros.',
+  },
+  {
+    name: 'Chancellor',
+    avatarUrl:
+      'https://cdna.artstation.com/p/assets/images/images/084/908/424/large/mila-iigadd.jpg?1739471876',
+    description:
+      'El Gran Canciller de la corte imperial. Un estadista frío y de modales calculados que supervisa la asignación de recursos e información militar. Aunque apoya a los aventureros oficialmente, muchos sospechan que sus verdaderos intereses residen en mantener el equilibrio de poder en la capital.',
+  },
+  {
+    name: 'Mayor',
+    avatarUrl:
+      'https://cdna.artstation.com/p/assets/images/images/084/908/256/large/mila-snapinst-app-449481813-972961791249692-2026142718928302588-n-1080-jpg-1739468420953.jpg?1739471598',
+    description:
+      'Alcalde del poblado fronterizo de Ashenveil. Un hombre cansado y preocupado constantemente por la seguridad de los aldeanos frente a las incursiones nocturnas de criaturas salvajes provenientes del bosque susurrante.',
+  },
+  {
+    name: 'Farmer',
+    description:
+      'Un humilde labrador que habita en las afueras del valle. Afirma haber presenciado extraños rituales con luces violetas y figuras encapuchadas cerca de los antiguos túmulos de piedra durante la medianoche.',
+  },
+  {
+    name: 'Miner',
+    avatarUrl:
+      'https://www.reddit.com/r/DnD/comments/1laux1v/oc_my_first_dnd_character_design/',
+    description:
+      'Veterano capataz de las minas de hierro profundas. Conoce cada grieta y pasadizo subterráneo de las montañas. Fue el primero en advertir la presencia de la corrupción necrótica al filtrar aguas oscuras en los niveles inferiores de las galerías.',
+  },
+  {
+    name: 'Blacksmith',
+    avatarUrl: 'https://www.instagram.com/p/C9X9veJSvsU/',
+    description:
+      'Maestro forjador legendario retirado en las fronteras. Hábil en el manejo de acero verdadero y runas defensivas. Se dice que si le consigues materiales raros de criaturas abisales, es capaz de forjar artefactos capaces de dañar lo incorpóreo.',
+  },
+  {
+    name: 'Innkeeper',
+    avatarUrl: 'https://www.artstation.com/artwork/g0EK4Q',
+    description:
+      'Propietario de la famosa posada "El Dragón Riente". Conoce todos los rumores, cotilleos y secretos de los viajeros que cruzan la región. A cambio de unas monedas de oro o una buena historia, comparte valiosa información táctica.',
+  },
+  {
+    name: 'Merchant',
+    description:
+      'Comerciante de mercancías exóticas e itinerante. Ofrece pociones raras, ingredientes alquímicos, pergaminos de hechizos y objetos de dudosa procedencia traídos desde los confines lejanos del reino.',
+  },
 ]
 
 const INITIAL_CHRONICLE: Chronicle = {
@@ -147,41 +189,34 @@ interface PlayerStoreState {
   reset: () => void
 }
 
-export const usePlayerStore = create<PlayerStoreState>()(
-  persist(
-    set => ({
+export const usePlayerStore = create<PlayerStoreState>()(set => ({
+  character: INITIAL_CHARACTER,
+  vitals: INITIAL_VITALS,
+  party: INITIAL_PARTY,
+  timeline: INITIAL_TIMELINE,
+  npcs: INITIAL_NPCS,
+  chronicle: INITIAL_CHRONICLE,
+
+  setVitals: vitals => set({ vitals }),
+  setStats: stats =>
+    set(state => ({
+      character: { ...state.character, stats },
+    })),
+  setCharacter: character =>
+    set(state => ({
+      character: { ...state.character, ...character },
+    })),
+  setParty: party => set({ party }),
+  setTimeline: timeline => set({ timeline }),
+  setNpcs: npcs => set({ npcs }),
+  setChronicle: chronicle => set({ chronicle }),
+  reset: () =>
+    set({
       character: INITIAL_CHARACTER,
       vitals: INITIAL_VITALS,
       party: INITIAL_PARTY,
       timeline: INITIAL_TIMELINE,
       npcs: INITIAL_NPCS,
       chronicle: INITIAL_CHRONICLE,
-
-      setVitals: vitals => set({ vitals }),
-      setStats: stats =>
-        set(state => ({
-          character: { ...state.character, stats },
-        })),
-      setCharacter: character =>
-        set(state => ({
-          character: { ...state.character, ...character },
-        })),
-      setParty: party => set({ party }),
-      setTimeline: timeline => set({ timeline }),
-      setNpcs: npcs => set({ npcs }),
-      setChronicle: chronicle => set({ chronicle }),
-      reset: () =>
-        set({
-          character: INITIAL_CHARACTER,
-          vitals: INITIAL_VITALS,
-          party: INITIAL_PARTY,
-          timeline: INITIAL_TIMELINE,
-          npcs: INITIAL_NPCS,
-          chronicle: INITIAL_CHRONICLE,
-        }),
     }),
-    {
-      name: 'player-dashboard-dyd-storage',
-    },
-  ),
-)
+}))

@@ -1,4 +1,5 @@
 .cmp-npcs {
+  position: relative;
   background: var(--pal-surface-1);
   backdrop-filter: blur(4px);
   border: 1px solid var(--pal-border-muted);

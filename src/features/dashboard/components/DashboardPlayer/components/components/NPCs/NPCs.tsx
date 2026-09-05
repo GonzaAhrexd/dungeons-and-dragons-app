@@ -1,11 +1,14 @@
 import { useText } from '@/features/langs/hooks/useText'
 import { npcsText } from './NPCs.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
+import { NPCModal } from './components/NPCModal'
+import { useNPCs } from './hooks/useNPCs'
 import './NPCs.css'
 
-interface NPCItem {
+export interface NPCItem {
   name: string
   avatarUrl?: string
+  description?: string
 }
 
 interface NPCsProps {
@@ -14,6 +17,7 @@ interface NPCsProps {
 
 export const NPCs = ({ npcs }: NPCsProps) => {
   const text = useText(npcsText)
+  const { activeNpc, handleSelectNpc, handleClose, getFullNpcData } = useNPCs()
 
   return (
     <div className="cmp-npcs">
@@ -22,19 +26,38 @@ export const NPCs = ({ npcs }: NPCsProps) => {
         <span>{text.campaignNPCs()}</span>
       </div>
       <div className="npcs-scroll">
-        {npcs.map(npc => (
-          <div key={npc.name} className="npc-item">
-            <div className="npc-avatar">
-              <img
-                src={npc.avatarUrl || '/avatar.png'}
-                alt={npc.name}
-                className="npc-avatar-img"
-              />
+        {npcs.map(npc => {
+          const fullNpc = getFullNpcData(npc)
+          return (
+            <div
+              key={npc.name}
+              className="npc-item"
+              onClick={() => handleSelectNpc(fullNpc)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleSelectNpc(fullNpc)
+                }
+              }}
+            >
+              <div className="npc-avatar">
+                <img
+                  src={fullNpc.avatarUrl || '/avatar.png'}
+                  alt={fullNpc.name}
+                  className="npc-avatar-img"
+                  onError={e => {
+                    ;(e.target as HTMLImageElement).src = '/avatar.png'
+                  }}
+                />
+              </div>
+              <span>{fullNpc.name}</span>
             </div>
-            <span>{npc.name}</span>
-          </div>
-        ))}
+          )
+        })}
       </div>
+
+      <NPCModal npc={activeNpc} onClose={handleClose} />
     </div>
   )
 }
