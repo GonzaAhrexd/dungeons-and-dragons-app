@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { InventoryItem } from '../../../interfaces'
+import type { InventoryItem } from '../interfaces'
 
 interface UseInventoryEditOptions {
   initialItem?: Partial<InventoryItem>

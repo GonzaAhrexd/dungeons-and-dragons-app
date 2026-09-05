@@ -2,8 +2,8 @@ import { useText } from '@/features/langs/hooks/useText'
 import { inventoryText } from '../../Inventory.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Input } from '@/shared/ui/Input/Input'
-import { useInventoryEdit } from './hooks/useInventoryEdit'
-import type { InventoryEditProps } from '../../interfaces'
+import { useInventoryEdit } from '@/features/dashboard/components/DashboardPlayer/hooks'
+import type { InventoryEditProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './InventoryEdit.css'
 
 export const InventoryEdit = ({

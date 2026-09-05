@@ -4,7 +4,7 @@ import { inventoryText } from '../../Inventory.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { IconPicker } from '@/shared/ui/IconPicker/IconPicker'
 import { Input } from '@/shared/ui/Input/Input'
-import type { ResourceEditProps } from '../../interfaces'
+import type { ResourceEditProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './ResourceEdit.css'
 
 export const ResourceEdit = ({

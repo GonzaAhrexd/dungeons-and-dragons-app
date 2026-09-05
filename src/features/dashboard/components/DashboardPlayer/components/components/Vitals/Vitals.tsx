@@ -4,7 +4,7 @@ import { vitalsText } from './Vitals.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { type VitalBar } from '../../../interfaces'
 import { VitalsEdit, VitalsDetails } from './components'
-import { useVitals } from './hooks/useVitals'
+import { useVitals } from '@/features/dashboard/components/DashboardPlayer/hooks'
 
 interface VitalsProps {
   bars: VitalBar[]

@@ -1,7 +1,7 @@
 import { useText } from '@/features/langs/hooks/useText'
 import { inventoryText } from '../../Inventory.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import type { ResourceDetailsProps } from '../../interfaces'
+import type { ResourceDetailsProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './ResourceDetails.css'
 
 export const ResourceDetails = ({

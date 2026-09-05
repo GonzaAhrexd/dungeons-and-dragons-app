@@ -2,8 +2,8 @@ import { useText } from '@/features/langs/hooks/useText'
 import { inventoryText } from '../../Inventory.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { EquipmentEdit } from '../EquipmentEdit/EquipmentEdit'
-import { EQUIPMENT_ICON_PACKAGE } from '../../hooks/useInventory'
-import type { EquipmentListProps } from '../../interfaces'
+import { EQUIPMENT_ICON_PACKAGE } from '@/features/dashboard/components/DashboardPlayer/hooks'
+import type { EquipmentListProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './EquipmentList.css'
 
 export const EquipmentList = ({

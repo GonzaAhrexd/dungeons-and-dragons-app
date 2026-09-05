@@ -2,8 +2,8 @@ import { useText } from '@/features/langs/hooks/useText'
 import { partyText } from './Party.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { NPCModal } from '../NPCs/components/NPCModal'
-import { useParty } from './hooks/useParty'
-import type { PartyMember } from './interfaces'
+import { useParty } from '@/features/dashboard/components/DashboardPlayer/hooks'
+import type { PartyMember } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './Party.css'
 
 interface PartyProps {

@@ -2,7 +2,7 @@ import { useText } from '@/features/langs/hooks/useText'
 import { campaignText } from './CampaignStory.langs'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { useCampaignStory } from './hooks/useCampaignStory'
+import { useCampaignStory } from '@/features/dashboard/components/DashboardPlayer/hooks'
 import './CampaignStory.css'
 
 interface CampaignProps {

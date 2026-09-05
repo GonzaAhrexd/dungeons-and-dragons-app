@@ -4,9 +4,9 @@ import { Icon } from '@/shared/ui/Icon/Icon'
 import { IconPicker } from '@/shared/ui/IconPicker/IconPicker'
 import { Input } from '@/shared/ui/Input/Input'
 import { Select } from '@/shared/ui/Select/Select'
-import { ATTRIBUTES } from '@/features/dashboard/store/player.store'
-import { useEquipmentEdit } from './hooks/useEquipmentEdit'
-import type { EquipmentEditProps } from '../../interfaces'
+import { ATTRIBUTES } from '@/features/dashboard/components/DashboardPlayer/store/player.store'
+import { useEquipmentEdit } from '@/features/dashboard/components/DashboardPlayer/hooks'
+import type { EquipmentEditProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './EquipmentEdit.css'
 
 const ATTRIBUTE_OPTIONS = ATTRIBUTES.map(attr => ({

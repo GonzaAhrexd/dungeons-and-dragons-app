@@ -1,7 +1,7 @@
 import { useText } from '@/features/langs/hooks/useText'
 import { inventoryText } from '../../Inventory.langs'
 import { InventoryEdit } from '../InventoryEdit/InventoryEdit'
-import type { InventoryListProps } from '../../interfaces'
+import type { InventoryListProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './InventoryList.css'
 
 export const InventoryList = ({

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { Attribute } from '../../../../interfaces'
+import type { Attribute } from '../interfaces'
 
 interface UseStatsProps {
   stats: Attribute[]

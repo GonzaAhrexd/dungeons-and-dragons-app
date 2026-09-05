@@ -14,12 +14,10 @@ import {
   DEFAULT_INVENTORY,
   DEFAULT_RESOURCES,
   RESOURCE_ICON_PACKAGE,
-} from './hooks/useInventory'
-import { usePlayerStore } from '@/features/dashboard/store/player.store'
-import type { InventoryProps } from './interfaces'
+} from '@/features/dashboard/components/DashboardPlayer/hooks'
+import { usePlayerStore } from '@/features/dashboard/components/DashboardPlayer/store/player.store'
+import type { InventoryProps } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './Inventory.css'
-
-export type * from './interfaces'
 
 export const Inventory = ({
   equipmentItems = DEFAULT_EQUIPMENT,

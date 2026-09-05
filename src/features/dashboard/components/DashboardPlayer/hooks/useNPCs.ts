@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { INITIAL_NPCS } from '@/features/dashboard/store/player.store'
+import { INITIAL_NPCS } from '../store/player.store'
 import type { NPCItem } from '../interfaces'
 
 export const useNPCs = () => {

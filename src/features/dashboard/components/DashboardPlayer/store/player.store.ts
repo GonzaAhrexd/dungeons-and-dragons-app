@@ -5,9 +5,20 @@ import type {
   PartyMember,
   NPCItem,
   Inventory,
-} from '../components/DashboardPlayer/interfaces'
+  TimelineItem,
+  Chronicle,
+  PlayerCharacter,
+} from '../interfaces'
 
-export type { PartyMember, NPCItem, Inventory }
+export type {
+  VitalBar,
+  Attribute,
+  PartyMember,
+  NPCItem,
+  Inventory,
+  TimelineItem,
+  Chronicle,
+}
 
 const INITIAL_PARTY: PartyMember[] = [
   {
@@ -43,27 +54,6 @@ const INITIAL_PARTY: PartyMember[] = [
       'Bardo viajero y diplomático. Inspirador del grupo mediante cantos ancestrales e historias del reino.',
   },
 ]
-
-export interface TimelineItem {
-  season: string
-  event: string
-}
-
-export interface Chronicle {
-  title: string
-  description: string
-}
-
-export interface PlayerCharacter {
-  name: string
-  level: number
-  class: string
-  race: string
-  alignment: string
-  stats: Attribute[]
-  inventory: Inventory
-  history: string
-}
 
 export const ATTRIBUTES: Attribute[] = [
   { id: 'str', name: 'Fuerza', abbreviation: 'FUE', value: 13 },

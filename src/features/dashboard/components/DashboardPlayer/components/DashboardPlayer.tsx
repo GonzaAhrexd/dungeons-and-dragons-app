@@ -13,7 +13,7 @@ import {
   NPCs,
   Party,
 } from './components'
-import { usePlayerStore } from '../../../store/player.store'
+import { usePlayerStore } from '../store/player.store'
 import './DashboardPlayer.css'
 
 export const DashboardPlayer = () => {

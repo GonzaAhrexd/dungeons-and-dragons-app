@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { EquipmentItem, EquipmentModifier } from '../../../interfaces'
-import { ATTRIBUTES } from '@/features/dashboard/store/player.store'
+import type { EquipmentItem, EquipmentModifier } from '../interfaces'
+import { ATTRIBUTES } from '../store/player.store'
 
 interface UseEquipmentEditOptions {
   initialItem?: Partial<EquipmentItem>

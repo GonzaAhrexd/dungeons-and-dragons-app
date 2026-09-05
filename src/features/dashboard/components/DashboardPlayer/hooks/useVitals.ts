@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import type { VitalBar } from '../../../../interfaces'
+import type { VitalBar } from '../interfaces'
 
 interface UseVitalsProps {
   bars: VitalBar[]

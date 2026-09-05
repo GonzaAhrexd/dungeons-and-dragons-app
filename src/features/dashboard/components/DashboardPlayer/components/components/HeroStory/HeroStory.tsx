@@ -2,7 +2,7 @@ import { Link } from 'wouter'
 import { useText } from '@/features/langs/hooks/useText'
 import { heroStoryText } from './HeroStory.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { useHeroStory } from './hooks/useHeroStory'
+import { useHeroStory } from '@/features/dashboard/components/DashboardPlayer/hooks'
 import './HeroStory.css'
 
 interface HeroStoryProps {

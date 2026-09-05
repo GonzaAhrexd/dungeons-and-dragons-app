@@ -2,7 +2,7 @@ import { useText } from '@/features/langs/hooks/useText'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { statsText } from './Stats.langs'
-import { useStats } from './hooks/useStats'
+import { useStats } from '@/features/dashboard/components/DashboardPlayer/hooks'
 import type { Attribute } from '../../../interfaces'
 import './Stats.css'
 

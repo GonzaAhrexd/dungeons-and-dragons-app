@@ -2,7 +2,7 @@ import './Portrait.css'
 import { Link } from 'wouter'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
-import { usePortrait } from './hooks/usePortrait'
+import { usePortrait } from '@/features/dashboard/components/DashboardPlayer/hooks'
 
 interface PortraitProps {
   name: string

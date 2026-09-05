@@ -2,8 +2,8 @@ import { useText } from '@/features/langs/hooks/useText'
 import { npcsText } from './NPCs.langs'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { NPCModal } from './components/NPCModal'
-import { useNPCs } from './hooks/useNPCs'
-import type { NPCItem } from './interfaces'
+import { useNPCs } from '@/features/dashboard/components/DashboardPlayer/hooks'
+import type { NPCItem } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './NPCs.css'
 
 interface NPCsProps {

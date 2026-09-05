@@ -3,5 +3,6 @@ export type * from './stats.interface'
 export type * from './npcs.interface'
 export type * from './party.interface'
 export type * from './inventory.interface'
-
-
+export type * from './timeline.interface'
+export type * from './chronicle.interface'
+export type * from './character.interface'
