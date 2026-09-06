@@ -16,10 +16,12 @@ export const CampaignCard = ({
   const { campaignId, name, description, isGameMaster } = campaign
 
   const setCampaignId = useCampaignStore(state => state.setCurrentCampaignId)
+  const setIsGameMaster = useCampaignStore(state => state.setIsGameMaster)
   const [, navigate] = useLocation()
 
   const handleCardClick = () => {
     setCampaignId(campaignId)
+    setIsGameMaster(isGameMaster)
     navigate('/dashboard')
   }
 

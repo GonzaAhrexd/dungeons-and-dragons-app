@@ -1,12 +1,12 @@
 import { Redirect } from 'wouter'
 import './Dashboard.css'
-// import { ActiveCampaigns } from './components/ActiveCampaigns/ActiveCampaigns'
-// import { MyCharacters } from './components/MyCharacters/MyCharacters'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { GameMasterDashboard } from './components'
+import { DashboardPlayer } from '../DashboardPlayer/components/DashboardPlayer'
 
 export const Dashboard = () => {
   const campaignId = useCampaignStore(state => state.currentCampaignId)
+  const isGameMaster = useCampaignStore(state => state.isGameMaster)
 
   if (!campaignId) {
     return <Redirect to={'/campaigns'} />
@@ -14,9 +14,7 @@ export const Dashboard = () => {
 
   return (
     <div className="cmp-dashboard">
-      <GameMasterDashboard />
-      {/* <MyCharacters />
-      <ActiveCampaigns /> */}
+      {isGameMaster ? <GameMasterDashboard /> : <DashboardPlayer />}
     </div>
   )
 }
