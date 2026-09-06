@@ -6,7 +6,7 @@
   position: absolute;
   right: calc(100% + var(--pal-size-s));
   top: 0;
-  z-index: 100;
+  z-index: 3;
   width: 310px;
   max-height: calc(100vh - 4rem);
   background: var(--pal-bg);
@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-  z-index: 2;
+  z-index: 1;
 
   &:hover {
     border-color: var(--pal-border-strong);

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: var(--pal-size-s);
   margin: 0 auto;
-  padding: var(--pal-size-m) var(--pal-size-l) var(--pal-size-l);
+  padding: 0 var(--pal-size-l) ;
   width: 100%;
   max-width: 1280px;
   height: 100%;

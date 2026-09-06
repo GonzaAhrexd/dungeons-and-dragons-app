@@ -68,7 +68,7 @@
 
       &::before {
         position: absolute;
-        z-index: 2;
+        z-index: 1;
         top: 4px;
         left: -15px;
         border: var(--pal-border-width) solid var(--pal-grayscale-900);
@@ -82,7 +82,7 @@
 
       &::after {
         position: absolute;
-        z-index: 1;
+        z-index: 0;
         top: 14px;
         bottom: -18px;
         left: -12px;

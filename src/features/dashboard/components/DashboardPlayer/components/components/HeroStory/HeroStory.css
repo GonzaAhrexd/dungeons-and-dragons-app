@@ -4,7 +4,7 @@
   width: 100%;
 
   &.expanded {
-    z-index: 50;
+    z-index: 1;
   }
 
   @media (min-width: 64.01rem) {
@@ -27,7 +27,7 @@
 
   &.expanded {
     @media (min-width: 64.01rem) {
-      z-index: 50;
+      z-index: 1;
       box-shadow: 0 12px 32px var(--pal-shadow), 0 0 12px var(--pal-gold-800);
     }
   }
