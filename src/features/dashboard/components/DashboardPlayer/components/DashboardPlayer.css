@@ -1,35 +1,37 @@
 .cmp-dashboardplayer {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: var(--pal-size-m) var(--pal-size-l) var(--pal-size-l);
   gap: var(--pal-size-s);
-  max-width: 1280px;
   margin: 0 auto;
+  padding: var(--pal-size-m) var(--pal-size-l) var(--pal-size-l);
   width: 100%;
+  max-width: 1280px;
+  height: 100%;
 
   .cmp-icon {
     font-size: var(--pal-fs-xs);
   }
 
   > .back {
+    align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    font-family: var(--pal-font-display);
+    padding: 0.35rem 0.8rem 0.35rem 0.65rem;
     font-size: 0.72rem;
-    color: var(--pal-gold-400, #d4af37);
+    font-family: var(--pal-font-display);
+    text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.8px;
-    text-transform: uppercase;
-    align-self: flex-start;
-    padding: 0.35rem 0.8rem 0.35rem 0.65rem;
+    color: var(--pal-gold-400, #d4af37);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     .cmp-icon {
       font-size: 0.7rem;
       color: var(--pal-gold-400, #d4af37);
-      transition: transform 0.25s ease, color 0.25s ease;
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease;
     }
 
     &:hover {
@@ -47,10 +49,10 @@
   }
 
   > .grid {
+    flex: 1;
     display: grid;
     grid-template-columns: 280px 1fr 265px;
     gap: var(--pal-size-m);
-    flex: 1;
     min-height: 0;
 
     > .left {
@@ -68,8 +70,8 @@
       > .story-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: var(--pal-size-s);
         align-items: end;
+        gap: var(--pal-size-s);
 
         > * {
           min-width: 0;
@@ -85,28 +87,28 @@
   }
 
   @media (max-width: 64rem) {
+    gap: var(--pal-fs-l);
+    padding: var(--pal-size-m) var(--pal-size-m) 3.5rem;
     height: auto;
     overflow-x: hidden;
     overflow-y: visible;
-    padding: var(--pal-size-m) var(--pal-size-m) 3.5rem;
-    gap: var(--pal-fs-l);
 
     > .grid {
       grid-template-columns: 1fr;
+      gap: var(--pal-fs-l);
       height: auto;
       overflow: visible;
-      gap: var(--pal-fs-l);
 
       > .left,
       > .right,
       > .center {
-        min-width: 0;
-        width: 100%;
-        overflow: visible;
         gap: var(--pal-size-m);
+        width: 100%;
+        min-width: 0;
+        overflow: visible;
       }
 
-      > .left  {
+      > .left {
         order: 1;
       }
 
@@ -120,4 +122,3 @@
     }
   }
 }
-

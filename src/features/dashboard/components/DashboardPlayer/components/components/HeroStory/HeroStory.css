@@ -1,38 +1,29 @@
 .story-card-wrapper {
   position: relative;
-  width: 100%;
   box-sizing: border-box;
-
-  @media (min-width: 64.01rem) {
-    height: 11.5rem;
-  }
+  width: 100%;
 
   &.expanded {
     z-index: 50;
   }
+
+  @media (min-width: 64.01rem) {
+    height: 11.5rem;
+  }
 }
 
 .card.paper.cmp-hero-story {
-  padding: 1rem 1.15rem;
-  border: 1px solid var(--pal-gold-700);
-  background: var(--pal-paper-gradient);
-  color: var(--pal-ink);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 0;
   box-sizing: border-box;
+  border: 1px solid var(--pal-gold-700);
+  padding: 1rem 1.15rem;
   width: 100%;
+  min-width: 0;
+  color: var(--pal-ink);
+  background: var(--pal-paper-gradient);
   transition: box-shadow 0.3s ease;
-
-  @media (min-width: 64.01rem) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    min-height: 100%;
-  }
 
   &.expanded {
     @media (min-width: 64.01rem) {
@@ -42,35 +33,35 @@
   }
 
   h3 {
-    font-family: var(--pal-font-display);
-    font-size: var(--pal-fs-s);
-    color: var(--pal-ink);
-    letter-spacing: 0.5px;
     margin: 0 0 0.4rem 0;
+    font-size: var(--pal-fs-s);
+    font-family: var(--pal-font-display);
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 0.5px;
+    color: var(--pal-ink);
+    overflow: hidden;
   }
 
   .story-text {
-    font-family: var(--pal-font-body);
+    margin: 0;
     font-size: var(--pal-fs-s);
     line-height: var(--pal-lh-base);
-    color: var(--pal-ink-soft);
+    font-family: var(--pal-font-body);
     text-align: left;
-    margin: 0;
+    color: var(--pal-ink-soft);
     overflow: hidden;
     transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
     &.dropcap::first-letter {
-      font-family: var(--pal-font-display);
-      font-size: 1.8rem;
-      font-weight: 700;
-      line-height: 1;
-      float: left;
-      margin-right: 0.3rem;
       margin-top: 0.15rem;
+      margin-right: 0.3rem;
+      font-size: 1.8rem;
+      line-height: 1;
+      font-family: var(--pal-font-display);
+      font-weight: 700;
       color: var(--pal-seal);
+      float: left;
       initial-letter: 2;
       -webkit-initial-letter: 2;
     }
@@ -78,13 +69,13 @@
 
   .card-footer {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    flex-wrap: wrap;
+    margin-top: 0.4rem;
     border-top: 1px solid var(--pal-parchment-dark);
     padding-top: 0.4rem;
-    margin-top: 0.4rem;
 
     .cmp-icon {
       color: var(--pal-seal-bright);
@@ -96,16 +87,16 @@
   }
 
   .edit-story-link {
-    font-family: var(--pal-font-display);
-    color: var(--pal-seal-bright);
-    font-size: var(--pal-fs-xs);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: color 0.2s;
     display: flex;
     align-items: center;
     gap: 0.35rem;
+    font-size: var(--pal-fs-xs);
+    font-family: var(--pal-font-display);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    color: var(--pal-seal-bright);
+    cursor: pointer;
+    transition: color 0.2s;
 
     &:hover {
       color: var(--pal-seal);
@@ -113,10 +104,10 @@
   }
 
   .log-link {
-    font-family: var(--pal-font-display);
     font-size: var(--pal-fs-xs);
-    color: var(--pal-seal-bright);
+    font-family: var(--pal-font-display);
     letter-spacing: 0.5px;
+    color: var(--pal-seal-bright);
     cursor: pointer;
     transition: color 0.2s;
 
@@ -127,6 +118,15 @@
     &:hover {
       color: var(--pal-seal);
     }
+  }
+
+  @media (min-width: 64.01rem) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    min-height: 100%;
   }
 }
 

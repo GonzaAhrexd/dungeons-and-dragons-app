@@ -18,8 +18,8 @@
   position: relative;
   flex-shrink: 0;
   border: 1px solid var(--pal-border-muted);
-  border-radius: var(--pal-radius-m);
   padding: 0.65rem var(--pal-size-s);
+  border-radius: var(--pal-radius-m);
 
   background: var(--pal-surface-1);
   backdrop-filter: blur(4px);

@@ -2,8 +2,8 @@
   position: relative;
   flex-shrink: 0;
   border: 1px solid var(--pal-border-muted);
-  border-radius: var(--pal-radius-s);
   height: 18rem;
+  border-radius: var(--pal-radius-s);
   background: var(--pal-surface-1);
   overflow: hidden;
 

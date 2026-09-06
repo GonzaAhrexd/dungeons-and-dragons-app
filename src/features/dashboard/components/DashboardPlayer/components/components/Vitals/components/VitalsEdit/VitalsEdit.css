@@ -116,12 +116,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border: 1px solid var(--pal-red-800);
+        padding: 0;
         width: 26px;
         height: 26px;
-        padding: 0;
-        border: 1px solid var(--pal-red-800);
-        border-radius: var(--pal-radius-s);
         font-size: 0.75rem;
+        border-radius: var(--pal-radius-s);
         color: var(--pal-red-400);
         background: var(--pal-red-900);
         cursor: pointer;
@@ -142,9 +142,9 @@
         }
 
         &:disabled {
+          border-color: var(--pal-red-900);
           opacity: 0.4;
           cursor: not-allowed;
-          border-color: var(--pal-red-900);
 
           .cmp-icon {
             color: var(--pal-red-700);
@@ -161,8 +161,8 @@
     margin-bottom: 0.3rem;
     border: none;
     width: 100%;
-    font-family: var(--pal-font-body);
     font-size: var(--pal-fs-s);
+    font-family: var(--pal-font-body);
     color: var(--pal-gold-600);
     background: transparent;
     cursor: pointer;

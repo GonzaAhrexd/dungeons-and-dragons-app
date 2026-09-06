@@ -1,13 +1,13 @@
 .cmp-party {
   position: relative;
-  background: var(--pal-surface-1);
-  border: 1px solid var(--pal-border-muted);
-  border-radius: var(--pal-radius-m);
-  padding: var(--pal-size-s) var(--pal-size-m);
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  flex-shrink: 0;
+  border: 1px solid var(--pal-border-muted);
+  padding: var(--pal-size-s) var(--pal-size-m);
+  border-radius: var(--pal-radius-m);
+  background: var(--pal-surface-1);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
@@ -19,31 +19,31 @@
     display: flex;
     align-items: center;
     gap: var(--pal-size-xs);
-    font-family: var(--pal-font-display);
-    font-size: var(--pal-fs-xs);
-    color: var(--pal-gold-400);
-    letter-spacing: 0.5px;
-    padding-bottom: var(--pal-size-xs);
     border-bottom: 1px solid var(--pal-gold-900);
+    padding-bottom: var(--pal-size-xs);
+    font-size: var(--pal-fs-xs);
+    font-family: var(--pal-font-display);
+    letter-spacing: 0.5px;
+    color: var(--pal-gold-400);
   }
 
   .party-scroll {
     display: flex;
     gap: 1.1rem;
-    overflow-x: auto;
     padding-top: var(--pal-size-2xs);
     padding-bottom: var(--pal-size-xs);
+    overflow-x: auto;
 
     &::-webkit-scrollbar {
       height: 6px;
     }
     &::-webkit-scrollbar-track {
-      background: var(--pal-grayscale-1000);
       border-radius: 3px;
+      background: var(--pal-grayscale-1000);
     }
     &::-webkit-scrollbar-thumb {
-      background: var(--pal-gold-700);
       border-radius: 3px;
+      background: var(--pal-gold-700);
       cursor: pointer;
 
       &:hover {
@@ -57,8 +57,8 @@
       align-items: center;
       gap: 0.3rem;
       width: 50px;
-      transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
       cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 
       &:hover {
         transform: translateY(-2px);
@@ -74,35 +74,35 @@
       }
 
       .party-avatar {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        border: var(--pal-border-width) solid var(--pal-gold-700);
+        flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        border: var(--pal-border-width) solid var(--pal-gold-700);
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
         overflow: hidden;
-        flex-shrink: 0;
         transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
         .party-avatar-img {
+          display: block;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          display: block;
         }
       }
 
       .party-member-name {
-        font-family: var(--pal-font-display);
-        font-size: var(--pal-fs-xs);
-        color: var(--pal-grayscale-300);
-        text-align: center;
         width: 100%;
         max-width: 50px;
+        font-size: var(--pal-fs-xs);
+        font-family: var(--pal-font-display);
+        text-align: center;
         white-space: nowrap;
-        overflow: hidden;
         text-overflow: ellipsis;
+        color: var(--pal-grayscale-300);
+        overflow: hidden;
         transition: color 0.25s ease;
       }
     }
@@ -111,7 +111,7 @@
 
 @media (max-width: 64rem) {
   .cmp-party {
-    padding: var(--pal-size-m) 1.1rem;
     gap: var(--pal-size-m);
+    padding: var(--pal-size-m) 1.1rem;
   }
 }

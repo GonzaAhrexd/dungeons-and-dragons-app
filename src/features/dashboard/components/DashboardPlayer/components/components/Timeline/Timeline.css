@@ -1,13 +1,13 @@
 .cmp-timeline {
-  background: var(--pal-surface-1);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--pal-border-muted);
-  border-radius: var(--pal-radius-m);
-  padding: var(--pal-size-s) var(--pal-size-m);
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  flex-shrink: 0;
+  border: 1px solid var(--pal-border-muted);
+  padding: var(--pal-size-s) var(--pal-size-m);
+  border-radius: var(--pal-radius-m);
+  background: var(--pal-surface-1);
+  backdrop-filter: blur(4px);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
@@ -19,18 +19,18 @@
     display: flex;
     align-items: center;
     gap: var(--pal-size-xs);
-    font-family: var(--pal-font-display);
-    font-size: var(--pal-fs-l);
-    color: var(--pal-gold-400);
-    letter-spacing: 0.5px;
-    padding-bottom: var(--pal-size-xs);
     border-bottom: 1px solid var(--pal-gold-900);
+    padding-bottom: var(--pal-size-xs);
+    font-size: var(--pal-fs-l);
+    font-family: var(--pal-font-display);
+    letter-spacing: 0.5px;
+    color: var(--pal-gold-400);
 
     .chronology-title {
-      font-family: var(--pal-font-display);
       font-size: var(--pal-fs-xs);
-      color: var(--pal-gold-400);
+      font-family: var(--pal-font-display);
       letter-spacing: 0.5px;
+      color: var(--pal-gold-400);
     }
   }
 
@@ -38,8 +38,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--pal-fs-l);
-    padding-left: 20px;
     padding-right: 0.35rem;
+    padding-left: 20px;
     max-height: 16.5rem;
     overflow-y: auto;
 
@@ -56,10 +56,10 @@
     }
 
     .timeline-item {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: var(--pal-size-2xs);
-      position: relative;
       transition: transform 0.2s ease;
 
       &:hover {
@@ -67,28 +67,28 @@
       }
 
       &::before {
-        content: '';
         position: absolute;
-        left: -15px;
+        z-index: 2;
         top: 4px;
+        left: -15px;
+        border: var(--pal-border-width) solid var(--pal-grayscale-900);
         width: var(--pal-size-xs);
         height: var(--pal-size-xs);
+        content: '';
         border-radius: 50%;
         background: var(--pal-gold-400);
-        border: var(--pal-border-width) solid var(--pal-grayscale-900);
         box-shadow: 0 0 5px var(--pal-gold-500);
-        z-index: 2;
       }
 
       &::after {
-        content: '';
         position: absolute;
-        left: -12px;
+        z-index: 1;
         top: 14px;
         bottom: -18px;
+        left: -12px;
         width: 2px;
+        content: '';
         background: linear-gradient(to bottom, var(--pal-gold-700), var(--pal-gold-900));
-        z-index: 1;
       }
 
       &:last-child::after {
@@ -96,18 +96,18 @@
       }
 
       .tl-season {
-        font-family: var(--pal-font-display);
         font-size: var(--pal-fs-xs);
-        color: var(--pal-gold-400);
+        font-family: var(--pal-font-display);
         font-weight: 700;
         letter-spacing: 0.5px;
+        color: var(--pal-gold-400);
       }
 
       .tl-event {
-        font-family: var(--pal-font-body);
         font-size: var(--pal-fs-s);
-        color: var(--pal-grayscale-200);
         line-height: var(--pal-lh-base);
+        font-family: var(--pal-font-body);
+        color: var(--pal-grayscale-200);
       }
     }
   }
@@ -115,8 +115,8 @@
 
 @media (max-width: 64rem) {
   .cmp-timeline {
-    padding: var(--pal-size-m) 1.1rem;
     gap: var(--pal-size-m);
+    padding: var(--pal-size-m) 1.1rem;
 
     .timeline-list {
       gap: var(--pal-size-l);
