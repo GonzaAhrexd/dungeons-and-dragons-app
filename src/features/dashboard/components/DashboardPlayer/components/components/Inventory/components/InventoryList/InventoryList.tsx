@@ -17,7 +17,7 @@ export const InventoryList = ({
   const text = useText(inventoryText)
 
   return (
-    <div className="slide cmp-inventory-list">
+    <div className="cmp-inventory-list slide">
       {items.map((item, index) => {
         if (editingIndex === index) {
           return (

@@ -1,4 +1,4 @@
-.story-card-wrapper {
+.cmp-hero-story {
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -12,7 +12,7 @@
   }
 }
 
-.card.paper.cmp-hero-story {
+.cmp-hero-story > .card.paper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -20,7 +20,7 @@ export const EquipmentList = ({
   const text = useText(inventoryText)
 
   return (
-    <div className="slide cmp-equipment-list">
+    <div className="cmp-equipment-list slide">
       {items.map((item, index) => {
         if (editingIndex === index) {
           return (

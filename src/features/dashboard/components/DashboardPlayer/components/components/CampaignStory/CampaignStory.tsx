@@ -18,9 +18,9 @@ export const Campaign = ({ title, description }: CampaignProps) => {
   return (
     <div
       ref={containerRef}
-      className={`story-card-wrapper ${expanded ? 'expanded' : ''}`}
+      className={`cmp-campaign-story story-card-wrapper ${expanded ? 'expanded' : ''}`}
     >
-      <div className={`card paper cmp-campaign-story ${expanded ? 'expanded' : ''}`}>
+      <div className={`card paper ${expanded ? 'expanded' : ''}`}>
         <h3>{title}</h3>
         <div
           ref={contentRef}

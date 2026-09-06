@@ -1,4 +1,4 @@
-.story-card-wrapper {
+.cmp-campaign-story {
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -12,7 +12,7 @@
   }
 }
 
-.card.paper.cmp-campaign-story {
+.cmp-campaign-story > .card.paper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

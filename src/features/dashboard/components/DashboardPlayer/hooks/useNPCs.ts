@@ -20,7 +20,10 @@ export const useNPCs = () => {
     return {
       name: npc.name,
       avatarUrl: npc.avatarUrl || initial?.avatarUrl,
+      role: npc.role || initial?.role,
+      location: npc.location || initial?.location,
       description: npc.description || initial?.description,
+      details: npc.details || initial?.details,
     }
   }
 

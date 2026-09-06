@@ -30,7 +30,7 @@ export const DashboardPlayer = () => {
   } = usePlayerStore()
 
   return (
-    <div className="cmp-dashboardplayer">
+    <div className="cmp-dashboard-player">
       <Link to="/campaigns" className="back">
         <Icon icon="fa-solid fa-chevron-left" /> {text.backToCampaigns()}
       </Link>

@@ -17,9 +17,9 @@ export const HeroStory = ({ historyText }: HeroStoryProps) => {
   return (
     <div
       ref={containerRef}
-      className={`story-card-wrapper ${expanded ? 'expanded' : ''}`}
+      className={`cmp-hero-story story-card-wrapper ${expanded ? 'expanded' : ''}`}
     >
-      <div className={`card paper cmp-hero-story ${expanded ? 'expanded' : ''}`}>
+      <div className={`card paper ${expanded ? 'expanded' : ''}`}>
         <h3>{text.heroStory()}</h3>
         <p
           ref={contentRef}

@@ -41,7 +41,6 @@
       border-style: solid;
       border-color: var(--pal-gold-800);
       padding: var(--pal-size-m);
-      width: 100%;
       max-width: 20rem;
 
       background-color: var(--pal-grayscale-900);
