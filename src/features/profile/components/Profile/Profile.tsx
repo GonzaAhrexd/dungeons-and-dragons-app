@@ -67,13 +67,13 @@ export const Profile = () => {
 
   return (
     <div className="cmp-profile">
-      <div className="profile-banner">
+      <div className="banner">
         <div className="banner-fade" />
       </div>
 
-      <div className="profile-content">
-        <div className="profile-card">
-          <div className="profile-header">
+      <div className="content">
+        <div className="card">
+          <div className="header">
             <Icon icon="fa-solid fa-user-gear" />
             <h2>{text.accountManagement()}</h2>
           </div>
@@ -81,7 +81,7 @@ export const Profile = () => {
           <div className="header-divider" />
 
           {statusMessage && (
-            <div className={`profile-alert ${statusMessage.type}`}>
+            <div className={`alert ${statusMessage.type}`}>
               <Icon
                 icon={
                   statusMessage.type === 'success'
@@ -93,11 +93,13 @@ export const Profile = () => {
             </div>
           )}
 
-          <form className="profile-form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <Input
+              id="username"
               name="username"
               label={text.username()}
               defaultValue={username}
+              autoComplete="username"
               theme="gold"
               htmlAttrs={{
                 value: username,
@@ -106,35 +108,38 @@ export const Profile = () => {
               }}
             />
 
-            <div className="cmp-input gold">
-              <p>{text.avatarScroll()}</p>
-              <div className="input-with-preview">
-                <img
-                  src={
-                    avatar.trim() !== ''
-                      ? avatar
-                      : user?.avatar || '/avatar.png'
-                  }
-                  alt="Avatar Preview"
-                  className="avatar-preview-thumbnail"
-                  onError={e => {
-                    e.currentTarget.src = '/avatar.png'
-                  }}
-                />
-                <input
-                  name="avatar"
-                  placeholder={text.avatarPlaceholder()}
-                  type="text"
-                  value={avatar}
-                  onChange={e => setAvatar(e.target.value)}
-                />
-              </div>
+            <div className="input-with-preview">
+              <Input
+                id="avatar"
+                name="avatar"
+                label={text.avatarScroll()}
+                type="text"
+                autoComplete="off"
+                placeholder={text.avatarPlaceholder()}
+                theme="gold"
+                htmlAttrs={{
+                  value: avatar,
+                  onChange: e => setAvatar(e.target.value),
+                }}
+              />
+              <img
+                src={
+                  avatar.trim() !== '' ? avatar : user?.avatar || '/avatar.png'
+                }
+                alt="Avatar Preview"
+                className="avatar-preview-thumbnail"
+                onError={e => {
+                  e.currentTarget.src = '/avatar.png'
+                }}
+              />
             </div>
 
             <Input
+              id="current-password"
               name="currentPassword"
               label={text.currentSecretWord()}
               type="password"
+              autoComplete="current-password"
               placeholder={text.currentPasswordPlaceholder()}
               theme="gold"
               handlingClass="full-width"
@@ -145,9 +150,11 @@ export const Profile = () => {
             />
 
             <Input
+              id="new-password"
               name="newPassword"
               label={text.newDecree()}
               type="password"
+              autoComplete="new-password"
               placeholder={text.newPasswordPlaceholder()}
               theme="gold"
               htmlAttrs={{
@@ -157,9 +164,11 @@ export const Profile = () => {
             />
 
             <Input
+              id="confirm-password"
               name="confirmPassword"
               label={text.confirmSeal()}
               type="password"
+              autoComplete="new-password"
               placeholder={text.confirmPasswordPlaceholder()}
               theme="gold"
               htmlAttrs={{
