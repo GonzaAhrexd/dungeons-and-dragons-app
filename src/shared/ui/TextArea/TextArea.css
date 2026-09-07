@@ -30,7 +30,7 @@
     }
 
     > textarea {
-      border: 1px solid var(--pal-gold-800);
+      border: 1px solid var(--pal-input-border);
       background-color: rgba(0, 0, 0, 0.15);
       color: var(--pal-grayscale-100);
 

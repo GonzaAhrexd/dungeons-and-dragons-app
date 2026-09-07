@@ -153,6 +153,23 @@
         }
       }
     }
+    
+    .cmp-input {
+      &.paper {
+          & .input-wrapper > input, & > input {
+              &:focus {
+                  border-color: var(--pal-gold-500);
+              }
+          }
+      }
+    } 
+    .cmp-button {
+        &.secondary {
+            > .cmp-icon {
+                color: var(--pal-gold-600);
+            }
+        }
+    }
 
     > .red-button {
       background: linear-gradient(to bottom, #880000 0%, #5e0000 100%);

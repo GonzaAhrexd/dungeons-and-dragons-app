@@ -58,7 +58,7 @@
   }
 
   &.secondary {
-    border-width: var(--line-thickness);
+    border-width: 0.1rem;
     border-style: solid;
     border-color: var(--pal-surface-gold);
     color: var(--pal-text-gold);

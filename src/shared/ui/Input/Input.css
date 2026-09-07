@@ -51,6 +51,11 @@
 
       &.secondary {
         border: none;
+        background: transparent;
+
+        &:hover {
+          background: transparent;
+        }
       }
 
       > .cmp-icon {
@@ -59,7 +64,7 @@
         transition: opacity 0.3s ease-in-out;
 
         .cmp-button:hover & {
-          opacity: 0.7;
+          opacity: 0.9;
         }
       }
     }
@@ -72,7 +77,7 @@
 
     .input-wrapper > input,
     > input {
-      border: 1px solid var(--pal-gold-800);
+      border: 1px solid var(--pal-input-border);
       color: var(--pal-grayscale-100);
       background-color: rgba(10, 8, 4, 0.15);
 
