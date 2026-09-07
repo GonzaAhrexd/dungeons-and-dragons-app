@@ -43,8 +43,11 @@ export const CampaignCard = ({
         {/* TODO: Cambiar por el nombre del jugador cuando esté disponible en el Backend */}
         <img
           className="user-avatar"
-          src={avatarUrl}
+          src={avatarUrl || '/avatar.png'}
           alt={isGameMaster ? 'Game Master' : 'Player'}
+          onError={e => {
+            ;(e.target as HTMLImageElement).src = '/avatar.png'
+          }}
         />
         <span className="user-name">
           {isGameMaster ? 'Game Master' : 'Player'}

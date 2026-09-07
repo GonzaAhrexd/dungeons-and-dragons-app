@@ -5,11 +5,11 @@
   justify-content: space-between;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--pal-gold-700);
+  border-color: var(--pal-border-strong);
   width: 100%;
   min-height: 25rem;
 
-  background-color: var(--pal-grayscale-900);
+  background-color: var(--pal-surface-1);
   
   overflow: hidden;
   cursor: pointer;
@@ -44,6 +44,9 @@
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     mask-composite: exclude;
   
     pointer-events: none;
@@ -59,9 +62,9 @@
 
   > .cmp-campaign-image {
     position: relative;
-    margin: 5px;
+    margin: 5px 5px 0 5px;                         
     min-height: 15rem;
-    border-radius: 3px;
+    border-radius: var(--pal-radius-s) var(--pal-radius-s) 0 0; 
     background-position: center;
     background-size: cover;
     overflow: hidden;
@@ -72,10 +75,11 @@
       content: '';
       background: linear-gradient(
         to bottom,
-        transparent 65%,
-        var(--pal-grayscale-900) 100%
+        rgb(from var(--pal-surface-1) r g b / 0) 0%,
+        rgb(from var(--pal-surface-1) r g b / 0) 35%,
+        var(--pal-surface-1) 100%
       );
-      pointer-events: none;
+    pointer-events: none;
     }
   }
 
@@ -88,21 +92,21 @@
 
     > h1 {
       margin: 0;
-      font-size: var(--pal-fs-lg);
+      font-size: var(--pal-fs-l);
       font-weight: 700;
-      color: var(--pal-gold-400);
+      color: var(--pal-text-gold);
     }
 
     > p {
       line-height: 1.4;
       font-style: italic;
-      color: var(--pal-grayscale-300);
+      color: var(--pal-text-muted);
     }
   }
 
   > .campaign-divider {
     height: 1px;
-    background-color: var(--pal-gold-700);
+    background-color: var(--pal-border-strong);
     opacity: 0.5;
   }
 
@@ -113,7 +117,7 @@
     padding: var(--pal-size-m);
 
     > .user-avatar {
-      border: 1px solid var(--pal-gold-700);
+      border: 1px solid var(--pal-border-strong);
       aspect-ratio: 1;
       width: var(--pal-size-xl);
       border-radius: 50%;
@@ -125,7 +129,7 @@
       font-family: var(--pal-font-display);
       font-weight: 600;
       letter-spacing: 0.05em;
-      color: var(--pal-grayscale-100);
+      color: var(--pal-contrast);
     }
   }
 }

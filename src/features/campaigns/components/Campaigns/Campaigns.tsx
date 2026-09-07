@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Campaigns.css'
 import { campaignsText } from './Campaigns.langs'
 import { useText } from '@/features/langs/hooks/useText'
@@ -7,6 +7,8 @@ import {
   CampaignCard,
   CampaignFilters,
   CampaignInvitations,
+  CampaignsSkeleton,
+  CampaignError,
 } from './components'
 import { useGetMyCampaigns } from '../../hooks/useGetMyCampaigns'
 import { Button } from '@/shared/ui/Button/Button'
@@ -24,7 +26,26 @@ type SortState = {
 
 export const Campaigns = () => {
   const text = useText(campaignsText)
-  const { data: myCampaigns, isLoading, isError } = useGetMyCampaigns()
+  const { data: myCampaigns, isLoading, isError, refetch } = useGetMyCampaigns()
+
+  const [isTimedOut, setIsTimedOut] = useState(false)
+
+  useEffect(() => {
+    if (!isLoading) return
+
+    const timer = setTimeout(() => {
+      if (isLoading) {
+        setIsTimedOut(true)
+      }
+    }, 10000) // 10 segundos de espera sino mensaje de error
+
+    return () => clearTimeout(timer)
+  }, [isLoading])
+
+  const handleRetry = () => {
+    setIsTimedOut(false)
+    refetch()
+  }
 
   const [filters, setFilters] = useState({
     active: false,
@@ -89,12 +110,20 @@ export const Campaigns = () => {
       return sort.creation === 'asc' ? dateA - dateB : dateB - dateA
     })
 
-  if (isLoading) {
-    return <div className="loading-state">{text.loading()}</div>
+  if (isLoading && !isTimedOut) {
+    //if (isLoading || !isLoading) {
+    return <CampaignsSkeleton />
   }
 
-  if (isError) {
-    return <div className="error-state">{text.error()}</div>
+  if (isError || isTimedOut) {
+    return (
+      <CampaignError
+        errorMessage={text.error()}
+        errorDescription={text.errorDesc()}
+        retryText={text.retry()}
+        onRetry={handleRetry}
+      />
+    )
   }
 
   return (
@@ -132,7 +161,7 @@ export const Campaigns = () => {
             key={campaign.campaignId}
             campaign={campaign}
             imageUrl="/placeholder_campaign.jpg"
-            avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3xS4junhykLR37kcvFPxEcT__FSdtsoYwQ6rv5KS00F-xesC8u4093g&s=10"
+            avatarUrl="./avatar.png"
           />
         ))}
       </div>

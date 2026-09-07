@@ -17,17 +17,17 @@
         font-family: var(--pal-font-display);
         font-weight: 700;
 
-        color: var(--pal-gold-400);
+        color: var(--pal-text-gold);
       }
 
       > .campaigns-subtitle {
         margin-top: var(--pal-size-xs);
 
-        font-size: var(--pal-fs-lg);
+        font-size: var(--pal-fs-l);
         font-family: var(--pal-font-body);
         font-style: italic;
 
-        color: var(--pal-grayscale-400);
+        color: var(--pal-text-muted);
       }
     }
 

@@ -30,13 +30,15 @@ export const CampaignFilters = ({
 }: CampaignFiltersProps) => {
   const text = useText(campaignsText)
 
-  const getSortIcon = (direction: AlphabeticalSortDirection | CreationSortDirection) => {
+  const getSortIcon = (
+    direction: AlphabeticalSortDirection | CreationSortDirection,
+  ) => {
     if (direction === 'asc') return 'fa-solid fa-arrow-up'
     return 'fa-solid fa-arrow-down'
   }
 
   return (
-    <div className="campaigns-filters">
+    <div className="cmp-campaigns-filters">
       <div className="filters-capsule">
         <div className="filter-group">
           <button

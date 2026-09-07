@@ -11,6 +11,8 @@ interface CampaignsTexts {
   expandLegend: string
   loading: string
   error: string
+  errorDesc: string
+  retry: string
 }
 
 export const campaignsText: LanguagesText<CampaignsTexts> = {
@@ -25,6 +27,8 @@ export const campaignsText: LanguagesText<CampaignsTexts> = {
     expandLegend: 'Expand Your Legend',
     loading: 'Loading...',
     error: 'Error loading campaigns.',
+    errorDesc: 'Could not fetch campaigns from server. Check your connection or try again.',
+    retry: 'Retry',
   },
   es: {
     activeCampaigns: 'Campañas activas',
@@ -37,5 +41,7 @@ export const campaignsText: LanguagesText<CampaignsTexts> = {
     expandLegend: 'Expande tu Leyenda',
     loading: 'Cargando...',
     error: 'Error al cargar las campañas.',
+    errorDesc: 'No se pudieron obtener las campañas desde el servidor. Comprobá tu conexión o reintentá.',
+    retry: 'Reintentar',
   },
 }

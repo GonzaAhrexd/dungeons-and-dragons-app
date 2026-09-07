@@ -1,4 +1,4 @@
-.campaigns-filters {
+.cmp-campaigns-filters {
   display: flex;
   margin-bottom: var(--pal-size-m);
 
@@ -6,93 +6,96 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--pal-size-s);
-    border: 1px solid rgba(163, 124, 46, 0.25);
+    gap: var(--pal-size-xs);
+    border: 1px solid var(--pal-border-subtle);
     padding: 0.25rem;
     width: fit-content;
 
     border-radius: var(--pal-radius-pill);
-    background-color: rgba(22, 15, 1, 0.5);
+    background-color: var(--pal-surface-1);
 
     > .filter-group,
     > .sort-group {
       display: flex;
       align-items: center;
       gap: var(--pal-size-s);
-    
 
-    > .filter-divider {
-      width: 1px;
-      height: 1.25rem;
-      background-color: rgba(163, 124, 46, 0.25);
-    }
+      > .filter-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--pal-size-xs, 0.5rem);
+        border: none;
+        padding: 0.5rem 1.2rem;
+        font-size: var(--pal-fs-xs);
+        font-family: var(--pal-font-display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        
+        border-radius: var(--pal-radius-pill);
+        color: var(--pal-text-gold);
+        background: transparent;
 
-    > .filter-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--pal-size-xs, 0.5rem);
-      border: none;
-      padding: 0.5rem 1.2rem;
-      font-size: var(--pal-fs-xs);
-      font-family: var(--pal-font-display);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      
-      border-radius: var(--pal-radius-pill);
-      color: var(--pal-gold-400);
-      background: transparent;
+        cursor: pointer;
+        transition: all 0.25s ease;
 
-      cursor: pointer;
-      transition: all 0.25s ease;
+        &:hover:not(.active) {
+          background-color: var(--pal-surface-3);
+          color: var(--pal-text-gold-hover);
+        }
 
-      &:hover:not(.active) {
-        color: var(--pal-grayscale-100);
-        background-color: rgba(218, 189, 128, 0.05);
-      }
+        &.active {
+          color: var(--pal-ink);
+          background-color: var(--pal-surface-gold);
 
-      &.active {
-        color: var(--pal-grayscale-1000);
-        background-color: var(--pal-gold-400);
+          &:hover {
+            background-color: var(--pal-surface-gold-hover);
+          }
+
+          > .cmp-icon {
+            color: inherit;
+          }
+        }
 
         > .cmp-icon {
-          color: inherit;
+          font-size: 15px;
         }
       }
+    }
 
-      > .cmp-icon {
-        font-size: 15px;
-      }
-      }
+    > .filter-divider {
+      width: 2px;
+      height: 1.25rem;
+      background-color: var(--pal-border-subtle);
     }
   }
 }
 
 @media (max-width: 40rem) {
-  .campaigns-filters {
+  .cmp-campaigns-filters {
     > .filters-capsule {
       flex-direction: column;
       align-items: stretch;
       gap: var(--pal-size-xs);
       padding: var(--pal-size-s);
       width: 100%;
-      border-radius: 1.25rem;
+      border-radius: var(--pal-radius-l);
 
       > .filter-group,
       > .sort-group {
         flex-wrap: wrap;
         justify-content: center;
         gap: var(--pal-size-xs);
-      
 
-      > .filter-tab {
-      padding: 0.5rem 0.7rem;
-      }}
+        > .filter-tab {
+          padding: 0.5rem 0.7rem;
+        }
+      }
 
       > .filter-divider {
         width: 100%;
         height: 1px;
-        background-color: rgba(163, 124, 46, 0.2);
+        background-color: var(--pal-border-subtle);
       }
     }
   }
