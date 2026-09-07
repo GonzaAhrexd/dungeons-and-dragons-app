@@ -1,6 +1,8 @@
+
+
 :root {
-  --cmp-button-bg-color: var(--pal-surface-gold);
-  --cmp-button-border-color: var(--pal-surface-gold);
+  --cmp-button-bg-color: var(--pal-gold-500);
+  --cmp-button-border-color: var(--pal-gold-300);
   --cmp-button-hover-color: var(--pal-gold-500);
 }
 
@@ -32,16 +34,16 @@
     outline-offset: 3px;
   }
 
-  &:hover {
-    filter: brightness(1.25);
-  }
-
   &:disabled {
     text-shadow: none;
     box-shadow: none;
     opacity: 0.6;
     transform: none;
     cursor: default;
+  }
+
+  &:hover {
+    filter: brightness(1.25);
   }
 
   > .spinner {
@@ -56,15 +58,13 @@
 
   &.primary {
     background-color: var(--cmp-button-bg-color);
-    color: var(--pal-ink);
+    color: var(--pal-grayscale-1000);
   }
 
   &.secondary {
-    border-width: 0.1rem;
+    border-width: var(--line-thickness);
     border-style: solid;
-    border-color: var(--pal-surface-gold);
     border-color: var(--cmp-button-border-color);
-    color: var(--pal-text-gold);
   }
 }
 
