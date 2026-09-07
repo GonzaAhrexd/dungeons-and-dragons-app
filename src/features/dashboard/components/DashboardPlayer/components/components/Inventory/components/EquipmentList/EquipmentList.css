@@ -69,12 +69,12 @@
         font-size: var(--pal-fs-s);
         font-weight: 600;
         letter-spacing: 0.3px;
-        color: var(--pal-gold-300);
+        color: var(--pal-text-gold);
       }
 
       > .item-desc {
         font-size: var(--pal-fs-s);
-        color: var(--pal-grayscale-400);
+        color: var(--pal-text-muted);
       }
     }
   }

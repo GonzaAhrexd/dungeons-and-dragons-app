@@ -53,7 +53,7 @@
         font-size: var(--pal-fs-s);
         font-weight: 600;
         letter-spacing: 0.3px;
-        color: var(--pal-gold-300);
+        color: var(--pal-text-gold);
       }
 
       > .item-desc {
@@ -68,7 +68,7 @@
       font-family: var(--pal-font-mono);
       font-size: var(--pal-fs-xs);
       font-weight: bold;
-      color: var(--pal-text-primary);
+      color: var(--pal-contrast);
       background: var(--pal-surface-1);
     }
   }

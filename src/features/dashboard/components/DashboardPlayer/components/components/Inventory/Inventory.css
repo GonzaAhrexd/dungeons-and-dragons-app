@@ -15,7 +15,7 @@
     box-shadow 0.25s ease;
 
   &:hover {
-    border-color: var(--pal-gold-600);
+    border-color: var(--pal-border-strong);
     box-shadow: 0 4px 10px var(--pal-shadow);
   }
 
@@ -36,14 +36,14 @@
         display: flex;
         align-items: center;
         gap: var(--pal-size-xs);
-        border-bottom: 1px solid var(--pal-gold-900);
+        border-bottom: 1px solid var(--pal-border-subtle);
         padding-bottom: var(--pal-size-xs);
-        color: var(--pal-gold-400);
+        color: var(--pal-text-gold);
 
         > .resources-title {
-          font-size: var(--pal-fs-xs);
+          font-size: var(--pal-fs-s);
           font-family: var(--pal-font-display);
-          font-weight: 600;
+          font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
@@ -87,7 +87,7 @@
         padding: 0.4rem 0.2rem 0.6rem;
         font-size: var(--pal-fs-s);
         font-family: var(--pal-font-display);
-        color: var(--pal-grayscale-400);
+        color: var(--pal-text-muted);
         background: none;
         cursor: pointer;
         transition: color 0.2s ease;
@@ -97,7 +97,7 @@
         }
 
         &.active {
-          color: var(--pal-gold-300);
+          color: var(--pal-text-gold);
 
           &::after {
             position: absolute;
@@ -106,7 +106,7 @@
             width: 100%;
             height: 2px;
             content: '';
-            background: var(--pal-gold-400);
+            background: var(--pal-text-gold);
           }
         }
       }

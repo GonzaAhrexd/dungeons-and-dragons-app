@@ -12,7 +12,7 @@ interface CampaignProps {
 
 export const Campaign = ({ title, description }: CampaignProps) => {
   const text = useText(campaignText)
-  const { expanded, toggleExpanded, contentRef, containerRef, height } =
+  const { expanded, toggleExpanded, contentRef, containerRef, height, isCompressed } =
     useCampaignStory()
 
   return (
@@ -24,7 +24,7 @@ export const Campaign = ({ title, description }: CampaignProps) => {
         <h3>{title}</h3>
         <div
           ref={contentRef}
-          className="story-text dropcap"
+          className={`story-text dropcap ${isCompressed ? 'compressed' : ''}`}
           style={{ maxHeight: height }}
         >
           <p>{description}</p>

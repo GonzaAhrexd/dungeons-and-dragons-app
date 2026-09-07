@@ -31,7 +31,7 @@
     box-shadow 0.25s ease;
 
   &:hover {
-    border-color: var(--pal-gold-600);
+    border-color: var(--pal-border-strong);
     box-shadow: 0 4px 10px var(--pal-shadow);
 
     > .header > .edit-hint {
@@ -43,18 +43,25 @@
     cursor: default;
 
     &:hover {
-      border-color: var(--pal-gold-800);
+      border-color: var(--pal-border-default);
       box-shadow: none;
+    }
+
+    > .cmp-icon{
+      margin: 0 0 2px;
     }
 
     > .header > .edit-hint {
       opacity: 1;
-
       cursor: pointer;
       pointer-events: auto;
 
-      &:hover {
-        color: var(--pal-gold-400);
+      &:hover, &:hover .cmp-icon {
+        color: var(--pal-text-gold-hover);
+      }
+
+      &:hover > .cmp-icon {
+        transform: translateX(-3px);
       }
     }
   }
@@ -64,12 +71,13 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--pal-size-xs);
-    border-bottom: 1px solid var(--pal-gold-900);
+    border-bottom: 1px solid var(--pal-border-subtle);
     padding-bottom: var(--pal-size-xs);
-    font-size: var(--pal-fs-xs);
+    font-size: var(--pal-fs-s);
     font-family: var(--pal-font-display);
+    font-weight: 700;
     letter-spacing: 0.5px;
-    color: var(--pal-gold-400);
+    color: var(--pal-text-gold);
 
     > span {
       display: flex;
@@ -81,11 +89,12 @@
       display: flex;
       align-items: center;
       gap: var(--pal-size-xs);
+      font-weight: 500;
       font-size: var(--pal-fs-xs);
-      color: var(--pal-gold-600);
+      color: var(--pal-text-gold);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s ease, color 0.25s ease;
 
       > span {
         font-family: var(--pal-font-display);
@@ -95,6 +104,7 @@
 
       > .cmp-icon {
         margin: 0 0 2px;
+        transition: transform 0.25s ease, color 0.25s ease;
       }
     }
   }
@@ -146,7 +156,7 @@
       transform: none;
     }
 
-    .edit-hint {
+    > .header > .edit-hint {
       opacity: 1;
       pointer-events: default;
     }

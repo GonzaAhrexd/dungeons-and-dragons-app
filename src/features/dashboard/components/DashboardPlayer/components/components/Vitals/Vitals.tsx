@@ -37,7 +37,7 @@ export const Vitals = ({ bars, onSave }: VitalsProps) => {
           onClick={isEditing ? handleCancel : undefined}
         >
           <Icon
-            icon={isEditing ? 'fa-solid fa-arrow-left' : 'fa-solid fa-pen'}
+            icon={isEditing ? 'fa-solid fa-chevron-left' : 'fa-solid fa-pen'}
           />{' '}
           <span>{isEditing ? text.back() : text.edit()}</span>
         </span>

@@ -40,24 +40,28 @@ export const InventoryEdit = ({
       <div className="inventory-edit-inputs">
         <div className="inventory-inputs-stacked">
           <Input
+            id="inventory-edit-title"
             name="inventory-title"
             theme="gold"
             placeholder={text.inventoryTitlePlaceholder()}
             handlingClass="inventory-input-title"
             htmlAttrs={{
               id: 'inventory-edit-title',
+              name: 'inventory-title',
               value: title,
               onChange: e => setTitle(e.target.value),
               autoFocus: true,
             }}
           />
           <Input
+            id="inventory-edit-desc"
             name="inventory-description"
             theme="gold"
             placeholder={text.inventoryDescPlaceholder()}
             handlingClass="inventory-input-desc"
             htmlAttrs={{
               id: 'inventory-edit-desc',
+              name: 'inventory-description',
               value: description,
               onChange: e => setDescription(e.target.value),
             }}

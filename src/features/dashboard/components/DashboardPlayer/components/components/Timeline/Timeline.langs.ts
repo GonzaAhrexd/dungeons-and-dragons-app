@@ -7,11 +7,11 @@ interface TimelineTexts {
 
 export const timelineText: LanguagesText<TimelineTexts> = {
   en: {
-    campaignTimeline: 'Campaign Timeline',
+    campaignTimeline: 'Timeline',
     expandHistory: 'EXPAND FULL HISTORY',
   },
   es: {
-    campaignTimeline: 'Cronología de la Campaña',
+    campaignTimeline: 'Cronología',
     expandHistory: 'EXPANDIR HISTORIAL COMPLETO',
   },
 }

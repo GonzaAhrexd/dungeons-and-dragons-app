@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Icon } from '@/shared/ui/Icon/Icon'
+import { Button } from '@/shared/ui/Button/Button'
 import type { NPCItem } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './NPCModal.css'
 
@@ -54,62 +55,52 @@ export const NPCModal = ({
 
   return (
     <div className="cmp-npc-modal">
-      <div
-        className="npc-modal-backdrop"
-        onClick={onClose}
-        aria-hidden="true"
-      />
+      <div className="backdrop" onClick={onClose} aria-hidden="true" />
       <div
         ref={containerRef}
-        className={`npc-modal-container ${alignBottom ? 'align-bottom' : ''}`}
+        className={`container ${alignBottom ? 'align-bottom' : ''}`}
         role="dialog"
         aria-modal="true"
       >
         <button
           type="button"
-          className="npc-modal-close"
+          className="close"
           onClick={onClose}
           aria-label="Cerrar modal"
         >
           <Icon icon="fa-solid fa-xmark" />
         </button>
 
-        <div className="npc-modal-header">
-          <div className="npc-avatar">
+        <div className="header">
+          <div className="avatar">
             <img
               src={npc.avatarUrl || '/avatar.png'}
               alt={npc.name}
-              className="npc-avatar-img"
+              className="avatar-img"
               onError={e => {
                 ;(e.target as HTMLImageElement).src = '/avatar.png'
               }}
             />
           </div>
-          <div>
-            <h3>{npc.name}</h3>
-            {npc.role && <p className="npc-role">{npc.role}</p>}
+          <div className="title-group">
+            <h3 className="title">{npc.name}</h3>
           </div>
         </div>
 
-        <div className="npc-modal-body">
-          {npc.location && (
-            <p>
-              <strong>Ubicación:</strong> {npc.location}
-            </p>
-          )}
+        <div className="body">
+          {npc.location && <p>{npc.location}</p>}
           {npc.description && <p>{npc.description}</p>}
           {npc.details && <p>{npc.details}</p>}
         </div>
 
         {onViewMore && isPlayer && (
-          <div className="npc-modal-footer">
-            <button
-              type="button"
-              className="npc-modal-view-more"
+          <div className="footer">
+            <Button
+              title="Ver más información"
               onClick={onViewMore}
-            >
-              Ver hoja de personaje
-            </button>
+              theme="primary"
+              handlingClass="view-more"
+            />
           </div>
         )}
       </div>

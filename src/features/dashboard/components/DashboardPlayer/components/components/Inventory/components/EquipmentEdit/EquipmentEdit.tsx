@@ -51,24 +51,28 @@ export const EquipmentEdit = ({
         />
         <div className="equipment-inputs-stacked">
           <Input
+            id="equipment-edit-title"
             name="equipment-title"
             theme="gold"
             placeholder={text.equipmentTitlePlaceholder()}
             handlingClass="equipment-input-title"
             htmlAttrs={{
               id: 'equipment-edit-title',
+              name: 'equipment-title',
               value: title,
               onChange: e => setTitle(e.target.value),
               autoFocus: true,
             }}
           />
           <Input
+            id="equipment-edit-desc"
             name="equipment-description"
             theme="gold"
             placeholder={text.equipmentDescPlaceholder()}
             handlingClass="equipment-input-desc"
             htmlAttrs={{
               id: 'equipment-edit-desc',
+              name: 'equipment-description',
               value: description,
               onChange: e => setDescription(e.target.value),
             }}
@@ -111,6 +115,8 @@ export const EquipmentEdit = ({
                   }
                 />
                 <Select
+                  id={`modifier-select-${index}`}
+                  name={`modifier-select-${index}`}
                   value={currentAttrValue}
                   options={ATTRIBUTE_OPTIONS}
                   onChange={val =>

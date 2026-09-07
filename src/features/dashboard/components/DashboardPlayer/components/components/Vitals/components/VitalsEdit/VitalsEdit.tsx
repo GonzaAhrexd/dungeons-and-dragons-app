@@ -88,9 +88,12 @@ export const VitalsEdit = ({
         {tempBars.map(bar => (
           <div key={bar.id} className="edit-row">
             <Input
-              name="label"
+              id={`vital-label-${bar.id}`}
+              name={`vital-label-${bar.id}`}
               theme="gold"
               htmlAttrs={{
+                id: `vital-label-${bar.id}`,
+                name: `vital-label-${bar.id}`,
                 value: bar.label,
                 onChange: e => handleBarChange(bar.id, 'label', e.target.value),
                 placeholder: text.placeholder(),

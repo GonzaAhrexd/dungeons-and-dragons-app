@@ -41,12 +41,14 @@ export const ResourceEdit = ({
         onSelectIcon={setIcon}
       />
       <Input
+        id="resource-input-label"
         name="resource-label"
         theme="gold"
         placeholder={text.resourceNamePlaceholder()}
         handlingClass="resource-input-label"
         htmlAttrs={{
           id: 'resource-input-label',
+          name: 'resource-label',
           value: label,
           onChange: e => setLabel(e.target.value),
           autoFocus: true,

@@ -11,7 +11,7 @@ interface HeroStoryProps {
 
 export const HeroStory = ({ historyText }: HeroStoryProps) => {
   const text = useText(heroStoryText)
-  const { expanded, toggleExpanded, contentRef, containerRef, height } =
+  const { expanded, toggleExpanded, contentRef, containerRef, height, isCompressed } =
     useHeroStory()
 
   return (
@@ -23,7 +23,7 @@ export const HeroStory = ({ historyText }: HeroStoryProps) => {
         <h3>{text.heroStory()}</h3>
         <p
           ref={contentRef}
-          className="story-text dropcap"
+          className={`story-text dropcap ${isCompressed ? 'compressed' : ''}`}
           style={{ maxHeight: height }}
         >
           {historyText}

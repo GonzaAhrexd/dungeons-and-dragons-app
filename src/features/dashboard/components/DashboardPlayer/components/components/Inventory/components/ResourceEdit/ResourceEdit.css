@@ -8,7 +8,7 @@
   background: var(--pal-surface-2);
   box-shadow: 0 2px 8px var(--pal-shadow);
 
-  .resource-input-label {
+  > .resource-input-label {
     box-sizing: border-box;
     width: 5rem;
 
@@ -20,7 +20,7 @@
       font-size: var(--pal-fs-s);
       font-family: var(--pal-font-body);
       border-radius: var(--pal-radius-xs);
-      color: var(--pal-text-primary);
+      color: var(--pal-contrast);
       background: var(--pal-input-bg);
       outline: none;
 
@@ -41,7 +41,7 @@
     font-family: var(--pal-font-mono);
     text-align: center;
     border-radius: var(--pal-radius-xs);
-    color: var(--pal-text-primary);
+    color: var(--pal-contrast);
     background: var(--pal-input-bg);
 
     &:focus {
@@ -85,7 +85,7 @@
         color: var(--pal-red-400);
         background: var(--pal-red-900);
 
-        .cmp-icon {
+        > .cmp-icon {
           color: var(--pal-red-400);
           transition: color 0.2s ease;
         }
@@ -94,7 +94,7 @@
           border-color: var(--pal-red-500);
           background: var(--pal-red-800);
 
-          .cmp-icon {
+          > .cmp-icon {
             color: var(--pal-red-300);
           }
         }
@@ -104,7 +104,7 @@
           background: var(--pal-red-800);
           animation: confirm-pulse 0.8s ease-in-out infinite alternate;
 
-          .cmp-icon {
+          > .cmp-icon {
             color: var(--pal-red-300);
           }
 
@@ -120,7 +120,7 @@
         color: var(--pal-text-secondary);
         background: var(--pal-surface-3);
 
-        .cmp-icon {
+        > .cmp-icon {
           color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
@@ -129,8 +129,8 @@
           border-color: var(--pal-border-strong);
           background: var(--pal-surface-4);
 
-          .cmp-icon {
-            color: var(--pal-text-primary);
+          > .cmp-icon {
+            color: var(--pal-contrast);
           }
         }
       }
@@ -140,7 +140,7 @@
         color: var(--pal-text-secondary);
         background: var(--pal-surface-3);
 
-        .cmp-icon {
+        > .cmp-icon {
           color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
@@ -149,8 +149,8 @@
           border-color: var(--pal-border-strong);
           background: var(--pal-surface-4);
 
-          .cmp-icon {
-            color: var(--pal-text-primary);
+          > .cmp-icon {
+            color: var(--pal-contrast);
           }
         }
 
@@ -159,7 +159,7 @@
           cursor: not-allowed;
           border-color: var(--pal-border-subtle);
 
-          .cmp-icon {
+          > .cmp-icon {
             color: var(--pal-text-muted);
           }
         }

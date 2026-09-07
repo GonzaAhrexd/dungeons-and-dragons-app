@@ -25,7 +25,7 @@
       flex: 1;
       min-width: 0;
 
-      .inventory-input-title {
+      > .inventory-input-title {
         width: 100%;
 
         .input-wrapper > input {
@@ -53,7 +53,7 @@
         }
       }
 
-      .inventory-input-desc {
+      > .inventory-input-desc {
         width: 100%;
 
         .input-wrapper > input {
@@ -106,7 +106,7 @@
         font-size: var(--pal-fs-xs);
         font-weight: bold;
         text-align: center;
-        color: var(--pal-text-primary);
+        color: var(--pal-contrast);
         background: var(--pal-input-bg);
         outline: none;
         -moz-appearance: textfield;
@@ -151,7 +151,7 @@
         color: var(--pal-red-400);
         background: var(--pal-red-900);
 
-        .cmp-icon {
+        > .cmp-icon {
           color: var(--pal-red-400);
           transition: color 0.2s ease;
         }
@@ -160,7 +160,7 @@
           border-color: var(--pal-red-500);
           background: var(--pal-red-800);
 
-          .cmp-icon {
+          > .cmp-icon {
             color: var(--pal-red-300);
           }
         }
@@ -169,7 +169,7 @@
           border-color: var(--pal-red-600);
           background: var(--pal-red-800);
 
-          .cmp-icon {
+          > .cmp-icon {
             color: var(--pal-red-300);
           }
 
@@ -185,7 +185,7 @@
         color: var(--pal-text-secondary);
         background: var(--pal-surface-3);
 
-        .cmp-icon {
+        > .cmp-icon {
           color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
@@ -194,8 +194,8 @@
           border-color: var(--pal-border-strong);
           background: var(--pal-surface-4);
 
-          .cmp-icon {
-            color: var(--pal-text-primary);
+          > .cmp-icon {
+            color: var(--pal-contrast);
           }
         }
       }
@@ -205,7 +205,7 @@
         color: var(--pal-text-secondary);
         background: var(--pal-surface-3);
 
-        .cmp-icon {
+        > .cmp-icon {
           color: var(--pal-text-secondary);
           transition: color 0.2s ease;
         }
@@ -214,8 +214,8 @@
           border-color: var(--pal-border-strong);
           background: var(--pal-surface-4);
 
-          .cmp-icon {
-            color: var(--pal-text-primary);
+          > .cmp-icon {
+            color: var(--pal-contrast);
           }
         }
 
@@ -224,7 +224,7 @@
           cursor: not-allowed;
           border-color: var(--pal-border-subtle);
 
-          .cmp-icon {
+          > .cmp-icon {
             color: var(--pal-text-muted);
           }
         }

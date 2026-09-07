@@ -37,7 +37,7 @@ export const Stats = ({ stats, onSave }: StatsProps) => {
           className="edit-hint"
           onClick={editing ? handleCancel : undefined}
         >
-          <Icon icon={editing ? 'fa-solid fa-arrow-left' : 'fa-solid fa-pen'} />{' '}
+          <Icon icon={editing ? 'fa-solid fa-chevron-left' : 'fa-solid fa-pen'} />{' '}
           <span>{editing ? text.back() : text.edit()}</span>
         </span>
       </div>

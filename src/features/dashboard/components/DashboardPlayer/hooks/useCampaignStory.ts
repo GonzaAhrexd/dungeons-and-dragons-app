@@ -40,6 +40,7 @@ export const useCampaignStory = (collapsedHeight = '5.5rem') => {
 
   const toggleExpanded = () => setExpanded(prev => !prev)
   const height = expanded ? `${scrollHeight}px` : collapsedHeight
+  const isCompressed = !expanded && scrollHeight > 85
 
   return {
     expanded,
@@ -48,5 +49,6 @@ export const useCampaignStory = (collapsedHeight = '5.5rem') => {
     contentRef,
     containerRef,
     height,
+    isCompressed,
   }
 }

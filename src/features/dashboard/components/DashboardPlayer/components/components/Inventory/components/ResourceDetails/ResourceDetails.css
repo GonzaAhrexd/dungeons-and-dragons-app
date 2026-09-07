@@ -44,7 +44,7 @@
       font-size: var(--pal-fs-m);
       font-weight: 700;
       line-height: 1.1;
-      color: var(--pal-text-primary);
+      color: var(--pal-contrast);
     }
   }
 }

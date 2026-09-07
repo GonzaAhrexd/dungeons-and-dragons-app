@@ -16,17 +16,17 @@ export const NPCs = ({ npcs }: NPCsProps) => {
 
   return (
     <div className="cmp-npcs">
-      <div className="npcs-header">
+      <div className="header">
         <Icon icon="fa-solid fa-user-shield" />
         <span>{text.campaignNPCs()}</span>
       </div>
-      <div className="npcs-scroll">
+      <div className="scroll">
         {npcs.map(npc => {
           const fullNpc = getFullNpcData(npc)
           return (
             <div
               key={npc.name}
-              className="npc-item"
+              className="item"
               onClick={() => handleSelectNpc(fullNpc)}
               role="button"
               tabIndex={0}
@@ -36,17 +36,17 @@ export const NPCs = ({ npcs }: NPCsProps) => {
                 }
               }}
             >
-              <div className="npc-avatar">
+              <div className="avatar">
                 <img
                   src={fullNpc.avatarUrl || '/avatar.png'}
                   alt={fullNpc.name}
-                  className="npc-avatar-img"
+                  className="avatar-img"
                   onError={e => {
                     ;(e.target as HTMLImageElement).src = '/avatar.png'
                   }}
                 />
               </div>
-              <span>{fullNpc.name}</span>
+              <span className="item-name">{fullNpc.name}</span>
             </div>
           )
         })}
