@@ -10,7 +10,7 @@
   width: 100%;
   height: 4.5rem;
 
-  background: var(--pal-grayscale-1000);
+  background: var(--pal-surface-1);
 
   > .brand {
     font-size: var(--pal-fs-xl);
@@ -19,11 +19,11 @@
     white-space: nowrap;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--pal-gold-400);
+    color: var(--pal-text-gold);
     transition: color 0.15s ease;
 
     &:hover {
-      color: var(--pal-gold-300);
+      color: var(--pal-text-gold-hover);
     }
   }
 
@@ -38,10 +38,10 @@
       padding-block: var(--pal-size-xs);
       font-size: var(--pal-fs-sm);
       font-family: var(--pal-font-display);
+      font-weight: 600;
       text-transform: uppercase;
       text-decoration: none;
-      letter-spacing: 0.1em;
-      color: var(--pal-grayscale-300);
+      color: var(--pal-text-muted);
       transition: color 0.15s ease;
 
       > i {
@@ -49,22 +49,27 @@
       }
 
       &:hover {
-        color: var(--pal-grayscale-100);
+        color: var(--pal-contrast);
       }
 
       &.is-active {
-        color: var(--pal-gold-400);
+        color: var(--pal-text-gold);
 
         &::after {
           position: absolute;
           right: 0;
-          bottom: -4px;
+          bottom: -3px;
           left: 0;
-          height: 2px;
+          height: 1px;
           content: '';
-          background-color: var(--pal-gold-400);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            var(--pal-text-gold),
+            transparent
+          );
           transform-origin: center;
-          animation: nav-line-grow 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          animation: nav-line-grow 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
       }
     }
@@ -98,7 +103,7 @@
           font-family: var(--pal-font-display);
           font-weight: 700;
           letter-spacing: 0.04em;
-          color: var(--pal-gold-400);
+          color: var(--pal-text-gold);
           text-transform: uppercase;
           transition: color 0.15s ease;
         }
@@ -108,7 +113,7 @@
           font-size: 0.78rem;
           font-family: var(--pal-font-display);
           letter-spacing: 0.05em;
-          color: var(--pal-gold-600);
+          color: var(--pal-text-muted);
           text-transform: uppercase;
           transition: color 0.15s ease;
         }
@@ -116,7 +121,7 @@
 
       > .avatar {
         display: grid;
-        border: 1.5px solid var(--pal-gold-600);
+        border: 1.5px solid var(--pal-border-subtle);
         width: 2.65rem;
         height: 2.65rem;
         border-radius: 50%;
@@ -135,15 +140,13 @@
       }
 
       &:hover {
-        .username {
-          color: var(--pal-gold-300);
-        }
+        .username,
         .subtitle {
-          color: var(--pal-gold-500);
+          filter: brightness(1.25);
         }
+
         .avatar {
-          border-color: var(--pal-gold-400);
-          transform: scale(1.06);
+          border-color: var(--pal-border-default);
         }
       }
     }
