@@ -25,7 +25,9 @@ export const useEquipmentEdit = ({
   )
   const [title, setTitle] = useState(initialItem?.title || '')
   const [description, setDescription] = useState(initialItem?.description || '')
-  const [modifiers, setModifiers] = useState<EquipmentModifier[]>(
+  const [modifiers, setModifiers] = useState<
+    Array<{ value: number | ''; attribute: string }>
+  >(
     initialItem?.modifiers && initialItem.modifiers.length > 0
       ? initialItem.modifiers
       : [{ value: 1, attribute: defaultAttrId }],
@@ -57,9 +59,14 @@ export const useEquipmentEdit = ({
       return
     }
 
+    const sanitizedModifiers: EquipmentModifier[] = modifiers.map(m => ({
+      attribute: m.attribute,
+      value: typeof m.value === 'number' ? m.value : 0,
+    }))
+
     let finalDesc = description.trim()
-    if (!finalDesc && modifiers.length > 0) {
-      finalDesc = modifiers
+    if (!finalDesc && sanitizedModifiers.length > 0) {
+      finalDesc = sanitizedModifiers
         .map(m => {
           const found = ATTRIBUTES.find(
             a =>
@@ -77,7 +84,7 @@ export const useEquipmentEdit = ({
       icon,
       title: trimmedTitle,
       description: finalDesc,
-      modifiers,
+      modifiers: sanitizedModifiers,
     })
   }
 

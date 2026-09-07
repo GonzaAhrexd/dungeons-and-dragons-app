@@ -14,12 +14,17 @@
 
   &::-webkit-scrollbar-track {
     border-radius: 3px;
-    background: var(--pal-surface-2);
+    background: var(--pal-scrollbar-track);
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background: var(--pal-gold-800);
+    background: var(--pal-scrollbar-thumb);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--pal-scrollbar-thumb-hover);
+    }
   }
 
   > .item-card {

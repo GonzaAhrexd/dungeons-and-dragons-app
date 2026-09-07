@@ -19,7 +19,7 @@ export const ResourceEdit = ({
   const text = useText(inventoryText)
   const [icon, setIcon] = useState(initialIcon)
   const [label, setLabel] = useState(initialLabel)
-  const [value, setValue] = useState(initialValue)
+  const [value, setValue] = useState<number | ''>(initialValue)
   const [confirmingDelete, setConfirmingDelete] = useState(false)
 
   const handleSave = () => {
@@ -28,7 +28,11 @@ export const ResourceEdit = ({
       onDelete()
       return
     }
-    onSave({ icon, label: trimmed, value })
+    onSave({
+      icon,
+      label: trimmed,
+      value: typeof value === 'number' ? value : 0,
+    })
   }
 
   const isNew = !initialLabel?.trim()
@@ -60,7 +64,18 @@ export const ResourceEdit = ({
         type="number"
         className="resource-input-value"
         value={value}
-        onChange={e => setValue(parseInt(e.target.value) || 0)}
+        onChange={e => {
+          const raw = e.target.value
+          if (raw === '') {
+            setValue('')
+          } else {
+            const parsed = parseInt(raw, 10)
+            setValue(isNaN(parsed) ? '' : Math.max(0, parsed))
+          }
+        }}
+        onBlur={() => {
+          if (value === '') setValue(0)
+        }}
         min="0"
       />
       <div className="resource-edit-actions">

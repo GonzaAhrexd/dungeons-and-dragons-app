@@ -20,7 +20,7 @@ export const useInventoryEdit = ({
 }: UseInventoryEditOptions) => {
   const [title, setTitle] = useState(initialItem?.title || '')
   const [description, setDescription] = useState(initialItem?.description || '')
-  const [quantity, setQuantity] = useState<number>(
+  const [quantity, setQuantity] = useState<number | ''>(
     initialItem?.quantity !== undefined ? initialItem.quantity : 1,
   )
   const [confirmingDelete, setConfirmingDelete] = useState(false)
@@ -35,7 +35,7 @@ export const useInventoryEdit = ({
     onSave({
       title: trimmedTitle,
       description: description.trim(),
-      quantity: Math.max(1, quantity || 1),
+      quantity: typeof quantity === 'number' && quantity > 0 ? quantity : 1,
     })
   }
 

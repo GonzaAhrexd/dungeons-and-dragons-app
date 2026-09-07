@@ -40,15 +40,15 @@
     }
     &::-webkit-scrollbar-track {
       border-radius: var(--pal-radius-xs);
-      background: var(--pal-grayscale-1000);
+      background: var(--pal-scrollbar-track);
     }
     &::-webkit-scrollbar-thumb {
       border-radius: var(--pal-radius-xs);
-      background: var(--pal-border-default);
+      background: var(--pal-scrollbar-thumb);
       cursor: pointer;
 
       &:hover {
-        background: var(--pal-border-strong);
+        background: var(--pal-scrollbar-thumb-hover);
       }
     }
 

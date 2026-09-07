@@ -19,6 +19,14 @@ const COLOR_OPTIONS: {
   { value: 'orange', hex: '#ea580c' },
 ]
 
+interface EditVitalBar {
+  id: string
+  label: string
+  current: number | ''
+  max: number | ''
+  color: VitalBar['color']
+}
+
 interface VitalsEditProps {
   initialBars: VitalBar[]
   onSave: (updatedBars: VitalBar[]) => void
@@ -33,7 +41,7 @@ export const VitalsEdit = ({
   const text = useText(vitalsText)
 
   const [prevInitialBars, setPrevInitialBars] = useState(initialBars)
-  const [tempBars, setTempBars] = useState<VitalBar[]>(() =>
+  const [tempBars, setTempBars] = useState<EditVitalBar[]>(() =>
     initialBars.map(bar => ({ ...bar })),
   )
 
@@ -44,7 +52,7 @@ export const VitalsEdit = ({
 
   const handleAddBar = (e: React.MouseEvent) => {
     e.stopPropagation()
-    const newBar: VitalBar = {
+    const newBar: EditVitalBar = {
       id: Date.now().toString(),
       label: '',
       current: 10,
@@ -59,10 +67,10 @@ export const VitalsEdit = ({
     setTempBars(tempBars.filter(bar => bar.id !== id))
   }
 
-  const handleBarChange = <K extends keyof VitalBar>(
+  const handleBarChange = <K extends keyof EditVitalBar>(
     id: string,
     field: K,
-    value: VitalBar[K],
+    value: EditVitalBar[K],
   ) => {
     setTempBars(
       tempBars.map(bar => (bar.id === id ? { ...bar, [field]: value } : bar)),
@@ -71,7 +79,13 @@ export const VitalsEdit = ({
 
   const handleSaveClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    const validBars = tempBars.filter(bar => bar.label.trim() !== '')
+    const validBars: VitalBar[] = tempBars
+      .filter(bar => bar.label.trim() !== '')
+      .map(bar => ({
+        ...bar,
+        current: typeof bar.current === 'number' ? bar.current : 0,
+        max: typeof bar.max === 'number' && bar.max > 0 ? bar.max : 1,
+      }))
     setTempBars(validBars)
     onSave(validBars)
   }
@@ -107,13 +121,24 @@ export const VitalsEdit = ({
                 min="0"
                 className="input-val"
                 value={bar.current}
-                onChange={e =>
-                  handleBarChange(
-                    bar.id,
-                    'current',
-                    Math.max(0, parseInt(e.target.value) || 0),
-                  )
-                }
+                onChange={e => {
+                  const raw = e.target.value
+                  if (raw === '') {
+                    handleBarChange(bar.id, 'current', '')
+                  } else {
+                    const parsed = parseInt(raw, 10)
+                    handleBarChange(
+                      bar.id,
+                      'current',
+                      isNaN(parsed) ? '' : Math.max(0, parsed),
+                    )
+                  }
+                }}
+                onBlur={() => {
+                  if (bar.current === '') {
+                    handleBarChange(bar.id, 'current', 0)
+                  }
+                }}
               />
               <span>/</span>
               <input
@@ -123,13 +148,27 @@ export const VitalsEdit = ({
                 min="1"
                 className="input-val"
                 value={bar.max}
-                onChange={e =>
-                  handleBarChange(
-                    bar.id,
-                    'max',
-                    Math.max(1, parseInt(e.target.value) || 1),
-                  )
-                }
+                onChange={e => {
+                  const raw = e.target.value
+                  if (raw === '') {
+                    handleBarChange(bar.id, 'max', '')
+                  } else {
+                    const parsed = parseInt(raw, 10)
+                    handleBarChange(
+                      bar.id,
+                      'max',
+                      isNaN(parsed) ? '' : Math.max(1, parsed),
+                    )
+                  }
+                }}
+                onBlur={() => {
+                  if (
+                    bar.max === '' ||
+                    (typeof bar.max === 'number' && bar.max < 1)
+                  ) {
+                    handleBarChange(bar.id, 'max', 1)
+                  }
+                }}
               />
             </div>
             <div className="color-picker">

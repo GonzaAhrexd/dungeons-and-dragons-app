@@ -110,9 +110,24 @@ export const EquipmentEdit = ({
                   type="number"
                   className="modifier-input-value"
                   value={mod.value}
-                  onChange={e =>
-                    handleModifierChange(index, 'value', parseInt(e.target.value) || 0)
-                  }
+                  onChange={e => {
+                    const raw = e.target.value
+                    if (raw === '') {
+                      handleModifierChange(index, 'value', '')
+                    } else {
+                      const parsed = parseInt(raw, 10)
+                      handleModifierChange(
+                        index,
+                        'value',
+                        isNaN(parsed) ? '' : parsed,
+                      )
+                    }
+                  }}
+                  onBlur={() => {
+                    if (mod.value === '') {
+                      handleModifierChange(index, 'value', 0)
+                    }
+                  }}
                 />
                 <Select
                   id={`modifier-select-${index}`}

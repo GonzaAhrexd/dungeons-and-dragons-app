@@ -101,6 +101,11 @@
   --pal-input-border-focus:    var(--pal-gold-500);
   --pal-input-placeholder:     var(--pal-grayscale-700);
 
+  /* ---- Scrollbar ---- */
+  --pal-scrollbar-track:       var(--pal-surface-2);
+  --pal-scrollbar-thumb:       var(--pal-gold-800);
+  --pal-scrollbar-thumb-hover: var(--pal-gold-600);
+
   /* ---- Estados ---- */
   --pal-danger: var(--pal-seal);
   --pal-success: var(--pal-forest);

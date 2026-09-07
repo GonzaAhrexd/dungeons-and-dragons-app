@@ -77,7 +77,23 @@ export const InventoryEdit = ({
             min={1}
             className="inventory-input-qty"
             value={quantity}
-            onChange={e => setQuantity(Math.max(1, parseInt(e.target.value, 10) || 1))}
+            onChange={e => {
+              const raw = e.target.value
+              if (raw === '') {
+                setQuantity('')
+              } else {
+                const parsed = parseInt(raw, 10)
+                setQuantity(isNaN(parsed) ? '' : Math.max(1, parsed))
+              }
+            }}
+            onBlur={() => {
+              if (
+                quantity === '' ||
+                (typeof quantity === 'number' && quantity < 1)
+              ) {
+                setQuantity(1)
+              }
+            }}
           />
         </div>
       </div>

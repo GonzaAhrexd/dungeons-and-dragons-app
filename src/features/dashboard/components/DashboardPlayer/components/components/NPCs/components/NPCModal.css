@@ -112,16 +112,16 @@
         width: 4px;
       }
       &::-webkit-scrollbar-track {
-        background: var(--pal-grayscale-1000);
+        background: var(--pal-scrollbar-track);
         border-radius: var(--pal-radius-xs);
       }
       &::-webkit-scrollbar-thumb {
-        background: var(--pal-gold-700);
+        background: var(--pal-scrollbar-thumb);
         border-radius: var(--pal-radius-xs);
         cursor: pointer;
 
         &:hover {
-          background: var(--pal-gold-500);
+          background: var(--pal-scrollbar-thumb-hover);
         }
       }
     }
