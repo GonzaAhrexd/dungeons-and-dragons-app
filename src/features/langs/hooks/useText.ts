@@ -1,11 +1,18 @@
 import { useLanguageStore } from '../store/langs.store'
 import type { Language } from '../store/langs.store'
+import type { PluralWords } from '../interfaces' // ajustá el path
 
 type Translations = Record<Language, object>
 
+function isPluralWords(v: unknown): v is PluralWords {
+  return typeof v === 'object' && v !== null && 'singular' in v && 'plural' in v
+}
+
 type DeepResolve<T> = T extends string
   ? (values?: Record<string, unknown>) => string
-  : { [K in keyof T]: DeepResolve<T[K]> }
+  : T extends PluralWords
+    ? (count: number, values?: Record<string, unknown>) => string
+    : { [K in keyof T]: DeepResolve<T[K]> }
 
 function interpolate(
   template: string,
@@ -24,7 +31,10 @@ function buildT<T>(obj: T): DeepResolve<T> {
       key,
       typeof value === 'string'
         ? (values?: Record<string, unknown>) => interpolate(value, values)
-        : buildT(value),
+        : isPluralWords(value)
+          ? (count: number, values?: Record<string, unknown>) =>
+              interpolate(count === 1 ? value.singular : value.plural, values)
+          : buildT(value),
     ]),
   ) as DeepResolve<T>
 }

@@ -1,6 +1,6 @@
 .cmp-user-section {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: var(--pal-size-s);
   width: 100%;
   max-width: 90rem;

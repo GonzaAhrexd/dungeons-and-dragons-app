@@ -7,12 +7,12 @@
 
   > .quick-view {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     gap: var(--pal-size-m);
 
     grid-template-areas:
-      'logs add-players'
-      'logs active-players';
+      ' add-players logs'
+      ' active-players logs ';
   }
 }

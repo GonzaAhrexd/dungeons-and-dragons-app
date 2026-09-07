@@ -40,7 +40,7 @@ export const AddPlayers = () => {
         />
         <Button
           handlingClass="add-players"
-          theme="secondary"
+          theme="primary"
           submit
           loader
           title={text.addPlayersForm.buttonTitle()}

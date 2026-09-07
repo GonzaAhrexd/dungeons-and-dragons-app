@@ -17,6 +17,7 @@ export const HomeSection = () => {
       <CampaignInfo
         title={campaign?.name || ''}
         description={campaign?.description || ''}
+      
       />
       <div className="quick-view">
         <CampaignLogs />

@@ -32,6 +32,9 @@
     width: 100%;
 
     > .add-players {
+      --cmp-button-bg-color: var(--pal-red-500);
+      color: var(--pal-grayscale-100);
+      font-weight: 700;
       height: var(--pal-size-xl);
     }
   }

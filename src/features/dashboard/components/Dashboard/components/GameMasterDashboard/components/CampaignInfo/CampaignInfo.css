@@ -1,39 +1,23 @@
 .cmp-campaign-info {
   position: relative;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--pal-size-s);
+  display: block;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--pal-gold-500);
-  padding: var(--pal-size-m);
+  border-color: var(--pal-border-muted);
+  border-radius: var(--pal-radius-m);
+  padding: 1.25rem 1.25rem 1.35rem;
   width: 100%;
   max-width: 90rem;
 
-  background-color: var(--pal-grayscale-900);
-  > .edit-state-button {
-    display: flex;
-    align-content: flex-end;
-    justify-content: flex-end;
-    width: 100%;
-
-    > .edit-button {
-      width: var(--pal-size-s);
-
-      transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
-
-      > .cmp-icon {
-        font-size: var(--pal-size-m);
-        color: var(--pal-gold-400);
-      }
-    }
-  }
+  background:
+    radial-gradient(
+      circle at 88% 50%,
+      rgba(201, 154, 62, 0.07),
+      transparent 28%
+    ),
+    var(--pal-surface-2);
+  overflow: hidden;
 
   > .info-display,
   > .edit-form {
@@ -52,23 +36,130 @@
 
   > .info-display {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: var(--pal-size-s);
+    justify-content: space-between;
+    gap: 2rem;
     transform: translateY(10px);
 
-    > h1 {
-      color: var(--pal-gold-400);
+    > .campaign-heading {
+      min-width: 0;
+      flex: 1;
+
+      > .campaign-kicker {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 0.65rem;
+        color: var(--pal-gold-600);
+        font-family: var(--pal-font-mono);
+        font-size: var(--pal-fs-xs);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+
+        > .campaign-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          border: 1px solid rgba(44, 138, 91, 0.5);
+          border-radius: var(--pal-radius-pill);
+          padding: 0.23rem 0.55rem;
+          color: #42c681;
+          background-color: rgba(18, 73, 48, 0.45);
+          font-size: 0.62rem;
+          font-weight: 600;
+        }
+
+        > .campaign-status > .status-dot {
+          width: 0.35rem;
+          height: 0.35rem;
+          border-radius: 50%;
+          background-color: #42c681;
+          box-shadow: 0 0 0 2px rgba(66, 198, 129, 0.1);
+        }
+      }
+
+      > .campaign-title-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        > h1 {
+          margin: 0;
+          color: var(--pal-gold-100);
+          font-size: clamp(1.8rem, 3vw, 2.65rem);
+          letter-spacing: 0.03em;
+          line-height: 1.1;
+          text-transform: uppercase;
+        }
+
+        > .edit-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: 0 0 auto;
+          border: 1px solid var(--pal-border-muted);
+          border-radius: var(--pal-radius-s);
+          width: 1.85rem;
+          height: 1.85rem;
+
+          > .cmp-icon {
+            color: var(--pal-gold-400);
+            font-size: var(--pal-fs-s);
+          }
+        }
+      }
+
+      > p {
+        max-width: 38rem;
+        margin: 0.85rem 0 0;
+        color: var(--pal-gold-200);
+        font-size: var(--pal-fs-m);
+        font-style: italic;
+      }
     }
 
-    > p {
-      text-align: center;
-      color: var(--pal-gold-200);
+    > .campaign-stats {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 0.5rem;
+
+      > .campaign-stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid rgba(100, 72, 24, 0.45);
+        border-radius: var(--pal-radius-m);
+        padding: 0.75rem 0.9rem;
+        min-width: 5.5rem;
+        min-height: 3.75rem;
+        background-color: rgba(5, 5, 5, 0.5);
+
+        > span {
+          color: var(--pal-gold-600);
+          font-family: var(--pal-font-mono);
+          font-size: 0.58rem;
+          letter-spacing: 0.08em;
+        }
+
+        > strong {
+          margin-top: 0.3rem;
+          color: var(--pal-gold-200);
+          font-family: var(--pal-font-display);
+          font-size: var(--pal-fs-m);
+          font-weight: 600;
+        }
+      }
+
+      > .campaign-stat-next > strong {
+        color: #42c681;
+        font-family: var(--pal-font-mono);
+        font-size: var(--pal-fs-xs);
+      }
     }
 
     &.active {
-      max-height: 30rem;
+      max-height: 20rem;
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
@@ -82,13 +173,77 @@
     gap: var(--pal-size-s);
     transform: translateY(10px);
 
+    > .edit-form-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--pal-size-m);
+
+      > div > .form-eyebrow {
+        color: var(--pal-gold-600);
+        font-family: var(--pal-font-mono);
+        font-size: var(--pal-fs-xs);
+        letter-spacing: 0.1em;
+      }
+
+      h2 {
+        margin: 0.25rem 0 0;
+        color: var(--pal-gold-100);
+        font-size: var(--pal-fs-xl);
+      }
+
+      > .edit-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--pal-border-muted);
+        border-radius: var(--pal-radius-s);
+        width: 1.85rem;
+        height: 1.85rem;
+
+        > .cmp-icon {
+          color: var(--pal-gold-400);
+        }
+      }
+    }
+
     &.active {
-      max-height: 30rem;
+      max-height: 40rem;
       visibility: visible;
       opacity: 1;
 
       transform: translateY(0);
       pointer-events: auto;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    > .info-display {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      > .campaign-stats {
+        width: 100%;
+
+        > .campaign-stat {
+          flex: 1;
+          min-width: 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 30rem) {
+    padding: 1rem;
+
+    > .info-display > .campaign-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      > .campaign-stat-next {
+        grid-column: span 2;
+      }
     }
   }
 }

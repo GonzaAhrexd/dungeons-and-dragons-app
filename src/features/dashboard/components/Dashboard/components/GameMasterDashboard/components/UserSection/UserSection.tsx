@@ -20,7 +20,10 @@ export const UserSection = () => {
 
       <div className="section-sidebar">
         <AddPlayers />
-        <PlayerState />
+        <PlayerState
+          totalMembers={campaign?.players.length || 0}
+          pendingInvitations={campaign?.invitations.length || 0}
+        />
       </div>
     </div>
   )

@@ -1,1 +1,2 @@
-export * from './languageText';
+export * from './languageText'
+export * from './pluralWords'
