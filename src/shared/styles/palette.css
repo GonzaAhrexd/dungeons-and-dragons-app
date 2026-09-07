@@ -18,6 +18,12 @@
   --pal-seal-bright: #8a2a31;
   --pal-forest: #2e4a3a;
   --pal-forest-bright: #3e6350;
+  --pal-contrast: var(--pal-grayscale-100);
+
+  /* ---- Texto semántico ---- */
+  --pal-text-gold:   var(--pal-gold-400);
+  --pal-text-gold-hover: var(--pal-gold-300);
+  --pal-text-muted:     var(--pal-grayscale-400);
 
   /* Gold */
 
@@ -79,6 +85,8 @@
   --pal-surface-3:  rgba(25, 25, 25, 0.90);
   --pal-surface-4:  rgba(30, 30, 30, 0.85);
   --pal-surface-5:  rgba(45, 45, 45, 0.95); 
+  --pal-surface-gold: var(--pal-gold-500);
+  --pal-surface-gold-hover: #FBC04D;
 
   /* ---- Bordes semánticos ---- */
   --pal-border-subtle:  rgba(80, 58, 20, 0.35);  
@@ -91,12 +99,6 @@
   --pal-input-border:          rgba(255, 255, 255, 0.12);
   --pal-input-border-focus:    var(--pal-gold-500);
   --pal-input-placeholder:     var(--pal-grayscale-700);
-  
-
-  /* ---- Texto semántico ---- */
-  --pal-text-primary:   var(--pal-gold-100);
-  --pal-text-secondary: var(--pal-gold-400);
-  --pal-text-muted:     var(--pal-grayscale-500);
 
   /* ---- Estados ---- */
   --pal-danger: var(--pal-seal);
@@ -132,6 +134,7 @@
   --pal-radius-xs: 0.125rem;
   --pal-radius-s: 0.25rem;
   --pal-radius-m: 0.5rem;
+  --pal-radius-l: 1.25rem;
   --pal-border-width: 2px;
   --pal-radius-pill: 6.1875rem;
 
