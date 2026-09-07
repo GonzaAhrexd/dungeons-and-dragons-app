@@ -9,18 +9,21 @@ import { parseFormData } from '@/shared/utils'
 interface CampaignInfoProps {
   title: string
   description: string
+  players: number
 }
-export const CampaignInfo = ({ title, description }: CampaignInfoProps) => {
+export const CampaignInfo = ({
+  title,
+  description,
+  players,
+}: CampaignInfoProps) => {
   const [editMode, setEditMode] = useState(false)
   const campaignId = useCampaignStore(state => state.currentCampaignId)
 
   const campaignMockData = {
-    status: 'EN CAMPANA',
+    status: 'ACTIVO',
     act: 'ACTO I',
-    level: 'NIVEL 3',
-    tier: 'Tier de Aventurero Heroico',
-    players: '3 / 6',
-    session: '#04',
+    level: 'NIVEL 1',
+    session: '#00',
     nextSession: 'Viernes, 20:00 h',
   }
 
@@ -64,8 +67,6 @@ export const CampaignInfo = ({ title, description }: CampaignInfoProps) => {
             <span>{campaignMockData.act}</span>
             <span>•</span>
             <span>{campaignMockData.level}</span>
-            <span>•</span>
-            <span>{campaignMockData.tier}</span>
           </div>
           <div className="campaign-title-row">
             <h1>{title || 'CAMPAÑA NUEVA'}</h1>
@@ -84,7 +85,7 @@ export const CampaignInfo = ({ title, description }: CampaignInfoProps) => {
         <div className="campaign-stats">
           <div className="campaign-stat">
             <span>JUGADORES</span>
-            <strong>{campaignMockData.players}</strong>
+            <strong>{players}</strong>
           </div>
           <div className="campaign-stat">
             <span>SESIÓN</span>

@@ -17,7 +17,7 @@ export const HomeSection = () => {
       <CampaignInfo
         title={campaign?.name || ''}
         description={campaign?.description || ''}
-      
+        players={campaign?.players.length || 0}
       />
       <div className="quick-view">
         <CampaignLogs />
