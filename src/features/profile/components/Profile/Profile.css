@@ -159,18 +159,29 @@
 
   @media (max-width: 48rem) {
     > .banner {
-      height: 16rem;
+      height: 14rem;
     }
 
     > .content {
-      margin-top: -8rem;
-      padding-inline: var(--pal-size-m);
+      margin-top: -7rem;
+      padding-inline: var(--pal-size-s);
 
       .card {
-        padding: 1.5rem;
+        padding: 1.25rem 1rem;
+        gap: 1rem;
 
-        > .profile-form {
+        > .form {
           grid-template-columns: 1fr;
+          gap: 1.25rem;
+
+          .btn-container {
+            width: 100%;
+            margin-top: 0.5rem;
+
+            > .cmp-button {
+              width: 100%;
+            }
+          }
         }
       }
     }
