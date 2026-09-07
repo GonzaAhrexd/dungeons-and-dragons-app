@@ -36,8 +36,17 @@ export const CampaignAddForm = () => {
         <p>{text.addCampaignDescription()}</p>
       </div>
       <form onSubmit={handleCreateCampaign}>
-        <Input label={text.nameLabel()} name="name" />
-        <TextArea label={text.descriptionLabel()} name="description" />
+        <Input
+          id="campaign-name"
+          label={text.nameLabel()}
+          name="name"
+          autoComplete="off"
+        />
+        <TextArea
+          id="campaign-description"
+          label={text.descriptionLabel()}
+          name="description"
+        />
 
         <Button
           title={text.confirm()}

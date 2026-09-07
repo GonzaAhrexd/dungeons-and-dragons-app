@@ -28,7 +28,12 @@ export const CampaignJoin = () => {
         <p>{text.joinCampaignDescription()}</p>
       </div>
       <form onSubmit={handleJoinCampaign}>
-        <Input label={text.codeLabel()} name="code" />
+        <Input
+          id="campaign-join-code"
+          label={text.codeLabel()}
+          name="code"
+          autoComplete="off"
+        />
 
         <Button title={text.confirm()} handlingClass="btn-create" submit />
       </form>

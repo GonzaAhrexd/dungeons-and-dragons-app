@@ -20,6 +20,7 @@ export const Register = () => {
       <Input
         label={text.username()}
         name="username"
+        autoComplete="username"
         theme="paper"
         placeholder={text.ph_username()}
         htmlAttrs={{ onChange: handleChange('username') }}
@@ -28,6 +29,7 @@ export const Register = () => {
         label={text.password()}
         name="password"
         type="password"
+        autoComplete="new-password"
         theme="paper"
         placeholder={text.ph_password()}
         htmlAttrs={{ minLength: 8, onChange: handleChange('pass1') }}
@@ -36,6 +38,7 @@ export const Register = () => {
         label={text.repeatPassword()}
         name="password2"
         type="password"
+        autoComplete="new-password"
         theme="paper"
         placeholder={text.ph_repeat_password()}
         htmlAttrs={{ minLength: 8, onChange: handleChange('pass2') }}

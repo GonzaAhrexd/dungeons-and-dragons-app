@@ -19,6 +19,7 @@ export const Login = () => {
       <Input
         label={text.username()}
         name="username"
+        autoComplete="username"
         theme="paper"
         placeholder={text.ph_username()}
         htmlAttrs={{ onChange: handleChange('username') }}
@@ -27,6 +28,7 @@ export const Login = () => {
         label={text.password()}
         name="password"
         type="password"
+        autoComplete="current-password"
         theme="paper"
         placeholder={text.ph_password()}
         htmlAttrs={{ minLength: 8, onChange: handleChange('password') }}

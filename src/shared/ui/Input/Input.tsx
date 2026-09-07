@@ -4,22 +4,26 @@ import { Button } from '../Button/Button'
 
 type Types = 'text' | 'password' | 'email'
 interface InputProps {
+  id?: string
   name: string
   label?: string
   placeholder?: string
   type?: Types
   defaultValue?: string
+  autoComplete?: string
   theme?: 'gold' | 'paper'
   handlingClass?: string
   htmlAttrs?: React.InputHTMLAttributes<HTMLInputElement>
 }
 
 export const Input = ({
+  id,
   name,
   label,
   placeholder,
   type = 'text',
   defaultValue,
+  autoComplete,
   theme = 'gold',
   handlingClass,
   htmlAttrs,
@@ -35,16 +39,22 @@ export const Input = ({
     if (type === 'password') return isShowPassword ? 'text' : 'password'
   }
 
+  const inputId = id || htmlAttrs?.id || name
+  const inputName = name || htmlAttrs?.name || inputId
+  const inputAutoComplete = autoComplete || htmlAttrs?.autoComplete
+
   return (
     <div className={`cmp-input ${theme} ${handlingClass}`}>
       {label && <p>{label}</p>}
       <div className="input-wrapper">
         <input
           {...{
-            name,
+            id: inputId,
+            name: inputName,
             placeholder,
             type: changeVisibility(type),
             defaultValue,
+            autoComplete: inputAutoComplete,
             ...htmlAttrs,
           }}
         />

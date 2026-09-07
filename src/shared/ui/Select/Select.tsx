@@ -6,6 +6,8 @@ export interface SelectOption {
 }
 
 export interface SelectProps {
+  id?: string
+  name?: string
   value: string
   options: SelectOption[]
   onChange: (value: string) => void
@@ -15,6 +17,8 @@ export interface SelectProps {
 }
 
 export const Select = ({
+  id,
+  name,
   value,
   options,
   onChange,
@@ -22,9 +26,14 @@ export const Select = ({
   className = '',
   disabled = false,
 }: SelectProps) => {
+  const selectId = id || name || 'select-field'
+  const selectName = name || id || 'select-field'
+
   return (
     <div className={`cmp-select ${className} ${disabled ? 'disabled' : ''}`}>
       <select
+        id={selectId}
+        name={selectName}
         className="select-native"
         value={value}
         disabled={disabled}

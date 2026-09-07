@@ -1,5 +1,6 @@
 import './TextArea.css'
 interface TextAreaProps {
+  id?: string
   name: string
   label?: string
   placeholder?: string
@@ -9,6 +10,7 @@ interface TextAreaProps {
 }
 
 export const TextArea = ({
+  id,
   name,
   label,
   placeholder,
@@ -16,10 +18,19 @@ export const TextArea = ({
   variant = 'gold',
   htmlAttrs,
 }: TextAreaProps) => {
+  const textareaId = id || htmlAttrs?.id || name
   return (
     <div className={`cmp-textarea ${variant}`}>
       {label && <p>{label}</p>}
-      <textarea {...{ name, placeholder, defaultValue, ...htmlAttrs }} />
+      <textarea
+        {...{
+          id: textareaId,
+          name,
+          placeholder,
+          defaultValue,
+          ...htmlAttrs,
+        }}
+      />
     </div>
   )
 }
