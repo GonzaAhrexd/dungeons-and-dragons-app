@@ -87,6 +87,7 @@
   --pal-surface-5:  rgba(45, 45, 45, 0.95); 
   --pal-surface-gold: var(--pal-gold-500);
   --pal-surface-gold-hover: #FBC04D;
+  --pal-surface-gold-low: #c99b3e0e;
 
   /* ---- Bordes semánticos ---- */
   --pal-border-subtle:  rgba(80, 58, 20, 0.35);  

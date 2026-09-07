@@ -1,9 +1,3 @@
-:root {
-  --cmp-button-bg-color: var(--pal-gold-500);
-  --cmp-button-border-color: var(--pal-gold-300);
-  --cmp-button-hover-color: var(--pal-gold-500);
-}
-
 .cmp-button {
   display: inline-flex;
   align-items: center;
@@ -40,10 +34,6 @@
     cursor: default;
   }
 
-  &:hover {
-    filter: brightness(1.25);
-  }
-
   > .spinner {
     display: inline-block;
     border: 2px solid currentColor;
@@ -55,14 +45,39 @@
   }
 
   &.primary {
-    background-color: var(--cmp-button-bg-color);
-    color: var(--pal-grayscale-1000);
+    background-color: var(--pal-surface-gold);
+    color: var(--pal-ink);
+
+    > .cmp-icon{
+      color: var(--pal-ink)
+    }
+
+    &:hover {
+      background-color: var(--pal-surface-gold-hover);
+    }
   }
 
   &.secondary {
     border-width: var(--line-thickness);
     border-style: solid;
-    border-color: var(--cmp-button-border-color);
+    border-color: var(--pal-surface-gold);
+    color: var(--pal-text-gold);
+
+    > .cmp-icon{
+      color: var(--pal-text-gold)
+    }
+
+    &:hover {
+      border-color: var(--pal-surface-gold-hover);
+      color: var(--pal-text-gold-hover);
+      background: var(--pal-surface-gold-low);
+
+      > .cmp-icon{
+        color: var(--pal-text-gold-hover)
+      }
+    }
+
+    
   }
 }
 

@@ -14,7 +14,7 @@
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--pal-grayscale-100);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--pal-input-bg);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23b8963e'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.5rem center;
@@ -29,23 +29,15 @@
 
     &:hover:not(:disabled) {
       border-color: var(--pal-gold-700);
-      background-color: rgba(20, 20, 20, 0.6);
     }
 
     &:focus {
       border-color: var(--pal-gold-500);
-      box-shadow: 0 0 6px rgba(212, 175, 55, 0.2);
     }
 
     &:disabled {
       opacity: 0.45;
       cursor: not-allowed;
-    }
-
-    > option {
-      background: #141414;
-      color: var(--pal-grayscale-200);
-      font-weight: normal;
     }
   }
 
