@@ -2,34 +2,66 @@
   grid-area: active-players;
   display: flex;
   flex-direction: column;
-  gap: var(--pal-size-s);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--pal-gold-500);
-  padding: var(--pal-size-m);
+  gap: var(--pal-size-m);
+  padding: var(--pal-size-s) 0;
   width: 100%;
   max-width: 90rem;
 
-  background-color: var(--pal-grayscale-900);
-
-  > h1 {
-    font-size: var(--pal-size-l);
-  }
-
   > .label {
     display: flex;
-    gap: var(--pal-size-s);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--pal-size-m);
+
+    > .label-title {
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-s);
+      > h1 {
+        font-size: var(--pal-fs-xl);
+      }
+      > .cmp-icon {
+        font-size: var(--pal-fs-m);
+      }
+    }
 
     > h1 {
       font-size: var(--pal-size-l);
+    }
+
+    > .label-count,
+    > .label-title + .label-count {
+      border: 1px solid var(--pal-border-muted);
+      padding: var(--pal-size-2xs) var(--pal-size-s);
+      font-size: var(--pal-fs-xs);
+      font-family: var(--pal-font-mono);
+      text-transform: uppercase;
+      border-radius: var(--pal-radius-s);
+      color: var(--pal-gold-400);
+    }
+  }
+
+  > .section-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--pal-size-m);
+    margin-top: var(--pal-size-s);
+
+    > h1 {
+      font-size: var(--pal-size-l);
+    }
+
+    > span {
+      font-size: var(--pal-fs-s);
+      color: var(--pal-grayscale-400);
     }
   }
 
   > .players-list,
   > .pending-invitations {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--pal-size-s);
     width: 100%;
 
@@ -39,27 +71,109 @@
       gap: var(--pal-size-s);
       border-width: 1px;
       border-style: solid;
-      border-color: var(--pal-gold-800);
+      border-color: var(--pal-border-subtle);
       padding: var(--pal-size-m);
-      max-width: 20rem;
+      min-width: 0;
+      min-height: 4.75rem;
+      border-radius: var(--pal-radius-m);
+      background-color: var(--pal-surface-1);
+      transition:
+        border-color 160ms ease,
+        background-color 160ms ease;
 
-      background-color: var(--pal-grayscale-900);
+      &:hover {
+        border-color: var(--pal-border-strong);
+        background-color: var(--pal-surface-2);
+      }
+
+      > .cmp-icon {
+        flex: 0 0 2.75rem;
+        display: grid;
+        border: 1px solid var(--pal-gold-800);
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: var(--pal-fs-m);
+        border-radius: var(--pal-radius-m);
+        place-items: center;
+      }
 
       > .player-info {
         min-width: 0;
 
         > h2 {
-          font-size: var(--pal-fs-l);
+          font-size: var(--pal-fs-m);
+          font-family: var(--pal-font-display);
           white-space: nowrap;
           text-overflow: ellipsis;
           color: var(--pal-gold-200);
           overflow: hidden;
         }
         > h3 {
-          font-size: var(--pal-fs-m);
-          color: var(--pal-gold-500);
+          font-size: var(--pal-fs-s);
+          color: var(--pal-grayscale-400);
         }
       }
+    }
+  }
+
+  > .pending-invitations {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-s);
+
+    > .player {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      > .player-info {
+        display: flex;
+        align-items: center;
+        gap: var(--pal-size-s);
+        min-width: 0;
+
+        > .cmp-icon {
+          flex: 0 0 2.75rem;
+          display: grid;
+          border: 1px solid var(--pal-gold-800);
+          width: 2.75rem;
+          height: 2.75rem;
+          font-size: var(--pal-fs-m);
+          border-radius: var(--pal-radius-m);
+          place-items: center;
+        }
+
+        > .player-data {
+          min-width: 0;
+
+          > h2 {
+            font-size: var(--pal-fs-m);
+            font-family: var(--pal-font-display);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: var(--pal-gold-200);
+            overflow: hidden;
+          }
+          > h3 {
+            font-size: var(--pal-fs-s);
+            color: var(--pal-grayscale-400);
+          }
+        }
+      }
+
+      > .cmp-button {
+        width: 1rem;
+        > .cmp-icon {
+          font-size: var(--pal-fs-s);
+        }
+      }
+    }
+  }
+  @media (max-width: 42rem) {
+    > .players-list,
+    > .pending-invitations {
+      grid-template-columns: 1fr;
     }
   }
 }
