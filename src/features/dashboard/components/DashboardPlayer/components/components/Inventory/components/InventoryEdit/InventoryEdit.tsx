@@ -74,6 +74,7 @@ export const InventoryEdit = ({
             id="inventory-edit-qty"
             name="inventory-qty"
             type="number"
+            autoComplete="off"
             min={1}
             className="inventory-input-qty"
             value={quantity}

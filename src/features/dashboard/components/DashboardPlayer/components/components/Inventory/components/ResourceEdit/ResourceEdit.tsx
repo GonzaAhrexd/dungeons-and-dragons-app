@@ -62,6 +62,7 @@ export const ResourceEdit = ({
         id="resource-input-value"
         name="resource-value"
         type="number"
+        autoComplete="off"
         className="resource-input-value"
         value={value}
         onChange={e => {

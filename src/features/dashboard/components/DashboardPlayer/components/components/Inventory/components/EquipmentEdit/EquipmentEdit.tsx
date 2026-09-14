@@ -108,6 +108,7 @@ export const EquipmentEdit = ({
                   id={`modifier-value-${index}`}
                   name={`modifier-value-${index}`}
                   type="number"
+                  autoComplete="off"
                   className="modifier-input-value"
                   value={mod.value}
                   onChange={e => {
