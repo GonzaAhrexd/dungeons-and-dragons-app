@@ -121,6 +121,10 @@
         width: auto !important;
         font-size: 0.7rem !important;
         letter-spacing: 0.5px !important;
+
+        > .cmp-icon {
+          color: var(--pal-ink);
+        }
       }
 
       > .log-link {

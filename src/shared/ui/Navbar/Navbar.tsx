@@ -71,6 +71,17 @@ export const Navbar = () => {
       <div className="nav-links">{navLinks}</div>
 
       <div className="actions">
+        <button
+          className="btn-notifications"
+          title="Notificaciones"
+          type="button"
+        >
+          <Icon icon="fa-solid fa-bell" />
+          <span className="notification-badge" />
+        </button>
+
+        <div className="nav-divider" />
+
         <Link to="/profile" className="profile-link">
           <div className="user-info">
             <span className="username">
