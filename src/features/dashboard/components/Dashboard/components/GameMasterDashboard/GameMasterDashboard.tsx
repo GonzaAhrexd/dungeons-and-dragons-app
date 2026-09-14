@@ -1,15 +1,14 @@
 import { useText } from '@/features/langs/hooks/useText'
 import { gameMasterDashboardText } from './GameMaster.langs'
 import './GameMasterDashboard.css'
-import { useState } from 'react'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { Button } from '@/shared/ui/Button/Button'
 import { HomeSection, UserSection } from './components'
+import { useGameMasterStore } from '../../store/gamemaster.store'
 
 export const GameMasterDashboard = () => {
   const text = useText(gameMasterDashboardText)
 
-  const [currentSection, setCurrentSection] = useState('home')
+  const { currentSection, setCurrentSection } = useGameMasterStore()
 
   const actions = [
     {
@@ -46,24 +45,21 @@ export const GameMasterDashboard = () => {
 
   return (
     <div className="cmp-game-master-dashboard">
-      <div className="dashboard-actions">
-        <div className="actions-header">
-          <Icon icon="fa-solid fa-compass" />
-          <h1>{text.actions()}</h1>
-        </div>
-        <div className="actions-list">
-          {actions.map(action => (
-            <Button
-              handlingClass={`action-button ${action.isActive ? 'active' : ''}`}
-              title={action.title}
-              icon={action.icon}
-              column
-              theme={'primary'}
-              onClick={action.onClick}
-            />
-          ))}
-        </div>
-      </div>
+      <nav className="dashboard-tabs">
+        {actions.map(action => (
+          <button
+            key={action.title}
+            type="button"
+            className={`tab-button ${action.isActive ? 'active' : ''}`}
+            onClick={action.onClick}
+          >
+            <Icon icon={action.icon} />
+            <span>{action.title}</span>
+            {action.isActive && <span className="active-indicator" />}
+          </button>
+        ))}
+      </nav>
+
       <div className="dashboard-content">
         {currentSection === 'home' && <HomeSection />}
         {currentSection === 'users' && <UserSection />}

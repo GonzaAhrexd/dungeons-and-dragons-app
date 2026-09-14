@@ -1,13 +1,9 @@
 import './ActivePlayers.css'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import type { Invitations, Players } from '@/features/campaigns/interfaces/'
 import { useText } from '@/features/langs/hooks/useText'
 import { activePlayersText } from './ActivePlayers.langs'
 import { Button } from '@/shared/ui/Button/Button'
-interface ActivePlayersProps {
-  invitations: Invitations[]
-  players: Players[]
-}
+import type { ActivePlayersProps } from '../../../../interfaces'
 
 export const ActivePlayers = ({ invitations, players }: ActivePlayersProps) => {
   const text = useText(activePlayersText)

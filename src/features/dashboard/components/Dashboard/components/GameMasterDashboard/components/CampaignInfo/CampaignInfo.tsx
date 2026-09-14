@@ -1,36 +1,42 @@
 import { Button } from '@/shared/ui/Button/Button'
 import './CampaignInfo.css'
-import { useState, type SubmitEventHandler } from 'react'
+import { type SubmitEventHandler } from 'react'
 import { Input } from '@/shared/ui/Input/Input'
 import { TextArea } from '@/shared/ui/TextArea/TextArea'
 import { useEditCampaign } from '@/features/campaigns/hooks/useEditCampaign'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { parseFormData } from '@/shared/utils'
-interface CampaignInfoProps {
-  title: string
-  description: string
-  players: number
-}
+import { useText } from '@/features/langs/hooks/useText'
+import { campaignInfoText } from './CampaignInfo.langs'
+import type { CampaignInfoProps } from '../../../../interfaces'
+import { useCampaignInfo } from '../../../../hooks'
+
 export const CampaignInfo = ({
   title,
   description,
   players,
+  playersMax,
+  session,
+  act,
+  nextSessionDate,
 }: CampaignInfoProps) => {
-  const [editMode, setEditMode] = useState(false)
+  const {
+    editMode,
+    isInSession,
+    formattedNextSession,
+    elapsedTime,
+    toggleEditMode,
+    setEditMode,
+  } = useCampaignInfo(nextSessionDate)
   const campaignId = useCampaignStore(state => state.currentCampaignId)
+  const text = useText(campaignInfoText)
 
-  const campaignMockData = {
-    status: 'ACTIVO',
-    act: 'ACTO I',
-    level: 'NIVEL 1',
-    session: '#00',
-    nextSession: 'Viernes, 20:00 h',
-  }
+  const nextSessionDisplay = isInSession
+    ? text.stats.playingFor({ time: elapsedTime })
+    : formattedNextSession
 
   const { mutateAsync: editCampaign } = useEditCampaign()
-  const handleEditMode = () => {
-    setEditMode(!editMode)
-  }
+  const handleEditMode = toggleEditMode
 
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
@@ -60,14 +66,17 @@ export const CampaignInfo = ({
       <div className={`info-display ${!editMode ? 'active' : ''}`}>
         <div className="campaign-heading">
           <div className="campaign-kicker">
-            <span className="campaign-status">
-              <span className="status-dot" />
-              {campaignMockData.status}
+            {isInSession && (
+              <span className="campaign-status">
+                <span className="status-dot" />
+                {text.statusLabel()}
+              </span>
+            )}
+            <span className="kicker-meta">
+              <span className="meta-act-level">{act}</span>
             </span>
-            <span>{campaignMockData.act}</span>
-            <span>•</span>
-            <span>{campaignMockData.level}</span>
           </div>
+
           <div className="campaign-title-row">
             <h1>{title || 'CAMPAÑA NUEVA'}</h1>
             <Button
@@ -77,24 +86,34 @@ export const CampaignInfo = ({
               onClick={handleEditMode}
             />
           </div>
-          <p>
-            {description ||
-              'Las sombras se alargan sobre la vieja taberna de Phandalin.'}
-          </p>
         </div>
-        <div className="campaign-stats">
-          <div className="campaign-stat">
-            <span>JUGADORES</span>
-            <strong>{players}</strong>
+
+        <div className="campaign-stats-grid">
+          <div className="campaign-stat-card">
+            <span className="stat-label">{text.stats.players()}</span>
+            <div className="stat-value">
+              <strong className="val-gold">{players}</strong>
+              <span className="val-max"> / {playersMax}</span>
+            </div>
           </div>
-          <div className="campaign-stat">
-            <span>SESIÓN</span>
-            <strong>{campaignMockData.session}</strong>
+
+          <div className="campaign-stat-card">
+            <span className="stat-label">{text.stats.session()}</span>
+            <div className="stat-value">
+              <strong>{session}</strong>
+            </div>
           </div>
-          <div className="campaign-stat campaign-stat-next">
-            <span>PRÓXIMA CITA</span>
-            <strong>{campaignMockData.nextSession}</strong>
-          </div>
+
+          {nextSessionDisplay && (
+            <div className="campaign-stat-card stat-next-session">
+              <span className="stat-label">{text.stats.nextSession()}</span>
+              <div className="stat-value val-next-session">
+                <strong className={isInSession ? 'is-active' : ''}>
+                  {nextSessionDisplay}
+                </strong>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <form
@@ -103,8 +122,7 @@ export const CampaignInfo = ({
       >
         <div className="edit-form-heading">
           <div>
-            <span className="form-eyebrow">EDITAR CAMPAÑA</span>
-            <h2>Datos de la campaña</h2>
+            <h2>{text.editFormHeading()}</h2>
           </div>
           <Button
             theme="secondary"
@@ -113,14 +131,18 @@ export const CampaignInfo = ({
             onClick={handleEditMode}
           />
         </div>
-        <Input name="name" label="Título" defaultValue={title} />
+        <Input
+          name="name"
+          label={text.editCampaignTitle()}
+          defaultValue={title}
+        />
         <TextArea
           name="description"
-          label="Descripción"
+          label={text.editCampaignDescription()}
           defaultValue={description}
         />
 
-        <Button title="Guardar cambios" theme="primary" submit loader />
+        <Button title={text.saveCampaign()} theme="primary" submit loader />
       </form>
     </div>
   )

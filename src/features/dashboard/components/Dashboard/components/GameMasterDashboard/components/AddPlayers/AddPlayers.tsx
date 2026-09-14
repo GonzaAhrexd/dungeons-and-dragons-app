@@ -1,69 +1,50 @@
 import './AddPlayers.css'
 import { Button } from '@/shared/ui/Button/Button'
 import { Input } from '@/shared/ui/Input/Input'
-import { parseFormData } from '@/shared/utils/formData.util'
-import type { SubmitEventHandler } from 'react'
-import { gameMasterDashboardText } from './AddPlayer.langs'
+import { addPlayersText } from './AddPlayers.langs'
 import { useText } from '@/features/langs/hooks/useText'
-import { useSendInvitation } from '@/features/campaigns/hooks/useSendInvitation'
-import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { Icon } from '@/shared/ui/Icon/Icon'
+import { useAddPlayers } from '../../../../hooks'
+
 export const AddPlayers = () => {
-  const { mutateAsync: sendInvitation } = useSendInvitation()
-  const campaignId = useCampaignStore(state => state.currentCampaignId)
-
-  const text = useText(gameMasterDashboardText)
-  const handleAddPlayer: SubmitEventHandler<HTMLFormElement> = async e => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-
-    const data = parseFormData(formData, {
-      username: 'string',
-    })
-
-    const invitationData = {
-      campaignId: campaignId!,
-      username: data.username,
-    }
-
-    await sendInvitation(invitationData)
-  }
+  const { handleAddPlayer } = useAddPlayers()
+  const text = useText(addPlayersText)
 
   return (
     <section className="cmp-add-players">
+      <span className="corner-tr" />
+      <span className="corner-bl" />
       <header className="add-players-heading">
         <span className="add-players-heading-icon">
           <Icon icon="fa-solid fa-user-plus" />
         </span>
         <div>
-          <h1>{text.addPlayer()}</h1>
+          <h1>{text.title()}</h1>
           <p>{text.description()}</p>
         </div>
       </header>
       <form className="add-players-form" onSubmit={handleAddPlayer}>
-        <label className="add-players-field" htmlFor="username">
-          <div className="add-players-input">
-            <Icon icon="fa-regular fa-user" />
-            <Input
-              id="username"
-              name="username"
-              placeholder={text.addPlayersForm.usernamePlaceholder()}
-              theme="paper"
-            />
-          </div>
-        </label>
-        <Button
-          handlingClass="add-players"
-          icon="fa-regular fa-envelope"
-          theme="primary"
-          submit
-          loader
-          title={text.addPlayersForm.buttonTitle()}
-        />
+        <div className="add-players-controls">
+          <Input
+            id="username"
+            name="username"
+            label={text.usernameLabel()}
+            placeholder={text.usernamePlaceholder()}
+            theme="paper"
+          />
+          <Button
+            handlingClass="add-players"
+            icon="fa-regular fa-envelope"
+            theme="primary"
+            submit
+            loader
+            title={text.buttonTitle()}
+          />
+        </div>
       </form>
       <p className="add-players-note">
-        <Icon icon="fa-solid fa-circle-info" />
-        <span>{text.addPlayersForm.helperText()}</span>
+        <Icon icon="fa-regular fa-envelope" />
+        <span>{text.helperText()}</span>
       </p>
     </section>
   )

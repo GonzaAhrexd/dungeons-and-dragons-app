@@ -10,9 +10,18 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     gap: var(--pal-size-m);
-
     grid-template-areas:
-      ' add-players logs'
-      ' active-players logs ';
+      'add-players logs'
+      'active-players logs';
+  }
+
+  /* ── Tablet / mobile: single column flex stack ── */
+  @media (max-width: 68rem) {
+    > .quick-view {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pal-size-m);
+    }
   }
 }
+
