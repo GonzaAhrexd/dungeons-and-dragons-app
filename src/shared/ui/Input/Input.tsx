@@ -41,7 +41,7 @@ export const Input = ({
 
   const inputId = id || htmlAttrs?.id || name
   const inputName = name || htmlAttrs?.name || inputId
-  const inputAutoComplete = autoComplete || htmlAttrs?.autoComplete
+  const inputAutoComplete = autoComplete || htmlAttrs?.autoComplete || 'off'
 
   return (
     <div className={`cmp-input ${theme} ${handlingClass}`}>

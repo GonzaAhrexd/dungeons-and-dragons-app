@@ -17,7 +17,7 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
 
-  border-radius: 4px;
+  border-radius: var(--pal-radius-s);
   outline: none;
   cursor: pointer;
 
