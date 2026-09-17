@@ -6,6 +6,7 @@ export interface ActivePlayer {
   characterClass?: string
   race?: string
   level?: number
+  avatarUrl?: string
   hp?: {
     current: number
     max: number
@@ -23,5 +24,8 @@ export interface PendingInvitation {
 export interface ActivePlayersProps {
   players: ActivePlayer[]
   invitations: PendingInvitation[]
+  maxPlayers?: number
+  onResendInvitation?: (id: string) => void
+  onCancelInvitation?: (id: string) => void
 }
 

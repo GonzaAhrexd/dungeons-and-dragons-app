@@ -3,177 +3,556 @@
   display: flex;
   flex-direction: column;
   gap: var(--pal-size-m);
-  padding: var(--pal-size-s) 0;
+  padding: var(--pal-size-m);
   width: 100%;
   max-width: 90rem;
+  border: 1px solid var(--pal-border-muted);
+  border-radius: var(--pal-radius-m);
+  background: var(--pal-surface-1);
+  backdrop-filter: blur(4px);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
-  > .label {
+  &:hover {
+    border-color: var(--pal-border-strong);
+    box-shadow: 0 4px 10px var(--pal-shadow);
+  }
+
+  /* Headers */
+  > .label,
+  > .section-label {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--pal-size-m);
+    border-bottom: 1px solid var(--pal-border-subtle);
+    padding-bottom: var(--pal-size-xs);
 
     > .label-title {
       display: flex;
       align-items: center;
-      gap: var(--pal-size-s);
+      gap: var(--pal-size-xs);
+
       > h1 {
-        font-size: var(--pal-fs-xl);
+        font-family: var(--pal-font-display);
+        font-size: var(--pal-fs-s);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--pal-text-gold);
+        margin: 0;
       }
+
       > .cmp-icon {
-        font-size: var(--pal-fs-m);
+        font-size: var(--pal-fs-xs);
+        color: var(--pal-text-gold);
       }
     }
 
-    > h1 {
-      font-size: var(--pal-size-l);
+    > .label-count {
+      border: 1px solid var(--pal-border-subtle);
+      padding: 2px 8px;
+      font-size: var(--pal-fs-xs);
+      font-family: var(--pal-font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: var(--pal-radius-pill);
+      color: var(--pal-text-gold);
+      background: var(--pal-surface-2);
+      box-shadow: inset 0 1px 3px var(--pal-shadow);
     }
 
-    > .label-count,
-    > .label-title + .label-count {
-      border: 1px solid var(--pal-border-muted);
-      padding: var(--pal-size-2xs) var(--pal-size-s);
+    > .label-badge-muted {
       font-size: var(--pal-fs-xs);
-      font-family: var(--pal-font-mono);
-      text-transform: uppercase;
-      border-radius: var(--pal-radius-s);
-      color: var(--pal-gold-400);
+      font-family: var(--pal-font-display);
+      letter-spacing: 0.5px;
+      color: var(--pal-text-muted);
     }
   }
 
   > .section-label {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--pal-size-m);
-    margin-top: var(--pal-size-s);
-
-    > h1 {
-      font-size: var(--pal-size-l);
-    }
-
-    > span {
-      font-size: var(--pal-fs-s);
-      color: var(--pal-grayscale-400);
-    }
+    margin-top: var(--pal-size-xs);
   }
 
-  > .players-list,
-  > .pending-invitations {
+  /* Grid for Active Players */
+  > .players-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--pal-size-s);
     width: 100%;
 
-    > .player {
+    > .player-card {
       display: flex;
       align-items: center;
       gap: var(--pal-size-s);
-      border-width: 1px;
-      border-style: solid;
-      border-color: var(--pal-border-subtle);
-      padding: var(--pal-size-m);
-      min-width: 0;
-      min-height: 4.75rem;
+      border: 1px solid var(--pal-border-muted);
+      padding: var(--pal-size-s) var(--pal-size-m);
       border-radius: var(--pal-radius-m);
-      background-color: var(--pal-surface-1);
-      transition:
-        border-color 160ms ease,
-        background-color 160ms ease;
+      background: var(--pal-surface-2);
+      position: relative;
+      transition: all 0.3s ease;
+      min-height: 4.5rem;
 
       &:hover {
         border-color: var(--pal-border-strong);
-        background-color: var(--pal-surface-2);
+        background: var(--pal-surface-3);
       }
 
-      > .cmp-icon {
-        flex: 0 0 2.75rem;
-        display: grid;
-        border: 1px solid var(--pal-gold-800);
-        width: 2.75rem;
-        height: 2.75rem;
+      > .player-avatar-box {
+        position: relative;
+        flex: 0 0 3rem;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--pal-border-default);
+        border-radius: var(--pal-radius-pill);
+        background: var(--pal-surface-1);
+        color: var(--pal-text-gold);
         font-size: var(--pal-fs-m);
-        border-radius: var(--pal-radius-m);
-        place-items: center;
+        overflow: hidden;
+
+        > .player-avatar-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        &.free-avatar-box {
+          border: 1px dashed var(--pal-border-muted);
+          background: transparent;
+          color: var(--pal-text-muted);
+          box-shadow: none;
+          transition: all 0.3s ease
+        }
       }
 
-      > .player-info {
+      > .player-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--pal-size-2xs);
         min-width: 0;
 
-        > h2 {
-          font-size: var(--pal-fs-m);
-          font-family: var(--pal-font-display);
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          color: var(--pal-gold-200);
-          overflow: hidden;
+        > .player-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--pal-size-xs);
+
+          > .player-name-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            min-width: 0;
+
+            > .player-name {
+              font-family: var(--pal-font-display);
+              font-size: var(--pal-fs-m);
+              font-weight: 700;
+              color: var(--pal-text-gold);
+              letter-spacing: 0.5px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-transform: uppercase;
+              margin-bottom: -2px;
+            }
+
+            > .player-level-badge {
+              font-family: var(--pal-font-display);
+              font-size: var(--pal-fs-xs);
+              font-weight: 700;
+              letter-spacing: 0.5px;
+              color: var(--pal-text-gold);
+              background: var(--pal-surface-1);
+              border: 1px solid var(--pal-border-subtle);
+              border-radius: var(--pal-radius-s);
+              padding: 1px 6px;
+              white-space: nowrap;
+              text-transform: uppercase;
+              box-shadow: inset 0 1px 3px var(--pal-shadow);
+            }
+          }
+
+          > .player-actions {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            > .card-action-btn {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: var(--pal-fs-m);
+              height: var(--pal-fs-m);
+              background: transparent;
+              border: none;
+              border-radius: var(--pal-radius-s);
+              color: var(--pal-text-gold);
+              font-size: var(--pal-fs-m);
+              cursor: pointer;
+              padding: var(--pal-size-s);
+              transition: all 0.3s ease;
+
+              > .cmp-icon {
+                font-size: var(--pal-fs-m);
+              }
+
+              &:hover {
+                color: var(--pal-text-gold-hover);
+                background-color: var(--pal-surface-4);
+              }
+            }
+          }
         }
-        > h3 {
+
+        > .player-class-race {
           font-size: var(--pal-fs-s);
-          color: var(--pal-grayscale-400);
+          color: var(--pal-text-muted);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        > .player-hp-section {
+          display: flex;
+          align-items: center;
+          gap: var(--pal-size-xs);
+          margin-top: 0.1rem;
+
+          > .hp-bar-track {
+            flex: 1;
+            height: 5px;
+            background: var(--pal-surface-3);
+            border: 1px solid var(--pal-border-subtle);
+            border-radius: var(--pal-radius-xs);
+            overflow: hidden;
+            max-width: 9.5rem;
+
+            > .hp-bar-fill {
+              height: 100%;
+              border-radius: var(--pal-radius-xs);
+              transition: width 300ms ease;
+
+              &.fill-green {
+                background: linear-gradient(90deg, var(--pal-forest) 0%, var(--pal-forest-bright) 100%);
+              }
+
+              &.fill-amber {
+                background: linear-gradient(90deg, var(--pal-gold-700) 0%, var(--pal-gold-400) 100%);
+              }
+
+              &.fill-red {
+                background: linear-gradient(90deg, var(--pal-seal) 0%, var(--pal-seal-bright) 100%);
+              }
+            }
+          }
+
+          > .hp-text {
+            font-size: var(--pal-fs-xs);
+            font-family: var(--pal-font-mono);
+            color: var(--pal-text-muted);
+            white-space: nowrap;
+          }
+        }
+
+        > .free-slot-title {
+          font-family: var(--pal-font-display);
+          font-size: var(--pal-fs-s);
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          color: var(--pal-text-gold);
+          text-transform: uppercase;
+        }
+
+        > .free-slot-subtext {
+          font-size: var(--pal-fs-s);
+          color: var(--pal-text-muted);
+        }
+      }
+
+      &.free-slot {
+        border: 1px dashed var(--pal-border-muted);
+        background: var(--pal-surface-1);
+        cursor: pointer;
+
+        &:hover {
+          border-color: var(--pal-border-strong);
+
+          > .free-avatar-box {
+            color: var(--pal-text-gold);
+            border-color: var(--pal-border-strong);
+          }
         }
       }
     }
   }
 
-  > .pending-invitations {
+  /* Pending Invitations Section */
+  > .pending-invitations-list {
     display: flex;
     flex-direction: column;
-    gap: var(--pal-size-s);
+    gap: var(--pal-size-xs);
+    width: 100%;
 
-    > .player {
+    > .invitation-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
+      gap: var(--pal-size-m);
+      border: 1px solid var(--pal-border-muted);
+      padding: var(--pal-size-s) var(--pal-size-m);
+      border-radius: var(--pal-radius-m);
+      background: var(--pal-surface-2);
+      transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 
-      > .player-info {
+      &:hover {
+        border-color: var(--pal-border-default);
+      }
+
+      > .invitation-left {
         display: flex;
         align-items: center;
         gap: var(--pal-size-s);
         min-width: 0;
 
-        > .cmp-icon {
-          flex: 0 0 2.75rem;
-          display: grid;
-          border: 1px solid var(--pal-gold-800);
-          width: 2.75rem;
-          height: 2.75rem;
-          font-size: var(--pal-fs-m);
-          border-radius: var(--pal-radius-m);
-          place-items: center;
+        > .invitation-avatar-box {
+          flex: 0 0 2.5rem;
+          width: 2.5rem;
+          height: 2.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: var(--pal-surface-3);
+          border: 1px solid var(--pal-border-strong);
+          color: var(--pal-text-gold);
+          font-size: var(--pal-fs-s);
         }
 
-        > .player-data {
+        > .invitation-body {
+          display: flex;
+          flex-direction: column;
+          gap: 0.15rem;
           min-width: 0;
 
-          > h2 {
-            font-size: var(--pal-fs-m);
-            font-family: var(--pal-font-display);
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            color: var(--pal-gold-200);
-            overflow: hidden;
-          }
-          > h3 {
+          > .invitation-email {
+            font-family: var(--pal-font-mono);
             font-size: var(--pal-fs-s);
-            color: var(--pal-grayscale-400);
+            font-weight: 600;
+            color: var(--pal-text-gold);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          > .invitation-subtext {
+            font-size: var(--pal-fs-s);
+            color: var(--pal-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
           }
         }
       }
 
-      > .cmp-button {
-        width: 1rem;
-        > .cmp-icon {
-          font-size: var(--pal-fs-s);
+      > .invitation-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        > .resend-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          background: var(--pal-surface-3);
+          border: 1px solid var(--pal-border-muted);
+          color: var(--pal-text-gold);
+          padding: 0.3rem 0.75rem;
+          border-radius: var(--pal-radius-pill);
+          font-size: var(--pal-fs-xs);
+          font-family: var(--pal-font-display);
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          cursor: pointer;
+          transition: all 0.25s ease;
+
+          > .cmp-icon {
+            font-size: var(--pal-fs-xs);
+            color: var(--pal-text-gold);
+          }
+
+          &:hover {
+            border-color: var(--pal-border-strong);
+            background: var(--pal-surface-4);
+            color: var(--pal-text-gold-hover);
+          }
+        }
+
+        > .cancel-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 1.85rem;
+          height: 1.85rem;
+          border: 1px solid var(--pal-red-800);
+          background: var(--pal-red-900);
+          border-radius: var(--pal-radius-s);
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          > .cmp-icon {
+            font-size: var(--pal-fs-xs);
+            color: var(--pal-red-400);
+          }
+
+          &:hover {
+            border-color: var(--pal-red-500);
+            background: var(--pal-red-800);
+          }
         }
       }
     }
   }
+
   @media (max-width: 42rem) {
-    > .players-list,
-    > .pending-invitations {
+    padding: 0.85rem 0.75rem;
+    gap: 0.85rem;
+
+    > .label,
+    > .section-label {
+      gap: 0.5rem;
+
+      > .label-title {
+        min-width: 0;
+
+        > h1 {
+          font-size: 0.85rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        > .cmp-icon {
+          font-size: 0.8rem;
+        }
+      }
+
+      > .label-count,
+      > .label-badge-muted {
+        white-space: nowrap;
+        font-size: 0.68rem;
+        padding: 2px 6px;
+        flex-shrink: 0;
+      }
+    }
+
+    > .players-grid {
       grid-template-columns: 1fr;
+      gap: 0.65rem;
+
+      > .player-card {
+        padding: 0.65rem 0.75rem;
+        gap: 0.6rem;
+
+        > .player-avatar-box {
+          flex: 0 0 2.6rem;
+          width: 2.6rem;
+          height: 2.6rem;
+        }
+
+        > .player-body {
+          > .player-header {
+            > .player-name-wrapper {
+              gap: 0.35rem;
+
+              > .player-name {
+                font-size: 0.85rem;
+              }
+
+              > .player-level-badge {
+                font-size: 0.6rem;
+                padding: 1px 4px;
+              }
+            }
+          }
+
+          > .player-class-race {
+            font-size: 0.75rem;
+          }
+
+          > .player-hp-section {
+            > .hp-bar-track {
+              max-width: 7rem;
+            }
+
+            > .hp-text {
+              font-size: 0.65rem;
+            }
+          }
+        }
+      }
+    }
+
+    > .pending-invitations-list {
+      gap: 0.5rem;
+
+      > .invitation-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+        padding: 0.75rem;
+
+        > .invitation-left {
+          width: 100%;
+          min-width: 0;
+
+          > .invitation-avatar-box {
+            flex: 0 0 2.25rem;
+            width: 2.25rem;
+            height: 2.25rem;
+            font-size: 0.75rem;
+          }
+
+          > .invitation-body {
+            flex: 1;
+            min-width: 0;
+
+            > .invitation-email {
+              font-size: 0.8rem;
+            }
+
+            > .invitation-subtext {
+              font-size: 0.72rem;
+            }
+          }
+        }
+
+        > .invitation-actions {
+          justify-content: flex-end;
+          width: 100%;
+          padding-top: 0.35rem;
+          border-top: 1px solid var(--pal-border-subtle);
+
+          > .resend-btn {
+            font-size: 0.68rem;
+            padding: 0.25rem 0.65rem;
+          }
+
+          > .cancel-btn {
+            width: 1.65rem;
+            height: 1.65rem;
+          }
+        }
+      }
     }
   }
 }
+
+
+
+
