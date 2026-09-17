@@ -1,4 +1,5 @@
 import type { ActivePlayer, PendingInvitation } from './active-players.interface'
+import type { CampaignLogItem } from './logs.interface'
 
 export interface GameMasterMockData {
   act: string
@@ -7,6 +8,7 @@ export interface GameMasterMockData {
   nextSessionDate: string | Date | null
   players: ActivePlayer[]
   invitations: PendingInvitation[]
+  logs: CampaignLogItem[]
 }
 
 export interface CampaignInfoProps {
