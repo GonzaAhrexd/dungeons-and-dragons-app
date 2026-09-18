@@ -8,7 +8,8 @@ interface ActivePlayersText {
   freeSlotTitle: string
   availableSlots: PluralWords
   resend: string
-  pendingAcceptance: string
+  invitationPending: string
+  invitationRejected: string
   levelShort: string
   sheet: string
   options: string
@@ -34,7 +35,8 @@ export const activePlayersText: LanguagesText<ActivePlayersText> = {
       plural: '{count} slots available in party',
     },
     resend: 'RESEND',
-    pendingAcceptance: 'Awaiting acceptance',
+    invitationPending: 'Pending',
+    invitationRejected: 'Rejected',
     levelShort: 'LVL.',
     sheet: 'Character Sheet',
     options: 'Options',
@@ -58,7 +60,8 @@ export const activePlayersText: LanguagesText<ActivePlayersText> = {
       plural: '{count} cupos disponibles en el grupo',
     },
     resend: 'REENVIAR',
-    pendingAcceptance: 'En espera de aceptación',
+    invitationPending: 'Pendiente',
+    invitationRejected: 'Rechazada',
     levelShort: 'NV.',
     sheet: 'Ficha',
     options: 'Opciones',
@@ -66,4 +69,3 @@ export const activePlayersText: LanguagesText<ActivePlayersText> = {
     defaultSentAt: 'Enviada hace 2 horas',
   },
 }
-

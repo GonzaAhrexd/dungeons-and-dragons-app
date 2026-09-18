@@ -20,12 +20,3 @@ export interface PendingInvitation {
   state?: string
   sentAt?: string
 }
-
-export interface ActivePlayersProps {
-  players: ActivePlayer[]
-  invitations: PendingInvitation[]
-  maxPlayers?: number
-  onResendInvitation?: (id: string) => void
-  onCancelInvitation?: (id: string) => void
-}
-
