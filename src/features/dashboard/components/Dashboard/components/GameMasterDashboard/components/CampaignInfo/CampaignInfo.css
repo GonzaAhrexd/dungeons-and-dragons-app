@@ -161,19 +161,37 @@
         align-items: center;
         gap: 0.8rem;
 
-        > h1 {
-          margin: 0;
-          font-family: var(--pal-font-display);
-          font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-          font-weight: 700;
-          letter-spacing: 0.04em;
-          line-height: 1.1;
-          text-transform: uppercase;
-          background: linear-gradient(270deg, #fff2d2 0%, #E2C485 50%, #B89246 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        > .campaign-info {
+          display: flex;
+          flex-direction: column;
+          > h1 {
+            margin: 0;
+            font-family: var(--pal-font-display);
+            font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+            text-transform: uppercase;
+            background: linear-gradient(
+              270deg,
+              #fff2d2 0%,
+              #e2c485 50%,
+              #b89246 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+          }
+
+          > h2 {
+            margin: 0.15rem 0 0;
+            font-family: var(--pal-font-display);
+            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--pal-grayscale-400);
+          }
         }
 
         > .edit-button {
@@ -348,7 +366,6 @@
       pointer-events: auto;
     }
   }
-
 
   @media (max-width: 68rem) {
     > .info-display {

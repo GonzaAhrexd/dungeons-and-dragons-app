@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui/Button/Button'
 import './CampaignInfo.css'
-import { type SubmitEventHandler } from 'react'
+import { useState, type SubmitEventHandler } from 'react'
 import { Input } from '@/shared/ui/Input/Input'
 import { TextArea } from '@/shared/ui/TextArea/TextArea'
 import { useEditCampaign } from '@/features/campaigns/hooks/useEditCampaign'
@@ -8,32 +8,25 @@ import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { parseFormData } from '@/shared/utils'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignInfoText } from './CampaignInfo.langs'
-import type { CampaignInfoProps } from '../../../../interfaces'
-import { useCampaignInfo } from '../../../../hooks'
+
+
+export interface CampaignInfoProps {
+  title: string
+  description: string
+  players: number
+}
 
 export const CampaignInfo = ({
   title,
   description,
   players,
-  playersMax,
-  session,
-  act,
-  nextSessionDate,
 }: CampaignInfoProps) => {
-  const {
-    editMode,
-    isInSession,
-    formattedNextSession,
-    elapsedTime,
-    toggleEditMode,
-    setEditMode,
-  } = useCampaignInfo(nextSessionDate)
+  const [editMode, setEditMode] = useState(false)
+
   const campaignId = useCampaignStore(state => state.currentCampaignId)
   const text = useText(campaignInfoText)
 
-  const nextSessionDisplay = isInSession
-    ? text.stats.playingFor({ time: elapsedTime })
-    : formattedNextSession
+  const toggleEditMode = () => setEditMode(prev => !prev)
 
   const { mutateAsync: editCampaign } = useEditCampaign()
   const handleEditMode = toggleEditMode
@@ -65,20 +58,13 @@ export const CampaignInfo = ({
     <div className="cmp-campaign-info">
       <div className={`info-display ${!editMode ? 'active' : ''}`}>
         <div className="campaign-heading">
-          <div className="campaign-kicker">
-            {isInSession && (
-              <span className="campaign-status">
-                <span className="status-dot" />
-                {text.statusLabel()}
-              </span>
-            )}
-            <span className="kicker-meta">
-              <span className="meta-act-level">{act}</span>
-            </span>
-          </div>
+          <div className="campaign-kicker"></div>
 
           <div className="campaign-title-row">
-            <h1>{title || 'CAMPAÑA NUEVA'}</h1>
+            <div className="campaign-info">
+              <h1>{title}</h1>
+              <h2>{description}</h2>
+            </div>
             <Button
               theme="secondary"
               icon="fa-solid fa-pencil"
@@ -93,27 +79,23 @@ export const CampaignInfo = ({
             <span className="stat-label">{text.stats.players()}</span>
             <div className="stat-value">
               <strong className="val-gold">{players}</strong>
-              <span className="val-max"> / {playersMax}</span>
             </div>
           </div>
-
+          {/* TODO: Implementar contador de sesión actual incremental */}
           <div className="campaign-stat-card">
             <span className="stat-label">{text.stats.session()}</span>
             <div className="stat-value">
-              <strong>{session}</strong>
+              <strong>#{1}</strong>
             </div>
           </div>
 
-          {nextSessionDisplay && (
-            <div className="campaign-stat-card stat-next-session">
-              <span className="stat-label">{text.stats.nextSession()}</span>
-              <div className="stat-value val-next-session">
-                <strong className={isInSession ? 'is-active' : ''}>
-                  {nextSessionDisplay}
-                </strong>
-              </div>
+          {/* TODO: Implementar publicación de próxima sesión a futuro */}
+          {/* <div className="campaign-stat-card stat-next-session">
+            <span className="stat-label">{text.stats.nextSession()}</span>
+            <div className="stat-value val-next-session">
+              <strong>A</strong>
             </div>
-          )}
+          </div> */}
         </div>
       </div>
       <form
