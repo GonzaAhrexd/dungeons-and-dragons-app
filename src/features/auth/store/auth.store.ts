@@ -3,24 +3,31 @@ import { persist } from 'zustand/middleware'
 import type { UserProfile } from '../interfaces'
 
 interface AuthState {
-  token: string | null
+  accessToken: string | null
+  refreshToken: string | null
   user: UserProfile | null
   logout: () => void
   setUser: (user: UserProfile | null) => void
-  setToken: (token: string | null) => void
+  setTokens: (accessToken: string | null, refreshToken: string | null) => void
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
     set => ({
-      token: null,
+      accessToken: null,
+      refreshToken: null,
       user: null,
       setUser: user => set({ user }),
-      setToken: token => set({ token }),
-      logout: () => set({ token: null, user: null }),
+      setTokens: (token, refreshToken) =>
+        set({ accessToken: token, refreshToken }),
+      logout: () => set({ accessToken: null, refreshToken: null, user: null }),
     }),
     {
       name: 'auth-dyd-storage',
+      partialize: state => ({
+        refreshToken: state.refreshToken,
+        user: state.user,
+      }),
     },
   ),
 )
