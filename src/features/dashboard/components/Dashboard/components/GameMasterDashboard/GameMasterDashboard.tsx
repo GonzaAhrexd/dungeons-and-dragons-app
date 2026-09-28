@@ -4,6 +4,7 @@ import './GameMasterDashboard.css'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { HomeSection, UserSection } from './components'
 import { useGameMasterStore } from '../../store/gamemaster.store'
+import { SettingsSection } from './components/SettingsSection/SettingsSection'
 
 export const GameMasterDashboard = () => {
   const text = useText(gameMasterDashboardText)
@@ -63,6 +64,7 @@ export const GameMasterDashboard = () => {
       <div className="dashboard-content">
         {currentSection === 'home' && <HomeSection />}
         {currentSection === 'users' && <UserSection />}
+        {currentSection === 'settings' && <SettingsSection />}
       </div>
     </div>
   )

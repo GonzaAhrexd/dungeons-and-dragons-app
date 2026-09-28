@@ -1,0 +1,31 @@
+.cmp-settings-section {
+  background-color: var(--pal-grayscale-900);
+  padding: var(--pal-size-m);
+  width: 100%;
+  max-width: 64rem;
+  border-radius: var(--pal-radius-m);
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-m);
+    width: 100%;
+
+    > .items {
+      display: flex;
+      flex-direction: row; 
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--pal-size-s) var(--pal-size-m);
+      border-radius: var(--pal-radius-m);
+      background-color: var(--pal-gold-800);
+      color: var(--pal-grayscale-300);
+
+      > p {
+        font-size: var(--pal-fs-l);
+        color: var(--pal-grayscale-100);
+      }
+
+    }
+  }
+}
