@@ -3,13 +3,13 @@ import { gameMasterDashboardText } from './GameMaster.langs'
 import './GameMasterDashboard.css'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { HomeSection, UserSection } from './components'
-import { useGameMasterStore } from '../../store/gamemaster.store'
 import { SettingsSection } from './components/SettingsSection/SettingsSection'
+import { useState } from 'react'
 
 export const GameMasterDashboard = () => {
   const text = useText(gameMasterDashboardText)
 
-  const { currentSection, setCurrentSection } = useGameMasterStore()
+  const [currentSection, setCurrentSection] = useState('home')
 
   const actions = [
     {
