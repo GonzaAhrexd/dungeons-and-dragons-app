@@ -3,6 +3,7 @@ import { Icon } from '@/shared/ui/Icon/Icon'
 import { Button } from '@/shared/ui/Button/Button'
 import type { NPCItem } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './NPCModal.css'
+import { Blobatar } from '@blobatar/react'
 
 interface NPCModalProps {
   npc: NPCItem | null
@@ -73,14 +74,7 @@ export const NPCModal = ({
 
         <div className="header">
           <div className="avatar">
-            <img
-              src={npc.avatarUrl || '/avatar.png'}
-              alt={npc.name}
-              className="avatar-img"
-              onError={e => {
-                ;(e.target as HTMLImageElement).src = '/avatar.png'
-              }}
-            />
+            <Blobatar name={npc.name} animate="hover" />
           </div>
           <div className="title-group">
             <h3 className="title">{npc.name}</h3>

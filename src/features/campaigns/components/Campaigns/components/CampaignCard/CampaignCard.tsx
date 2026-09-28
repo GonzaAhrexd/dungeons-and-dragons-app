@@ -5,14 +5,9 @@ import { useLocation } from 'wouter'
 interface CampaignCardProps {
   campaign: CampaignResponse
   imageUrl: string
-  avatarUrl: string
 }
 
-export const CampaignCard = ({
-  campaign,
-  imageUrl,
-  avatarUrl,
-}: CampaignCardProps) => {
+export const CampaignCard = ({ campaign, imageUrl }: CampaignCardProps) => {
   const { campaignId, name, description, isGameMaster } = campaign
 
   const setCampaignId = useCampaignStore(state => state.setCurrentCampaignId)
@@ -43,12 +38,14 @@ export const CampaignCard = ({
         {/* TODO: Cambiar por el nombre del jugador cuando esté disponible en el Backend */}
         <img
           className="user-avatar"
-          src={avatarUrl || '/avatar.png'}
+          src={'/avatar.png'}
           alt={isGameMaster ? 'Game Master' : 'Player'}
           onError={e => {
             ;(e.target as HTMLImageElement).src = '/avatar.png'
           }}
         />
+      
+
         <span className="user-name">
           {isGameMaster ? 'Game Master' : 'Player'}
         </span>

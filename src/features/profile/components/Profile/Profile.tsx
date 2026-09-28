@@ -14,7 +14,6 @@ export const Profile = () => {
   const user = useAuthStore(state => state.user)
 
   const [username, setUsername] = useState(user?.username || 'Generic_User')
-  const [avatar, setAvatar] = useState(user?.avatar || '')
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -41,7 +40,6 @@ export const Profile = () => {
     updateProfile(
       {
         username,
-        avatar,
         currentPassword,
         newPassword: newPassword || undefined,
       },
@@ -107,33 +105,6 @@ export const Profile = () => {
                 required: true,
               }}
             />
-
-            <div className="input-with-preview">
-              <Input
-                id="avatar"
-                name="avatar"
-                label={text.avatarScroll()}
-                type="text"
-                autoComplete="off"
-                placeholder={text.avatarPlaceholder()}
-                theme="gold"
-                htmlAttrs={{
-                  value: avatar,
-                  onChange: e => setAvatar(e.target.value),
-                }}
-              />
-              <img
-                src={
-                  avatar.trim() !== '' ? avatar : user?.avatar || '/avatar.png'
-                }
-                alt="Avatar Preview"
-                className="avatar-preview-thumbnail"
-                onError={e => {
-                  e.currentTarget.src = '/avatar.png'
-                }}
-              />
-            </div>
-
             <Input
               id="current-password"
               name="currentPassword"

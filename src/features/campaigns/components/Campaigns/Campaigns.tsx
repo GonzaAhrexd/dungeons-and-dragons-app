@@ -161,7 +161,6 @@ export const Campaigns = () => {
             key={campaign.campaignId}
             campaign={campaign}
             imageUrl="/placeholder_campaign.jpg"
-            avatarUrl="./avatar.png"
           />
         ))}
       </div>

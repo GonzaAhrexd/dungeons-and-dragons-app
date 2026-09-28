@@ -4,6 +4,7 @@ import { useText } from '@/features/langs/hooks/useText'
 import { activePlayersText } from './ActivePlayers.langs'
 import type { Players, Invitations } from '@/features/campaigns/interfaces'
 import { Button } from '@/shared/ui/Button/Button'
+import { Blobatar } from '@blobatar/react'
 
 export interface ActivePlayersProps {
   players: Players[]
@@ -26,8 +27,6 @@ export const ActivePlayers = ({
   //   return 'fill-red'
   // }
 
-  const avatar = '/avatar.png'
-
   return (
     <div className="cmp-active-players">
       {/* Header 1: Active Players */}
@@ -44,28 +43,10 @@ export const ActivePlayers = ({
       {/* Grid of Players */}
       <div className="players-grid">
         {players.map((player, index) => {
-          // const fallback = DEFAULT_PROFILES[index % DEFAULT_PROFILES.length]
-          // const name =
-          //   player.characterName || player.username || fallback.characterName
-          // const level = player.level ?? fallback.level
-          // const characterClass =
-          //   player.characterClass || fallback.characterClass
-          // const race = player.race || fallback.race
-          // const hp = player.hp || fallback.hp
-          // const avatar = player.avatarUrl || '/avatar.png'
-          // const hpPct = Math.min(
-          //   100,
-          //   Math.max(0, Math.round((hp.current / hp.max) * 100)),
-          // )
-
           return (
             <div className="player-card" key={player.playerId || index}>
               <div className="player-avatar-box">
-                <img
-                  src={avatar}
-                  alt={player.username}
-                  className="player-avatar-img"
-                />
+                <Blobatar name={player?.username || ''} animate="hover" />
               </div>
               <div className="player-body">
                 <div className="player-header">

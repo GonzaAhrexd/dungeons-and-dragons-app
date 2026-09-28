@@ -1,10 +1,11 @@
-import { useAuthStore } from '@/features/auth/store/auth.store'
 import './Navbar.css'
+import { useAuthStore } from '@/features/auth/store/auth.store'
 import { Link, useLocation } from 'wouter'
 import { homeText } from './Navbar.langs'
 import { useText } from '@/features/langs/hooks/useText'
 import { Icon } from '../Icon/Icon'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
+import { Blobatar } from '@blobatar/react'
 
 export const Navbar = () => {
   const text = useText(homeText)
@@ -15,11 +16,6 @@ export const Navbar = () => {
   const resetCampaignId = useCampaignStore(state => state.reset)
 
   const [location] = useLocation()
-
-  const HARDCODED_USER = {
-    username: 'Sir Valerius',
-    avatar: user?.avatar || '/avatar.png',
-  }
 
   const NAV_LINKS = [
     {
@@ -65,7 +61,7 @@ export const Navbar = () => {
   return (
     <nav className="cmp-navbar">
       <Link to="/dashboard" className="brand">
-        DnD para los panas
+        DnD
       </Link>
 
       <div className="nav-links">{navLinks}</div>
@@ -84,18 +80,11 @@ export const Navbar = () => {
 
         <Link to="/profile" className="profile-link">
           <div className="user-info">
-            <span className="username">
-              {user?.username || HARDCODED_USER.username}
-            </span>
-            <span className="subtitle">3 campañas</span>
+            <span className="username">{user?.username}</span>
           </div>
 
           <div className="avatar">
-            <img
-              src={HARDCODED_USER.avatar}
-              alt={HARDCODED_USER.username}
-              className="avatar-img"
-            />
+            <Blobatar name={user?.username || ''} animate="hover" />
           </div>
         </Link>
 

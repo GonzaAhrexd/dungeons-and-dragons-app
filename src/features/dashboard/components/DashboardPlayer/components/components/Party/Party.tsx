@@ -5,6 +5,7 @@ import { NPCModal } from '../NPCs/components/NPCModal'
 import { useParty } from '@/features/dashboard/components/DashboardPlayer/hooks'
 import type { PartyMember } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './Party.css'
+import { Blobatar } from '@blobatar/react'
 
 interface PartyProps {
   partyMembers: PartyMember[]
@@ -35,14 +36,7 @@ export const Party = ({ partyMembers }: PartyProps) => {
             }}
           >
             <div className="party-avatar" title={m.name}>
-              <img
-                src={m.avatarUrl || '/avatar.png'}
-                alt={m.name}
-                className="party-avatar-img"
-                onError={e => {
-                  ;(e.target as HTMLImageElement).src = '/avatar.png'
-                }}
-              />
+              <Blobatar name={m.name} animate="hover" />
             </div>
             <span className="party-member-name">{m.name}</span>
           </div>
@@ -61,4 +55,3 @@ export const Party = ({ partyMembers }: PartyProps) => {
     </div>
   )
 }
-

@@ -5,6 +5,7 @@ import { NPCModal } from './components/NPCModal'
 import { useNPCs } from '@/features/dashboard/components/DashboardPlayer/hooks'
 import type { NPCItem } from '@/features/dashboard/components/DashboardPlayer/interfaces'
 import './NPCs.css'
+import { Blobatar } from '@blobatar/react'
 
 interface NPCsProps {
   npcs: NPCItem[]
@@ -37,14 +38,7 @@ export const NPCs = ({ npcs }: NPCsProps) => {
               }}
             >
               <div className="avatar">
-                <img
-                  src={fullNpc.avatarUrl || '/avatar.png'}
-                  alt={fullNpc.name}
-                  className="avatar-img"
-                  onError={e => {
-                    ;(e.target as HTMLImageElement).src = '/avatar.png'
-                  }}
-                />
+                <Blobatar name={fullNpc.name} animate="hover" />
               </div>
               <span className="item-name">{fullNpc.name}</span>
             </div>
