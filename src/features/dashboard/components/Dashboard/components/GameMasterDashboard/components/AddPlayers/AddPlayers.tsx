@@ -4,7 +4,7 @@ import { Input } from '@/shared/ui/Input/Input'
 import { addPlayersText } from './AddPlayers.langs'
 import { useText } from '@/features/langs/hooks/useText'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { useAddPlayers } from '../../../../hooks'
+import { useAddPlayers } from './hooks'
 
 export const AddPlayers = () => {
   const { handleAddPlayer } = useAddPlayers()

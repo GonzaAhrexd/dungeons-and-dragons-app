@@ -112,7 +112,7 @@ export const ActivePlayers = ({
           <div className="invitation-card" key={invitation.invitationId}>
             <div className="invitation-left">
               <div className="invitation-avatar-box">
-                <Icon icon="fa-solid fa-question" />
+                <Blobatar name={invitation.username} animate="hover" />
               </div>
               <div className="invitation-body">
                 <span className="invitation-email">{invitation.username}</span>
