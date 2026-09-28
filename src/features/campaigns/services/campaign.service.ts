@@ -15,6 +15,8 @@ import type {
   AcceptInvitationParams,
   RejectInvitationParams,
   RejectInvitationResponse,
+  DeleteCampaignResponse,
+  DeleteCampaignRequest,
 } from '../interfaces'
 
 const CONTROLLER = 'campaigns'
@@ -106,8 +108,7 @@ export class CampaignService {
       console.log(error)
       throw error
     }
-  } 
-
+  }
 
   static editCampaign = async (
     params: EditCampaignParams,
@@ -115,6 +116,18 @@ export class CampaignService {
   ): Promise<EditCampaignResponse> => {
     try {
       const response = await instance.patch(`${CONTROLLER}/${params.id}`, data)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  static deleteCampaign = async (
+    data: DeleteCampaignRequest,
+  ): Promise<DeleteCampaignResponse> => {
+    try {
+      const response = await instance.delete(`${CONTROLLER}`, { data })
       return response.data
     } catch (error) {
       console.log(error)
