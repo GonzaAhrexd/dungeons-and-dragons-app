@@ -31,11 +31,11 @@ export const Navbar = () => {
       href: '/dashboard',
       icon: 'fa-solid fa-table-cells-large',
     },
-    {
-      label: 'DashBoard 2',
-      href: '/dashboardplayer',
-      icon: 'fa-solid fa-chess-knight',
-    },
+    // {
+    //   label: 'DashBoard 2',
+    //   href: '/dashboardplayer',
+    //   icon: 'fa-solid fa-chess-knight',
+    // },
     {
       label: text.mycharacters(),
       href: '/characters',

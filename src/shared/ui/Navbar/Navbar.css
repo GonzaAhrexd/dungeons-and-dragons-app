@@ -74,9 +74,7 @@
       }
     }
 
-    > .profile {
-      display: none;
-    }
+  
   }
 
   > .actions {
@@ -90,9 +88,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid var(--pal-border-subtle);
       width: 2.65rem;
       height: 2.65rem;
-      border: 1px solid var(--pal-border-subtle);
       border-radius: var(--pal-radius-m);
       background: var(--pal-surface-2);
       cursor: pointer;
@@ -109,25 +107,24 @@
       }
 
       &:hover {
-        filter: brightness(1.2);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        filter: brightness(1.2);
       }
 
-      > .cmp-icon{
+      > .cmp-icon {
         font-size: var(--pal-fs-m);
       }
 
-      &:hover .cmp-icon{
+      &:hover .cmp-icon {
         filter: brightness(1.25);
       }
-    
     }
 
     > .nav-divider {
+      margin-inline: 0.15rem;
       width: 1px;
       height: 2.2rem;
       background: var(--pal-border-muted);
-      margin-inline: 0.15rem;
       opacity: 0.7;
     }
 
@@ -148,34 +145,28 @@
           font-size: var(--pal-fs-base);
           font-family: var(--pal-font-display);
           font-weight: 700;
+          text-transform: uppercase;
           letter-spacing: 0.04em;
           color: var(--pal-text-gold);
-          text-transform: uppercase;
           transition: color 0.15s ease;
         }
 
-        > .subtitle {
-          margin-top: 1px;
-          font-size: 0.78rem;
-          font-family: var(--pal-font-display);
-          letter-spacing: 0.05em;
-          color: var(--pal-text-muted);
-          text-transform: uppercase;
-          transition: color 0.15s ease;
-        }
       }
 
       > .avatar {
         display: grid;
+        border: 2px solid var(--pal-border-default);
         width: 2.65rem;
         height: 2.65rem;
-        border: 2px solid var(--pal-border-default);
         border-radius: 50%;
         background-color: #040404;
-        overflow: hidden;
-        place-items: center;
         box-shadow: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+        overflow: hidden;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.15s ease;
+        place-items: center;
 
         > img {
           width: 100%;
@@ -202,45 +193,61 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.25rem;
       border: none;
-      background: transparent;
-      color: var(--pal-gold-400);
+      padding: 0.25rem;
       font-size: 1.25rem;
+      color: var(--pal-gold-400);
+      background: transparent;
       cursor: pointer;
-      transition: color 0.15s ease, filter 0.15s ease, transform 0.15s ease;
+      transition:
+        color 0.15s ease,
+        filter 0.15s ease,
+        transform 0.15s ease;
 
       &:hover {
         color: var(--pal-gold-300);
-        filter: brightness(1.25);
         transform: scale(1.08);
+        filter: brightness(1.25);
       }
     }
   }
 
   @media (max-width: 64rem) {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: var(--pal-size-xl);
-    height: var(--pal-size-3xl);
+    display: contents;
 
     > .brand,
-    > .actions {
+    .nav-divider {
       display: none;
     }
 
-    > .nav-links {
-      gap: var(--pal-size-xl);
+    > .actions {
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      justify-content: flex-end;
+      margin-left: 0;
+      border-bottom: 1px solid var(--pal-gold-800);
+      padding-inline: var(--pal-size-l);
+      height: 3.5rem;
+      background: var(--pal-surface-1);
 
-      > .profile {
-        display: none;
+      > .btn-notifications {
+        margin-right: auto;
       }
+    }
+
+    > .nav-links {
+      position: fixed;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      justify-content: center;
+      gap: var(--pal-size-xl);
+      margin-left: 0;
+      border-top: 1px solid var(--pal-gold-800);
+      width: 100%;
+      height: var(--pal-size-3xl);
+      background: var(--pal-surface-1);
 
       > .link {
         display: flex;
@@ -253,6 +260,11 @@
         > i {
           display: block;
           font-size: var(--pal-fs-xl);
+        }
+
+        > span {
+          display: block;
+          font-size: var(--pal-fs-2xs);
         }
       }
     }
