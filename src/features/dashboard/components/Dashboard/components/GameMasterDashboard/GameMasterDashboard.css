@@ -10,44 +10,42 @@
   > .dashboard-tabs {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: var(--pal-size-xs);
-    padding: 0.35rem;
     border: 1px solid var(--pal-border-subtle);
-    border-radius: var(--pal-radius-pill);
-    background-color: var(--pal-surface-1);
-    backdrop-filter: blur(8px);
+    padding: 0.35rem;
     width: fit-content;
     max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
+    flex-wrap: balance;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    border-radius: var(--pal-radius-pill);
+    background-color: var(--pal-surface-1);
+
+    overflow-x: auto;
+    backdrop-filter: blur(8px);
 
     > .tab-button {
       position: relative;
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      padding: 0.55rem 1.15rem;
       border: 1px solid transparent;
-      border-radius: var(--pal-radius-pill);
-      background: transparent;
-      color: var(--pal-grayscale-400);
-      font-family: var(--pal-font-display);
+      padding: 0.55rem 1.15rem;
       font-size: var(--pal-fs-s);
+      font-family: var(--pal-font-display);
       font-weight: 700;
+      white-space: nowrap;
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      border-radius: var(--pal-radius-pill);
+      color: var(--pal-grayscale-400);
+      background: transparent;
       cursor: pointer;
-      white-space: nowrap;
       transition: all 0.2s ease;
 
       > .cmp-icon {
-        font-size: var(--pal-fs-s);
         margin-top: -2px;
+        font-size: var(--pal-fs-s);
         color: inherit;
         transition: color 0.2s ease;
       }
@@ -62,8 +60,8 @@
 
       &.active {
         border: 1px solid var(--pal-border-muted);
-        background: var(--pal-surface-2);
         color: var(--pal-text-gold);
+        background: var(--pal-surface-2);
         box-shadow: 0 0 12px rgba(201, 154, 62, 0.12);
 
         > .cmp-icon {
@@ -74,12 +72,12 @@
           position: absolute;
           bottom: 0rem;
           left: 50%;
-          transform: translateX(-50%);
           width: 2.2rem;
           height: 2px;
           border-radius: 1px;
           background: var(--pal-gold-400);
           box-shadow: 0 0 8px var(--pal-gold-400);
+          transform: translateX(-50%);
         }
       }
     }
