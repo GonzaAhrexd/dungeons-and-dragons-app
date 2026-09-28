@@ -6,6 +6,9 @@ import { useText } from '@/features/langs/hooks/useText'
 import { Icon } from '../Icon/Icon'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { Blobatar } from '@blobatar/react'
+import { Dropdown } from '../Dropdown/Dropdown'
+import { CampaignInvitations } from './components'
+import { Button } from '../Button/Button'
 
 export const Navbar = () => {
   const text = useText(homeText)
@@ -67,14 +70,18 @@ export const Navbar = () => {
       <div className="nav-links">{navLinks}</div>
 
       <div className="actions">
-        <button
-          className="btn-notifications"
-          title="Notificaciones"
-          type="button"
+        <Dropdown
+          opener={popoverTarget => (
+            <Button
+              handlingClass="btn-notifications"
+              icon="fa-solid fa-bell"
+              theme="secondary"
+              htmlAttrs={{ popoverTarget }}
+            />
+          )}
         >
-          <Icon icon="fa-solid fa-bell" />
-          <span className="notification-badge" />
-        </button>
+          <CampaignInvitations />
+        </Dropdown>
 
         <div className="nav-divider" />
 

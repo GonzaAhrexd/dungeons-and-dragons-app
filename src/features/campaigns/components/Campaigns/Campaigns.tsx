@@ -6,13 +6,10 @@ import {
   CampaignAdd,
   CampaignCard,
   CampaignFilters,
-  CampaignInvitations,
   CampaignsSkeleton,
   CampaignError,
 } from './components'
 import { useGetMyCampaigns } from '../../hooks/useGetMyCampaigns'
-import { Button } from '@/shared/ui/Button/Button'
-import { Dropdown } from '@/shared/ui/Dropdown/Dropdown'
 
 type FilterType = 'active' | 'owned' | 'favorites'
 type SortType = 'alphabetical' | 'creation'
@@ -23,6 +20,12 @@ type SortState = {
   alphabetical: AlphabeticalSortDirection
   creation: CreationSortDirection
 }
+
+const alphabeticalCycle: AlphabeticalSortDirection[] = [
+  'inactive',
+  'asc',
+  'desc',
+]
 
 export const Campaigns = () => {
   const text = useText(campaignsText)
@@ -65,12 +68,6 @@ export const Campaigns = () => {
     }))
   }
 
-  const alphabeticalCycle: AlphabeticalSortDirection[] = [
-    'inactive',
-    'asc',
-    'desc',
-  ]
-
   const handleChangeSort = (sortType: SortType) => {
     setSort(prevSort => {
       if (sortType === 'alphabetical') {
@@ -111,7 +108,6 @@ export const Campaigns = () => {
     })
 
   if (isLoading && !isTimedOut) {
-    //if (isLoading || !isLoading) {
     return <CampaignsSkeleton />
   }
 
@@ -133,18 +129,6 @@ export const Campaigns = () => {
           <h1 className="campaigns-title">{text.activeCampaigns()}</h1>
           <p className="campaigns-subtitle">{text.subtitle()}</p>
         </div>
-        <Dropdown
-          opener={popoverTarget => (
-            <Button
-              handlingClass="invitations-button"
-              icon="fa-solid fa-envelope"
-              theme="secondary"
-              htmlAttrs={{ popoverTarget }}
-            />
-          )}
-        >
-          <CampaignInvitations />
-        </Dropdown>
       </div>
 
       <CampaignFilters
