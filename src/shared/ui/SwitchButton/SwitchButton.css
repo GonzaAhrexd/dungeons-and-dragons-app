@@ -1,30 +1,52 @@
 .cmp-switch-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
+  position: relative;
+  flex-shrink: 0;
+  display: inline-block;
+  box-sizing: border-box;
   border: none;
-  padding: 3px;
+  padding: 0;
   width: 48px;
   height: 26px;
   border-radius: 999px;
-  background: #d1d5db;
+  background-color: #d1d5db;
   cursor: pointer;
-  transition: background 0.2s ease;
+  user-select: none;
+  transition: background-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.4);
+    outline: none;
+  }
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
+
   &.checked {
-    justify-content: flex-end;
-    background: var(--pal-gold-500);
+    background-color: var(--pal-gold-500);
+
+    > .cmp-switch-button__thumb {
+      transform: translateX(22px);
+    }
   }
 
   > .cmp-switch-button__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
     width: 20px;
     height: 20px;
+
     border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+
+    pointer-events: none;
+    
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
 }

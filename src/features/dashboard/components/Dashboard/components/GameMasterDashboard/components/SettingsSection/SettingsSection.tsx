@@ -3,16 +3,21 @@ import { SwitchButton } from '@/shared/ui/SwitchButton/SwitchButton'
 import { Button } from '@/shared/ui/Button/Button'
 import { useState, type SubmitEventHandler } from 'react'
 import { Input } from '@/shared/ui/Input/Input'
-import { useDeleteCampaign } from '@/features/campaigns/hooks/'
+import {
+  useDeleteCampaign,
+  useEditCampaign,
+  useGetCampaignById,
+} from '@/features/campaigns/hooks/'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import { useText } from '@/features/langs/hooks/useText'
 import { settingsSectionText } from './SettingsSection.langs'
 export const SettingsSection = () => {
   const text = useText(settingsSectionText)
-
   const [isDeletionMode, setIsDeletionMode] = useState(false)
   const campaignId = useCampaignStore(state => state.currentCampaignId)
+  const { data: campaign, isLoading } = useGetCampaignById(campaignId)
   const { mutateAsync: deleteCampaign } = useDeleteCampaign()
+  const { mutateAsync: editCampaign } = useEditCampaign()
 
   const handleDeletionCampaign: SubmitEventHandler<
     HTMLFormElement
@@ -24,6 +29,18 @@ export const SettingsSection = () => {
     await deleteCampaign({ campaignId, campaignName })
   }
 
+  const handleToggleActiveCampaign = () => {
+    if (!campaign) return
+    editCampaign({
+      params: { id: campaignId },
+      data: { isActive: !campaign.isActive },
+    })
+  }
+
+  if (isLoading) {
+    return <p>{text.loading()}</p>
+  }
+
   return (
     <div className="cmp-settings-section">
       <h1>{text.settings()}</h1>
@@ -31,7 +48,10 @@ export const SettingsSection = () => {
         <div className="inner">
           <div className="items">
             <p>{text.activeCampaign()} </p>
-            <SwitchButton />
+            <SwitchButton
+              checked={campaign?.isActive}
+              onChange={handleToggleActiveCampaign}
+            />
           </div>
 
           <Button

@@ -2,6 +2,7 @@ import type { LanguagesText } from '@/features/langs/interfaces'
 
 interface SettingsSectionText {
   settings: string
+  loading: string
   activeCampaign: string
   DeleteButton: string
   deletionDisclaimer: string
@@ -13,6 +14,7 @@ interface SettingsSectionText {
 export const settingsSectionText: LanguagesText<SettingsSectionText> = {
   en: {
     settings: 'Settings',
+    loading: 'Loading...',
     activeCampaign: 'Active campaign',
     DeleteButton: 'Delete campaign',
     deletionDisclaimer:
@@ -23,6 +25,7 @@ export const settingsSectionText: LanguagesText<SettingsSectionText> = {
   },
   es: {
     settings: 'Configuración',
+    loading: 'Cargando...',
     activeCampaign: 'Campaña activa',
     DeleteButton: 'Eliminar campaña',
     deletionDisclaimer:

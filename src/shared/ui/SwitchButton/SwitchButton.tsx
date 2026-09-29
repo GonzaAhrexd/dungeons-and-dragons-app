@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import './SwitchButton.css'
+import { useState, useEffect, useRef } from 'react'
 
 interface SwitchButtonProps {
   checked?: boolean
@@ -12,13 +12,20 @@ export function SwitchButton({
   onChange,
   disabled,
 }: SwitchButtonProps) {
-  const [internal, setInternal] = useState(false)
-  const isChecked = checked ?? internal
+  const [isChecked, setIsChecked] = useState(checked ?? false)
+  const isInitialized = useRef(false)
+
+  useEffect(() => {
+    if (!isInitialized.current && checked !== undefined) {
+      setIsChecked(checked)
+      isInitialized.current = true
+    }
+  }, [checked])
 
   const toggle = () => {
     if (disabled) return
     const next = !isChecked
-    setInternal(next)
+    setIsChecked(next)
     onChange?.(next)
   }
 

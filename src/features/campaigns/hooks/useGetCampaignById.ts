@@ -8,5 +8,6 @@ export const useGetCampaignById = (campaignId: string) => {
     queryKey: ['campaign', campaignId],
     queryFn: () => CampaignService.getCampaignById(campaignId),
     enabled: !!campaignId,
+    staleTime: 1000 * 60 * 5
   })
 }
