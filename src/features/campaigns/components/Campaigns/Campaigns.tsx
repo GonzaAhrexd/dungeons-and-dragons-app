@@ -29,9 +29,9 @@ const alphabeticalCycle: AlphabeticalSortDirection[] = [
 
 export const Campaigns = () => {
   const text = useText(campaignsText)
-  const { data: myCampaigns, isLoading, isError, refetch } = useGetMyCampaigns()
-
   const [isTimedOut, setIsTimedOut] = useState(false)
+
+  const { data: myCampaigns, isLoading, isError, refetch } = useGetMyCampaigns()
 
   useEffect(() => {
     if (!isLoading) return
@@ -91,12 +91,17 @@ export const Campaigns = () => {
 
   const filteredCampaigns = [...(myCampaigns ?? [])]
     .filter(campaign => {
+      const matchesActive = !filters.active || campaign.isActive
       const matchesOwned = !filters.owned || campaign.isGameMaster
       const matchesFavorites = !filters.favorites
 
-      return matchesOwned && matchesFavorites
+      return matchesActive && matchesOwned && matchesFavorites
     })
     .sort((a, b) => {
+      if (a.isActive !== b.isActive) {
+        return a.isActive ? -1 : 1
+      }
+
       if (sort.alphabetical !== 'inactive') {
         const result = a.name.localeCompare(b.name)
         return sort.alphabetical === 'asc' ? result : -result
@@ -104,9 +109,9 @@ export const Campaigns = () => {
 
       const dateA = new Date(a.createdAt).getTime()
       const dateB = new Date(b.createdAt).getTime()
+
       return sort.creation === 'asc' ? dateA - dateB : dateB - dateA
     })
-
   if (isLoading && !isTimedOut) {
     return <CampaignsSkeleton />
   }
