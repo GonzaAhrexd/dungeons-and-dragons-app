@@ -10,10 +10,10 @@
   min-height: 25rem;
 
   background-color: var(--pal-surface-1);
-  
+
   overflow: hidden;
   cursor: pointer;
-  
+
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
@@ -26,13 +26,13 @@
   &::before {
     position: absolute;
     inset: 0;
-  
+
     padding: 2px;
-  
+
     content: '';
-  
+
     border-radius: inherit;
-  
+
     background: conic-gradient(
       from var(--border-angle),
       transparent 0%,
@@ -43,28 +43,28 @@
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
     mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
     mask-composite: exclude;
-  
+
     pointer-events: none;
-  
+
     transition: opacity 0.35s ease;
   }
 
   &:hover::before {
     opacity: 1;
-   
+
     animation: border-rotate 2.5s linear infinite;
   }
 
   > .cmp-campaign-image {
     position: relative;
-    margin: 5px 5px 0 5px;                         
+    margin: 5px 5px 0 5px;
     min-height: 15rem;
-    border-radius: var(--pal-radius-s) var(--pal-radius-s) 0 0; 
+    border-radius: var(--pal-radius-s) var(--pal-radius-s) 0 0;
     background-position: center;
     background-size: cover;
     overflow: hidden;
@@ -79,7 +79,7 @@
         rgb(from var(--pal-surface-1) r g b / 0) 35%,
         var(--pal-surface-1) 100%
       );
-    pointer-events: none;
+      pointer-events: none;
     }
   }
 
@@ -92,14 +92,17 @@
 
     > h1 {
       margin: 0;
+
       font-size: var(--pal-fs-l);
       font-weight: 700;
+
       color: var(--pal-text-gold);
     }
 
     > p {
       line-height: 1.4;
       font-style: italic;
+      
       color: var(--pal-text-muted);
     }
   }
@@ -125,11 +128,21 @@
     }
 
     > .user-name {
+      display: flex;
+      align-items: center;
+      width: 100%;
+
       font-size: var(--pal-fs-sm);
       font-family: var(--pal-font-display);
       font-weight: 600;
+
       letter-spacing: 0.05em;
+
       color: var(--pal-contrast);
+    }
+
+    > .cmp-badge {
+      align-self: flex-end;
     }
   }
 }

@@ -1,14 +1,20 @@
-import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import './CampaignCard.css'
+import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 import type { CampaignResponse } from '@/features/campaigns/interfaces'
 import { useLocation } from 'wouter'
+import { Badge } from '@/shared/ui/Badge/Badge'
+import { useText } from '@/features/langs/hooks/useText'
+import { campaignCardText } from './CampaignCard.langs'
+
 interface CampaignCardProps {
   campaign: CampaignResponse
   imageUrl: string
 }
 
 export const CampaignCard = ({ campaign, imageUrl }: CampaignCardProps) => {
-  const { campaignId, name, description, isGameMaster } = campaign
+  const { campaignId, name, description, isActive, isGameMaster } = campaign
+
+  const text = useText(campaignCardText)
 
   const setCampaignId = useCampaignStore(state => state.setCurrentCampaignId)
   const setIsGameMaster = useCampaignStore(state => state.setIsGameMaster)
@@ -44,11 +50,11 @@ export const CampaignCard = ({ campaign, imageUrl }: CampaignCardProps) => {
             ;(e.target as HTMLImageElement).src = '/avatar.png'
           }}
         />
-      
 
         <span className="user-name">
           {isGameMaster ? 'Game Master' : 'Player'}
         </span>
+          {!isActive && <Badge text={text.inactive()} color="gray" />}
       </div>
     </div>
   )

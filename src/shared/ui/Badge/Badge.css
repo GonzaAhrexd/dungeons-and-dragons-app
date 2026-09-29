@@ -1,0 +1,31 @@
+:root {
+  --pal-badge-color: var(--pal-gold-500);
+  --pal-text-color: var(--pal-grayscale-0);
+}
+
+.cmp-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: var(--pal-size-s);
+  padding-right: var(--pal-size-s);
+  font-size: var(--pal-fs-l);
+  border-radius: var(--pal-radius-pill);
+  color: var(--pal-text-color);
+  background-color: var(--pal-badge-color);
+
+  &.gold {
+    --pal-badge-color: var(--pal-gold-500);
+    --pal-text-color: var(--pal-grayscale-0);
+  }
+
+  &.gray {
+    --pal-badge-color: var(--pal-grayscale-500);
+    --pal-text-color: var(--pal-grayscale-0);
+  }
+
+  &.red {
+    --pal-badge-color: var(--pal-red-500);
+    --pal-text-color: var(--pal-grayscale-0);
+  }
+}
