@@ -9,6 +9,8 @@ import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
 
+
+// TODO: Cambiar estados a action de React 19
 export const Profile = () => {
   const text = useText(profileText)
   const user = useAuthStore(state => state.user)

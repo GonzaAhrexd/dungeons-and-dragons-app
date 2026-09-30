@@ -1,9 +1,8 @@
 import './Home.css'
-import { useState, type SubmitEventHandler } from 'react'
+import { useState } from 'react'
 import { Login } from '../Login/Login'
 import { Register } from '../Register/Register'
 import { AuthLayout } from '../AuthLayout/AuthLayout'
-import { parseFormData } from '@/shared/utils'
 import { useLogin, useRegister } from '../../hooks'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { useAuthStore } from '../../store/auth.store'
@@ -20,27 +19,13 @@ export const Home = () => {
   const user = useAuthStore(state => state.user)
   const title = isRegisterMode ? text.signup() : text.login()
 
-  const handleLogin: SubmitEventHandler<HTMLFormElement> = e => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-
-    const data = parseFormData(formData, {
-      username: 'string',
-      password: 'string',
-    })
-
-    loginUser(data)
-  }
-
-  const handleRegister: SubmitEventHandler<HTMLFormElement> = e => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-
-    const data = parseFormData(formData, {
-      username: 'string',
-      password: 'string',
-    })
-    registerUser(data)
+  // TODO: Controlar si la contraseña es incorrecta y mostrar un mensaje de error en la UI
+  const handleSubmit = async (formData: FormData) => {
+    const data = Object.fromEntries(formData) as {
+      username: string
+      password: string
+    }
+    await (isRegisterMode ? registerUser : loginUser)(data)
   }
 
   if (user) {
@@ -59,8 +44,7 @@ export const Home = () => {
           <p>{text.description()}</p>
         </div>
         <AuthLayout
-          {...{ title, isRegisterMode, setIsRegisterMode }}
-          handleSubmit={!isRegisterMode ? handleLogin : handleRegister}
+          {...{ title, isRegisterMode, setIsRegisterMode, handleSubmit }}
         >
           {!isRegisterMode ? <Login /> : <Register />}
         </AuthLayout>

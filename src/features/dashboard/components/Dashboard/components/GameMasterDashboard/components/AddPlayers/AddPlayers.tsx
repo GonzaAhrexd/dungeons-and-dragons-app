@@ -4,11 +4,18 @@ import { Input } from '@/shared/ui/Input/Input'
 import { addPlayersText } from './AddPlayers.langs'
 import { useText } from '@/features/langs/hooks/useText'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { useAddPlayers } from './hooks'
+import { useSendInvitation } from '@/features/campaigns/hooks'
+import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
 
 export const AddPlayers = () => {
-  const { handleAddPlayer } = useAddPlayers()
   const text = useText(addPlayersText)
+  const campaignId = useCampaignStore(state => state.currentCampaignId)
+  const { mutateAsync: sendInvitation } = useSendInvitation()
+
+  const handleAddPlayer = async (formData: FormData) => {
+    const username = formData.get('username') as string
+    await sendInvitation({ campaignId, username })
+  }
 
   return (
     <section className="cmp-add-players">
@@ -23,7 +30,7 @@ export const AddPlayers = () => {
           <p>{text.description()}</p>
         </div>
       </header>
-      <form className="add-players-form" onSubmit={handleAddPlayer}>
+      <form className="add-players-form" action={handleAddPlayer}>
         <div className="add-players-controls">
           <Input
             id="username"

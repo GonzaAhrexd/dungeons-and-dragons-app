@@ -4,8 +4,6 @@ import { Button } from '@/shared/ui/Button/Button'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignAddFormText } from './CampaignAddForm.langs'
 import { TextArea } from '@/shared/ui/TextArea/TextArea'
-import type { SubmitEventHandler } from 'react'
-import { parseFormData } from '@/shared/utils/formData.util'
 import { useCreateCampaign } from '@/features/campaigns/hooks'
 import { useAuthStore } from '@/features/auth/store/auth.store'
 
@@ -14,16 +12,15 @@ export const CampaignAddForm = () => {
   const user = useAuthStore(state => state.user)
 
   const { mutateAsync: createCampaign } = useCreateCampaign()
-  const handleCreateCampaign: SubmitEventHandler<HTMLFormElement> = e => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
 
-    const data = parseFormData(formData, {
-      name: 'string',
-      description: 'string',
-    })
 
-    createCampaign({
+  const handleCreateCampaign = async (formData: FormData) => {
+    const data = {
+      name: formData.get('name') as string,
+      description: formData.get('description') as string,
+    }
+
+    await createCampaign({
       ...data,
       gamemaster: user?.id || '',
     })
@@ -35,7 +32,7 @@ export const CampaignAddForm = () => {
         <h1>{text.addCampaign()}</h1>
         <p>{text.addCampaignDescription()}</p>
       </div>
-      <form onSubmit={handleCreateCampaign}>
+      <form action={handleCreateCampaign}>
         <Input
           id="campaign-name"
           label={text.nameLabel()}
@@ -48,11 +45,7 @@ export const CampaignAddForm = () => {
           name="description"
         />
 
-        <Button
-          title={text.confirm()}
-          handlingClass="btn-create"
-          submit
-        />
+        <Button title={text.confirm()} handlingClass="btn-create" submit />
       </form>
     </div>
   )

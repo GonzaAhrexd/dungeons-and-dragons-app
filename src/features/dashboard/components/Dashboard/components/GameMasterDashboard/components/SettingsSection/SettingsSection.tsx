@@ -1,7 +1,7 @@
 import './SettingsSection.css'
 import { SwitchButton } from '@/shared/ui/SwitchButton/SwitchButton'
 import { Button } from '@/shared/ui/Button/Button'
-import { useState, type SubmitEventHandler } from 'react'
+import { useState } from 'react'
 import { Input } from '@/shared/ui/Input/Input'
 import {
   useDeleteCampaign,
@@ -19,13 +19,8 @@ export const SettingsSection = () => {
   const { mutateAsync: deleteCampaign } = useDeleteCampaign()
   const { mutateAsync: editCampaign } = useEditCampaign()
 
-  const handleDeletionCampaign: SubmitEventHandler<
-    HTMLFormElement
-  > = async e => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
+  const handleDeletionCampaign = async (formData: FormData) => {
     const campaignName = formData.get('campaignName') as string
-
     await deleteCampaign({ campaignId, campaignName })
   }
 
@@ -65,13 +60,14 @@ export const SettingsSection = () => {
       <div className={`deletion-mode ${isDeletionMode ? 'active' : ''}`}>
         <div className="inner">
           <p>{text.deletionDisclaimer()}</p>
-          <form action="" onSubmit={handleDeletionCampaign}>
+          <form action={handleDeletionCampaign}>
             <Input name="campaignName" label={text.campaignNameInputLabel()} />
             <Button title={text.confirmButton()} theme="primary" submit />
             <Button
               title={text.CancelButton()}
               theme="secondary"
               onClick={() => setIsDeletionMode(false)}
+              loader
             />
           </form>
         </div>

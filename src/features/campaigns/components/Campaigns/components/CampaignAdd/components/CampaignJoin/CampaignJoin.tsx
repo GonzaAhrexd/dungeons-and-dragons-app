@@ -3,22 +3,14 @@ import './CampaignJoin.css'
 import { Button } from '@/shared/ui/Button/Button'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignJoinText } from './CampaignJoin.langs'
-import type { SubmitEventHandler } from 'react'
-import { parseFormData } from '@/shared/utils/formData.util'
 
 export const CampaignJoin = () => {
   const text = useText(campaignJoinText)
 
-  const handleJoinCampaign: SubmitEventHandler<HTMLFormElement> = e => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-
-    const data = parseFormData(formData, {
-      code: 'string',
-    })
-
-    console.log('Joining campaign with code:', data.code)
+  const handleJoinCampaign = async (formData: FormData) => {
+    const code = formData.get('code') as string
     // Placeholder for future join campaign mutate hook call
+    console.log('Joining campaign with code:', code)
   }
 
   return (
@@ -27,7 +19,7 @@ export const CampaignJoin = () => {
         <h1>{text.joinCampaign()}</h1>
         <p>{text.joinCampaignDescription()}</p>
       </div>
-      <form onSubmit={handleJoinCampaign}>
+      <form action={handleJoinCampaign}>
         <Input
           id="campaign-join-code"
           label={text.codeLabel()}

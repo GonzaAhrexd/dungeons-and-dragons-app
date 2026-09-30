@@ -1,5 +1,5 @@
 import './AuthLayout.css'
-import type { ReactNode, SubmitEventHandler } from 'react'
+import type { ReactNode } from 'react'
 import { useText } from '@/features/langs/hooks/useText'
 import { authLayoutText } from './AuthLayout.langs'
 import { useLanguageStore } from '@/features/langs/store/langs.store'
@@ -9,7 +9,7 @@ interface AuthLayoutProps {
   title?: string
   isRegisterMode?: boolean
   children: ReactNode
-  handleSubmit?: SubmitEventHandler<HTMLFormElement>
+  handleSubmit?: (formData: FormData) => void
   setIsRegisterMode: (isRegisterMode: boolean) => void
 }
 
@@ -30,10 +30,11 @@ export const AuthLayout = ({
 
   return (
     <div className="cmp-auth-layout">
-      <form onSubmit={handleSubmit}>
+      <form action={handleSubmit}>
         <div className="corner-tr"></div>
         <div className="corner-bl"></div>
         <h1>{title}</h1>
+        {/* TODO: Optimizar/Mover esto */}
         <div className="title-decoration">
           <span
             style={{

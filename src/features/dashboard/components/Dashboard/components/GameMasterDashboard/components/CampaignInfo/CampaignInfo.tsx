@@ -1,14 +1,12 @@
 import { Button } from '@/shared/ui/Button/Button'
 import './CampaignInfo.css'
-import { useState, type SubmitEventHandler } from 'react'
+import { useState } from 'react'
 import { Input } from '@/shared/ui/Input/Input'
 import { TextArea } from '@/shared/ui/TextArea/TextArea'
 import { useEditCampaign } from '@/features/campaigns/hooks/useEditCampaign'
 import { useCampaignStore } from '@/features/campaigns/store/campaign.store'
-import { parseFormData } from '@/shared/utils'
 import { useText } from '@/features/langs/hooks/useText'
 import { campaignInfoText } from './CampaignInfo.langs'
-
 
 export interface CampaignInfoProps {
   title: string
@@ -31,20 +29,16 @@ export const CampaignInfo = ({
   const { mutateAsync: editCampaign } = useEditCampaign()
   const handleEditMode = toggleEditMode
 
-  const handleSubmit: SubmitEventHandler<HTMLFormElement> = async e => {
-    e.preventDefault()
-
+  const handleSubmit = async (formData: FormData) => {
     if (!campaignId) {
       console.error('No campaign ID found')
       return
     }
 
-    const formData = new FormData(e.currentTarget)
-
-    const data = parseFormData(formData, {
-      name: 'string',
-      description: 'string',
-    })
+    const data = {
+      name: formData.get('name') as string,
+      description: formData.get('description') as string,
+    }
 
     await editCampaign({
       params: { id: campaignId },
@@ -100,7 +94,7 @@ export const CampaignInfo = ({
       </div>
       <form
         className={`edit-form ${editMode ? 'active' : ''}`}
-        onSubmit={handleSubmit}
+        action={handleSubmit}
       >
         <div className="edit-form-heading">
           <div>
