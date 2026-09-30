@@ -1,5 +1,5 @@
 import './Home.css'
-import { useState } from 'react'
+import { useActionState, useState } from 'react'
 import { Login } from '../Login/Login'
 import { Register } from '../Register/Register'
 import { AuthLayout } from '../AuthLayout/AuthLayout'
@@ -10,6 +10,7 @@ import { Redirect } from 'wouter'
 
 import { useText } from '@/features/langs/hooks/useText'
 import { homeText } from './Home.langs'
+import { isAxiosError } from 'axios'
 
 export const Home = () => {
   const text = useText(homeText)
@@ -19,14 +20,23 @@ export const Home = () => {
   const user = useAuthStore(state => state.user)
   const title = isRegisterMode ? text.signup() : text.login()
 
-  // TODO: Controlar si la contraseña es incorrecta y mostrar un mensaje de error en la UI
-  const handleSubmit = async (formData: FormData) => {
-    const data = Object.fromEntries(formData) as {
-      username: string
-      password: string
-    }
-    await (isRegisterMode ? registerUser : loginUser)(data)
-  }
+  const [error, handleSubmit] = useActionState(
+    async (_prev: string | null, formData: FormData) => {
+      try {
+        const data = Object.fromEntries(formData) as {
+          username: string
+          password: string
+        }
+        await (isRegisterMode ? registerUser : loginUser)(data)
+        return null
+      } catch (e) {
+        return isAxiosError(e)
+          ? String(e.response?.data?.message ?? e.message)
+          : 'Error'
+      }
+    },
+    null,
+  )
 
   if (user) {
     return <Redirect to={'/campaigns'} />
@@ -44,7 +54,7 @@ export const Home = () => {
           <p>{text.description()}</p>
         </div>
         <AuthLayout
-          {...{ title, isRegisterMode, setIsRegisterMode, handleSubmit }}
+          {...{ title, isRegisterMode, setIsRegisterMode, handleSubmit, error }}
         >
           {!isRegisterMode ? <Login /> : <Register />}
         </AuthLayout>

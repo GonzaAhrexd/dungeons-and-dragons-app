@@ -9,6 +9,7 @@ interface AuthLayoutProps {
   title?: string
   isRegisterMode?: boolean
   children: ReactNode
+  error?: string | null
   handleSubmit?: (formData: FormData) => void
   setIsRegisterMode: (isRegisterMode: boolean) => void
 }
@@ -17,6 +18,7 @@ export const AuthLayout = ({
   title,
   isRegisterMode,
   children,
+  error,
   handleSubmit,
   setIsRegisterMode,
 }: AuthLayoutProps) => {
@@ -34,6 +36,7 @@ export const AuthLayout = ({
         <div className="corner-tr"></div>
         <div className="corner-bl"></div>
         <h1>{title}</h1>
+        {error && <p className="error">{error}</p>}
         {/* TODO: Optimizar/Mover esto */}
         <div className="title-decoration">
           <span
