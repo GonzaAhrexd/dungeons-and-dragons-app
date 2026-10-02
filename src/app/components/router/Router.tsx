@@ -7,7 +7,7 @@ import { MainLayout } from '@/shared/ui/MainLayout/MainLayout'
 import { Campaigns } from '@/features/campaigns/components/Campaigns/Campaigns'
 import { Profile } from '@/features/profile/components'
 import { DashboardPlayer } from '@/features/dashboard/components/DashboardPlayer/components/DashboardPlayer'
-
+import { MyCharacters } from '@/features/characters/components/MyCharacters/MyCharacters'
 export const Router = () => (
   <Switch>
     <Route path="/">
@@ -31,7 +31,7 @@ export const Router = () => (
     <Route path="/characters">
       <IsAuthenticated>
         <MainLayout>
-          <Dashboard />
+          <MyCharacters />
         </MainLayout>
       </IsAuthenticated>
     </Route>
