@@ -1,3 +1,9 @@
 .cmp-my-characters {
   padding: var(--pal-size-xl) var(--pal-size-xl) var(--pal-size-2xl);
+
+  > .characters-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--pal-size-xl);
+  }
 }
