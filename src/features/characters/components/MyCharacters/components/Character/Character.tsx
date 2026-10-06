@@ -93,5 +93,3 @@ export const Character = ({ character }: CharacterProps) => {
     </div>
   )
 }
-
-export default Character

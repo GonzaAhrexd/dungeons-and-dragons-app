@@ -3,7 +3,13 @@ import { Button } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { useText } from '@/features/langs/hooks/'
 import { createCharacterText } from './CreateCharacter.langs'
-export const CreateCharacter = () => {
+
+interface CreateCharacterProps {
+  setCreateCharacterMode: (mode: boolean) => void
+}
+export const CreateCharacter = ({
+  setCreateCharacterMode,
+}: CreateCharacterProps) => {
   const text = useText(createCharacterText)
 
   return (
@@ -22,6 +28,7 @@ export const CreateCharacter = () => {
           title={text.create()}
           theme="primary"
           handlingClass="btn-create"
+          onClick={() => setCreateCharacterMode(true)}
         />
       </div>
     </div>

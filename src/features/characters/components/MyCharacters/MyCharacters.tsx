@@ -1,6 +1,14 @@
+import { useState } from 'react'
 import './MyCharacters.css'
-import { CreateCharacter, Character, type CharacterData } from './components'
+import {
+  CreateCharacter,
+  Character,
+  type CharacterData,
+  CreateCharacterForm,
+} from './components'
 export const MyCharacters = () => {
+  const [createCharacterMode, setCreateCharacterMode] = useState(false)
+
   const character: CharacterData = {
     name: 'Bertok',
     race: 'Humano',
@@ -10,6 +18,9 @@ export const MyCharacters = () => {
       { id: '1', name: 'Strength', abbreviation: 'STR', value: 16 },
       { id: '2', name: 'Dexterity', abbreviation: 'DEX', value: 14 },
       { id: '3', name: 'Constitution', abbreviation: 'CON', value: 15 },
+      { id: '4', name: 'Intelligence', abbreviation: 'INT', value: 13 },
+      { id: '5', name: 'Charity', abbreviation: 'CHA', value: 17 },
+      { id: '6', name: 'Wisdom', abbreviation: 'WIS', value: 12 },
     ],
     campaign: 'La plaga carmesí',
     health: {
@@ -21,10 +32,14 @@ export const MyCharacters = () => {
   return (
     <div className="cmp-my-characters">
       <h1>My Characters</h1>
-      <div className="characters-list">
-        <CreateCharacter />
-        <Character character={character} />
-      </div>
+      {!createCharacterMode ? (
+        <div className="characters-list">
+          <CreateCharacter setCreateCharacterMode={setCreateCharacterMode} />
+          <Character character={character} />
+        </div>
+      ) : (
+        <CreateCharacterForm onCancel={() => setCreateCharacterMode(false)} />
+      )}
     </div>
   )
 }

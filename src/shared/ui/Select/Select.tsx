@@ -10,10 +10,11 @@ export interface SelectProps {
   name?: string
   value: string
   options: SelectOption[]
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   placeholder?: string
   className?: string
   disabled?: boolean
+  required?: boolean
 }
 
 export const Select = ({
@@ -25,6 +26,7 @@ export const Select = ({
   placeholder = 'Seleccionar',
   className = '',
   disabled = false,
+  required = false,
 }: SelectProps) => {
   const selectId = id || name || 'select-field'
   const selectName = name || id || 'select-field'
@@ -37,7 +39,8 @@ export const Select = ({
         className="select-native"
         value={value}
         disabled={disabled}
-        onChange={e => onChange(e.target.value)}
+        required={required}
+        onChange={onChange && (e => onChange(e.target.value))}
       >
         {!options.find(o => o.value === value) && (
           <option value="" disabled>
