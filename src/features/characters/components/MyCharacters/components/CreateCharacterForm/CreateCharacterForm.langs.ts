@@ -8,6 +8,10 @@ interface CreateCharacterFormTexts {
   namePlaceholder: string
   race: string
   subclass: string
+  level: string
+  alignement: string
+  backstory: string
+  objective: string
   subclassPlaceholder: string
   class: string
   campaign: string
@@ -37,6 +41,10 @@ export const createCharacterFormText: LanguagesText<CreateCharacterFormTexts> =
       subclass: 'Subclass',
       subclassPlaceholder: 'e.g. College of Lore',
       class: 'Class',
+      level: 'Level',
+      alignement: 'Alignment',
+      objective: 'Objective',
+      backstory: 'Backstory',
       campaign: 'Campaign',
       campaignPlaceholder: 'e.g. The Crimson Plague',
       attributes: 'Attributes',
@@ -59,8 +67,12 @@ export const createCharacterFormText: LanguagesText<CreateCharacterFormTexts> =
       namePlaceholder: 'ej. Elara Rompe Luna',
       race: 'Raza',
       subclass: 'Subclase',
+      level: 'Nivel',
       subclassPlaceholder: 'ej. Colegio del Saber',
       class: 'Clase',
+      alignement: 'Alineamiento',
+      objective: 'Objetivo',
+      backstory: 'Historia',
       campaign: 'Campaña',
       campaignPlaceholder: 'ej. La plaga carmesí',
       attributes: 'Atributos',

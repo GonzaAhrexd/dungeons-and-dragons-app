@@ -1,9 +1,12 @@
 .cmp-create-character-form {
+  align-self: center;
   display: flex;
   flex-direction: column;
   gap: var(--pal-size-l);
   border: 1px solid var(--pal-border-strong);
   padding: var(--pal-size-xl);
+  width: 100%;
+  max-width: 64rem;
   background-color: var(--pal-surface-1);
 
   > .header-group {
@@ -14,27 +17,29 @@
     padding-bottom: var(--pal-size-l);
 
     > .form-emblem {
-      display: grid;
       flex: 0 0 3.5rem;
-      place-items: center;
+      display: grid;
       border: 3px solid var(--pal-gold-600);
       width: 3.5rem;
       height: 3.5rem;
+      font-size: var(--pal-fs-l);
       border-radius: var(--pal-radius-full, 50%);
       color: var(--pal-gold-400);
       background-color: var(--pal-gold-900);
-      font-size: var(--pal-fs-l);
+      place-items: center;
     }
 
-    h2 {
-      margin: 0;
-      color: var(--pal-text-gold);
-      font-size: var(--pal-fs-xl);
-    }
+    > .header-text {
+      > h2 {
+        margin: 0;
+        font-size: var(--pal-fs-xl);
+        color: var(--pal-text-gold);
+      }
 
-    p {
-      margin: var(--pal-size-2xs) 0 0;
-      color: var(--pal-text-muted);
+      > p {
+        margin: var(--pal-size-2xs) 0 0;
+        color: var(--pal-text-muted);
+      }
     }
   }
 
@@ -51,11 +56,11 @@
       > h3,
       > .section-heading > h3 {
         margin: 0;
-        color: var(--pal-text-gold);
-        font-family: var(--pal-font-display);
         font-size: var(--pal-fs-m);
+        font-family: var(--pal-font-display);
         text-transform: uppercase;
         letter-spacing: 0.08em;
+        color: var(--pal-text-gold);
       }
 
       > .section-heading {
@@ -65,8 +70,8 @@
         gap: var(--pal-size-m);
 
         > span {
-          color: var(--pal-text-muted);
           font-size: var(--pal-fs-xs);
+          color: var(--pal-text-muted);
         }
       }
 
@@ -81,11 +86,11 @@
           gap: 0.3rem;
 
           > label {
-            color: var(--pal-gold-400);
-            font-family: var(--pal-font-display);
             font-size: var(--pal-fs-xs);
+            font-family: var(--pal-font-display);
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            color: var(--pal-gold-400);
           }
 
           > .cmp-select {
@@ -143,13 +148,13 @@
 
   @media (max-width: 420px) {
     > .header-group {
-      align-items: flex-start;
       flex-direction: column;
+      align-items: flex-start;
     }
 
     > form > .form-section > .section-heading {
-      align-items: flex-start;
       flex-direction: column;
+      align-items: flex-start;
       gap: var(--pal-size-xs);
     }
 

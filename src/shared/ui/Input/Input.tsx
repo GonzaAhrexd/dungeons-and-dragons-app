@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Input.css'
 import { Button } from '../Button/Button'
 
-type Types = 'text' | 'password' | 'email'
+type Types = 'text' | 'password' | 'email' 
 interface InputProps {
   id?: string
   name: string
