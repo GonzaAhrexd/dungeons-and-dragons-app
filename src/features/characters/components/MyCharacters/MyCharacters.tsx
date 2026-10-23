@@ -6,8 +6,11 @@ import {
   type CharacterData,
   CreateCharacterForm,
 } from './components'
+import { useGetMyCharacters } from '../../hooks/useGetMyCharacters'
 export const MyCharacters = () => {
   const [createCharacterMode, setCreateCharacterMode] = useState(false)
+
+  const { data: myCharacters, isLoading } = useGetMyCharacters()
 
   const character: CharacterData = {
     name: 'Bertok',
@@ -29,13 +32,19 @@ export const MyCharacters = () => {
     },
   }
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="cmp-my-characters">
       <h1>My Characters</h1>
       {!createCharacterMode ? (
         <div className="characters-list">
           <CreateCharacter setCreateCharacterMode={setCreateCharacterMode} />
-          <Character character={character} />
+          {myCharacters?.map(character => (
+            <Character key={character.id} character={character} />
+          ))}
         </div>
       ) : (
         <CreateCharacterForm onCancel={() => setCreateCharacterMode(false)} />

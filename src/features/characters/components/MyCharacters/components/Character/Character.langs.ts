@@ -6,12 +6,20 @@ interface CharacterTexts {
   subclass: string
   campaign: string
   attributes: string
+  attributesAbbreviation: {
+    strength: string
+    dexterity: string
+    constitution: string
+    intelligence: string
+    charisma: string
+    wisdom: string
+  }
   attributeList: {
     strenght: string
     dexterity: string
     constitution: string
     intelligence: string
-    charity: string
+    charisma: string
     wisdom: string
   }
   health: string
@@ -27,12 +35,20 @@ export const characterText: LanguagesText<CharacterTexts> = {
     attributes: 'Attributes',
     health: 'Health',
     unassigned: 'Unassigned',
+    attributesAbbreviation: {
+      strength: 'STR',
+      dexterity: 'DEX',
+      constitution: 'CON',
+      intelligence: 'INT',
+      charisma: 'CHA',
+      wisdom: 'WIS',
+    },
     attributeList: {
       strenght: 'Strength',
       dexterity: 'Dexterity',
       constitution: 'Constitution',
       intelligence: 'Intelligence',
-      charity: 'Charity',
+      charisma: 'Charity',
       wisdom: 'Wisdom',
     },
   },
@@ -44,12 +60,20 @@ export const characterText: LanguagesText<CharacterTexts> = {
     attributes: 'Atributos',
     health: 'Vida',
     unassigned: 'No asignado',
+    attributesAbbreviation: {
+      strength: 'FUE',
+      dexterity: 'DES',
+      constitution: 'CON',
+      intelligence: 'INT',
+      charisma: 'CAR',
+      wisdom: 'SAB',
+    },
     attributeList: {
       strenght: 'Fuerza',
       dexterity: 'Destreza',
       constitution: 'Constitución',
       intelligence: 'Inteligencia',
-      charity: 'Caridad',
+      charisma: 'Caridad',
       wisdom: 'Sabiduría',
     },
   },

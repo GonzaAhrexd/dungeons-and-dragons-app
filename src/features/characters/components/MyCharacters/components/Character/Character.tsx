@@ -1,40 +1,60 @@
-import type { Attribute } from '@/features/dashboard/components/DashboardPlayer/interfaces/stats.interface'
 import { useText } from '@/features/langs/hooks/useText'
 import { Badge } from '@/shared/ui/Badge/Badge'
 import { characterText } from './Character.langs'
 import './Character.css'
-
-export interface CharacterData {
-  name: string
-  race: string
-  class: string
-  subclass?: string | null
-  stats: Attribute[]
-  campaign?: string | null
-  health?: {
-    current: number
-    max: number
-  }
-}
+import type { GetMyCharactersResponse } from '@/features/characters/interfaces'
 
 interface CharacterProps {
-  character: CharacterData
+  character: GetMyCharactersResponse
 }
 
 export const Character = ({ character }: CharacterProps) => {
   const text = useText(characterText)
-  const campaignName = character.campaign?.trim() || text.unassigned()
-  const healthPercentage = character.health
-    ? Math.min(
-        100,
-        Math.max(
-          0,
-          character.health.max > 0
-            ? (character.health.current / character.health.max) * 100
-            : 0,
-        ),
-      )
-    : 0
+  // const campaignName = character.campaign?.trim() || text.unassigned()
+  // const healthPercentage = character.health
+  //   ? Math.min(
+  //       100,
+  //       Math.max(
+  //         0,
+  //         character.health.max > 0
+  //           ? (character.health.current / character.health.max) * 100
+  //           : 0,
+  //       ),
+  //     )
+  //   : 0
+
+  const attributes = [
+    {
+      id: '1',
+      abbreviation: text.attributesAbbreviation.strength(),
+      value: character.attributes.strength,
+    },
+    {
+      id: '2',
+      abbreviation: text.attributesAbbreviation.dexterity(),
+      value: character.attributes.dexterity,
+    },
+    {
+      id: '3',
+      abbreviation: text.attributesAbbreviation.constitution(),
+      value: character.attributes.constitution,
+    },
+    {
+      id: '4',
+      abbreviation: text.attributesAbbreviation.intelligence(),
+      value: character.attributes.intelligence,
+    },
+    {
+      id: '5',
+      abbreviation: text.attributesAbbreviation.wisdom(),
+      value: character.attributes.wisdom,
+    },
+    {
+      id: '6',
+      abbreviation: text.attributesAbbreviation.charisma(),
+      value: character.attributes.charisma,
+    },
+  ]
 
   return (
     <div className="cmp-character">
@@ -45,7 +65,7 @@ export const Character = ({ character }: CharacterProps) => {
 
         <div className="character-heading">
           <h2>{character.name}</h2>
-          <p>{campaignName}</p>
+          {/* <p>{campaignName}</p> */}
         </div>
       </div>
 
@@ -55,7 +75,7 @@ export const Character = ({ character }: CharacterProps) => {
         <Badge text={`${character.subclass?.trim() || text.unassigned()}`} />
       </div>
 
-      {character.health && (
+      {/* {character.health && (
         <div className="health-bar">
           <div className="health-bar-header">
             <span>{text.health()}</span>
@@ -68,8 +88,8 @@ export const Character = ({ character }: CharacterProps) => {
             role="progressbar"
             aria-label={text.health()}
             aria-valuemin={0}
-            aria-valuemax={character.health.max}
-            aria-valuenow={character.health.current}
+            // aria-valuemax={character.health.max}
+            // aria-valuenow={character.health.current}
           >
             <div
               className="health-bar-fill"
@@ -77,12 +97,12 @@ export const Character = ({ character }: CharacterProps) => {
             />
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="attributes">
         <h3>{text.attributes()}</h3>
         <div className="attributes-list">
-          {character.stats.map(attribute => (
+          {attributes.map(attribute => (
             <div className="attribute" key={attribute.id}>
               <span>{attribute.abbreviation}</span>
               <strong>{attribute.value}</strong>
